@@ -144,10 +144,49 @@
   <ItemGroup>
     <ClCompile Include="D3D.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MnConstantBuffer.cpp" />
+    <ClCompile Include="MnCustomVertexType.cpp" />
+    <ClCompile Include="MnD3DDevice.cpp" />
+    <ClCompile Include="MnDepthStencilBuffer.cpp" />
+    <ClCompile Include="MnDisplayDevice.cpp" />
+    <ClCompile Include="MnGpuBuffer.cpp" />
+    <ClCompile Include="MnHardware.cpp" />
+    <ClCompile Include="MnIndexBuffer.cpp" />
+    <ClCompile Include="MnInputElement.cpp" />
+    <ClCompile Include="MnInputLayout.cpp" />
+    <ClCompile Include="MnPixelShader.cpp" />
+    <ClCompile Include="MnRenderTarget.cpp" />
+    <ClCompile Include="MnRenderWindow.cpp" />
+    <ClCompile Include="MnVertexBuffer.cpp" />
+    <ClCompile Include="MnVertexShader.cpp" />
+    <ClCompile Include="MnVideoAdapter.cpp" />
+    <ClCompile Include="RenderAPI.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderPath.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3D.h" />
+    <ClInclude Include="MnConstantBuffer.h" />
+    <ClInclude Include="MnCustomVertexType.h" />
+    <ClInclude Include="MnD3DDevice.h" />
+    <ClInclude Include="MnDepthStencilBuffer.h" />
+    <ClInclude Include="MnDisplayDevice.h" />
+    <ClInclude Include="MnGpuBuffer.h" />
+    <ClInclude Include="MnHardware.h" />
+    <ClInclude Include="MnIndexBuffer.h" />
+    <ClInclude Include="MnInputElement.h" />
+    <ClInclude Include="MnInputLayout.h" />
+    <ClInclude Include="MNL.h" />
+    <ClInclude Include="MnPixelShader.h" />
+    <ClInclude Include="MnRenderTarget.h" />
+    <ClInclude Include="MnRenderWindow.h" />
+    <ClInclude Include="MnVertexBuffer.h" />
+    <ClInclude Include="MnVertexShader.h" />
+    <ClInclude Include="MnVideoAdapter.h" />
+    <ClInclude Include="RenderAPI.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderPath.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

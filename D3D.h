@@ -6,16 +6,6 @@
 
 namespace MNL
 {
-	typedef Microsoft::WRL::ComPtr<ID3D11Device>			CPD3DDevice;
-	typedef Microsoft::WRL::ComPtr<ID3D11DeviceContext>		CPD3DDeviceContext;
-	typedef Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	CPD3DRenderTargetView;
-	typedef Microsoft::WRL::ComPtr<ID3D11DepthStencilState> CPD3DDepthStencilState;
-	typedef Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	CPD3DDepthStencilView;
-	typedef Microsoft::WRL::ComPtr<ID3D11RasterizerState>	CPD3DRasterizerState;
-
-	typedef Microsoft::WRL::ComPtr<IDXGISwapChain>		CPDXGISwapChain;
-	typedef Microsoft::WRL::ComPtr<IDXGIAdapter>		CPDXGIAdapter;
-	typedef Microsoft::WRL::ComPtr<IDXGIOutput>			CPDXGIOutput;
 
 	class D3D
 	{
