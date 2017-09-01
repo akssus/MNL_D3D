@@ -12,7 +12,7 @@ namespace MNL
 		MnVertexBuffer();
 		~MnVertexBuffer();
 
-		void Init(const MnCustomVertexType& vertexType,UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData,bool isDynamic);
+		void Init(const MnCustomVertexType& vertexType,UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData, bool isDynamic);
 		void UpdateBuffer(const D3D11_SUBRESOURCE_DATA* data);
 		bool IsDynamic();
 		

@@ -35,13 +35,6 @@ namespace MNL
 		*/
 		UINT NumElements() const;
 
-
-		/**
-		Create input layout according to inner structure
-		@return created input layout pointer
-		*/
-		CPD3DInputLayout CreateInputLayout(CPD3DDevice cpDevice, std::shared_ptr<MnVertexShader> pVertexShader);
-
 	private:
 		std::vector<MnInputElement> m_inputElements;
 		UINT						m_totalByteSize;

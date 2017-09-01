@@ -13,7 +13,8 @@ namespace MNL
 		CPD3DBlob GetByteCode() const;
 
 	private:
-		CPD3DBlob m_byteCode;
+		CPD3DBlob m_cpByteCode;
+		CPD3DVertexShader m_cpShader;
 	};
 
 }

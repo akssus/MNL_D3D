@@ -16,6 +16,7 @@
 #include "MnVertexBuffer.h"
 #include "MnIndexBuffer.h"
 #include "MnInputElement.h"
+#include "MnInputLayout.h"
 
 namespace MNL
 {

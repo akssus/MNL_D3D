@@ -30,25 +30,3 @@ UINT MnCustomVertexType::NumElements() const
 {
 	return m_inputElements.size();
 }
-CPD3DInputLayout MnCustomVertexType::CreateInputLayout(CPD3DDevice cpDevice, std::shared_ptr<MnVertexShader> pVertexShader)
-{
-	std::vector<D3D11_INPUT_ELEMENT_DESC> inputLayoutDescs;
-	for (auto& inputElement : m_inputElements)
-	{
-		inputLayoutDescs.push_back(inputElement.GetDesc());
-	}
-	UINT numElements = m_inputElements.size();
-
-	CPD3DInputLayout cpInputLayout;
-	HRESULT result = cpDevice->CreateInputLayout(inputLayoutDescs.data(), 
-								numElements, pVertexShader->GetByteCode()->GetBufferPointer(), 
-								pVertexShader->GetByteCode()->GetBufferSize(), 
-								&cpInputLayout);
-	if (FAILED(result))
-	{
-		//error log
-		return nullptr;
-	}
-
-	return cpInputLayout;
-}

@@ -2,19 +2,23 @@
 
 using namespace MNL;
 
-Window::Window(HINSTANCE hInstance, int nCmdShow)
+Window::Window()
+{
+	m_hInstance = 0;
+	m_cmdShow = 0;
+	m_hWnd = 0;
+}
+
+Window::~Window() 
+{
+	Shutdown();
+};
+
+bool Window::Create(HINSTANCE hInstance, int nCmdShow, std::wstring windowName, std::wstring className, float x, float y, float width, float height, WNDPROC WndProc)
 {
 	m_hInstance = hInstance;
 	m_cmdShow = nCmdShow;
-	m_hWnd = 0;
-}
-Window::~Window() 
-{
-	Destroy();
-};
 
-bool Window::Create(std::wstring windowName, std::wstring className, float x, float y, float width, float height, WNDPROC WndProc)
-{
 	m_wndClass.style = CS_HREDRAW | CS_VREDRAW;
 	m_wndClass.lpfnWndProc = WndProc;
 	m_wndClass.cbClsExtra = 0;
@@ -35,7 +39,7 @@ bool Window::Create(std::wstring windowName, std::wstring className, float x, fl
 	return true;
 }
 
-void Window::Destroy()
+void Window::Shutdown()
 {
 
 }

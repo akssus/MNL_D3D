@@ -10,14 +10,15 @@ namespace MNL
 	class Window
 	{
 	public:
-		Window(HINSTANCE hInstance, int nCmdShow);
+		Window();
 		~Window();
 
-		bool	Create(std::wstring windowName, std::wstring className, 
+		bool	Create(HINSTANCE hInstance, int nCmdShow, 
+					 std::wstring windowName, std::wstring className,
 					 float x,		float y, 
 					 float width,	float height, 
 					 WNDPROC WndProc);
-		void	Destroy();
+		void	Shutdown();
 
 		HWND&	GetWindowHandle();
 		RECT	GetWindowRect();
