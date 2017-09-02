@@ -12,12 +12,18 @@ namespace MNL
 		MnVertexBuffer();
 		~MnVertexBuffer();
 
-		void Init(const MnCustomVertexType& vertexType,UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData, bool isDynamic);
-		void UpdateBuffer(const D3D11_SUBRESOURCE_DATA* data);
-		bool IsDynamic();
+		HRESULT Init(CPD3DDevice cpDevice, const MnCustomVertexType& vertexType, UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData, bool isDynamic);
+		void UpdateBuffer(CPD3DDeviceContext cpDeviceContext, const D3D11_SUBRESOURCE_DATA& data);
+
+		const CPD3DBuffer GetBuffer() const;
+		bool IsDynamic() const;
+		UINT GetStride() const;
 		
 
 	private:
-		MnGpuBuffer		m_buffers;
+		MnGpuBuffer			m_buffer;
+		UINT				m_stride;
+		D3D11_BUFFER_DESC	m_bufferDesc;
+		bool				m_isDynamic;
 	};
 }

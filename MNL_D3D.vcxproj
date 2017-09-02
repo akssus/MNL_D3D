@@ -148,6 +148,7 @@
     <ClCompile Include="MnCustomVertexType.cpp" />
     <ClCompile Include="MnD3DDevice.cpp" />
     <ClCompile Include="MnDepthStencilBuffer.cpp" />
+    <ClCompile Include="MnDepthStencilState.cpp" />
     <ClCompile Include="MnDisplayDevice.cpp" />
     <ClCompile Include="MnGpuBuffer.cpp" />
     <ClCompile Include="MnHardware.cpp" />
@@ -155,15 +156,17 @@
     <ClCompile Include="MnInputElement.cpp" />
     <ClCompile Include="MnInputLayout.cpp" />
     <ClCompile Include="MnPixelShader.cpp" />
-    <ClCompile Include="MnRenderTarget.cpp" />
+    <ClCompile Include="MnRasterizerState.cpp" />
+    <ClCompile Include="MnRenderTargetView.cpp" />
     <ClCompile Include="MnRenderWindow.cpp" />
+    <ClCompile Include="MnSwapChain.cpp" />
+    <ClCompile Include="MnTexture2D.cpp" />
     <ClCompile Include="MnVertexBuffer.cpp" />
     <ClCompile Include="MnVertexShader.cpp" />
     <ClCompile Include="MnVideoAdapter.cpp" />
-    <ClCompile Include="RenderAPI.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="ShaderPath.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="MnViewport.cpp" />
+    <ClCompile Include="MnRenderAPI.cpp" />
+    <ClCompile Include="MnWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3D.h" />
@@ -171,6 +174,7 @@
     <ClInclude Include="MnCustomVertexType.h" />
     <ClInclude Include="MnD3DDevice.h" />
     <ClInclude Include="MnDepthStencilBuffer.h" />
+    <ClInclude Include="MnDepthStencilState.h" />
     <ClInclude Include="MnDisplayDevice.h" />
     <ClInclude Include="MnGpuBuffer.h" />
     <ClInclude Include="MnHardware.h" />
@@ -178,16 +182,19 @@
     <ClInclude Include="MnInputElement.h" />
     <ClInclude Include="MnInputLayout.h" />
     <ClInclude Include="MNL.h" />
+    <ClInclude Include="MnMacros.h" />
     <ClInclude Include="MnPixelShader.h" />
-    <ClInclude Include="MnRenderTarget.h" />
+    <ClInclude Include="MnRasterizerState.h" />
+    <ClInclude Include="MnRenderTargetView.h" />
     <ClInclude Include="MnRenderWindow.h" />
+    <ClInclude Include="MnSwapChain.h" />
+    <ClInclude Include="MnTexture2D.h" />
     <ClInclude Include="MnVertexBuffer.h" />
     <ClInclude Include="MnVertexShader.h" />
     <ClInclude Include="MnVideoAdapter.h" />
-    <ClInclude Include="RenderAPI.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="ShaderPath.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="MnViewport.h" />
+    <ClInclude Include="MnRenderAPI.h" />
+    <ClInclude Include="MnWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

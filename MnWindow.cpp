@@ -1,20 +1,20 @@
-#include "Window.h"
+#include "MnWindow.h"
 
 using namespace MNL;
 
-Window::Window()
+MnWindow::MnWindow()
 {
 	m_hInstance = 0;
 	m_cmdShow = 0;
 	m_hWnd = 0;
 }
 
-Window::~Window() 
+MnWindow::~MnWindow()
 {
 	Shutdown();
 };
 
-bool Window::Create(HINSTANCE hInstance, int nCmdShow, std::wstring windowName, std::wstring className, float x, float y, float width, float height, WNDPROC WndProc)
+HRESULT MnWindow::Create(HINSTANCE hInstance, int nCmdShow, std::wstring windowName, std::wstring className, float x, float y, float width, float height, WNDPROC WndProc)
 {
 	m_hInstance = hInstance;
 	m_cmdShow = nCmdShow;
@@ -29,27 +29,30 @@ bool Window::Create(HINSTANCE hInstance, int nCmdShow, std::wstring windowName, 
 	m_wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	m_wndClass.lpszMenuName = NULL;
 	m_wndClass.lpszClassName = className.c_str();
-	if (!RegisterClass(&m_wndClass)) return false;
+	if (!RegisterClass(&m_wndClass))
+	{
+		return E_FAIL;
+	}
 
 	m_hWnd = CreateWindow(className.c_str(), windowName.c_str(), WS_OVERLAPPEDWINDOW,
 		x, y, width, height,
 		NULL, NULL, m_hInstance, NULL);
 	ShowWindow(m_hWnd, m_cmdShow);
 
-	return true;
+	return S_OK;
 }
 
-void Window::Shutdown()
+void MnWindow::Shutdown()
 {
 
 }
 
-HWND& Window::GetWindowHandle()
+HWND& MnWindow::GetWindowHandle()
 {
 	return m_hWnd;
 }
 
-RECT Window::GetWindowRect()
+RECT MnWindow::GetWindowRect()
 {
 	RECT windowRect;
 	GetClientRect(m_hWnd, &windowRect);

@@ -1,19 +1,18 @@
 #pragma once
 
-
 #include <Windows.h>
 #include <string>
 #include <functional>
 
 namespace MNL
 {
-	class Window
+	class MnWindow
 	{
 	public:
-		Window();
-		~Window();
+		MnWindow();
+		~MnWindow();
 
-		bool	Create(HINSTANCE hInstance, int nCmdShow, 
+		HRESULT	Create(HINSTANCE hInstance, int nCmdShow, 
 					 std::wstring windowName, std::wstring className,
 					 float x,		float y, 
 					 float width,	float height, 

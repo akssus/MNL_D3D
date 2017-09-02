@@ -26,19 +26,18 @@ namespace MNL
 		std::string	GetSemanticName() const;
 		MnInputElementType GetType() const;
 		UINT GetByteSize() const;
-		D3D11_INPUT_ELEMENT_DESC GetDesc() const;
 		DXGI_FORMAT GetDXGIFormat() const;
 
 	private:
 		MnInputElement();
 		bool _Init(std::string semanticName, MnInputElementType& inputElementType);
-		bool _SetDesc(std::string semanticName, MnInputElementType& inputElementType);
-		void _SetFormat(MnInputElementType& inputElementType, D3D11_INPUT_ELEMENT_DESC& inputElementDesc);
+		DXGI_FORMAT _ConvertToDXGIFormat(MnInputElementType& inputElementType);
+		UINT _GetByteSizeOf(MnInputElementType& inputElementType);
 
 	private:
-		D3D11_INPUT_ELEMENT_DESC	m_desc;
 		std::string					m_semanticName;
 		MnInputElementType			m_type;
+		DXGI_FORMAT					m_format;
 		UINT						m_byteSize;
 	};
 

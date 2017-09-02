@@ -1,23 +1,47 @@
 #pragma once
 #include <d3d11.h>
 #include <memory>
-#include "Window.h"
 #include "MNL.h"
 
 namespace MNL
 {
+	/*
+	MnRenderWindow is reponsible for window creation, modifying and swapping buffers to the screen
+	*/
 	class MnRenderWindow
 	{
 	public:
 		MnRenderWindow();
 		~MnRenderWindow();
 		
-		void Init(	HINSTANCE hInstance, int nCmdShow,
-					std::wstring windowName, std::wstring className,
-					float x, float y,
-					float width, float height,
-					WNDPROC WndProc);
+		/*
+		Create a window instance and a swap chain
+		@return S_OK if successfully initialized
+		*/
+		HRESULT Init(
+			HINSTANCE hInstance,
+			int nCmdShow,
+			std::wstring windowName,
+			std::wstring className,
+			float x, float y,
+			float width, float height,
+			WNDPROC WndProc,
+			bool isWindowed,
+			const MnHardware& hardwareInfo,
+			bool useDefaultDevice,
+			UINT numerator, UINT denominator,
+			bool isVsync,
+			UINT numBuffers,
+			const CPD3DDevice cpD3DDevice,
+			const CPD3DDeviceContext cpD3DDeviceContext
+		);
 		
+		/*
+		Resize does not resize depth stencil buffer. That is not MnRednerWindow's responsibility
+		*/
+		const HWND GetWindowHandle() const;
+		const CPD3DRenderTargetView GetBackBufferView() const;
+
 		void Resize(UINT width, UINT height);
 		void SetFullscreen();
 		void SetWindowed(UINT width, UINT height);
@@ -28,10 +52,10 @@ namespace MNL
 
 
 	private:
-		Window							m_window;
-		std::shared_ptr<MnD3DDevice>	m_pD3DDevice;
-		CPDXGISwapChain					m_cpSwapChain;
+		MnWindow						m_window;
+		MnSwapChain						m_swapChain;
+		bool							m_isWindowed;
 
-		bool			m_isWindowed;
+		MnRenderTargetView				m_backBufferView;
 	};
 }

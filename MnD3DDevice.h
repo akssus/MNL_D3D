@@ -9,6 +9,7 @@ namespace MNL
 	public:
 		MnD3DDevice();
 		~MnD3DDevice();
+		HRESULT Init(const MnHardware& hardwareInfo, bool useDefaultAdapter);
 
 		CPD3DDevice GetDevice() const;
 		CPD3DDeviceContext GetDeviceContext() const;

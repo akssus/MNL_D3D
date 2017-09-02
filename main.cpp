@@ -1,26 +1,74 @@
 #include <Windows.h>
-#include "Window.h"
-#include "D3D.h"
+#include "MNL.h"
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow)
 {
-	MNL::Window window(hInstance, nCmdShow);
-	if (window.Create(L"MNL_D3D", L"MNL_D3D", 100, 100, 1024, 768, WndProc) == false)
+	//initialize
+	MNL::MnHardware hardware;
+	HRESULT result = hardware.Init();
+	if (FAILED(result))
 	{
-		//error log
+		//error msg
+		return 0;
+	}
+	MNL::MnRenderAPI renderAPI;
+	result = renderAPI.Init(hardware, true);
+	if (FAILED(result))
+	{
+		//error msg
+		return 0;
+	}
+	MNL::MnRenderWindow renderWindow;
+	result = renderWindow.Init(hInstance, nCmdShow, L"MNL", L"MNL", 100, 100, 1024, 768, WndProc, true,
+		hardware, true, 1, 60, false, 1, renderAPI.GetD3DDevice().GetDevice(), renderAPI.GetD3DDevice().GetDeviceContext());
+	if (FAILED(result))
+	{
+		//error msg
+		return 0;
+	}
+	//init depth stencil buffer
+	MNL::MnDepthStencilBuffer depthStencilBuffer;
+	result = depthStencilBuffer.Init(renderAPI.GetD3DDevice().GetDevice(), 1024, 768);
+	if (FAILED(result))
+	{
+		//error msg
 		return 0;
 	}
 
-	HWND hWnd = window.GetWindowHandle();
-
-	MNL::D3D d3d;
-	if (d3d.Init(1024, 768, hWnd, hInstance, true) == false)
+	//init depth stencil state
+	MNL::MnDepthStencilState depthStencilState;
+	result = depthStencilState.Init(renderAPI.GetD3DDevice().GetDevice(), true, true);
+	if (FAILED(result))
 	{
+		//error msg
 		return 0;
 	}
-	d3d.SetClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+
+	//init rasterizer state
+	MNL::MnRasterizerState rasterizerState;
+	result = rasterizerState.Init(renderAPI.GetD3DDevice().GetDevice(), D3D11_FILL_SOLID, false);
+	if (FAILED(result))
+	{
+		//error msg
+		return 0;
+	}
+
+	//init viewport
+	MNL::MnViewport viewport;
+	result = viewport.Init(0, 0, 1024, 768);
+	if (FAILED(result))
+	{
+		//error msg
+		return 0;
+	}
+
+	//set all the buffers and states
+	renderAPI.SetRenderTarget(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView());
+	renderAPI.SetDepthStencilState(depthStencilState.GetState());
+	renderAPI.SetRasterizerState(rasterizerState.GetState());
+	renderAPI.SetViewport(viewport.GetViewport());
 
 	MSG wndMsg;
 	ZeroMemory(&wndMsg, sizeof(MSG));
@@ -33,8 +81,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		}
 		else
 		{
-			d3d.BeginScene();
-			d3d.EndScene();
+			renderWindow.ClearBuffers();
+
+			//render here
+
+			renderWindow.SwapBuffers();
 		}
 	}
 

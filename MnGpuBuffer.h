@@ -13,14 +13,19 @@ namespace MNL
 		MnGpuBuffer();
 		~MnGpuBuffer();
 
-		CPD3DBuffer GetBuffer();
-		bool IsDynamic();
+		HRESULT Init(const CPD3DDevice& cpDevice, const D3D11_BUFFER_DESC& bufferDesc, const D3D11_SUBRESOURCE_DATA* initialData);
+		D3D11_MAPPED_SUBRESOURCE MnGpuBuffer::Map(const CPD3DDeviceContext& cpDeviceContext, UINT subresourceIndex);
+		void Unmap(const CPD3DDeviceContext& cpDeviceContext, UINT subresourceIndex);
+		void UpdateBuffer(CPD3DDeviceContext cpDeviceContext, const D3D11_SUBRESOURCE_DATA& data);
+
+		const CPD3DBuffer GetBuffer() const;
+		UINT GetBufferByteSize() const;
+		bool IsDynamic() const;
 
 	protected:
-		bool AllocateBuffer(const D3D11_BUFFER_DESC* bufferDesc, const D3D11_SUBRESOURCE_DATA* initialData);
-
-	protected:
-		CPD3DBuffer m_cpBuffer;
-		bool			m_isDynamic;
+		D3D11_BUFFER_DESC	m_bufferDesc;
+		CPD3DBuffer			m_cpBuffer;
+		UINT				m_numBuffers;
+		bool				m_isDynamic;
 	};
 }
