@@ -4,6 +4,9 @@
 
 namespace MNL
 {
+	/*
+	MnSwapChain is dependent to MnRenderWindow
+	*/
 	class MnSwapChain
 	{
 	public:
@@ -17,7 +20,16 @@ namespace MNL
 			HWND hWnd,
 			bool isWindowed);
 
-		CPD3DTexture2D GetBackBuffer();
+		/*
+		Set swap chain's fullscreen state
+		@param true as fullscreen mode, false as windowed 
+		*/
+		HRESULT ToggleFullscreen(bool IsFullscreen);
+		HRESULT Resize(UINT width, UINT height);
+
+		bool IsVsync() const;
+		const CPD3DTexture2D GetBackBuffer() const;
+		const CPDXGISwapChain GetSwapChain() const;
 
 	private:
 		HRESULT _InitSwapChain(HWND hWnd, 
@@ -32,6 +44,7 @@ namespace MNL
 	private:
 		HWND m_outputWindow;
 		bool m_isVsync;
+		UINT m_numBuffers;
 		DXGI_SWAP_CHAIN_DESC m_swapChainDesc;
 		CPDXGISwapChain m_cpSwapChain;
 		CPD3DTexture2D m_backBuffer;

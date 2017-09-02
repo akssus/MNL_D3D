@@ -47,12 +47,12 @@ void MnWindow::Shutdown()
 
 }
 
-HWND& MnWindow::GetWindowHandle()
+const HWND MnWindow::GetWindowHandle() const
 {
 	return m_hWnd;
 }
 
-RECT MnWindow::GetWindowRect()
+RECT MnWindow::GetWindowRect() const
 {
 	RECT windowRect;
 	GetClientRect(m_hWnd, &windowRect);

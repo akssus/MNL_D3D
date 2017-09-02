@@ -149,9 +149,6 @@
     <ClInclude Include="MnMacros.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MnTexture2D.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="MnRenderTargetView.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -168,6 +165,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnWindow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnTexture2D.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

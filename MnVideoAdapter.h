@@ -19,7 +19,7 @@ namespace MNL
 		UINT GetMemorySize() const;
 		UINT GetNumDisplays();
 		const CPDXGIAdapter GetInterface() const;
-		const MnDisplayDevice GetDisplay(int index);
+		const MnDisplayDevice GetDisplayDevice(int index) const;
 
 	private:
 		std::wstring		m_adapterName;

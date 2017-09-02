@@ -16,7 +16,13 @@ namespace MNL
 
 		HRESULT Init(const MnHardware& hardwareInfo, bool useDefaultAdapter);
 
+		/*
+		Set vertex buffer to the context. only supports one buffer
+		*/
 		void SetVertexBuffer(const MnVertexBuffer& vertexBuffer);
+		/*
+		Set index buffer to the context
+		*/
 		void SetIndexBuffer(const MnIndexBuffer& indexBuffer);
 
 		void SetInputLayout(const MnInputLayout& inputLayout);
@@ -28,6 +34,9 @@ namespace MNL
 		void SetDepthStencilState(const CPD3DDepthStencilState cpDepthStencilState);
 		void SetRasterizerState(const CPD3DRasterizerState cpRasterizerState);
 		
+		/*
+		It supports only one viewport at the same time
+		*/
 		void SetViewport(const D3D11_VIEWPORT& viewport);
 
 		const std::shared_ptr<MnD3DDevice> GetD3DDevice() const;

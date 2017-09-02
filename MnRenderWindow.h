@@ -26,11 +26,11 @@ namespace MNL
 			float x, float y,
 			float width, float height,
 			WNDPROC WndProc,
-			bool isWindowed,
 			const MnHardware& hardwareInfo,
 			bool useDefaultDevice,
 			UINT numerator, UINT denominator,
 			bool isVsync,
+			bool isWindowed,
 			UINT numBuffers,
 			const CPD3DDevice cpD3DDevice,
 			const CPD3DDeviceContext cpD3DDeviceContext
@@ -44,12 +44,27 @@ namespace MNL
 
 		void Resize(UINT width, UINT height);
 		void SetFullscreen();
-		void SetWindowed(UINT width, UINT height);
+		void SetWindowed();
 		
-		
-		void ClearBuffers();
 		void SwapBuffers();
 
+	private:
+		HRESULT _InitWindow(HINSTANCE hInstance,
+			int nCmdShow,
+			std::wstring windowName,
+			std::wstring className,
+			float x, float y,
+			float width, float height,
+			WNDPROC WndProc);
+		HRESULT _InitSwapChain(const MnHardware& hardwareInfo,
+			bool useDefaultDevice,
+			float width, float height,
+			UINT numerator, UINT denominator,
+			bool isVsync,
+			bool isWindowed,
+			UINT numBuffers,
+			const CPD3DDevice cpD3DDevice,
+			const CPD3DDeviceContext cpD3DDeviceContext);
 
 	private:
 		MnWindow						m_window;

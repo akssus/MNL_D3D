@@ -10,7 +10,8 @@ namespace MNL
 		MnVertexShader();
 		~MnVertexShader();
 
-		CPD3DBlob GetByteCode() const;
+		const CPD3DBlob GetByteCode() const;
+		const CPD3DVertexShader GetShader() const;
 
 	private:
 		CPD3DBlob m_cpByteCode;

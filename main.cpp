@@ -21,8 +21,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		return 0;
 	}
 	MNL::MnRenderWindow renderWindow;
-	result = renderWindow.Init(hInstance, nCmdShow, L"MNL", L"MNL", 100, 100, 1024, 768, WndProc, true,
-		hardware, true, 1, 60, false, 1, renderAPI.GetD3DDevice().GetDevice(), renderAPI.GetD3DDevice().GetDeviceContext());
+	result = renderWindow.Init(hInstance, nCmdShow, L"MNL", L"MNL", 100, 100, 1024, 768, WndProc,
+		hardware, true, 1, 60, false, true, 1, renderAPI.GetD3DDevice()->GetDevice(), renderAPI.GetD3DDevice()->GetDeviceContext());
 	if (FAILED(result))
 	{
 		//error msg
@@ -30,7 +30,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	//init depth stencil buffer
 	MNL::MnDepthStencilBuffer depthStencilBuffer;
-	result = depthStencilBuffer.Init(renderAPI.GetD3DDevice().GetDevice(), 1024, 768);
+	result = depthStencilBuffer.Init(renderAPI.GetD3DDevice()->GetDevice(), 1024, 768);
 	if (FAILED(result))
 	{
 		//error msg
@@ -39,7 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	//init depth stencil state
 	MNL::MnDepthStencilState depthStencilState;
-	result = depthStencilState.Init(renderAPI.GetD3DDevice().GetDevice(), true, true);
+	result = depthStencilState.Init(renderAPI.GetD3DDevice()->GetDevice(), true, true);
 	if (FAILED(result))
 	{
 		//error msg
@@ -48,7 +48,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	//init rasterizer state
 	MNL::MnRasterizerState rasterizerState;
-	result = rasterizerState.Init(renderAPI.GetD3DDevice().GetDevice(), D3D11_FILL_SOLID, false);
+	result = rasterizerState.Init(renderAPI.GetD3DDevice()->GetDevice(), D3D11_FILL_SOLID, false);
 	if (FAILED(result))
 	{
 		//error msg

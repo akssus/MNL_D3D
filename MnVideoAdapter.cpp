@@ -74,7 +74,7 @@ const CPDXGIAdapter MnVideoAdapter::GetInterface() const
 {
 	return m_cpDXGIAdapter;
 }
-const MnDisplayDevice MnVideoAdapter::GetDisplay(int index)
+const MnDisplayDevice MnVideoAdapter::GetDisplayDevice(int index) const
 {
 	return m_displayDevices[index];
 }

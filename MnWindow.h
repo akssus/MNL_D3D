@@ -19,8 +19,8 @@ namespace MNL
 					 WNDPROC WndProc);
 		void	Shutdown();
 
-		HWND&	GetWindowHandle();
-		RECT	GetWindowRect();
+		const HWND	GetWindowHandle() const;
+		RECT	GetWindowRect() const;
 
 	private:
 		HWND		m_hWnd;

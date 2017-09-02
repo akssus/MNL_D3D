@@ -24,13 +24,13 @@ HRESULT MnRenderAPI::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 
 void MnRenderAPI::SetVertexBuffer(const MnVertexBuffer& vertexBuffer)
 {
-	UINT stride = vertexBuffer.
+	UINT stride = vertexBuffer.GetStride();
 	UINT offset = 0;
-	m_pD3DDevice->GetDeviceContext()->IASetVertexBuffers(0,1,vertexBuffer.GetBuffer().GetAddressOf(),);
+	m_pD3DDevice->GetDeviceContext()->IASetVertexBuffers(0,1,vertexBuffer.GetBuffer().GetAddressOf(),&stride,&offset);
 }
 void MnRenderAPI::SetIndexBuffer(const MnIndexBuffer& indexBuffer)
 {
-	m_pD3DDevice->GetDeviceContext()->IASetIndexBuffer(indexBuffer.GetBuffer());
+	m_pD3DDevice->GetDeviceContext()->IASetIndexBuffer(indexBuffer.GetBuffer().Get(),indexBuffer.GetFormat(),0);
 }
 
 void MnRenderAPI::SetInputLayout(const MnInputLayout& inputLayout)
@@ -39,11 +39,11 @@ void MnRenderAPI::SetInputLayout(const MnInputLayout& inputLayout)
 }
 void MnRenderAPI::SetVertexShader(const MnVertexShader& vertexShader)
 {
-	m_pD3DDevice->GetDeviceContext()->VSSetShader(vertexShader.GetShader().Get());
+	m_pD3DDevice->GetDeviceContext()->VSSetShader(vertexShader.GetShader().Get(),nullptr,0);
 }
 void MnRenderAPI::SetPixelShader(const MnPixelShader& pixelShader)
 {
-	m_pD3DDevice->GetDeviceContext()->PSSetShader(pixelShader.GetShader().Get());
+	m_pD3DDevice->GetDeviceContext()->PSSetShader(pixelShader.GetShader().Get(),nullptr,0);
 }
 
 void MnRenderAPI::SetRenderTarget(const CPD3DRenderTargetView cpRenderTargetView, const CPD3DDepthStencilView cpDepthStencilView)
@@ -57,12 +57,12 @@ void MnRenderAPI::SetDepthStencilState(const CPD3DDepthStencilState cpDepthStenc
 }
 void MnRenderAPI::SetRasterizerState(const CPD3DRasterizerState cpRasterizerState)
 {
-
+	m_pD3DDevice->GetDeviceContext()->RSSetState(cpRasterizerState.Get());
 }
 
 void MnRenderAPI::SetViewport(const D3D11_VIEWPORT& viewport)
 {
-
+	m_pD3DDevice->GetDeviceContext()->RSSetViewports(0, &viewport);
 }
 
 const std::shared_ptr<MnD3DDevice> MnRenderAPI::GetD3DDevice() const
