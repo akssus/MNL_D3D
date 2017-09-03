@@ -1,7 +1,9 @@
 #pragma once
 #include <d3d11.h>
 #include <memory>
-#include "MNL.h"
+#include "MnTypedefs.h"
+#include "MnVertexShader.h"
+#include "MnCustomVertexType.h"
 
 namespace MNL
 {

@@ -1,7 +1,15 @@
 #pragma once
 #include <d3d11.h>
+#include "DXTK\SimpleMath.h"
 #include <memory>
-#include "MNL.h"
+#include "MnTypedefs.h"
+#include "MnVertexBuffer.h"
+#include "MnIndexBuffer.h"
+#include "MnInputLayout.h"
+#include "MnPixelShader.h"
+#include "MnVertexShader.h"
+#include "MnHardware.h"
+#include "MnD3DDevice.h"
 
 namespace MNL
 {
@@ -38,6 +46,9 @@ namespace MNL
 		It supports only one viewport at the same time
 		*/
 		void SetViewport(const D3D11_VIEWPORT& viewport);
+
+	public:
+		void ClearRenderTargets(CPD3DRenderTargetView renderTargetView, CPD3DDepthStencilView depthStencilView, DirectX::SimpleMath::Vector4 color = DirectX::SimpleMath::Vector4(0.0f, 0.0f, 0.0f, 0.0f));
 
 		const std::shared_ptr<MnD3DDevice> GetD3DDevice() const;
 

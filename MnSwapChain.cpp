@@ -49,8 +49,9 @@ HRESULT MnSwapChain::_InitSwapChain(HWND hWnd, bool isWindowed, UINT numBuffers,
 	swapChainDesc.Windowed = isWindowed;
 	swapChainDesc.BufferCount = numBuffers;
 	swapChainDesc.OutputWindow = hWnd;
-	swapChainDesc.SampleDesc.Count = 0;
-	swapChainDesc.SampleDesc.Quality = 1;
+	swapChainDesc.SampleDesc.Count = 1;
+	swapChainDesc.SampleDesc.Quality = 0;
+	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 	swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 	swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -80,7 +81,7 @@ HRESULT MnSwapChain::_InitSwapChain(HWND hWnd, bool isWindowed, UINT numBuffers,
 	m_swapChainDesc = swapChainDesc;
 
 	//set m_backBuffer as swapChain's back buffer(ID3D11Texture2D)
-	HRESULT result = m_cpSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)m_backBuffer.ReleaseAndGetAddressOf());
+	result = m_cpSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)m_backBuffer.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
 		//error log

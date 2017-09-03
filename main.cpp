@@ -1,5 +1,9 @@
 #include <Windows.h>
+#include <d3d11.h>
+#include "DXTK\SimpleMath.h"
 #include "MNL.h"
+
+using namespace DirectX::SimpleMath;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -36,6 +40,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		//error msg
 		return 0;
 	}
+	renderAPI.SetRenderTarget(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView());
 
 	//init depth stencil state
 	MNL::MnDepthStencilState depthStencilState;
@@ -45,6 +50,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		//error msg
 		return 0;
 	}
+	renderAPI.SetDepthStencilState(depthStencilState.GetState());
 
 	//init rasterizer state
 	MNL::MnRasterizerState rasterizerState;
@@ -54,6 +60,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		//error msg
 		return 0;
 	}
+	renderAPI.SetRasterizerState(rasterizerState.GetState());
 
 	//init viewport
 	MNL::MnViewport viewport;
@@ -63,11 +70,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		//error msg
 		return 0;
 	}
-
-	//set all the buffers and states
-	renderAPI.SetRenderTarget(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView());
-	renderAPI.SetDepthStencilState(depthStencilState.GetState());
-	renderAPI.SetRasterizerState(rasterizerState.GetState());
 	renderAPI.SetViewport(viewport.GetViewport());
 
 	MSG wndMsg;
@@ -81,10 +83,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		}
 		else
 		{
-			renderWindow.ClearBuffers();
+			renderAPI.ClearRenderTargets(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView(), Vector4(1.0f, 0.0f, 0.0f, 1.0f));
 
 			//render here
-
 			renderWindow.SwapBuffers();
 		}
 	}

@@ -1,5 +1,8 @@
 #include "MnRenderAPI.h"
+#include <memory>
 
+
+using namespace DirectX::SimpleMath;
 using namespace MNL;
 
 MnRenderAPI::MnRenderAPI()
@@ -64,7 +67,20 @@ void MnRenderAPI::SetViewport(const D3D11_VIEWPORT& viewport)
 {
 	m_pD3DDevice->GetDeviceContext()->RSSetViewports(0, &viewport);
 }
+/*
 
+*/
+void MnRenderAPI::ClearRenderTargets(CPD3DRenderTargetView renderTargetView, CPD3DDepthStencilView depthStencilView, Vector4 color)
+{
+	float color4f[4] = { color.x, color.y, color.z, color.w };
+	m_pD3DDevice->GetDeviceContext()->ClearRenderTargetView(renderTargetView.Get(), color4f);
+	m_pD3DDevice->GetDeviceContext()->ClearDepthStencilView(depthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0);
+}
+
+
+/***************************
+*Getters
+****************************/
 const std::shared_ptr<MnD3DDevice> MnRenderAPI::GetD3DDevice() const
 {
 	return m_pD3DDevice;

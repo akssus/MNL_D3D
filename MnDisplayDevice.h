@@ -1,8 +1,9 @@
 #pragma once
 
 #include <d3d11.h>
+#include "DXTK\SimpleMath.h"
 #include <vector>
-#include "MNL.h"
+#include "MnTypedefs.h"
 
 namespace MNL
 {

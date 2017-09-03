@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include <string>
-#include "MNL.h"
+#include "MnTypedefs.h"
 
 
 namespace MNL

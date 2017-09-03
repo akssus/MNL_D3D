@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d11.h>
-#include "MNL.h"
+#include "MnTypedefs.h"
+#include "MnDisplayDevice.h"
 
 namespace MNL
 {

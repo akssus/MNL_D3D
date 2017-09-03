@@ -1,7 +1,13 @@
 #pragma once
 #include <d3d11.h>
+#include <string>
 #include <memory>
-#include "MNL.h"
+#include "MnTypedefs.h"
+#include "MnHardware.h"
+#include "MnRenderTargetView.h"
+#include "MnSwapChain.h"
+#include "MnWindow.h"
+
 
 namespace MNL
 {

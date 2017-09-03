@@ -42,6 +42,7 @@ HRESULT	 MnHardware::Init()
 		}
 		//add to video adapter list
 		m_videoAdapters.push_back(videoAdapter);
+		adapterIndex++;
 	}
 	
 
@@ -57,22 +58,7 @@ const MnVideoAdapter MnHardware::GetVideoAdapter(UINT index) const
 	return m_videoAdapters[index];
 }
 
-D3D_FEATURE_LEVEL MnHardware::GetMaxSupportedFeatrueLevel() const
+D3D_FEATURE_LEVEL MnHardware::GetMaxSupportedFeatrueLevel(UINT adapterIndex) const
 {
-	D3D_FEATURE_LEVEL maxSupportedFeatureLevel = D3D_FEATURE_LEVEL_9_1;
-	D3D_FEATURE_LEVEL featureLevels[] = {
-		D3D_FEATURE_LEVEL_11_0,
-		D3D_FEATURE_LEVEL_10_1,
-		D3D_FEATURE_LEVEL_10_0,
-		D3D_FEATURE_LEVEL_9_3,
-		D3D_FEATURE_LEVEL_9_2,
-		D3D_FEATURE_LEVEL_9_1
-	};
-	HRESULT result = D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0, featureLevels, 6, D3D11_SDK_VERSION, nullptr, &maxSupportedFeatureLevel, nullptr);
-	if (FAILED(result))
-	{
-		//error log
-	}
-
-	return maxSupportedFeatureLevel;
+	return m_videoAdapters[adapterIndex].GetMaxSupportedFeatureLevel();
 }

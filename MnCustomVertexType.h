@@ -3,7 +3,8 @@
 #include <vector>
 #include <memory>
 #include <string>
-#include "MNL.h"
+#include "MnTypedefs.h"
+#include "MnInputElement.h"
 
 
 namespace MNL

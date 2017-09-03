@@ -13,6 +13,7 @@ MnGpuBuffer::~MnGpuBuffer()
 
 HRESULT MnGpuBuffer::Init(const CPD3DDevice& cpDevice, const D3D11_BUFFER_DESC& bufferDesc, const D3D11_SUBRESOURCE_DATA* initialData)
 {
+	m_bufferSize = bufferDesc.ByteWidth;
 	m_bufferDesc = bufferDesc;
 	m_isDynamic = (bufferDesc.Usage == D3D11_USAGE_DYNAMIC);
 	HRESULT result = cpDevice->CreateBuffer(&bufferDesc, initialData, m_cpBuffer.ReleaseAndGetAddressOf());
@@ -44,7 +45,7 @@ void MnGpuBuffer::UpdateBuffer(CPD3DDeviceContext cpDeviceContext, const D3D11_S
 }
 UINT MnGpuBuffer::GetBufferByteSize() const
 {
-
+	return m_bufferSize;
 }
 
 const CPD3DBuffer MnGpuBuffer::GetBuffer() const

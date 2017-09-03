@@ -41,20 +41,48 @@ HRESULT MnVideoAdapter::Init(CPDXGIAdapter cpAdapter)
 			//error log
 			return E_FAIL;
 		}
-		
-		result = cpAdapter->GetDesc(&m_desc);
-		if (FAILED(result))
-		{
-			//warning log
-		}
-		//get adapter name
-		m_adapterName = m_desc.Description;
-		//get video memory size as MB
-		m_videoMemorySize = m_desc.DedicatedVideoMemory / 1024 / 1024;
 		//add to display list
 		m_displayDevices.push_back(displayDevice);
+		index++;
+	}
+	result = cpAdapter->GetDesc(&m_desc);
+	if (FAILED(result))
+	{
+		//warning log
+	}
+	//get adapter name
+	m_adapterName = m_desc.Description;
+	//get video memory size as MB
+	m_videoMemorySize = m_desc.DedicatedVideoMemory / 1024 / 1024;
+
+	//get max supported GPU feature level
+	result = _InitMaxSupportedFeatureLevel(cpAdapter);
+	if (FAILED(result))
+	{
+		//warning log
 	}
 
+	return S_OK;
+}
+
+HRESULT MnVideoAdapter::_InitMaxSupportedFeatureLevel(CPDXGIAdapter cpAdapter)
+{
+	D3D_FEATURE_LEVEL maxSupportedFeatureLevel = D3D_FEATURE_LEVEL_9_1;
+	D3D_FEATURE_LEVEL featureLevels[] = {
+		D3D_FEATURE_LEVEL_11_0,
+		D3D_FEATURE_LEVEL_10_1,
+		D3D_FEATURE_LEVEL_10_0,
+		D3D_FEATURE_LEVEL_9_3,
+		D3D_FEATURE_LEVEL_9_2,
+		D3D_FEATURE_LEVEL_9_1
+	};
+	HRESULT result = D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0, featureLevels, 6, D3D11_SDK_VERSION, nullptr, &maxSupportedFeatureLevel, nullptr);
+	if (FAILED(result))
+	{
+		//error log
+		return E_FAIL;
+	}
+	m_maxFeatureLevel = maxSupportedFeatureLevel;
 	return S_OK;
 }
 
@@ -77,4 +105,9 @@ const CPDXGIAdapter MnVideoAdapter::GetInterface() const
 const MnDisplayDevice MnVideoAdapter::GetDisplayDevice(int index) const
 {
 	return m_displayDevices[index];
+}
+
+D3D_FEATURE_LEVEL MnVideoAdapter::GetMaxSupportedFeatureLevel() const
+{
+	return m_maxFeatureLevel;
 }

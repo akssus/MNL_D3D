@@ -1,6 +1,6 @@
 #pragma once
 #include <d3d11.h>
-#include "MNL.h"
+#include "MnTypedefs.h"
 
 namespace MNL
 {
@@ -26,6 +26,7 @@ namespace MNL
 		D3D11_BUFFER_DESC	m_bufferDesc;
 		CPD3DBuffer			m_cpBuffer;
 		UINT				m_numBuffers;
+		UINT				m_bufferSize;
 		bool				m_isDynamic;
 	};
 }

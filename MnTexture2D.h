@@ -1,7 +1,6 @@
 #pragma once
 #include <d3d11.h>
-#include "MNL.h"
-
+#include "MnTypedefs.h"
 
 namespace MNL
 {
@@ -17,5 +16,5 @@ namespace MNL
 	private:
 		D3D11_TEXTURE2D_DESC m_textureDesc;
 		CPD3DTexture2D m_cpTexture2D;
-	}
+	};
 };

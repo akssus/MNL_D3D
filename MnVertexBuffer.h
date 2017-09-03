@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include <vector>
+#include "MnTypedefs.h"
 #include "MnGpuBuffer.h"
 #include "MnCustomVertexType.h"
 
