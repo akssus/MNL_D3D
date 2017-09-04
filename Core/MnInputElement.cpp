@@ -8,18 +8,18 @@ MnInputElement::MnInputElement():m_type(MN_INPUT_ELEMENT_TYPE_NONE),
 {
 }
 
-MnInputElement::MnInputElement(std::string semanticName, MnInputElementType& inputElementType) : m_type(MN_INPUT_ELEMENT_TYPE_NONE),
+MnInputElement::MnInputElement(std::string semanticName, const MnInputElementType& inputElementType, UINT index) : m_type(MN_INPUT_ELEMENT_TYPE_NONE),
 																								 m_byteSize(0),
 																								 m_format(DXGI_FORMAT_UNKNOWN)
 {
-	_Init(semanticName, inputElementType);
+	_Init(semanticName, inputElementType,index);
 }
 
 MnInputElement::~MnInputElement()
 {
 }
 
-bool MnInputElement::_Init(std::string semanticName, MnInputElementType& inputElementType)
+bool MnInputElement::_Init(std::string semanticName, const MnInputElementType& inputElementType,UINT index)
 {
 	if (inputElementType == MN_INPUT_ELEMENT_TYPE_NONE)
 	{
@@ -31,6 +31,7 @@ bool MnInputElement::_Init(std::string semanticName, MnInputElementType& inputEl
 	m_type = inputElementType;
 	m_format = _ConvertToDXGIFormat(inputElementType);
 	m_byteSize = _GetByteSizeOf(inputElementType);
+	m_index = index;
 
 	return true;
 }
@@ -51,6 +52,11 @@ DXGI_FORMAT MnInputElement::GetDXGIFormat() const
 {
 	return m_format;
 }
+
+UINT MnInputElement::GetIndex() const
+{
+	return m_index;
+}
 /*
 bool MnInputElement::_SetDesc(std::string semanticName, MnInputElementType& inputElementType)
 {
@@ -70,7 +76,7 @@ bool MnInputElement::_SetDesc(std::string semanticName, MnInputElementType& inpu
 }
 */
 
-DXGI_FORMAT MnInputElement::_ConvertToDXGIFormat(MnInputElementType& inputElementType)
+DXGI_FORMAT MnInputElement::_ConvertToDXGIFormat(const MnInputElementType& inputElementType)
 {
 	DXGI_FORMAT format;
 	switch (inputElementType)
@@ -90,7 +96,7 @@ DXGI_FORMAT MnInputElement::_ConvertToDXGIFormat(MnInputElementType& inputElemen
 	}
 	return format;
 }
-UINT MnInputElement::_GetByteSizeOf(MnInputElementType& inputElementType)
+UINT MnInputElement::_GetByteSizeOf(const MnInputElementType& inputElementType)
 {
 	UINT byteSize = 0;
 	switch (inputElementType)

@@ -47,7 +47,7 @@ D3D11_INPUT_ELEMENT_DESC MnInputLayout::_CreateInputElementDesc(const MnInputEle
 	D3D11_INPUT_ELEMENT_DESC desc;
 	desc.SemanticName = inputElement.GetSemanticName().c_str();
 	desc.Format = inputElement.GetDXGIFormat();
-	desc.SemanticIndex = 0;
+	desc.SemanticIndex = inputElement.GetIndex();
 	desc.InputSlot = 0;
 	desc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
 	desc.InstanceDataStepRate = 0;

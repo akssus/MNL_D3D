@@ -5,6 +5,10 @@
 
 namespace MNL
 {
+	/*
+	@function Compile shader script from file and create pixel shader
+	@include Pixel shader's byte code, d3d pixel shader interface
+	*/
 	class MnPixelShader
 	{
 	public:

@@ -72,6 +72,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	renderAPI.SetViewport(viewport.GetViewport());
 
+	MNL::MnVertexShader vertexShader;
+	result = vertexShader.Init(renderAPI.GetD3DDevice()->GetDevice(), L"shader.vs", "VS_MAIN", "vs_5_0");
+	if (FAILED(result))
+	{
+		//error msg
+		return 0;
+	}
+	renderAPI.SetVertexShader(vertexShader);
+
+	MNL::MnPixelShader pixelShader;
+	result = pixelShader.Init(renderAPI.GetD3DDevice()->GetDevice(), L"shader.ps", "PS_MAIN", "ps_5_0");
+	if (FAILED(result))
+	{
+		//error msg
+		return 0;
+	}
+	renderAPI.SetPixelShader(pixelShader);
+
 	MSG wndMsg;
 	ZeroMemory(&wndMsg, sizeof(MSG));
 	while (wndMsg.message != WM_QUIT)
@@ -84,7 +102,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		else
 		{
 			renderAPI.ClearRenderTargets(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView(), Vector4(1.0f, 0.0f, 0.0f, 1.0f));
-
 			//render here
 			renderWindow.SwapBuffers();
 		}

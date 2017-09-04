@@ -1,7 +1,4 @@
 #pragma once
-
-#include <d3d11.h>
-#include "DXTK\SimpleMath.h"
 #include "Core/MnMacros.h"
 #include "Core/MnTypedefs.h"
 #include "Core/MnWindow.h"

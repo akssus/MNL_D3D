@@ -5,6 +5,10 @@
 
 namespace MNL
 {
+	/*
+	@function Compile shader script from file and create vertex shader
+	@include Vertex shader's byte code, d3d vertex shader interface 
+	*/
 	class MnVertexShader
 	{
 	public:

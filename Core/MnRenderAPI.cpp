@@ -36,29 +36,29 @@ void MnRenderAPI::SetIndexBuffer(const MnIndexBuffer& indexBuffer)
 	m_pD3DDevice->GetDeviceContext()->IASetIndexBuffer(indexBuffer.GetBuffer().Get(),indexBuffer.GetFormat(),0);
 }
 
-void MnRenderAPI::SetInputLayout(const MnInputLayout& inputLayout)
+void MnRenderAPI::SetInputLayout(const CPD3DInputLayout& inputLayout)
 {
-	m_pD3DDevice->GetDeviceContext()->IASetInputLayout(inputLayout.GetInputLayout().Get());
+	m_pD3DDevice->GetDeviceContext()->IASetInputLayout(inputLayout.Get());
 }
-void MnRenderAPI::SetVertexShader(const MnVertexShader& vertexShader)
+void MnRenderAPI::SetVertexShader(const CPD3DVertexShader& vertexShader)
 {
-	m_pD3DDevice->GetDeviceContext()->VSSetShader(vertexShader.GetShader().Get(),nullptr,0);
+	m_pD3DDevice->GetDeviceContext()->VSSetShader(vertexShader.Get(),nullptr,0);
 }
-void MnRenderAPI::SetPixelShader(const MnPixelShader& pixelShader)
+void MnRenderAPI::SetPixelShader(const CPD3DPixelShader& cpPixelShader)
 {
-	m_pD3DDevice->GetDeviceContext()->PSSetShader(pixelShader.GetShader().Get(),nullptr,0);
+	m_pD3DDevice->GetDeviceContext()->PSSetShader(cpPixelShader.Get(),nullptr,0);
 }
 
-void MnRenderAPI::SetRenderTarget(const CPD3DRenderTargetView cpRenderTargetView, const CPD3DDepthStencilView cpDepthStencilView)
+void MnRenderAPI::SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView, const CPD3DDepthStencilView& cpDepthStencilView)
 {
 	m_pD3DDevice->GetDeviceContext()->OMSetRenderTargets(1, cpRenderTargetView.GetAddressOf(), cpDepthStencilView.Get());
 }
 
-void MnRenderAPI::SetDepthStencilState(const CPD3DDepthStencilState cpDepthStencilState)
+void MnRenderAPI::SetDepthStencilState(const CPD3DDepthStencilState& cpDepthStencilState)
 {
 	m_pD3DDevice->GetDeviceContext()->OMSetDepthStencilState(cpDepthStencilState.Get(), 1);
 }
-void MnRenderAPI::SetRasterizerState(const CPD3DRasterizerState cpRasterizerState)
+void MnRenderAPI::SetRasterizerState(const CPD3DRasterizerState& cpRasterizerState)
 {
 	m_pD3DDevice->GetDeviceContext()->RSSetState(cpRasterizerState.Get());
 }
@@ -75,6 +75,10 @@ void MnRenderAPI::ClearRenderTargets(CPD3DRenderTargetView renderTargetView, CPD
 	float color4f[4] = { color.x, color.y, color.z, color.w };
 	m_pD3DDevice->GetDeviceContext()->ClearRenderTargetView(renderTargetView.Get(), color4f);
 	m_pD3DDevice->GetDeviceContext()->ClearDepthStencilView(depthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0);
+}
+void MnRenderAPI::DrawIndexed(UINT indexCount)
+{
+	m_pD3DDevice->GetDeviceContext()->DrawIndexed(indexCount, 0, 0);
 }
 
 

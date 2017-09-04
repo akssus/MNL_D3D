@@ -143,6 +143,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\MnConstantBuffer.cpp" />
+    <ClCompile Include="Core\MnConstantBufferType.cpp" />
+    <ClCompile Include="Core\MnConstantElement.cpp" />
     <ClCompile Include="Core\MnCustomVertexType.cpp" />
     <ClCompile Include="Core\MnD3DDevice.cpp" />
     <ClCompile Include="Core\MnDepthStencilBuffer.cpp" />
@@ -166,9 +168,16 @@
     <ClCompile Include="Core\MnViewport.cpp" />
     <ClCompile Include="Core\MnWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MnCamera.cpp" />
+    <ClCompile Include="MnModel.cpp" />
+    <ClCompile Include="MnRenderer.cpp" />
+    <ClCompile Include="MnShaderPath.cpp" />
+    <ClCompile Include="UniversalVertexType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MnConstantBuffer.h" />
+    <ClInclude Include="Core\MnConstantBufferType.h" />
+    <ClInclude Include="Core\MnConstantElement.h" />
     <ClInclude Include="Core\MnCustomVertexType.h" />
     <ClInclude Include="Core\MnD3DDevice.h" />
     <ClInclude Include="Core\MnDepthStencilBuffer.h" />
@@ -193,7 +202,13 @@
     <ClInclude Include="Core\MnVideoAdapter.h" />
     <ClInclude Include="Core\MnViewport.h" />
     <ClInclude Include="Core\MnWindow.h" />
+    <ClInclude Include="MnCamera.h" />
     <ClInclude Include="MNL.h" />
+    <ClInclude Include="MNL_Render.h" />
+    <ClInclude Include="MnModel.h" />
+    <ClInclude Include="MnRenderer.h" />
+    <ClInclude Include="MnShaderPath.h" />
+    <ClInclude Include="UniversalVertexType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

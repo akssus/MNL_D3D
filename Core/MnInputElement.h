@@ -20,25 +20,27 @@ namespace MNL
 	class MnInputElement
 	{
 	public:
-		MnInputElement(std::string semanticName, MnInputElementType& inputElementType);
+		MnInputElement(std::string semanticName, const MnInputElementType& inputElementType,UINT index);
 		~MnInputElement();
 
 		std::string	GetSemanticName() const;
 		MnInputElementType GetType() const;
 		UINT GetByteSize() const;
 		DXGI_FORMAT GetDXGIFormat() const;
+		UINT GetIndex() const;
 
 	private:
 		MnInputElement();
-		bool _Init(std::string semanticName, MnInputElementType& inputElementType);
-		DXGI_FORMAT _ConvertToDXGIFormat(MnInputElementType& inputElementType);
-		UINT _GetByteSizeOf(MnInputElementType& inputElementType);
+		bool _Init(std::string semanticName, const MnInputElementType& inputElementType,UINT index);
+		DXGI_FORMAT _ConvertToDXGIFormat(const MnInputElementType& inputElementType);
+		UINT _GetByteSizeOf(const MnInputElementType& inputElementType);
 
 	private:
 		std::string					m_semanticName;
 		MnInputElementType			m_type;
 		DXGI_FORMAT					m_format;
 		UINT						m_byteSize;
+		UINT						m_index;
 	};
 
 }
