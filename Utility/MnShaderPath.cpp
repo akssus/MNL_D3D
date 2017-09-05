@@ -49,19 +49,23 @@ void MnShaderPath::SetInputLayout(const std::shared_ptr<MnInputLayout>& spInputL
 	m_spInputLayout = spInputLayout;
 }
 
-CPD3DVertexShader MnShaderPath::GetVertexShader() const
+const CPD3DVertexShader MnShaderPath::GetVertexShader() const
 {
 	return m_spVertexShader->GetShader();
 }
-CPD3DPixelShader MnShaderPath::GetPixelShader() const
+const CPD3DPixelShader MnShaderPath::GetPixelShader() const
 {
 	return m_spPixelShader->GetShader();
+}
+const CPD3DInputLayout MnShaderPath::GetInputLayout() const
+{
+	return m_spInputLayout->GetInputLayout();
 }
 UINT MnShaderPath::GetNumConstantBuffers() const
 {
 	return m_constantBuffers.size();
 }
-std::shared_ptr<MnConstantBuffer> MnShaderPath::GetConstantBuffer(UINT index)
+const std::shared_ptr<MnConstantBuffer> MnShaderPath::GetConstantBuffer(UINT index) const
 {
 	return m_constantBuffers[index];
 }

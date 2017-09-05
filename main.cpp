@@ -1,7 +1,8 @@
 #include <Windows.h>
 #include <d3d11.h>
 #include "DXTK\SimpleMath.h"
-#include "MNL.h"
+#include "Core\MNL_Core.h"
+#include "Utility\MNL_Utility.h"
 
 using namespace DirectX::SimpleMath;
 
@@ -71,24 +72,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		return 0;
 	}
 	renderAPI.SetViewport(viewport.GetViewport());
-
-	MNL::MnVertexShader vertexShader;
-	result = vertexShader.Init(renderAPI.GetD3DDevice()->GetDevice(), L"shader.vs", "VS_MAIN", "vs_5_0");
-	if (FAILED(result))
-	{
-		//error msg
-		return 0;
-	}
-	renderAPI.SetVertexShader(vertexShader);
-
-	MNL::MnPixelShader pixelShader;
-	result = pixelShader.Init(renderAPI.GetD3DDevice()->GetDevice(), L"shader.ps", "PS_MAIN", "ps_5_0");
-	if (FAILED(result))
-	{
-		//error msg
-		return 0;
-	}
-	renderAPI.SetPixelShader(pixelShader);
 
 	MSG wndMsg;
 	ZeroMemory(&wndMsg, sizeof(MSG));

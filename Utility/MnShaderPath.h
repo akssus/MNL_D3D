@@ -2,13 +2,13 @@
 #include <d3d11.h>
 #include <vector>
 #include <memory>
-#include "Core\MnGpuBuffer.h"
-#include "Core\MnVertexShader.h"
-#include "Core\MnPixelShader.h"
-#include "Core\MnInputLayout.h"
-#include "Core\MnCustomVertexType.h"
-#include "Core\MnConstantBufferType.h"
-#include "Core\MnConstantBuffer.h"
+#include "../Core\MnGpuBuffer.h"
+#include "../Core\MnVertexShader.h"
+#include "../Core\MnPixelShader.h"
+#include "../Core\MnInputLayout.h"
+#include "../Core\MnCustomVertexType.h"
+#include "../Core\MnConstantBufferType.h"
+#include "../Core\MnConstantBuffer.h"
 
 namespace MNL
 {
@@ -28,16 +28,18 @@ namespace MNL
 		//initializing function may not necessary. just replace it with Setter functions
 		//virtual HRESULT Init(const CPD3DDevice& cpDevice,const std::shared_ptr<MnVertexShader> spVertexShader, const std::shared_ptr<MnPixelShader> spPixelShader);
 		
-		
+	protected:
 		void AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer);
 		void SetVertexShader(const std::shared_ptr<MnVertexShader>& spVertexShader);
 		void SetPixelShader(const std::shared_ptr<MnPixelShader>& spPixelShader);
 		void SetInputLayout(const std::shared_ptr<MnInputLayout>& spInputLayout);
 
-		CPD3DVertexShader GetVertexShader() const;
-		CPD3DPixelShader GetPixelShader() const;
+	public:
+		const CPD3DVertexShader GetVertexShader() const;
+		const CPD3DPixelShader GetPixelShader() const;
+		const CPD3DInputLayout GetInputLayout() const;
 		UINT GetNumConstantBuffers() const;
-		std::shared_ptr<MnConstantBuffer> GetConstantBuffer(UINT index);
+		const std::shared_ptr<MnConstantBuffer> GetConstantBuffer(UINT index) const;
 
 	private:
 		//temporary...

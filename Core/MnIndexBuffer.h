@@ -17,6 +17,7 @@ namespace MNL
 
 		const CPD3DBuffer GetBuffer() const;
 		const DXGI_FORMAT GetFormat() const;
+		UINT GetIndexCount() const;
 
 	private:
 		MnGpuBuffer			m_buffer;

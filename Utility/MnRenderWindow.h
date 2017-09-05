@@ -2,11 +2,11 @@
 #include <d3d11.h>
 #include <string>
 #include <memory>
-#include "MnTypedefs.h"
-#include "MnHardware.h"
-#include "MnRenderTargetView.h"
-#include "MnSwapChain.h"
-#include "MnWindow.h"
+#include "../Core\MnTypedefs.h"
+#include "../Core\MnHardware.h"
+#include "../Core\MnRenderTargetView.h"
+#include "../Core\MnSwapChain.h"
+#include "../Core\MnWindow.h"
 
 
 namespace MNL

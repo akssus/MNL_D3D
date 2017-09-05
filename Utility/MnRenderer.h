@@ -1,10 +1,9 @@
 #pragma once
 
 #include <d3d11.h>
-#include "Core\MnRenderAPI.h"
-#include "Core\MnVertexBuffer.h"
-#include "Core\MnVertexShader.h"
-#include "Core\MnPixelShader.h"
+#include <memory>
+#include "../Core\MnRenderAPI.h"
+#include "MnShaderPath.h"
 #include "MnModel.h"
 
 namespace MNL
@@ -22,9 +21,10 @@ namespace MNL
 		search matched semantics in the model, 
 		all the shader-needed IA input must be IASet,
 		the shader-needed IA that model hasn't, set as default value with warning.
-
 		*/
-		HRESULT RenderModel(const MnRenderAPI& renderAPI, MnVertexShader& vertexShader, )
+		HRESULT RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnModel>& model);
+
+		void SetShaderPath(MnRenderAPI& renderAPI, const MnShaderPath& shaderPath);
 		
 	};
 

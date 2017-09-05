@@ -10,8 +10,7 @@ namespace MNL
 		MN_CONSTANT_ELEMENT_TYPE_FLOAT2,
 		MN_CONSTANT_ELEMENT_TYPE_FLOAT3,
 		MN_CONSTANT_ELEMENT_TYPE_FLOAT4,
-		MN_CONSTANT_ELEMENT_TYPE_MATRIX33,
-		MN_CONSTANT_ELEMENT_TYPE_MATRIX44,
+		MN_CONSTANT_ELEMENT_TYPE_MATRIX,
 	};
 	/*
 	@function represents one data type in cbuffer
@@ -27,10 +26,6 @@ namespace MNL
 		Get byte size of representing type. eg) MN_CONSTANT_ELEMENT_TYPE_FLOAT4 as sizeof(float)*4
 		*/
 		UINT GetByteSize() const;
-		/*
-		Get DXGI_FORMAT for D3D device context
-		*/
-		DXGI_FORMAT GetDXGIFormat() const;
 
 	private:
 		//prevent create with no type

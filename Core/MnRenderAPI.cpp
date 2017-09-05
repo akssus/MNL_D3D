@@ -25,15 +25,23 @@ HRESULT MnRenderAPI::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 	}
 }
 
+void MnRenderAPI::SetVertexBuffer(const CPD3DBuffer& vertexBuffer, UINT stride, UINT offset)
+{
+	m_pD3DDevice->GetDeviceContext()->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
+}
 void MnRenderAPI::SetVertexBuffer(const MnVertexBuffer& vertexBuffer)
 {
 	UINT stride = vertexBuffer.GetStride();
 	UINT offset = 0;
-	m_pD3DDevice->GetDeviceContext()->IASetVertexBuffers(0,1,vertexBuffer.GetBuffer().GetAddressOf(),&stride,&offset);
+	SetVertexBuffer(vertexBuffer.GetBuffer(),stride,offset);
+}
+void MnRenderAPI::SetIndexBuffer(const CPD3DBuffer& indexBuffer,DXGI_FORMAT format)
+{
+	m_pD3DDevice->GetDeviceContext()->IASetIndexBuffer(indexBuffer.Get(), format, 0);
 }
 void MnRenderAPI::SetIndexBuffer(const MnIndexBuffer& indexBuffer)
 {
-	m_pD3DDevice->GetDeviceContext()->IASetIndexBuffer(indexBuffer.GetBuffer().Get(),indexBuffer.GetFormat(),0);
+	SetIndexBuffer(indexBuffer.GetBuffer().Get(), indexBuffer.GetFormat());
 }
 
 void MnRenderAPI::SetInputLayout(const CPD3DInputLayout& inputLayout)

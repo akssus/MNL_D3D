@@ -27,10 +27,12 @@ namespace MNL
 		/**
 		Set vertex buffer to the context. only supports one buffer
 		*/
+		void SetVertexBuffer(const CPD3DBuffer& vertexBuffer, UINT stride, UINT offset);
 		void SetVertexBuffer(const MnVertexBuffer& vertexBuffer);
 		/**
 		Set index buffer to the context
 		*/
+		void SetIndexBuffer(const CPD3DBuffer& indexBuffer, DXGI_FORMAT format);
 		void SetIndexBuffer(const MnIndexBuffer& indexBuffer);
 
 		void SetInputLayout(const CPD3DInputLayout& cpInputLayout);

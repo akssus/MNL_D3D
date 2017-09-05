@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{4749cb1b-2944-448a-8d8f-bbad1e2303a4}</UniqueIdentifier>
     </Filter>
@@ -21,6 +17,15 @@
     </Filter>
     <Filter Include="Core\Header">
       <UniqueIdentifier>{af25d8bd-23c5-4750-898c-e0b0effa8643}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{ed716029-c0d0-471a-96b4-6b911f1b34f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Header">
+      <UniqueIdentifier>{04703886-44d2-4dd8-9e0a-a196a38f271c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Source">
+      <UniqueIdentifier>{52d83bd1-baed-4dab-8965-06e37d4a1aa0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,9 +77,6 @@
     <ClCompile Include="Core\MnRenderTargetView.cpp">
       <Filter>Core\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Core\MnRenderWindow.cpp">
-      <Filter>Core\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Core\MnSwapChain.cpp">
       <Filter>Core\Source</Filter>
     </ClCompile>
@@ -96,32 +98,35 @@
     <ClCompile Include="Core\MnWindow.cpp">
       <Filter>Core\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnCamera.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MnModel.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MnRenderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MnShaderPath.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Core\MnConstantElement.cpp">
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="Core\MnConstantBufferType.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\MnConstantElement.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="UniversalVertexType.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Utility\MnCamera.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnModel.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnRenderer.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnRenderWindow.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnShaderPath.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnTexture.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MNL.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Core\MnConstantBuffer.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
@@ -167,9 +172,6 @@
     <ClInclude Include="Core\MnRenderTargetView.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Core\MnRenderWindow.h">
-      <Filter>Core\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Core\MnSwapChain.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
@@ -197,29 +199,38 @@
     <ClInclude Include="Core\MnMacros.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnCamera.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MnModel.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MnRenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MNL_Render.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MnShaderPath.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\MnConstantBufferType.h">
+    <ClInclude Include="UniversalVertexType.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\MnConstantElement.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Core\Header</Filter>
     </ClInclude>
-    <ClInclude Include="UniversalVertexType.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Core\MnConstantBufferType.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnCamera.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnModel.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnRenderer.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnRenderWindow.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnShaderPath.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnTexture.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MNL_Utility.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MNL_Core.h">
+      <Filter>Core\Header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

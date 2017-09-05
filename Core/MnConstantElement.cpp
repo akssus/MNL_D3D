@@ -43,5 +43,14 @@ HRESULT MnConstantElement::_Init(const MnConstantElementType& constantElementTyp
 }
 UINT MnConstantElement::_GetByteSizeOf(const MnConstantElementType& constantElementType)
 {
-
+	UINT byteSize = 0;
+	switch (constantElementType)
+	{
+	case MN_CONSTANT_ELEMENT_TYPE_FLOAT1: byteSize = sizeof(float);  break;
+	case MN_CONSTANT_ELEMENT_TYPE_FLOAT2: byteSize = sizeof(float)*2;  break;
+	case MN_CONSTANT_ELEMENT_TYPE_FLOAT3: byteSize = sizeof(float)*3;  break;
+	case MN_CONSTANT_ELEMENT_TYPE_FLOAT4: byteSize = sizeof(float)*4;  break;
+	case MN_CONSTANT_ELEMENT_TYPE_MATRIX: byteSize = sizeof(float)*64;  break;
+	}
+	return byteSize;
 }

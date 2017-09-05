@@ -13,6 +13,7 @@ MnIndexBuffer::~MnIndexBuffer()
 
 HRESULT MnIndexBuffer::Init(CPD3DDevice cpDevice, UINT indexCount, const D3D11_SUBRESOURCE_DATA* initialData)
 {
+	m_indexCount = indexCount;
 	m_format = DXGI_FORMAT_R32_UINT;
 	ZeroMemory(&m_bufferDesc, sizeof(D3D11_BUFFER_DESC));
 	m_bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
@@ -37,4 +38,8 @@ const CPD3DBuffer MnIndexBuffer::GetBuffer() const
 const DXGI_FORMAT MnIndexBuffer::GetFormat() const
 {
 	return m_format;
+}
+UINT MnIndexBuffer::GetIndexCount() const
+{
+	return m_indexCount;
 }
