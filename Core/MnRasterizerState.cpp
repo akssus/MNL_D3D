@@ -4,6 +4,7 @@ using namespace MNL;
 
 MnRasterizerState::MnRasterizerState()
 {
+	ZeroMemory(&m_rasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
 }
 
 

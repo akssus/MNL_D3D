@@ -2,8 +2,9 @@
 
 using namespace MNL;
 
-MnVertexBuffer::MnVertexBuffer()
+MnVertexBuffer::MnVertexBuffer():m_isDynamic(false),m_stride(0)
 {
+	ZeroMemory(&m_bufferDesc, sizeof(D3D11_BUFFER_DESC));
 }
 
 

@@ -2,8 +2,9 @@
 
 using namespace MNL;
 
-MnVideoAdapter::MnVideoAdapter()
+MnVideoAdapter::MnVideoAdapter():m_maxFeatureLevel(D3D_FEATURE_LEVEL_9_1),m_videoMemorySize(0)
 {
+	ZeroMemory(&m_desc, sizeof(DXGI_ADAPTER_DESC));
 }
 
 

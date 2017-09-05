@@ -19,7 +19,7 @@ namespace MNL
 	class MnConstantElement
 	{
 	public:
-		MnConstantElement(const MnConstantElementType& inputElementType, UINT index);
+		MnConstantElement(const MnConstantElementType& inputElementType);
 		~MnConstantElement();
 		MnConstantElementType GetType() const;
 		/*
@@ -30,12 +30,11 @@ namespace MNL
 	private:
 		//prevent create with no type
 		MnConstantElement();
-		HRESULT _Init(const MnConstantElementType& constantElementType,UINT index);
+		HRESULT _Init(const MnConstantElementType& constantElementType);
 		UINT _GetByteSizeOf(const MnConstantElementType& constantElementType);
 
 	private:
 		MnConstantElementType		m_type;
-		UINT						m_byteSize;
-		UINT						m_index;
+		UINT						m_byteSize
 	};
 }

@@ -2,8 +2,9 @@
 
 using namespace MNL;
 
-MnSwapChain::MnSwapChain()
+MnSwapChain::MnSwapChain():m_isVsync(false),m_numBuffers(0),m_outputWindow(0)
 {
+	ZeroMemory(&m_swapChainDesc, sizeof(DXGI_SWAP_CHAIN_DESC));
 }
 
 

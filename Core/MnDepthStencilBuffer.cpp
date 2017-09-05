@@ -4,6 +4,8 @@ using namespace MNL;
 
 MnDepthStencilBuffer::MnDepthStencilBuffer()
 {
+	ZeroMemory(&m_depthStencilBufferDesc, sizeof(D3D11_TEXTURE2D_DESC));
+	ZeroMemory(&m_depthStencilViewDesc, sizeof(D3D11_DEPTH_STENCIL_VIEW_DESC));
 }
 
 

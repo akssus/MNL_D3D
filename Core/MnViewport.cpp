@@ -4,6 +4,7 @@ using namespace MNL;
 
 MnViewport::MnViewport()
 {
+	ZeroMemory(&m_viewport, sizeof(D3D11_VIEWPORT));
 }
 
 

@@ -4,7 +4,7 @@
 using namespace MNL;
 using namespace DirectX::SimpleMath;
 
-MnDisplayDevice::MnDisplayDevice()
+MnDisplayDevice::MnDisplayDevice():m_numDisplayModes(0)
 {
 }
 

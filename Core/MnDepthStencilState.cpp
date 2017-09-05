@@ -4,6 +4,7 @@ using namespace MNL;
 
 MnDepthStencilState::MnDepthStencilState()
 {
+	ZeroMemory(&m_depthStencilStateDesc, sizeof(D3D11_DEPTH_STENCIL_DESC));
 }
 
 

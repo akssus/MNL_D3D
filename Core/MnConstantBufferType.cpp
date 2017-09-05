@@ -2,7 +2,7 @@
 
 using namespace MNL;
 
-MnConstantBufferType::MnConstantBufferType()
+MnConstantBufferType::MnConstantBufferType():m_totalByteSize(0)
 {
 }
 
@@ -14,6 +14,7 @@ MnConstantBufferType::~MnConstantBufferType()
 void MnConstantBufferType::AddConstantElement(const MnConstantElement& inputElement)
 {
 	m_constantElements.push_back(inputElement);
+	m_totalByteSize += inputElement.GetByteSize();
 }
 MnConstantElement MnConstantBufferType::GetElement(UINT index) const
 {

@@ -4,6 +4,7 @@ using namespace MNL;
 
 MnTexture2D::MnTexture2D()
 {
+	ZeroMemory(&m_textureDesc, sizeof(D3D11_TEXTURE2D_DESC));
 }
 
 

@@ -2,7 +2,7 @@
 
 using namespace MNL;
 
-MnRenderWindow::MnRenderWindow()
+MnRenderWindow::MnRenderWindow():m_isWindowed(true)
 {
 }
 

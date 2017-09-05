@@ -2,7 +2,7 @@
 
 using namespace MNL;
 
-MnConstantElement::MnConstantElement()
+MnConstantElement::MnConstantElement():m_byteSize(0),m_type(MN_CONSTANT_ELEMENT_TYPE_NONE)
 {
 }
 
@@ -10,9 +10,9 @@ MnConstantElement::MnConstantElement()
 MnConstantElement::~MnConstantElement()
 {
 }
-MnConstantElement::MnConstantElement(const MnConstantElementType& constantElementType,UINT index)
+MnConstantElement::MnConstantElement(const MnConstantElementType& constantElementType) :m_byteSize(0), m_type(MN_CONSTANT_ELEMENT_TYPE_NONE)
 {
-	HRESULT result = _Init(constantElementType,index);
+	HRESULT result = _Init(constantElementType);
 	if (FAILED(result))
 	{
 		//error log
@@ -27,7 +27,7 @@ UINT MnConstantElement::GetByteSize() const
 	return m_byteSize;
 }
 	
-HRESULT MnConstantElement::_Init(const MnConstantElementType& constantElementType,UINT index)
+HRESULT MnConstantElement::_Init(const MnConstantElementType& constantElementType)
 {
 	if (constantElementType == MN_CONSTANT_ELEMENT_TYPE_NONE)
 	{
@@ -37,7 +37,6 @@ HRESULT MnConstantElement::_Init(const MnConstantElementType& constantElementTyp
 
 	m_type = constantElementType;
 	m_byteSize = _GetByteSizeOf(constantElementType);
-	m_index = index;
 
 	return S_OK;
 }

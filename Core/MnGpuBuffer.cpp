@@ -2,8 +2,9 @@
 
 using namespace MNL;
 
-MnGpuBuffer::MnGpuBuffer()
+MnGpuBuffer::MnGpuBuffer():m_bufferSize(0),m_isDynamic(false),m_numBuffers(0)
 {
+	ZeroMemory(&m_bufferDesc, sizeof(D3D11_BUFFER_DESC));
 }
 
 

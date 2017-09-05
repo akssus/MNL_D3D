@@ -13,6 +13,11 @@
 namespace MNL
 {
 	/*
+	It can use AddConstantBuffer and GetConstantBuffer to manage constant buffers dynamically with unique ID (index).
+	Or just fixed implementating particular constant buffers after inheritance.
+	All up to users.
+	*/
+	/*
 	This class is used as interface. It need to inherit to specify.
 	How to design constant buffers, up to the user
 	*/

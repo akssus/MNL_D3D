@@ -2,8 +2,9 @@
 
 using namespace MNL;
 
-MnIndexBuffer::MnIndexBuffer()
+MnIndexBuffer::MnIndexBuffer():m_format(DXGI_FORMAT_UNKNOWN),m_indexCount(0)
 {
+	ZeroMemory(&m_bufferDesc, sizeof(D3D11_BUFFER_DESC));
 }
 
 
