@@ -11,7 +11,7 @@ namespace MNL
 		~MnDepthStencilBuffer();
 
 		HRESULT Init(const CPD3DDevice cpDevice, UINT width, UINT height);
-		const CPD3DDepthStencilView GetDepthStencilView() const;
+		const CPD3DDepthStencilView& GetDepthStencilView() const;
 
 	private:
 		D3D11_TEXTURE2D_DESC m_depthStencilBufferDesc;

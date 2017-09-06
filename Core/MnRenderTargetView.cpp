@@ -22,7 +22,7 @@ HRESULT MnRenderTargetView::Init(const CPD3DDevice cpDevice, const CPD3DTexture2
 
 	return S_OK;
 }
-const CPD3DRenderTargetView MnRenderTargetView::GetRenderTargetView() const
+const CPD3DRenderTargetView& MnRenderTargetView::GetRenderTargetView() const
 {
 	return m_cpRenderTargetView;
 }

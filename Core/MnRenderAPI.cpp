@@ -23,6 +23,7 @@ HRESULT MnRenderAPI::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 		//error log
 		return E_FAIL;
 	}
+	return S_OK;
 }
 
 void MnRenderAPI::SetVertexBuffer(const CPD3DBuffer& vertexBuffer, UINT stride, UINT offset)
@@ -43,7 +44,10 @@ void MnRenderAPI::SetIndexBuffer(const MnIndexBuffer& indexBuffer)
 {
 	SetIndexBuffer(indexBuffer.GetBuffer().Get(), indexBuffer.GetFormat());
 }
-
+void MnRenderAPI::SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopology)
+{
+	m_pD3DDevice->GetDeviceContext()->IASetPrimitiveTopology(primitiveTopology);
+}
 void MnRenderAPI::SetInputLayout(const CPD3DInputLayout& inputLayout)
 {
 	m_pD3DDevice->GetDeviceContext()->IASetInputLayout(inputLayout.Get());
@@ -56,9 +60,18 @@ void MnRenderAPI::SetPixelShader(const CPD3DPixelShader& cpPixelShader)
 {
 	m_pD3DDevice->GetDeviceContext()->PSSetShader(cpPixelShader.Get(),nullptr,0);
 }
-
+void MnRenderAPI::SetConstantBufferVS(const CPD3DBuffer& cpConstantBuffer, UINT index)
+{
+	m_pD3DDevice->GetDeviceContext()->VSSetConstantBuffers(index, 1, cpConstantBuffer.GetAddressOf());
+}
+void MnRenderAPI::SetConstantBufferPS(const CPD3DBuffer& cpConstantBuffer, UINT index)
+{
+	m_pD3DDevice->GetDeviceContext()->PSSetConstantBuffers(index, 1, cpConstantBuffer.GetAddressOf());
+}
 void MnRenderAPI::SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView, const CPD3DDepthStencilView& cpDepthStencilView)
 {
+	//m_pD3DDevice->GetDeviceContext()->OMSetRenderTargets(0, nullptr, cpDepthStencilView.Get());
+	//m_pD3DDevice->GetDeviceContext()->OMSetRenderTargets(1, cpRenderTargetView.GetAddressOf(),nullptr);
 	m_pD3DDevice->GetDeviceContext()->OMSetRenderTargets(1, cpRenderTargetView.GetAddressOf(), cpDepthStencilView.Get());
 }
 
@@ -73,7 +86,7 @@ void MnRenderAPI::SetRasterizerState(const CPD3DRasterizerState& cpRasterizerSta
 
 void MnRenderAPI::SetViewport(const D3D11_VIEWPORT& viewport)
 {
-	m_pD3DDevice->GetDeviceContext()->RSSetViewports(0, &viewport);
+	m_pD3DDevice->GetDeviceContext()->RSSetViewports(1, &viewport);
 }
 /*
 

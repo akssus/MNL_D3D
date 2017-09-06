@@ -34,10 +34,13 @@ namespace MNL
 		*/
 		void SetIndexBuffer(const CPD3DBuffer& indexBuffer, DXGI_FORMAT format);
 		void SetIndexBuffer(const MnIndexBuffer& indexBuffer);
+		void SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopology);
 
 		void SetInputLayout(const CPD3DInputLayout& cpInputLayout);
 		void SetVertexShader(const CPD3DVertexShader& cpVertexShader);
 		void SetPixelShader(const CPD3DPixelShader& cpPixelShader);
+		void SetConstantBufferVS(const CPD3DBuffer& cpConstantBuffer, UINT index);
+		void SetConstantBufferPS(const CPD3DBuffer& cpConstantBuffer, UINT index);
 
 		void SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView, const CPD3DDepthStencilView& cpDepthStencilView);
 

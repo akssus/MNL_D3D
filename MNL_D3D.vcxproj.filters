@@ -27,6 +27,9 @@
     <Filter Include="Utility\Source">
       <UniqueIdentifier>{52d83bd1-baed-4dab-8965-06e37d4a1aa0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{24eb3e4c-eb67-4307-8e12-592872f84899}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -126,6 +129,9 @@
       <Filter>Utility\Source</Filter>
     </ClCompile>
     <ClCompile Include="BasicShaderPath.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleModel.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -238,5 +244,16 @@
     <ClInclude Include="BasicShaderPath.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SimpleModel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="pixelshader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="vertexshader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

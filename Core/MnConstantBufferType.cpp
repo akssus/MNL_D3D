@@ -16,7 +16,7 @@ void MnConstantBufferType::AddConstantElement(const MnConstantElement& inputElem
 	m_constantElements.push_back(inputElement);
 	m_totalByteSize += inputElement.GetByteSize();
 }
-MnConstantElement MnConstantBufferType::GetElement(UINT index) const
+const MnConstantElement& MnConstantBufferType::GetElement(UINT index) const
 {
 	return m_constantElements[index];
 }
@@ -24,6 +24,10 @@ MnConstantElement MnConstantBufferType::GetElement(UINT index) const
 UINT MnConstantBufferType::TotalByteSize() const
 {
 	return m_totalByteSize;
+}
+UINT MnConstantBufferType::PaddedByteSize() const
+{
+	return 16 * std::ceil(m_totalByteSize / 16);
 }
 UINT MnConstantBufferType::NumElements() const
 {

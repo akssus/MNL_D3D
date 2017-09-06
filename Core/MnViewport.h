@@ -10,7 +10,7 @@ namespace MNL
 		MnViewport();
 		~MnViewport();
 		HRESULT Init(float x, float y, float width, float height);
-		const D3D11_VIEWPORT GetViewport() const;
+		const D3D11_VIEWPORT& GetViewport() const;
 	private:
 		D3D11_VIEWPORT m_viewport;
 	};

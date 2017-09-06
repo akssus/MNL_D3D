@@ -67,7 +67,7 @@ HRESULT MnSwapChain::_InitSwapChain(HWND hWnd, bool isWindowed, UINT numBuffers,
 		swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
 	}
 	swapChainDesc.BufferDesc.Width = displayMode.width;
-	swapChainDesc.BufferDesc.Height = displayMode.width;
+	swapChainDesc.BufferDesc.Height = displayMode.height;
 	swapChainDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
 	swapChainDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
 

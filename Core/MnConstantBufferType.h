@@ -24,11 +24,16 @@ namespace MNL
 		Get a input element
 		@param index of the input elemenet
 		*/
-		MnConstantElement GetElement(UINT index) const;
+		const MnConstantElement& GetElement(UINT index) const;
 		/**
 		@return total byte size of whole constant elements
 		*/
 		UINT TotalByteSize() const;
+
+		/*
+		@return byte size with multiple of 16
+		*/
+		UINT PaddedByteSize() const;
 		/**
 		@return count of input elements
 		*/

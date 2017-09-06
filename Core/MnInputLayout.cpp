@@ -11,30 +11,35 @@ MnInputLayout::~MnInputLayout()
 {
 }
 
-bool MnInputLayout::Init(CPD3DDevice cpD3DDevice, const std::shared_ptr<MnCustomVertexType> pCustomVertexType, const std::shared_ptr<MnVertexShader> pVertexShader)
+HRESULT MnInputLayout::Init(CPD3DDevice cpD3DDevice, const std::shared_ptr<MnCustomVertexType> pCustomVertexType, const std::shared_ptr<MnVertexShader> pVertexShader)
 {
 	std::vector<D3D11_INPUT_ELEMENT_DESC> inputLayoutDescs;
 	UINT numInputElements = pCustomVertexType->NumElements();
 
+
 	for (int i=0; i<numInputElements; ++i)
 	{
-		MnInputElement inputElement = pCustomVertexType->GetElement(i);
+		const MnInputElement& inputElement = pCustomVertexType->GetElement(i);
 		D3D11_INPUT_ELEMENT_DESC desc = _CreateInputElementDesc(inputElement);
+		if (i == 0)
+		{
+			desc.AlignedByteOffset = 0;
+		}
 		inputLayoutDescs.push_back(desc);
 	}
 
 	CPD3DInputLayout cpInputLayout;
 	HRESULT result = cpD3DDevice->CreateInputLayout(inputLayoutDescs.data(),
-		numInputElements, pVertexShader->GetByteCode()->GetBufferPointer(),
+		numInputElements, (void*)pVertexShader->GetByteCode()->GetBufferPointer(),
 		pVertexShader->GetByteCode()->GetBufferSize(),
-		&cpInputLayout);
+		cpInputLayout.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
 		//error log
-		return false;
+		return E_FAIL;
 	}
 	m_inputLayout = cpInputLayout;
-	return true;;
+	return S_OK;
 }
 
 CPD3DInputLayout MnInputLayout::GetInputLayout() const
@@ -46,6 +51,7 @@ D3D11_INPUT_ELEMENT_DESC MnInputLayout::_CreateInputElementDesc(const MnInputEle
 {
 	D3D11_INPUT_ELEMENT_DESC desc;
 	desc.SemanticName = inputElement.GetSemanticName().c_str();
+	//desc.SemanticName = "test";
 	desc.Format = inputElement.GetDXGIFormat();
 	desc.SemanticIndex = inputElement.GetIndex();
 	desc.InputSlot = 0;

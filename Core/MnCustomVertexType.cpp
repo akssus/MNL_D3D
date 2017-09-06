@@ -18,7 +18,7 @@ void MnCustomVertexType::AddInputElement(const MnInputElement& inputElement)
 	m_totalByteSize += inputElement.GetByteSize();
 }
 
-MnInputElement MnCustomVertexType::GetElement(UINT index) const
+const MnInputElement& MnCustomVertexType::GetElement(UINT index) const
 {
 	return m_inputElements[index];
 }

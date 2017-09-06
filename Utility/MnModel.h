@@ -13,12 +13,12 @@ namespace MNL
 	Designing own drawable class using MnModel and buffers is up to users
 	*/
 	class MnModel
-	{
+	{	
 	public:
 		MnModel();
 		~MnModel();
 
-		HRESULT LoadModelFromFile(std::wstring modelFileName);
+		virtual HRESULT LoadModelFromFile(const CPD3DDevice& cpDevice, const std::wstring& modelFileName, const std::shared_ptr<MnCustomVertexType>& spVertexType) = 0;
 
 		const CPD3DBuffer GetVertexBuffer() const;
 		UINT GetVertexBufferStride() const;
@@ -26,8 +26,7 @@ namespace MNL
 		UINT GetIndexCount() const;
 		DXGI_FORMAT GetIndexBufferFormat() const;
 
-
-	private:
+	protected:
 		MnVertexBuffer m_vertexBuffer;
 		MnIndexBuffer m_indexBuffer;
 	};

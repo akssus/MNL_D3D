@@ -26,7 +26,7 @@ namespace MNL
 		Get a input element
 		@param index of the input elemenet
 		*/
-		MnInputElement GetElement(UINT index) const;
+		const MnInputElement& GetElement(UINT index) const;
 		/**
 		@return total byte size of whole input elements
 		*/

@@ -7,5 +7,5 @@ struct PS_INPUT
 
 float4 PS_MAIN(PS_INPUT input) : SV_TARGET
 {
-    return input.color;
+	return input.color;
 }

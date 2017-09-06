@@ -38,6 +38,8 @@ namespace MNL
 		void SetVertexShader(const std::shared_ptr<MnVertexShader>& spVertexShader);
 		void SetPixelShader(const std::shared_ptr<MnPixelShader>& spPixelShader);
 		void SetInputLayout(const std::shared_ptr<MnInputLayout>& spInputLayout);
+		const std::shared_ptr<MnVertexShader> GetMnVertexShader() const;
+
 
 	public:
 		const CPD3DVertexShader GetVertexShader() const;

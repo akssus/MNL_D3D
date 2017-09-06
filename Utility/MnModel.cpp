@@ -12,12 +12,7 @@ MnModel::~MnModel()
 }
 
 
-HRESULT MnModel::LoadModelFromFile(std::wstring modelFileName)
-{
-
-
-	return S_OK;
-}
+//HRESULT MnModel::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::wstring& modelFileName, const std::shared_ptr<MnCustomVertexType>& spVertexType)
 
 const CPD3DBuffer MnModel::GetVertexBuffer() const
 {

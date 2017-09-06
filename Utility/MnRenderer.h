@@ -16,16 +16,14 @@ namespace MNL
 		~MnRenderer();
 
 		/*
-		temp plan:
-		read all semantic names from vertex shader, 
-		search matched semantics in the model, 
-		all the shader-needed IA input must be IASet,
-		the shader-needed IA that model hasn't, set as default value with warning.
+		Set vertex and index buffer and draw call
 		*/
 		HRESULT RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnModel>& model);
 
 		void SetShaderPath(MnRenderAPI& renderAPI, const MnShaderPath& shaderPath);
 		
+	//private:
+		void _SetConstantBuffers(MnRenderAPI& renderAPI, const MnShaderPath& shaderPath);
 	};
 
 }

@@ -52,7 +52,7 @@ HRESULT MnDepthStencilBuffer::Init(const CPD3DDevice cpDevice, UINT width, UINT 
 	return S_OK;
 }
 
-const CPD3DDepthStencilView MnDepthStencilBuffer::GetDepthStencilView() const
+const CPD3DDepthStencilView& MnDepthStencilBuffer::GetDepthStencilView() const
 {
 	return m_depthStencilView;
 }

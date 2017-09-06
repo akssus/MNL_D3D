@@ -36,7 +36,7 @@ bool MnInputElement::_Init(std::string semanticName, const MnInputElementType& i
 	return true;
 }
 
-std::string	MnInputElement::GetSemanticName() const
+const std::string& MnInputElement::GetSemanticName() const
 {
 	return m_semanticName;
 }

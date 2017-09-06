@@ -96,6 +96,15 @@
       <AdditionalLibraryDirectories>C:\cpplibraries\DXTK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>d3d11.lib;dxgi.lib;DirectXTK.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <EntryPointName>VS_MAIN</EntryPointName>
+    </FxCompile>
+    <FxCompile>
+      <ShaderType>Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -168,6 +177,7 @@
     <ClCompile Include="Core\MnViewport.cpp" />
     <ClCompile Include="Core\MnWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SimpleModel.cpp" />
     <ClCompile Include="UniversalVertexType.cpp" />
     <ClCompile Include="Utility\MnCamera.cpp" />
     <ClCompile Include="Utility\MnModel.cpp" />
@@ -205,6 +215,7 @@
     <ClInclude Include="Core\MnVideoAdapter.h" />
     <ClInclude Include="Core\MnViewport.h" />
     <ClInclude Include="Core\MnWindow.h" />
+    <ClInclude Include="SimpleModel.h" />
     <ClInclude Include="UniversalVertexType.h" />
     <ClInclude Include="Utility\MnCamera.h" />
     <ClInclude Include="Utility\MNL_Utility.h" />
@@ -213,6 +224,13 @@
     <ClInclude Include="Utility\MnRenderWindow.h" />
     <ClInclude Include="Utility\MnShaderPath.h" />
     <ClInclude Include="Utility\MnTexture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="pixelshader.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="vertexshader.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

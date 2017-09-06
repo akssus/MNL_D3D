@@ -23,7 +23,7 @@ namespace MNL
 		MnInputElement(std::string semanticName, const MnInputElementType& inputElementType,UINT index);
 		~MnInputElement();
 
-		std::string	GetSemanticName() const;
+		const std::string& GetSemanticName() const;
 		MnInputElementType GetType() const;
 		UINT GetByteSize() const;
 		DXGI_FORMAT GetDXGIFormat() const;

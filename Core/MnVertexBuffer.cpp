@@ -12,9 +12,9 @@ MnVertexBuffer::~MnVertexBuffer()
 {
 }
 
-HRESULT MnVertexBuffer::Init(CPD3DDevice cpDevice,const MnCustomVertexType& vertexType, UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData, bool isDynamic)
+HRESULT MnVertexBuffer::Init(CPD3DDevice cpDevice,const std::shared_ptr<MnCustomVertexType>& spVertexType, UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData, bool isDynamic)
 {
-	m_stride = vertexType.TotalByteSize();
+	m_stride = spVertexType->TotalByteSize();
 	m_isDynamic = isDynamic;
 
 	ZeroMemory(&m_bufferDesc, sizeof(D3D11_BUFFER_DESC));

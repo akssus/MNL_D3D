@@ -48,6 +48,10 @@ void MnShaderPath::SetInputLayout(const std::shared_ptr<MnInputLayout>& spInputL
 	assert(spInputLayout != nullptr);
 	m_spInputLayout = spInputLayout;
 }
+const std::shared_ptr<MnVertexShader> MnShaderPath::GetMnVertexShader() const
+{
+	return m_spVertexShader;
+}
 
 const CPD3DVertexShader MnShaderPath::GetVertexShader() const
 {

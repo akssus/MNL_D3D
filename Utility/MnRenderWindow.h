@@ -46,7 +46,7 @@ namespace MNL
 		Resize does not resize depth stencil buffer. That is not MnRednerWindow's responsibility
 		*/
 		const HWND GetWindowHandle() const;
-		const CPD3DRenderTargetView GetBackBufferView() const;
+		const CPD3DRenderTargetView& GetBackBufferView() const;
 
 		void Resize(UINT width, UINT height);
 		void SetFullscreen();

@@ -13,7 +13,7 @@ namespace MNL
 		MnVertexBuffer();
 		~MnVertexBuffer();
 
-		HRESULT Init(CPD3DDevice cpDevice, const MnCustomVertexType& vertexType, UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData, bool isDynamic);
+		HRESULT Init(CPD3DDevice cpDevice, const std::shared_ptr<MnCustomVertexType>& spVertexType, UINT vertexCount, const D3D11_SUBRESOURCE_DATA* initialData, bool isDynamic);
 		void UpdateBuffer(CPD3DDeviceContext cpDeviceContext, const D3D11_SUBRESOURCE_DATA& data);
 
 		const CPD3DBuffer GetBuffer() const;

@@ -35,6 +35,6 @@ namespace MNL
 
 	private:
 		MnConstantElementType		m_type;
-		UINT						m_byteSize
+		UINT						m_byteSize;
 	};
 }

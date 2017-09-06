@@ -104,7 +104,7 @@ const HWND MnRenderWindow::GetWindowHandle() const
 {
 	return m_window.GetWindowHandle();
 }
-const CPD3DRenderTargetView MnRenderWindow::GetBackBufferView() const
+const CPD3DRenderTargetView& MnRenderWindow::GetBackBufferView() const
 {
 	return m_backBufferView.GetRenderTargetView();
 }

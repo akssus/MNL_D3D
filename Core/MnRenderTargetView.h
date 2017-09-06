@@ -18,7 +18,7 @@ namespace MNL
 		If use back buffer as render target, then pRenderTargetViewDesc is nullptr
 		*/
 		HRESULT Init(const CPD3DDevice cpDevice, const CPD3DTexture2D renderSurface, const std::shared_ptr<D3D11_RENDER_TARGET_VIEW_DESC> pRenderTargetViewDesc);
-		const CPD3DRenderTargetView GetRenderTargetView() const;
+		const CPD3DRenderTargetView& GetRenderTargetView() const;
 
 	private:
 		CPD3DRenderTargetView	m_cpRenderTargetView;
