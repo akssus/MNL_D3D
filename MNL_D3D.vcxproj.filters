@@ -134,6 +134,12 @@
     <ClCompile Include="SimpleModel.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="AssimpModel.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnShaderPathInstance.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MnConstantBuffer.h">
@@ -246,6 +252,12 @@
     </ClInclude>
     <ClInclude Include="SimpleModel.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AssimpModel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnShaderPathInstance.h">
+      <Filter>Utility\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

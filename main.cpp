@@ -7,6 +7,7 @@
 #include "BasicShaderPath.h"
 #include "UniversalVertexType.h"
 #include "SimpleModel.h"
+#include "AssimpModel.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -91,8 +92,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	renderer.SetShaderPath(renderAPI, shaderPath);
 
-	auto model = std::make_shared<SimpleModel>();
-	model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"cube.txt",vertexType);
+	//auto model = std::make_shared<SimpleModel>();
+	//model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"cube.txt",vertexType);
+
+	auto model = std::make_shared<AssimpModel>();
+	model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"box.dae", vertexType);
 
 	MNL::MnCamera camera;
 	camera.SetFOV(3.14f / 5.0f);
