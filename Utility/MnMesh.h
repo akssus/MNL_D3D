@@ -9,14 +9,14 @@
 namespace MNL
 {
 	/*
-	MnModel class ONLY CONTAINS GEOMETRIC DATA. Does NOT have vertex buffer and index buffer.
-	Designing own drawable class using MnModel and buffers is up to users
+	MnMesh class ONLY CONTAINS GEOMETRIC DATA. Does NOT have vertex buffer and index buffer.
+	Designing own drawable class using MnMesh and buffers is up to users
 	*/
-	class MnModel
+	class MnMesh
 	{	
 	public:
-		MnModel();
-		~MnModel();
+		MnMesh();
+		~MnMesh();
 
 		virtual HRESULT LoadModelFromFile(const CPD3DDevice& cpDevice, const std::wstring& modelFileName, const std::shared_ptr<MnCustomVertexType>& spVertexType) = 0;
 

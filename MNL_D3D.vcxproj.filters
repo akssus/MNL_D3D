@@ -113,9 +113,6 @@
     <ClCompile Include="Utility\MnCamera.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\MnModel.cpp">
-      <Filter>Utility\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Utility\MnRenderer.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
@@ -137,8 +134,32 @@
     <ClCompile Include="AssimpModel.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MnResourcePool.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnMesh.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MnMeshRenderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="Utility\MnShaderPathInstance.cpp">
       <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MnMeshShaderPath.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnMeshData.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnMeshVertexType.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnSkinnedMeshVertexType.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnGenericVertexStruct.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -226,9 +247,6 @@
     <ClInclude Include="Utility\MnCamera.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\MnModel.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Utility\MnRenderer.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
@@ -256,8 +274,32 @@
     <ClInclude Include="AssimpModel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="MnResourcePool.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnMesh.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MnMeshRenderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="Utility\MnShaderPathInstance.h">
       <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MnMeshShaderPath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnMeshData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnMeshVertexType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnSkinnedMeshVertexType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnGenericVertexStruct.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

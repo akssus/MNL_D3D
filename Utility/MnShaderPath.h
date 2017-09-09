@@ -47,7 +47,6 @@ namespace MNL
 		const CPD3DInputLayout GetInputLayout() const;
 		UINT GetNumConstantBuffers() const;
 		const std::shared_ptr<MnConstantBuffer> GetConstantBuffer(UINT index) const;
-		void UpdateConstantBuffer(const CPD3DDeviceContext& cpDeviceContext, const D3D11_SUBRESOURCE_DATA& data, UINT constBufferIndex);
 
 	private:
 		//temporary...

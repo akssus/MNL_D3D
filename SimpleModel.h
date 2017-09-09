@@ -1,11 +1,11 @@
 #pragma once
 #include <d3d11.h>
 #include "DXTK\SimpleMath.h"
-#include "Utility\MnModel.h"
+#include "Utility\MnMesh.h"
 
 namespace MNL
 {
-	class SimpleModel : public MnModel
+	class SimpleModel : public MnMesh
 	{
 	private:
 		struct _VertexType

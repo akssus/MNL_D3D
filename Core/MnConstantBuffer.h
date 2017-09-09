@@ -13,6 +13,9 @@ namespace MNL
 		MN_CONSTANT_BUFFER_BELONG_VS,
 		MN_CONSTANT_BUFFER_BELONG_PS
 	};
+	/*
+	MnConstantBuffer only allow to use UpdateSubresource, usage is default, constantBuffer size is automatically padded
+	*/
 	class MnConstantBuffer
 	{
 	public:

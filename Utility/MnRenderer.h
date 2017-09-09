@@ -4,7 +4,7 @@
 #include <memory>
 #include "../Core\MnRenderAPI.h"
 #include "MnShaderPath.h"
-#include "MnModel.h"
+#include "MnMesh.h"
 
 namespace MNL
 {
@@ -18,7 +18,7 @@ namespace MNL
 		/*
 		Set vertex and index buffer and draw call
 		*/
-		HRESULT RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnModel>& model);
+		HRESULT RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh>& model);
 
 		void SetShaderPath(MnRenderAPI& renderAPI, const MnShaderPath& shaderPath);
 		
