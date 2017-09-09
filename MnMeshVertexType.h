@@ -3,15 +3,15 @@
 
 namespace MNL
 {
-	struct MnMeshVertexTypeStruct
-	{
-		float x, y, z;
-		float nx, ny, nz;
-		float tu, tv;
-		float t2u, t2v;
-	};
 	class MnMeshVertexType : public MnCustomVertexType
 	{
+	public:
+		static struct MnMeshVertexTypeStruct
+		{
+			float x, y, z;
+			float nx, ny, nz;
+			float tu, tv;
+		};
 	public:
 		MnMeshVertexType();
 		~MnMeshVertexType();

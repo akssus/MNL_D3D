@@ -1,8 +1,8 @@
 #include "MnMeshData.h"
 
+using namespace MNL;
 
-
-MnMeshData::MnMeshData()
+MnMeshData::MnMeshData():m_pParent(0)
 {
 }
 
