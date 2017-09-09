@@ -59,8 +59,7 @@ HRESULT SimpleModel::_LoadModel(const std::wstring& fileName)
 				std::getline(inputStream, vertexData);
 				std::istringstream vertexDataStream(vertexData);
 				vertexDataStream >> vertex.position.x >> vertex.position.y >> vertex.position.z
-					>> vertex.texCoord1.x >> vertex.texCoord1.y p; ['\.``````````````````````````````````````````````````````````````````````````````````
-					;l ']
+					>> vertex.texCoord1.x >> vertex.texCoord1.y
 					>> vertex.normal.x >> vertex.normal.y >> vertex.normal.z;
 
 				vertex.color.x = vertex.normal.x;

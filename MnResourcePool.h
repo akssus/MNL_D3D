@@ -25,9 +25,9 @@ namespace MNL
 		struct _ModelPackage
 		{
 			std::string m_packageName;
-			std::vector<std::shared_ptr<MnMeshData>> m_lstSpMeshes;
-			std::vector<std::shared_ptr<MnLightSource>> m_lstSpLights;
-			std::vector<std::shared_ptr<MnMaterial>> m_lstSpMaterials;
+			std::vector<std::shared_ptr<MnMeshData> > m_lstSpMeshes;
+			std::vector<std::shared_ptr<MnLightSource> > m_lstSpLights;
+			std::vector<std::shared_ptr<MnMaterial> > m_lstSpMaterials;
 		};
 
 	public:
@@ -44,7 +44,7 @@ namespace MNL
 		Every sub mesh's vertices are serialized in unified lists in a MnMeshData.
 		Each sub meshes has index offset so that a sub mesh is conceptually allocated in a partial space in the serialized list of MnMeshData
 		*/
-		std::shared_ptr<MnMeshData> _ReadMeshes(const aiScene* scene,const aiNode* node,const MnMeshData* pParent);
+		HRESULT _ReadMeshes(const aiScene* scene,const aiNode* node, UINT parentIndex, _ModelPackage& modelPacakge);
 
 
 	private:

@@ -11,7 +11,7 @@ MnRenderer::~MnRenderer()
 {
 }
 
-HRESULT MnRenderer::RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnModel>& model)
+HRESULT MnRenderer::RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh>& model)
 {
 	renderAPI.SetVertexBuffer(model->GetVertexBuffer(),model->GetVertexBufferStride(),0);
 	renderAPI.SetIndexBuffer(model->GetIndexBuffer(),model->GetIndexBufferFormat());

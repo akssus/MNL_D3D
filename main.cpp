@@ -8,6 +8,7 @@
 #include "UniversalVertexType.h"
 #include "SimpleModel.h"
 #include "AssimpModel.h"
+#include "MnResourcePool.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -92,11 +93,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	renderer.SetShaderPath(renderAPI, shaderPath);
 
-	//auto model = std::make_shared<SimpleModel>();
-	//model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"cube.txt",vertexType);
+	auto model = std::make_shared<SimpleModel>();
+	model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"cube.txt",vertexType);
 
-	auto model = std::make_shared<AssimpModel>();
-	model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"box.dae", vertexType);
+	//auto model = std::make_shared<AssimpModel>();
+	//model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"box.dae", vertexType);
 
 	MNL::MnCamera camera;
 	camera.SetFOV(3.14f / 5.0f);
@@ -110,7 +111,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	ZeroMemory(&matWorld, sizeof(Matrix));
 	matWorld = Matrix::Identity;
 	float rad = 0.0f;
+
+	MnResourcePool resourcePool;
+	resourcePool.LoadModelFromFile("box.dae");
+
 	/**************************************************************/
+
+
 	MSG wndMsg;
 	ZeroMemory(&wndMsg, sizeof(MSG));
 	while (wndMsg.message != WM_QUIT)

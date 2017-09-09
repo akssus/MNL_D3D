@@ -15,9 +15,6 @@ MnResourcePool::~MnResourcePool()
 
 HRESULT MnResourcePool::LoadModelFromFile(const std::string& fileName)
 {
-	
-	std::shared_ptr<MnMesh> mesh = std::make_shared<MnMesh>();
-
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices);
 	if (!scene)
@@ -30,18 +27,15 @@ HRESULT MnResourcePool::LoadModelFromFile(const std::string& fileName)
 
 	//first node is root node
 	const aiNode* currentNode = scene->mRootNode;
-	const auto meshData = _ReadMeshes(scene, currentNode, nullptr);
-	if (meshData != nullptr)
+	HRESULT result = _ReadMeshes(scene, currentNode, 0, package);
+	if (FAILED(result))
 	{
-		package.m_lstSpMeshes.push_back(meshData);
+		//error log
+		return E_FAIL;
 	}
+	//read materials, lights..
 
-	//using BFS add all meshes
-	/*
-	DO STH
-	*/
-
-	//map to table
+	//mapping to table
 	m_modelPackages[fileName] = package;
 
 	return S_OK;
@@ -49,31 +43,46 @@ HRESULT MnResourcePool::LoadModelFromFile(const std::string& fileName)
 
 HRESULT MnResourcePool::_LoadModelFromMemory(const _MemoryChunk& memoryChunk, std::string modelPackageName)
 {
-
+	return S_OK;
 }
 HRESULT MnResourcePool::_ReadFromAssimpScene(const aiScene* scene)
 {
-
+	return S_OK;
 }
 
-std::shared_ptr<MnMeshData> MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, const MnMeshData* pParent)
+HRESULT MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, UINT parentIndex, _ModelPackage& modelPackage)
 {
-	std::shared_ptr<MnMeshData> retMeshData = nullptr;
-	int indexOffset = 0;
-	if (node->mMeshes != 0)
+	std::shared_ptr<MnMeshData> meshData = nullptr;
+
+	//get current Mesh data's index to set as parent index
+	UINT currentMeshIndex = modelPackage.m_lstSpMeshes.size();
+
+	//read only if node has meshes
+	if (node->mNumMeshes != 0)
 	{
-		retMeshData = std::make_shared<MnMeshData>();
-		retMeshData->SetName(node->mName.C_Str());
-		retMeshData->SetParent(pParent);
+		//set mesh name
+		meshData = std::make_shared<MnMeshData>();
+		meshData->SetName(node->mName.C_Str());
+
+		//root mesh's parent index is nullptr
+		if (modelPackage.m_lstSpMeshes.size() > 0)
+		{
+			meshData->SetParentIndex(parentIndex);
+		}
+		
+		//get current Mesh data's index to set as parent index
+		UINT currentMeshIndex = modelPackage.m_lstSpMeshes.size()-1;
 
 		//read submeshes
+		int indexOffset = 0;
 		for (int i = 0; i < node->mNumMeshes; ++i)
 		{
 			UINT meshIndex = node->mMeshes[i];
 			const aiMesh* mesh = scene->mMeshes[meshIndex];
 
 			MnSubMeshData submesh;
-			submesh.subMeshName = mesh->mName.C_Str;
+			//set submesh name and offset
+			submesh.subMeshName = mesh->mName.C_Str();
 			submesh.indexOffset = indexOffset;
 
 			MnGenericVertexStruct vertex;
@@ -113,7 +122,7 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadMeshes(const aiScene* scene, co
 				}
 			}
 			//add vertex
-			retMeshData->AddVertex(vertex);
+			meshData->AddVertex(vertex);
 
 			//read indices;
 			int numFaces = mesh->mNumFaces;
@@ -137,11 +146,21 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadMeshes(const aiScene* scene, co
 				submesh.materialName = materialName.C_Str();
 			}
 			//add to mesh data
-			retMeshData->AddSubMesh(submesh);
+			meshData->AddSubMesh(submesh);
+		}
+
+		//add to package
+		modelPackage.m_lstSpMeshes.push_back(meshData);
+	}
+	//recursively read mesh data;
+	for (int i = 0; i < node->mNumChildren; ++i)
+	{
+		HRESULT result = _ReadMeshes(scene, node->mChildren[i], currentMeshIndex, modelPackage);
+		if (FAILED(result))
+		{
+			//error log
+			return E_FAIL;
 		}
 	}
-
-
-
-	return retMeshData;
+	return S_OK;
 }

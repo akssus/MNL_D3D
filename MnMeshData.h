@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <memory>
 #include "MnGenericVertexStruct.h"
 namespace MNL
 {
@@ -27,18 +28,17 @@ namespace MNL
 		void AddVertex(const MnGenericVertexStruct& vertex);
 		void AddSubMesh(const MnSubMeshData& submesh);
 
-		void SetParent(const MnMeshData* pParent);
+		void SetParentIndex(UINT index);
 		void SetName(const std::string& name);
 
-		MnMeshData* GetParent();
-		bool HasBone() const;
-		void SetName(const std::string& name);
-		const std::string& GetName() const;
-		UINT GetNumSubMeshes() const;
-		const MnSubMeshData& GetSubMesh(UINT index) const;
+		bool					HasBone() const;
+		std::shared_ptr<UINT>	GetParentIndex() const;
+		const std::string&		GetName() const;
+		UINT					GetNumSubMeshes() const;
+		const MnSubMeshData&	GetSubMesh(UINT index) const;
 
 	private:
-		MnMeshData* m_pParent;
+		std::shared_ptr<UINT> m_spParentIndex;
 		bool m_hasBone;
 		std::string m_meshName;
 		std::vector<MnGenericVertexStruct> m_lstVertices;

@@ -4,11 +4,11 @@
 #include <string>
 #include "Core\MnTypedefs.h"
 #include "Core\MnCustomVertexType.h"
-#include "Utility\MnModel.h"
+#include "Utility\MnMesh.h"
 #include "assimp\Importer.hpp"
 
 
-class AssimpModel : public MNL::MnModel
+class AssimpModel : public MNL::MnMesh
 {
 	struct _VertexType
 	{
