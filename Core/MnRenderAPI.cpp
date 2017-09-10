@@ -101,6 +101,10 @@ void MnRenderAPI::DrawIndexed(UINT indexCount)
 {
 	m_pD3DDevice->GetDeviceContext()->DrawIndexed(indexCount, 0, 0);
 }
+void MnRenderAPI::DrawIndexed(UINT indexCount,UINT indexOffset, UINT vertexBase)
+{
+	m_pD3DDevice->GetDeviceContext()->DrawIndexed(indexCount, indexOffset, vertexBase);
+}
 
 
 /***************************

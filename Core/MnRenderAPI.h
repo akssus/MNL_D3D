@@ -60,6 +60,7 @@ namespace MNL
 		Draw primitives with offset as 0, base vertex location as 0
 		*/
 		void DrawIndexed(UINT indexCount);
+		void DrawIndexed(UINT indexCount, UINT indexOffset, UINT vertexBase);
 
 	public:
 		const std::shared_ptr<MnD3DDevice> GetD3DDevice() const;

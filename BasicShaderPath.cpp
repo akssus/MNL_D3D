@@ -1,5 +1,4 @@
 #include "BasicShaderPath.h"
-#include "UniversalVertexType.h"
 #include <memory>
 
 using namespace MNL;

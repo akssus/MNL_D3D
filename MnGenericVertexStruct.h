@@ -27,7 +27,10 @@ namespace MNL
 		MnGenericVertexStruct();
 		~MnGenericVertexStruct();
 
-		DirectX::SimpleMath::Vector4& operator[](UINT index);
+		DirectX::SimpleMath::Vector4& operator[](MN_SEMANTICS semantic);
+		const DirectX::SimpleMath::Vector4& operator[](MN_SEMANTICS semantic) const;
+		DirectX::SimpleMath::Vector4& Get(MN_SEMANTICS semantic);
+		const DirectX::SimpleMath::Vector4& Get(MN_SEMANTICS semantic) const;
 
 	private:
 		std::vector<DirectX::SimpleMath::Vector4> m_semantics;

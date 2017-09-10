@@ -36,6 +36,13 @@ namespace MNL
 
 		HRESULT LoadModelFromFile(const std::string& fileName);
 
+	public:
+		/*
+		Find mesh in the model package.
+		@return nullptr if modelPackage unfound or meshName unfound
+		*/
+		std::shared_ptr<MnMeshData> GetMeshData(const std::string& modelPackageName, const std::string& meshName) const;
+
 	private:
 		HRESULT _LoadModelFromMemory(const _MemoryChunk& memoryChunk, std::string modelPackageName);
 		HRESULT _ReadFromAssimpScene(const aiScene* scene);

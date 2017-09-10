@@ -107,9 +107,6 @@
     <ClCompile Include="Core\MnConstantBufferType.cpp">
       <Filter>Core\Source</Filter>
     </ClCompile>
-    <ClCompile Include="UniversalVertexType.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Utility\MnCamera.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
@@ -126,9 +123,6 @@
       <Filter>Utility\Source</Filter>
     </ClCompile>
     <ClCompile Include="BasicShaderPath.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleModel.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="AssimpModel.cpp">
@@ -165,6 +159,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MnLightSource.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnStaticMesh.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -241,9 +238,6 @@
     <ClInclude Include="Core\MnMacros.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
-    <ClInclude Include="UniversalVertexType.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Core\MnConstantElement.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
@@ -272,9 +266,6 @@
       <Filter>Core\Header</Filter>
     </ClInclude>
     <ClInclude Include="BasicShaderPath.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleModel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="AssimpModel.h">
@@ -311,6 +302,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnLightSource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnStaticMesh.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

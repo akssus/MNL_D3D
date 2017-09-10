@@ -1,7 +1,7 @@
 #include "MnResourcePool.h"
+#include <algorithm>
 #include "assimp\Importer.hpp"
 #include "assimp\postprocess.h"
-
 
 using namespace MNL;
 
@@ -87,43 +87,39 @@ HRESULT MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, UI
 
 			MnGenericVertexStruct vertex;
 
-			//read positions
+
 			int numVerts = mesh->mNumVertices;
 			for (int j = 0; j < numVerts; ++j)
 			{
+				//read positions
 				vertex[MN_SEMANTICS_POSITION0].x = mesh->mVertices[j].x;
 				vertex[MN_SEMANTICS_POSITION0].y = mesh->mVertices[j].y;
 				vertex[MN_SEMANTICS_POSITION0].z = mesh->mVertices[j].z;
-			}
 
-			//read normals
-			if (mesh->HasNormals())
-			{
-				for (int j = 0; j < numVerts; ++j)
+				//read normals
+				if (mesh->HasNormals())
 				{
-					vertex[MN_SEMANTICS_NORMAL0].x = mesh->mNormals[j].x;
-					vertex[MN_SEMANTICS_NORMAL0].y = mesh->mNormals[j].y;
-					vertex[MN_SEMANTICS_NORMAL0].z = mesh->mNormals[j].z;
+					for (int j = 0; j < numVerts; ++j)
+					{
+						vertex[MN_SEMANTICS_NORMAL0].x = mesh->mNormals[j].x;
+						vertex[MN_SEMANTICS_NORMAL0].y = mesh->mNormals[j].y;
+						vertex[MN_SEMANTICS_NORMAL0].z = mesh->mNormals[j].z;
+					}
 				}
-			}
 
-			//read texcoords
-			int texCoordIndex = 0;
-			while (mesh->mTextureCoords[texCoordIndex] != nullptr)
-			{
-				//not allowed to read more than 2 tex coords for now
-				if (texCoordIndex >= 2) break;
-
-				for (int j = 0; j < numVerts; ++j)
+				//read texcoords
+				int texCoordIndex = 0;
+				while (mesh->mTextureCoords[texCoordIndex] != nullptr)
 				{
-					vertex[MN_SEMANTICS_TEXCOORD0 + texCoordIndex].x = mesh->mTextureCoords[texCoordIndex][j].x;
-					vertex[MN_SEMANTICS_TEXCOORD0 + texCoordIndex].y = mesh->mTextureCoords[texCoordIndex][j].y;
-					vertex[MN_SEMANTICS_TEXCOORD0 + texCoordIndex].z = mesh->mTextureCoords[texCoordIndex][j].z;
+					//not allowed to read more than 2 tex coords for now
+					if (texCoordIndex >= 2) break;
+						vertex[MN_SEMANTICS(MN_SEMANTICS_TEXCOORD0 + texCoordIndex)].x = mesh->mTextureCoords[texCoordIndex][j].x;
+						vertex[MN_SEMANTICS(MN_SEMANTICS_TEXCOORD0 + texCoordIndex)].y = mesh->mTextureCoords[texCoordIndex][j].y;
+						vertex[MN_SEMANTICS(MN_SEMANTICS_TEXCOORD0 + texCoordIndex)].z = mesh->mTextureCoords[texCoordIndex][j].z;
 				}
+				//add vertex
+				meshData->AddVertex(vertex);
 			}
-			//add vertex
-			meshData->AddVertex(vertex);
-
 			//read indices;
 			int numFaces = mesh->mNumFaces;
 			for (int j = 0; j < numFaces; ++j)
@@ -163,4 +159,28 @@ HRESULT MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, UI
 		}
 	}
 	return S_OK;
+}
+
+
+std::shared_ptr<MnMeshData> MnResourcePool::GetMeshData(const std::string& modelPackageName, const std::string& meshName) const
+{
+	if (m_modelPackages.count(modelPackageName) == 0)
+	{
+		//model package not found
+		return nullptr;
+	}
+	auto lstMeshes = m_modelPackages.at(modelPackageName).m_lstSpMeshes;
+	//find matched mesh data
+	auto it = std::find_if(lstMeshes.begin(),lstMeshes.end(),
+		[&](const std::shared_ptr<MnMeshData>& meshData)
+	{
+		if (meshData->GetName() == meshName) return true;
+		return false;
+	});
+	if (it == lstMeshes.end())
+	{
+		//find failed
+		return nullptr;
+	}
+	return *it;
 }

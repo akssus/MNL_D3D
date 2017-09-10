@@ -5,10 +5,10 @@
 #include "Core\MNL_Core.h"
 #include "Utility\MNL_Utility.h"
 #include "BasicShaderPath.h"
-#include "UniversalVertexType.h"
-#include "SimpleModel.h"
 #include "AssimpModel.h"
 #include "MnResourcePool.h"
+#include "MnStaticMesh.h"
+#include "MnMeshVertexType.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -83,7 +83,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	/**********************************************************/
 	MNL::MnRenderer renderer;
-	auto vertexType = std::make_shared<UniversalVertexType>();
+
+	auto vertexType = std::make_shared<MnMeshVertexType>();
+
 	MNL::BasicShaderPath shaderPath;
 	result = shaderPath.Init(renderAPI.GetD3DDevice()->GetDevice(),vertexType);
 	if (FAILED(result))
@@ -93,8 +95,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	renderer.SetShaderPath(renderAPI, shaderPath);
 
-	auto model = std::make_shared<SimpleModel>();
-	model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"cube.txt",vertexType);
+	//auto model = std::make_shared<SimpleModel>();
+	//model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"cube.txt",vertexType);
 
 	//auto model = std::make_shared<AssimpModel>();
 	//model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"box.dae", vertexType);
@@ -113,7 +115,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile("box.dae");
+	resourcePool.LoadModelFromFile("cube4.dae");
+
+	auto mesh = std::make_shared<MnStaticMesh>();
+	auto meshData = resourcePool.GetMeshData("cube4.dae", "ha");
+	mesh->Init(renderAPI.GetD3DDevice()->GetDevice(), meshData, vertexType);
 
 	/**************************************************************/
 
@@ -136,7 +142,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			matWorld = Matrix::CreateRotationY(rad);
 			shaderPath.SetTransformBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), matWorld, camera.GetViewMatrix(), camera.GetProjectionMatrix());
 
-			renderer.RenderModel(renderAPI, model);
+			renderer.RenderMesh(renderAPI, mesh);
 
 			renderWindow.SwapBuffers();
 		}

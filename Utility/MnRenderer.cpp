@@ -11,14 +11,20 @@ MnRenderer::~MnRenderer()
 {
 }
 
-HRESULT MnRenderer::RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh>& model)
+HRESULT MnRenderer::RenderMesh(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh>& mesh)
 {
-	renderAPI.SetVertexBuffer(model->GetVertexBuffer(),model->GetVertexBufferStride(),0);
-	renderAPI.SetIndexBuffer(model->GetIndexBuffer(),model->GetIndexBufferFormat());
+	renderAPI.SetVertexBuffer(mesh->GetVertexBuffer(),mesh->GetVertexBufferStride(),0);
+	renderAPI.SetIndexBuffer(mesh->GetIndexBuffer(),mesh->GetIndexBufferFormat());
 	renderAPI.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	//draw call
-	renderAPI.DrawIndexed(model->GetIndexCount());
+	//renderAPI.DrawIndexed(mesh->GetIndexCount());
+	UINT numSubMeshes = mesh->GetNumSubMeshes();
+	for (int i = 0; i < numSubMeshes; ++i)
+	{
+		auto& submesh = mesh->GetSubMesh(i);
+		renderAPI.DrawIndexed(submesh.indexCount, 0, submesh.indexOffset);
+	}
 
 	return S_OK;
 }

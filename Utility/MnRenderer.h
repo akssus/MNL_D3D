@@ -18,7 +18,7 @@ namespace MNL
 		/*
 		Set vertex and index buffer and draw call
 		*/
-		HRESULT RenderModel(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh>& model);
+		HRESULT RenderMesh(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh>& model);
 
 		void SetShaderPath(MnRenderAPI& renderAPI, const MnShaderPath& shaderPath);
 		

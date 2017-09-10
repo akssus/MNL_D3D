@@ -34,6 +34,14 @@ bool MnMeshData::HasBone() const
 {
 	return m_hasBone;
 }
+const MnGenericVertexStruct&  MnMeshData::GetVertex(UINT index) const
+{
+	return m_lstVertices[index];
+}
+UINT MnMeshData::GetNumVertices() const
+{
+	return m_lstVertices.size();
+}
 const std::string& MnMeshData::GetName() const
 {
 	return m_meshName;

@@ -10,9 +10,7 @@ struct VS_INPUT
 {
 	float4 position : POSITION;
 	float3 normal : NORMAL;
-	float4 color : COLOR;
-	float2 texCoord0 : TEXCOORD0;
-	float2 texCoord1 : TEXCOORD1;
+	float2 texCoord : TEXCOORD;
 };
 
 struct VS_OUTPUT
@@ -32,7 +30,7 @@ VS_OUTPUT VS_MAIN(VS_INPUT input)
     output.position = mul(output.position, viewMatrix);
     output.position = mul(output.position, projectionMatrix); 
 
-	output.color = input.color;
+	output.color = float4(1.0f, 0.0f, 0.0f, 0.0f);
     
     return output;
 }

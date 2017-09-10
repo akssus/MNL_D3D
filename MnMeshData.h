@@ -32,6 +32,8 @@ namespace MNL
 		void SetName(const std::string& name);
 
 		bool					HasBone() const;
+		const MnGenericVertexStruct&  GetVertex(UINT index) const;
+		UINT					GetNumVertices() const;
 		std::shared_ptr<UINT>	GetParentIndex() const;
 		const std::string&		GetName() const;
 		UINT					GetNumSubMeshes() const;
