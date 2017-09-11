@@ -143,10 +143,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			renderAPI.ClearRenderTargets(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView(), Vector4(0.5f, 0.5f, 0.5f, 1.0f));
 			//render here
 			
-			rad += 0.05f;
+			rad += 0.01f;
 			//matWorld = Matrix::CreateRotationY(rad);
 			matWorld = mesh->GetTransform();
-			matWorld = matWorld * Matrix::CreateRotationX(rad);
+			matWorld = matWorld * Matrix::CreateRotationY(rad);
+			matWorld = matWorld * Matrix::CreateTranslation(0.0f, -200.0f, 0.0f);
 			renderer.SetWorldBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), matWorld);
 			renderer.SetViewProjectionBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), camera.GetViewMatrix(), camera.GetProjectionMatrix());
 			renderer.RenderMesh(renderAPI, mesh);

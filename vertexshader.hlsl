@@ -20,7 +20,7 @@ struct VS_INPUT
 struct VS_OUTPUT
 {
     float4 position : SV_POSITION;
-    float4 color : COLOR;
+	float3 normal : NORMAL;
 };
 
 
@@ -34,7 +34,9 @@ VS_OUTPUT VS_MAIN(VS_INPUT input)
     output.position = mul(output.position, viewMatrix);
     output.position = mul(output.position, projectionMatrix); 
 
-	output.color = float4(1.0f, 0.0f, 0.0f, 0.0f);
+	output.normal = mul(input.normal,worldMatrix);
+	output.normal = mul(output.normal, viewMatrix);
+	output.normal = normalize(output.normal);
     
     return output;
 }
