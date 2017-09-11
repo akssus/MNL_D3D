@@ -12,7 +12,7 @@ MnMesh::~MnMesh()
 }
 
 
-HRESULT MnMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData, const std::shared_ptr<MnCustomVertexType>& spVertexType)
+HRESULT MnMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData)
 {
 	if (spMeshData == nullptr)
 	{
@@ -37,21 +37,21 @@ const MnSubMesh& MnMesh::GetSubMesh(UINT index) const
 }
 const CPD3DBuffer MnMesh::GetVertexBuffer() const
 {
-	return m_vertexBuffer.GetBuffer();
+	return m_spVertexBuffer->GetBuffer();
 }
 UINT MnMesh::GetVertexBufferStride() const
 {
-	return m_vertexBuffer.GetStride();
+	return m_spVertexBuffer->GetStride();
 }
 const CPD3DBuffer MnMesh::GetIndexBuffer() const
 {
-	return m_indexBuffer.GetBuffer();
+	return m_spIndexBuffer->GetBuffer();
 }
 UINT MnMesh::GetIndexCount() const
 {
-	return m_indexBuffer.GetIndexCount();
+	return m_spIndexBuffer->GetIndexCount();
 }
 DXGI_FORMAT MnMesh::GetIndexBufferFormat() const
 {
-	return m_indexBuffer.GetFormat();
+	return m_spIndexBuffer->GetFormat();
 }

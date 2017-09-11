@@ -125,9 +125,6 @@
     <ClCompile Include="BasicShaderPath.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="AssimpModel.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="MnResourcePool.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -266,9 +263,6 @@
       <Filter>Core\Header</Filter>
     </ClInclude>
     <ClInclude Include="BasicShaderPath.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="AssimpModel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnResourcePool.h">

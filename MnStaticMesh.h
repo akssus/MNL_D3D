@@ -20,10 +20,6 @@ namespace MNL
 		MnStaticMesh();
 		~MnStaticMesh();
 
-		HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData, const std::shared_ptr<MnCustomVertexType>& spVertexType);
-
-	private:
-		MnStaticMeshVertex _CreateVertex(const MnGenericVertexStruct& vertexStruct);
-		MnSubMesh _CreateSubMesh(const MnSubMeshData& subMeshData);
+		HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData);
 	};
 }

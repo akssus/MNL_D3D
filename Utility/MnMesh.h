@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include <string>
+#include <memory>
 #include "../Core\MnTypedefs.h"
 #include "../Core\MnVertexBuffer.h"
 #include "../Core\MnIndexBuffer.h"
@@ -9,13 +10,6 @@
 
 namespace MNL
 {
-	struct MnSubMesh
-	{
-		std::string subMeshName;
-		std::string materialName;
-		UINT indexOffset;
-		UINT indexCount;
-	};
 	/*
 	MnMesh is instance of the MnMeshData.
 	MnMesh is minimal element of drawcall and it has ONE vertex buffer and ONE index buffer
@@ -26,7 +20,7 @@ namespace MNL
 		MnMesh();
 		~MnMesh();
 	
-		virtual HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData, const std::shared_ptr<MnCustomVertexType>& spVertexType);
+		virtual HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData);
 
 		void SetParent(const std::shared_ptr<MnMesh>& spMesh);
 		std::shared_ptr<MnMesh> GetParent() const;
@@ -45,7 +39,7 @@ namespace MNL
 		std::shared_ptr<MnMesh> m_spParent;
 		std::vector<MnSubMesh> m_subMeshes;
 
-		MnVertexBuffer m_vertexBuffer;
-		MnIndexBuffer m_indexBuffer;
+		std::shared_ptr<MnVertexBuffer> m_spVertexBuffer;
+		std::shared_ptr<MnIndexBuffer> m_spIndexBuffer;
 	};
 }

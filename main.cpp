@@ -5,7 +5,6 @@
 #include "Core\MNL_Core.h"
 #include "Utility\MNL_Utility.h"
 #include "BasicShaderPath.h"
-#include "AssimpModel.h"
 #include "MnResourcePool.h"
 #include "MnStaticMesh.h"
 #include "MnMeshVertexType.h"
@@ -115,11 +114,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile("cube4.dae");
+	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(),"bege.dae",vertexType);
 
 	auto mesh = std::make_shared<MnStaticMesh>();
-	auto meshData = resourcePool.GetMeshData("cube4.dae", "ha");
-	mesh->Init(renderAPI.GetD3DDevice()->GetDevice(), meshData, vertexType);
+	auto meshData = resourcePool.GetMeshData("bege.dae", "Cube");
+	mesh->Init(renderAPI.GetD3DDevice()->GetDevice(), meshData);
 
 	/**************************************************************/
 

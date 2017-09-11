@@ -13,7 +13,7 @@ MnResourcePool::~MnResourcePool()
 {
 }
 
-HRESULT MnResourcePool::LoadModelFromFile(const std::string& fileName)
+HRESULT MnResourcePool::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType)
 {
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices);
@@ -27,7 +27,7 @@ HRESULT MnResourcePool::LoadModelFromFile(const std::string& fileName)
 
 	//first node is root node
 	const aiNode* currentNode = scene->mRootNode;
-	HRESULT result = _ReadMeshes(scene, currentNode, 0, package);
+	HRESULT result = _ReadMeshes(cpDevice, scene, currentNode, 0, package, vertexType);
 	if (FAILED(result))
 	{
 		//error log
@@ -40,6 +40,10 @@ HRESULT MnResourcePool::LoadModelFromFile(const std::string& fileName)
 
 	return S_OK;
 }
+HRESULT MnResourcePool::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::string& meshName)
+{
+	return S_OK;
+}
 
 HRESULT MnResourcePool::_LoadModelFromMemory(const _MemoryChunk& memoryChunk, std::string modelPackageName)
 {
@@ -50,8 +54,9 @@ HRESULT MnResourcePool::_ReadFromAssimpScene(const aiScene* scene)
 	return S_OK;
 }
 
-HRESULT MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, UINT parentIndex, _ModelPackage& modelPackage)
+HRESULT MnResourcePool::_ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, UINT parentIndex, _ModelPackage& modelPackage, const std::shared_ptr<MnCustomVertexType>& vertexType)
 {
+	//ONE NODE ONE MESH
 	std::shared_ptr<MnMeshData> meshData = nullptr;
 
 	//get current Mesh data's index to set as parent index
@@ -63,7 +68,8 @@ HRESULT MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, UI
 		//set mesh name
 		meshData = std::make_shared<MnMeshData>();
 		meshData->SetName(node->mName.C_Str());
-
+		aiMatrix4x4 transform = node->mTransformation;
+		meshData->SetTransform(DirectX::SimpleMath::Matrix((float*)&transform));
 		//root mesh's parent index is nullptr
 		if (modelPackage.m_lstSpMeshes.size() > 0)
 		{
@@ -73,65 +79,96 @@ HRESULT MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, UI
 		//get current Mesh data's index to set as parent index
 		UINT currentMeshIndex = modelPackage.m_lstSpMeshes.size()-1;
 
+		//calculate total number of index and vertex
+		UINT totalVertexCount = 0;
+		UINT totalIndexCount = 0;
+		for (int i = 0; i < node->mNumMeshes; ++i)
+		{
+			UINT meshIndex = node->mMeshes[i];
+			UINT numVerts = scene->mMeshes[meshIndex]->mNumVertices;
+			totalVertexCount += numVerts;
+			int numFaces = scene->mMeshes[meshIndex]->mNumFaces;
+			totalIndexCount += numFaces * 3;
+		}
+
+		//prepare vertex array
+		UINT vertexStride = vertexType->TotalByteSize();
+		UINT numFloats = vertexStride / 4;
+		std::vector<float> vertexArray;
+		vertexArray.resize(totalVertexCount * (numFloats));
+		UINT16 flags = vertexType->GetFlags();
+
+		//prepare index array
+		std::vector<UINT> indexArray;
+		indexArray.resize(totalIndexCount);
+
 		//read submeshes
-		int indexOffset = 0;
+		UINT vertexBase = 0;
+		UINT indexBase = 0;
 		for (int i = 0; i < node->mNumMeshes; ++i)
 		{
 			UINT meshIndex = node->mMeshes[i];
 			const aiMesh* mesh = scene->mMeshes[meshIndex];
 
-			MnSubMeshData submesh;
-			//set submesh name and offset
-			submesh.subMeshName = mesh->mName.C_Str();
-			submesh.indexOffset = indexOffset;
+			//read vertices
+			UINT numVerts = mesh->mNumVertices;
 
-			MnGenericVertexStruct vertex;
-
-
-			int numVerts = mesh->mNumVertices;
 			for (int j = 0; j < numVerts; ++j)
 			{
+				UINT vertexOffset = vertexBase + (j * numFloats);
+				UINT currentOffset = 0;
 				//read positions
-				vertex[MN_SEMANTICS_POSITION0].x = mesh->mVertices[j].x;
-				vertex[MN_SEMANTICS_POSITION0].y = mesh->mVertices[j].y;
-				vertex[MN_SEMANTICS_POSITION0].z = mesh->mVertices[j].z;
-
+				if (flags & MN_CVF_POSITION0)
+				{
+					vertexArray[vertexOffset + currentOffset++] = mesh->mVertices[j].x;
+					vertexArray[vertexOffset + currentOffset++] = mesh->mVertices[j].y;
+					vertexArray[vertexOffset + currentOffset++] = mesh->mVertices[j].z;
+				}
 				//read normals
 				if (mesh->HasNormals())
 				{
-					for (int j = 0; j < numVerts; ++j)
+					if(flags & MN_CVF_NORMAL0)
 					{
-						vertex[MN_SEMANTICS_NORMAL0].x = mesh->mNormals[j].x;
-						vertex[MN_SEMANTICS_NORMAL0].y = mesh->mNormals[j].y;
-						vertex[MN_SEMANTICS_NORMAL0].z = mesh->mNormals[j].z;
+						vertexArray[vertexOffset + currentOffset++] = mesh->mNormals[j].x;
+						vertexArray[vertexOffset + currentOffset++] = mesh->mNormals[j].y;
+						vertexArray[vertexOffset + currentOffset++] = mesh->mNormals[j].z;
 					}
 				}
 
 				//read texcoords
 				int texCoordIndex = 0;
-				while (mesh->mTextureCoords[texCoordIndex] != nullptr)
+				if (mesh->mTextureCoords[texCoordIndex] != nullptr)
 				{
-					//not allowed to read more than 2 tex coords for now
-					if (texCoordIndex >= 2) break;
-						vertex[MN_SEMANTICS(MN_SEMANTICS_TEXCOORD0 + texCoordIndex)].x = mesh->mTextureCoords[texCoordIndex][j].x;
-						vertex[MN_SEMANTICS(MN_SEMANTICS_TEXCOORD0 + texCoordIndex)].y = mesh->mTextureCoords[texCoordIndex][j].y;
-						vertex[MN_SEMANTICS(MN_SEMANTICS_TEXCOORD0 + texCoordIndex)].z = mesh->mTextureCoords[texCoordIndex][j].z;
+					if (flags & MN_CVF_TEXCOORD0)
+					{
+						vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].x;
+						vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].y;
+						vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].z;
+					}
 				}
-				//add vertex
-				meshData->AddVertex(vertex);
 			}
+			//rebase vertex
+			vertexBase += numVerts * numFloats;
+
 			//read indices;
+			MnSubMesh submesh;
+			//set submesh name and offset
+			submesh.subMeshName = mesh->mName.C_Str();
+			submesh.indexOffset = indexBase;
 			int numFaces = mesh->mNumFaces;
+			submesh.indexCount = numFaces * 3;
+		
 			for (int j = 0; j < numFaces; ++j)
 			{
+				UINT indexOffset = j * 3;
 				aiFace& face = mesh->mFaces[j];
 				for (int faceIndex = 0; faceIndex < face.mNumIndices; ++faceIndex)
 				{
-					submesh.lstIndices.push_back(face.mIndices[faceIndex]);
+					indexArray[indexBase + indexOffset + faceIndex] = face.mIndices[faceIndex];
 				}
 			}
 			//update base offset of submesh indices
-			indexOffset += submesh.lstIndices.size();
+			indexBase += submesh.indexCount;
 
 			//read material name
 			if (scene->HasMaterials())
@@ -145,13 +182,41 @@ HRESULT MnResourcePool::_ReadMeshes(const aiScene* scene, const aiNode* node, UI
 			meshData->AddSubMesh(submesh);
 		}
 
+		//make data serial
+		D3D11_SUBRESOURCE_DATA vertexData;
+		vertexData.pSysMem = vertexArray.data();
+		vertexData.SysMemPitch = 0;
+		vertexData.SysMemSlicePitch = 0;
+
+		D3D11_SUBRESOURCE_DATA indexData;
+		indexData.pSysMem = indexArray.data();
+		indexData.SysMemPitch = 0;
+		indexData.SysMemSlicePitch = 0;
+
+		//create buffers
+		auto vertexBuffer = std::make_shared<MnVertexBuffer>();
+		HRESULT result = vertexBuffer->Init(cpDevice, vertexType, totalVertexCount,&vertexData,false);
+		if (FAILED(result))
+		{
+			return E_FAIL;
+		}
+		auto indexBuffer = std::make_shared<MnIndexBuffer>();
+		result = indexBuffer->Init(cpDevice, totalIndexCount, &indexData);
+		if (FAILED(result))
+		{
+			return E_FAIL;
+		}
+		meshData->SetVertexBuffer(vertexBuffer);
+		meshData->SetIndexBuffer(indexBuffer);
+
 		//add to package
 		modelPackage.m_lstSpMeshes.push_back(meshData);
 	}
+
 	//recursively read mesh data;
 	for (int i = 0; i < node->mNumChildren; ++i)
 	{
-		HRESULT result = _ReadMeshes(scene, node->mChildren[i], currentMeshIndex, modelPackage);
+		HRESULT result = _ReadMeshes(cpDevice, scene, node->mChildren[i], currentMeshIndex, modelPackage, vertexType);
 		if (FAILED(result))
 		{
 			//error log
@@ -184,3 +249,4 @@ std::shared_ptr<MnMeshData> MnResourcePool::GetMeshData(const std::string& model
 	}
 	return *it;
 }
+

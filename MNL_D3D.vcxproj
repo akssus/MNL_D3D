@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AssimpModel.cpp" />
     <ClCompile Include="BasicShaderPath.cpp" />
     <ClCompile Include="Core\MnConstantBuffer.cpp" />
     <ClCompile Include="Core\MnConstantBufferType.cpp" />
@@ -197,7 +196,6 @@
     <ClCompile Include="Utility\MnTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssimpModel.h" />
     <ClInclude Include="BasicShaderPath.h" />
     <ClInclude Include="Core\MnConstantBuffer.h" />
     <ClInclude Include="Core\MnConstantBufferType.h" />
