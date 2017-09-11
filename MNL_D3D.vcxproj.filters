@@ -137,9 +137,6 @@
     <ClCompile Include="Utility\MnShaderPathInstance.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnMeshShaderPath.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="MnMeshData.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -276,9 +273,6 @@
     </ClInclude>
     <ClInclude Include="Utility\MnShaderPathInstance.h">
       <Filter>Utility\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="MnMeshShaderPath.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnMeshData.h">
       <Filter>헤더 파일</Filter>

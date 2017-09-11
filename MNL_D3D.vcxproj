@@ -182,7 +182,6 @@
     <ClCompile Include="MnMaterial.cpp" />
     <ClCompile Include="MnMeshData.cpp" />
     <ClCompile Include="MnMeshRenderer.cpp" />
-    <ClCompile Include="MnMeshShaderPath.cpp" />
     <ClCompile Include="MnMeshVertexType.cpp" />
     <ClCompile Include="MnResourcePool.cpp" />
     <ClCompile Include="MnSkinnedMeshVertexType.cpp" />
@@ -229,7 +228,6 @@
     <ClInclude Include="MnMaterial.h" />
     <ClInclude Include="MnMeshData.h" />
     <ClInclude Include="MnMeshRenderer.h" />
-    <ClInclude Include="MnMeshShaderPath.h" />
     <ClInclude Include="MnMeshVertexType.h" />
     <ClInclude Include="MnResourcePool.h" />
     <ClInclude Include="MnSkinnedMeshVertexType.h" />

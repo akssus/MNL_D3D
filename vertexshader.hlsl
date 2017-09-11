@@ -1,9 +1,13 @@
 
-cbuffer MatrixBuffer
+cbuffer WorldBuffer
 {
     matrix worldMatrix;
-    matrix viewMatrix;
-    matrix projectionMatrix;
+};
+
+cbuffer ViewProjectionBuffer
+{
+	matrix viewMatrix;
+	matrix projectionMatrix;
 };
 
 struct VS_INPUT

@@ -11,7 +11,7 @@ MnRenderer::~MnRenderer()
 {
 }
 
-HRESULT MnRenderer::RenderMesh(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh>& mesh)
+HRESULT MnRenderer::RenderMesh(MnRenderAPI& renderAPI, const std::shared_ptr<MnMesh> mesh)
 {
 	renderAPI.SetVertexBuffer(mesh->GetVertexBuffer(),mesh->GetVertexBufferStride(),0);
 	renderAPI.SetIndexBuffer(mesh->GetIndexBuffer(),mesh->GetIndexBufferFormat());
@@ -28,31 +28,44 @@ HRESULT MnRenderer::RenderMesh(MnRenderAPI& renderAPI, const std::shared_ptr<MnM
 
 	return S_OK;
 }
-
-void MnRenderer::SetShaderPath(MnRenderAPI& renderAPI, const MnShaderPath& shaderPath)
+void MnRenderer::AddShaderPathInstance(const std::shared_ptr<MnShaderPathInstance> spShaderPathInstance)
 {
-	renderAPI.SetVertexShader(shaderPath.GetVertexShader());
-	renderAPI.SetPixelShader(shaderPath.GetPixelShader());
-	renderAPI.SetInputLayout(shaderPath.GetInputLayout());
-
-	_SetConstantBuffers(renderAPI, shaderPath);
-
-	//update constant buffers here
-	/*UINT numConstantBuffers = shaderPath.GetNumConstantBuffers();
-
-	for (int i = 0; i < numConstantBuffers; ++i)
+	m_shaderPaths.push_back(spShaderPathInstance);
+}
+void MnRenderer::ApplyShaderPaths(MnRenderAPI& renderAPI)
+{
+	for (auto spShaderPath : m_shaderPaths)
 	{
-		auto constantBuffer = shaderPath.GetConstantBuffer(i);
+		renderAPI.SetVertexShader(spShaderPath->GetVertexShader());
+		renderAPI.SetPixelShader(spShaderPath->GetPixelShader());
+		renderAPI.SetInputLayout(spShaderPath->GetInputLayout());
 	}
-	*/
 }
 
-void MnRenderer::_SetConstantBuffers(MnRenderAPI& renderAPI, const MnShaderPath& shaderPath)
+void MnRenderer::AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer)
 {
-	UINT numConstantBuffers = shaderPath.GetNumConstantBuffers();
+	assert(spConstantBuffer != nullptr);
+	m_constantBuffers.push_back(spConstantBuffer);
+}
+void MnRenderer::ApplyConstantBuffers(MnRenderAPI& renderAPI)
+{
+	_BindConstantBuffers(renderAPI);
+}
+
+UINT MnRenderer::GetNumConstantBuffers() const
+{
+	return m_constantBuffers.size();
+}
+const std::shared_ptr<MnConstantBuffer> MnRenderer::GetConstantBuffer(UINT index) const
+{
+	return m_constantBuffers[index];
+}
+void MnRenderer::_BindConstantBuffers(MnRenderAPI& renderAPI)
+{
+	UINT numConstantBuffers = m_constantBuffers.size();
 	for (int i = 0; i < numConstantBuffers; ++i)
 	{
-		auto constantBuffer = shaderPath.GetConstantBuffer(i);
+		auto constantBuffer = m_constantBuffers[i];
 		auto belong = constantBuffer->GetBelong();
 		if (belong == MN_CONSTANT_BUFFER_BELONG_PS)
 		{
@@ -63,4 +76,12 @@ void MnRenderer::_SetConstantBuffers(MnRenderAPI& renderAPI, const MnShaderPath&
 			renderAPI.SetConstantBufferVS(constantBuffer->GetBuffer(), constantBuffer->GetIndex());
 		}
 	}
+}
+void MnRenderer::_ClearConstantBuffers()
+{
+	m_constantBuffers.clear();
+}
+void MnRenderer::_ResizeConstantBuffers(UINT size)
+{
+	m_constantBuffers.resize(size);
 }

@@ -11,6 +11,9 @@ namespace MNL
 		DirectX::SimpleMath::Vector3 normal;
 		DirectX::SimpleMath::Vector2 texCoord;
 	};
+	/*
+	POSITION, NORMAL, TEXCOORD, 32byte
+	*/
 	class MnMeshVertexType : public MnCustomVertexType
 	{
 	public:

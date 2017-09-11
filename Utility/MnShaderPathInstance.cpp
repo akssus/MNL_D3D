@@ -11,13 +11,6 @@ MnShaderPathInstance::~MnShaderPathInstance()
 {
 }
 
-
-void MnShaderPathInstance::UpdateConstantBuffer(const CPD3DDeviceContext& cpDeviceContext, const D3D11_SUBRESOURCE_DATA& data, UINT constBufferIndex)
-{
-	auto transformBuffer = GetConstantBuffer(constBufferIndex);
-	transformBuffer->UpdateBuffer(cpDeviceContext, data);
-}
-
 HRESULT MnShaderPathInstance::_InitShaders(const CPD3DDevice& cpDevice, const std::wstring& vsFileName, const std::wstring& psFileName)
 {
 	auto vertexShader = std::make_shared<MnVertexShader>();

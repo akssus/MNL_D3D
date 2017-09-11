@@ -34,30 +34,19 @@ namespace MNL
 		//virtual HRESULT Init(const CPD3DDevice& cpDevice,const std::shared_ptr<MnVertexShader> spVertexShader, const std::shared_ptr<MnPixelShader> spPixelShader);
 		
 	protected:
-		void AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer);
 		void SetVertexShader(const std::shared_ptr<MnVertexShader>& spVertexShader);
 		void SetPixelShader(const std::shared_ptr<MnPixelShader>& spPixelShader);
 		void SetInputLayout(const std::shared_ptr<MnInputLayout>& spInputLayout);
 		const std::shared_ptr<MnVertexShader> GetMnVertexShader() const;
 
-
 	public:
 		const CPD3DVertexShader GetVertexShader() const;
 		const CPD3DPixelShader GetPixelShader() const;
 		const CPD3DInputLayout GetInputLayout() const;
-		UINT GetNumConstantBuffers() const;
-		const std::shared_ptr<MnConstantBuffer> GetConstantBuffer(UINT index) const;
-
-	private:
-		//temporary...
-		//std::shared_ptr<MnInputLayout> _CreateInputLayout(const CPD3DDevice& cpDevice, const std::shared_ptr<MnCustomVertexType> spVertexTypevertexType, const std::shared_ptr<MnVertexShader> spVertexShader);
-		//std::shared_ptr<MnConstantBuffer> _CreateConstantBuffer(const CPD3DDevice& cpDevice, const std::shared_ptr< MnConstantBufferType> spConstantBufferType);
-		
 		
 	private:
 		std::shared_ptr<MnVertexShader> m_spVertexShader;
 		std::shared_ptr<MnPixelShader> m_spPixelShader;
-		std::vector<std::shared_ptr<MnConstantBuffer>> m_constantBuffers;
 		std::shared_ptr<MnInputLayout> m_spInputLayout;
 	};
 

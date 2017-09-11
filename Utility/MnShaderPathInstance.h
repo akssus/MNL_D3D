@@ -12,8 +12,6 @@ namespace MNL
 		MnShaderPathInstance();
 		~MnShaderPathInstance();
 
-		void UpdateConstantBuffer(const CPD3DDeviceContext& cpDeviceContext, const D3D11_SUBRESOURCE_DATA& data, UINT constBufferIndex);
-
 	protected:
 		/*
 		Shader entry point must be VS_MAIN and PS_MAIN, version 5_0

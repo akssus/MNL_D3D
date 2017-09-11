@@ -8,6 +8,7 @@
 #include "MnResourcePool.h"
 #include "MnStaticMesh.h"
 #include "MnMeshVertexType.h"
+#include "MnMeshRenderer.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -81,24 +82,29 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	renderAPI.SetViewport(viewport.GetViewport());
 
 	/**********************************************************/
-	MNL::MnRenderer renderer;
 
 	auto vertexType = std::make_shared<MnMeshVertexType>();
 
-	MNL::BasicShaderPath shaderPath;
-	result = shaderPath.Init(renderAPI.GetD3DDevice()->GetDevice(),vertexType);
+	auto shaderPath = std::make_shared<BasicShaderPath>();
+	result = shaderPath->Init(renderAPI.GetD3DDevice()->GetDevice(),vertexType);
 	if (FAILED(result))
 	{
 		//error msg
 		return 0;
 	}
-	renderer.SetShaderPath(renderAPI, shaderPath);
 
-	//auto model = std::make_shared<SimpleModel>();
-	//model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"cube.txt",vertexType);
+	MNL::MnMeshRenderer renderer;
+	result = renderer.Init(renderAPI.GetD3DDevice()->GetDevice(), vertexType);
+	if (FAILED(result))
+	{
+		//error msg
+		return 0;
+	}
+	renderer.AddShaderPathInstance(shaderPath);
 
-	//auto model = std::make_shared<AssimpModel>();
-	//model->LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(), L"box.dae", vertexType);
+	//this functions only call when shader or renderer changed
+	renderer.ApplyShaderPaths(renderAPI);;
+	renderer.ApplyConstantBuffers(renderAPI);
 
 	MNL::MnCamera camera;
 	camera.SetFOV(3.14f / 5.0f);
@@ -139,8 +145,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			
 			rad += 0.05f;
 			matWorld = Matrix::CreateRotationY(rad);
-			shaderPath.SetTransformBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), matWorld, camera.GetViewMatrix(), camera.GetProjectionMatrix());
-
+			renderer.SetWorldBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), matWorld);
+			renderer.SetViewProjectionBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), camera.GetViewMatrix(), camera.GetProjectionMatrix());
 			renderer.RenderMesh(renderAPI, mesh);
 
 			renderWindow.SwapBuffers();
