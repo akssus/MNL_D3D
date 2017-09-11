@@ -109,9 +109,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	MNL::MnCamera camera;
 	camera.SetFOV(3.14f / 5.0f);
 	camera.SetNearDistance(0.1f);
-	camera.SetFarDistance(1000.0f);
+	camera.SetFarDistance(10000.0f);
 	camera.SetAspectRatio(1024.0f/768.0f);
-	camera.SetPosition(Vector3(0, 0, -10.0f));
+	camera.SetPosition(Vector3(0, 0, -1000.0f));
 	camera.LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	Matrix matWorld;
@@ -120,10 +120,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(),"body.dae",vertexType);
+	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(),"rico.fbx",vertexType);
 
 	auto mesh = std::make_shared<MnStaticMesh>();
-	auto meshData = resourcePool.GetMeshData("body.dae", "Cube");
+	auto meshData = resourcePool.GetMeshData("rico.fbx", "Rico");
 	mesh->Init(renderAPI.GetD3DDevice()->GetDevice(), meshData);
 
 	/**************************************************************/

@@ -143,7 +143,6 @@ HRESULT MnResourcePool::_ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* 
 					{
 						vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].x;
 						vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].y;
-						vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].z;
 					}
 				}
 			}
