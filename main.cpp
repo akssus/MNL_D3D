@@ -103,7 +103,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	renderer.AddShaderPathInstance(shaderPath);
 
 	//this functions only call when shader or renderer changed
-	renderer.ApplyShaderPaths(renderAPI);;
+	renderer.ApplyShaderPaths(renderAPI);
 	renderer.ApplyConstantBuffers(renderAPI);
 
 	MNL::MnCamera camera;
@@ -120,10 +120,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(),"bege.dae",vertexType);
+	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(),"body.dae",vertexType);
 
 	auto mesh = std::make_shared<MnStaticMesh>();
-	auto meshData = resourcePool.GetMeshData("bege.dae", "Cube");
+	auto meshData = resourcePool.GetMeshData("body.dae", "Cube");
 	mesh->Init(renderAPI.GetD3DDevice()->GetDevice(), meshData);
 
 	/**************************************************************/
@@ -144,7 +144,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			//render here
 			
 			rad += 0.05f;
-			matWorld = Matrix::CreateRotationY(rad);
+			//matWorld = Matrix::CreateRotationY(rad);
+			matWorld = mesh->GetTransform();
+			matWorld = matWorld * Matrix::CreateRotationX(rad);
 			renderer.SetWorldBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), matWorld);
 			renderer.SetViewProjectionBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), camera.GetViewMatrix(), camera.GetProjectionMatrix());
 			renderer.RenderMesh(renderAPI, mesh);

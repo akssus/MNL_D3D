@@ -69,7 +69,7 @@ HRESULT MnResourcePool::_ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* 
 		meshData = std::make_shared<MnMeshData>();
 		meshData->SetName(node->mName.C_Str());
 		aiMatrix4x4 transform = node->mTransformation;
-		meshData->SetTransform(DirectX::SimpleMath::Matrix((float*)&transform));
+		meshData->SetTransform(DirectX::SimpleMath::Matrix((float*)&(transform.Transpose())));
 		//root mesh's parent index is nullptr
 		if (modelPackage.m_lstSpMeshes.size() > 0)
 		{

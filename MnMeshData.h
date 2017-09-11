@@ -41,6 +41,7 @@ namespace MNL
 		bool					HasBone() const;
 		std::shared_ptr<UINT>	GetParentIndex() const;
 		const std::string&		GetName() const;
+		const DirectX::SimpleMath::Matrix& GetTransform() const;
 
 		std::shared_ptr<MnVertexBuffer> GetVertexBuffer() const;
 		std::shared_ptr<MnIndexBuffer>	GetIndexBuffer() const;

@@ -24,6 +24,10 @@ void MnMeshData::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
 {
 	m_matTransform = matTransform;
 }
+const DirectX::SimpleMath::Matrix& MnMeshData::GetTransform() const
+{
+	return m_matTransform;
+}
 void MnMeshData::SetParentIndex(UINT index)
 {
 	m_spParentIndex = std::make_shared<UINT>(index);

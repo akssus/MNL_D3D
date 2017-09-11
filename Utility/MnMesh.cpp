@@ -4,6 +4,7 @@ using namespace MNL;
 
 MnMesh::MnMesh()
 {
+	m_matTransform = DirectX::SimpleMath::Matrix::Identity;
 }
 
 
@@ -26,6 +27,14 @@ void MnMesh::SetParent(const std::shared_ptr<MnMesh>& spMesh)
 std::shared_ptr<MnMesh> MnMesh::GetParent() const
 {
 	return m_spParent;
+}
+void MnMesh::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
+{
+	m_matTransform = matTransform;
+}
+const DirectX::SimpleMath::Matrix& MnMesh::GetTransform() const
+{
+	return m_matTransform;
 }
 UINT MnMesh::GetNumSubMeshes() const
 {

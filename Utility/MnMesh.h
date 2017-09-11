@@ -25,6 +25,9 @@ namespace MNL
 		void SetParent(const std::shared_ptr<MnMesh>& spMesh);
 		std::shared_ptr<MnMesh> GetParent() const;
 
+		void SetTransform(const DirectX::SimpleMath::Matrix& matTransform);
+		const DirectX::SimpleMath::Matrix& GetTransform() const;
+
 		UINT GetNumSubMeshes() const;
 		const MnSubMesh& GetSubMesh(UINT index) const;
 
@@ -35,6 +38,7 @@ namespace MNL
 		DXGI_FORMAT GetIndexBufferFormat() const;
 
 	protected:
+		DirectX::SimpleMath::Matrix m_matTransform;
 		std::string m_name;
 		std::shared_ptr<MnMesh> m_spParent;
 		std::vector<MnSubMesh> m_subMeshes;

@@ -17,6 +17,7 @@ HRESULT MnStaticMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<Mn
 	{
 		return E_FAIL;
 	}
+	m_matTransform = spMeshData->GetTransform();
 	m_name = spMeshData->GetName();
 	m_spVertexBuffer = spMeshData->GetVertexBuffer();
 	m_spIndexBuffer = spMeshData->GetIndexBuffer();
