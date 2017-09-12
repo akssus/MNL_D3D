@@ -34,8 +34,7 @@ void MnMeshRenderer::SetWorldBuffer(const CPD3DDeviceContext& cpDeviceContext,
 	data.SysMemPitch = 0;
 	data.SysMemSlicePitch = 0;
 
-	auto worldBuffer = GetConstantBuffer(_CONST_BUF_WORLD);
-	worldBuffer->UpdateBuffer(cpDeviceContext, data);
+	UpdateConstantBuffer(cpDeviceContext, _CONST_BUF_WORLD, data);
 }
 
 void MnMeshRenderer::SetViewProjectionBuffer(const CPD3DDeviceContext& cpDeviceContext,
@@ -52,8 +51,7 @@ void MnMeshRenderer::SetViewProjectionBuffer(const CPD3DDeviceContext& cpDeviceC
 	data.SysMemPitch = 0;
 	data.SysMemSlicePitch = 0;
 
-	auto viewProjectionBuffer = GetConstantBuffer(_CONST_BUF_VIEWPROJECTION);
-	viewProjectionBuffer->UpdateBuffer(cpDeviceContext, data);
+	UpdateConstantBuffer(cpDeviceContext, _CONST_BUF_VIEWPROJECTION, data);
 }
 
 HRESULT MnMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)

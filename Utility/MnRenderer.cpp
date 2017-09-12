@@ -60,6 +60,10 @@ const std::shared_ptr<MnConstantBuffer> MnRenderer::GetConstantBuffer(UINT index
 {
 	return m_constantBuffers[index];
 }
+void MnRenderer::UpdateConstantBuffer(const CPD3DDeviceContext& cpDeviceContext, UINT index, const D3D11_SUBRESOURCE_DATA& data)
+{
+	m_constantBuffers[index]->UpdateBuffer(cpDeviceContext, data);
+}
 void MnRenderer::_BindConstantBuffers(MnRenderAPI& renderAPI)
 {
 	UINT numConstantBuffers = m_constantBuffers.size();

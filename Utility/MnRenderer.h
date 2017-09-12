@@ -9,6 +9,9 @@
 namespace MNL
 {
 
+	/*
+	A renderer is composition of shader path, constant buffer, material, texture, etc all visible resource
+	*/
 	class MnRenderer
 	{
 	public:
@@ -22,14 +25,20 @@ namespace MNL
 
 		void AddShaderPathInstance(const std::shared_ptr<MnShaderPathInstance> shaderPathInstance);
 		/*
+		Apply all the shader paths to context
 		It does not support more than 2 shaders for now
 		*/
 		void ApplyShaderPaths(MnRenderAPI& renderAPI);
 		void AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer);
+		/*
+		Apply all constant buffers to context.
+		To map the data inside, use UpdateConstantBuffer instead
+		*/
 		void ApplyConstantBuffers(MnRenderAPI& renderAPI);
 
 		UINT GetNumConstantBuffers() const;
 		const std::shared_ptr<MnConstantBuffer> GetConstantBuffer(UINT index) const;
+		void UpdateConstantBuffer(const CPD3DDeviceContext& cpDeviceContext, UINT index, const D3D11_SUBRESOURCE_DATA& data);
 
 		
 	protected:
