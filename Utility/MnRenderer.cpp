@@ -39,10 +39,11 @@ void MnRenderer::ApplyShaderPaths(MnRenderAPI& renderAPI)
 		renderAPI.SetVertexShader(spShaderPath->GetVertexShader());
 		renderAPI.SetPixelShader(spShaderPath->GetPixelShader());
 		renderAPI.SetInputLayout(spShaderPath->GetInputLayout());
+		renderAPI.SetSamplerState(spShaderPath->GetSamplerState());
 	}
 }
 
-void MnRenderer::AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer)
+void MnRenderer::_AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer)
 {
 	assert(spConstantBuffer != nullptr);
 	m_constantBuffers.push_back(spConstantBuffer);
@@ -63,6 +64,19 @@ const std::shared_ptr<MnConstantBuffer> MnRenderer::GetConstantBuffer(UINT index
 void MnRenderer::UpdateConstantBuffer(MnRenderAPI& renderAPI, UINT index, const D3D11_SUBRESOURCE_DATA& data)
 {
 	m_constantBuffers[index]->UpdateBuffer(renderAPI.GetD3DDeviceContext(), data);
+}
+void MnRenderer::SetTextureCombination(const std::shared_ptr<MnMeshTextureCombination>& spMeshTextureCombination)
+{
+	m_spTextureCombination = spMeshTextureCombination;
+}
+void MnRenderer::ApplyTextures(MnRenderAPI& renderAPI)
+{
+	const std::vector<CPD3DShaderResourceView>& shaderResourceViews = m_spTextureCombination->GetShaderResourceViews();
+	for (int i = 0; i < shaderResourceViews.size(); ++i)
+	{
+		renderAPI.SetShaderResoureView(shaderResourceViews[i],i);
+	}
+
 }
 void MnRenderer::_BindConstantBuffers(MnRenderAPI& renderAPI)
 {

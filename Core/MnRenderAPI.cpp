@@ -68,6 +68,14 @@ void MnRenderAPI::SetConstantBufferPS(const CPD3DBuffer& cpConstantBuffer, UINT 
 {
 	m_pD3DDevice->GetDeviceContext()->PSSetConstantBuffers(index, 1, cpConstantBuffer.GetAddressOf());
 }
+void MnRenderAPI::SetSamplerState(const CPD3DSamplerState& cpSamplerState)
+{
+	m_pD3DDevice->GetDeviceContext()->PSSetSamplers(0, 1, cpSamplerState.GetAddressOf());
+}
+void MnRenderAPI::SetShaderResoureView(const CPD3DShaderResourceView& cpShaderResourceView, UINT slot)
+{
+	m_pD3DDevice->GetDeviceContext()->PSSetShaderResources(slot, 1, cpShaderResourceView.GetAddressOf());
+}
 void MnRenderAPI::SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView, const CPD3DDepthStencilView& cpDepthStencilView)
 {
 	//m_pD3DDevice->GetDeviceContext()->OMSetRenderTargets(0, nullptr, cpDepthStencilView.Get());

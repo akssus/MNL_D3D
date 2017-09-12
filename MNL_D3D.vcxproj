@@ -169,6 +169,7 @@
     <ClCompile Include="Core\MnRasterizerState.cpp" />
     <ClCompile Include="Core\MnRenderAPI.cpp" />
     <ClCompile Include="Core\MnRenderTargetView.cpp" />
+    <ClCompile Include="Core\MnSamplerState.cpp" />
     <ClCompile Include="Core\MnSwapChain.cpp" />
     <ClCompile Include="Core\MnTexture2D.cpp" />
     <ClCompile Include="Core\MnVertexBuffer.cpp" />
@@ -182,6 +183,7 @@
     <ClCompile Include="MnMaterial.cpp" />
     <ClCompile Include="MnMeshData.cpp" />
     <ClCompile Include="MnMeshRenderer.cpp" />
+    <ClCompile Include="MnMeshTextureCombination.cpp" />
     <ClCompile Include="MnMeshVertexType.cpp" />
     <ClCompile Include="MnResourcePool.cpp" />
     <ClCompile Include="MnSkinnedMeshVertexType.cpp" />
@@ -192,7 +194,7 @@
     <ClCompile Include="Utility\MnRenderWindow.cpp" />
     <ClCompile Include="Utility\MnShaderPath.cpp" />
     <ClCompile Include="Utility\MnShaderPathInstance.cpp" />
-    <ClCompile Include="Utility\MnTexture.cpp" />
+    <ClCompile Include="Utility\MnMeshTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicShaderPath.h" />
@@ -215,6 +217,7 @@
     <ClInclude Include="Core\MnRasterizerState.h" />
     <ClInclude Include="Core\MnRenderAPI.h" />
     <ClInclude Include="Core\MnRenderTargetView.h" />
+    <ClInclude Include="Core\MnSamplerState.h" />
     <ClInclude Include="Core\MnSwapChain.h" />
     <ClInclude Include="Core\MnTexture2D.h" />
     <ClInclude Include="Core\MnTypedefs.h" />
@@ -228,6 +231,7 @@
     <ClInclude Include="MnMaterial.h" />
     <ClInclude Include="MnMeshData.h" />
     <ClInclude Include="MnMeshRenderer.h" />
+    <ClInclude Include="MnMeshTextureCombination.h" />
     <ClInclude Include="MnMeshVertexType.h" />
     <ClInclude Include="MnResourcePool.h" />
     <ClInclude Include="MnSkinnedMeshVertexType.h" />
@@ -239,7 +243,7 @@
     <ClInclude Include="Utility\MnRenderWindow.h" />
     <ClInclude Include="Utility\MnShaderPath.h" />
     <ClInclude Include="Utility\MnShaderPathInstance.h" />
-    <ClInclude Include="Utility\MnTexture.h" />
+    <ClInclude Include="Utility\MnMeshTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelshader.hlsl">

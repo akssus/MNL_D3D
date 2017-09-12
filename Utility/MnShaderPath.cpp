@@ -27,6 +27,11 @@ void MnShaderPath::SetInputLayout(const std::shared_ptr<MnInputLayout>& spInputL
 	assert(spInputLayout != nullptr);
 	m_spInputLayout = spInputLayout;
 }
+void MnShaderPath::SetSamplerState(const std::shared_ptr<MnSamplerState>& spSamplerState)
+{
+	assert(spSamplerState != nullptr);
+	m_spSamplerState = spSamplerState;
+}
 const std::shared_ptr<MnVertexShader> MnShaderPath::GetMnVertexShader() const
 {
 	return m_spVertexShader;
@@ -43,4 +48,8 @@ const CPD3DPixelShader MnShaderPath::GetPixelShader() const
 const CPD3DInputLayout MnShaderPath::GetInputLayout() const
 {
 	return m_spInputLayout->GetInputLayout();
+}
+const CPD3DSamplerState MnShaderPath::GetSamplerState() const
+{
+	return m_spSamplerState->GetSamplerState();
 }

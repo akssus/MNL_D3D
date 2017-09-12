@@ -119,9 +119,6 @@
     <ClCompile Include="Utility\MnShaderPath.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\MnTexture.cpp">
-      <Filter>Utility\Source</Filter>
-    </ClCompile>
     <ClCompile Include="BasicShaderPath.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -156,6 +153,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MnStaticMesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnMeshTexture.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MnMeshTextureCombination.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\MnSamplerState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -250,9 +256,6 @@
     <ClInclude Include="Utility\MnShaderPath.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\MnTexture.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Utility\MNL_Utility.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
@@ -293,6 +296,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnStaticMesh.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnMeshTexture.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MnMeshTextureCombination.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MnSamplerState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

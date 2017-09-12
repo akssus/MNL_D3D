@@ -126,6 +126,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	auto meshData = resourcePool.GetMeshData("rico.fbx", "Rico");
 	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
+	auto textureComb = std::make_shared<MnMeshTextureCombination>();
+	auto texture = std::make_shared<MnMeshTexture>();
+	texture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
+	textureComb->AddMeshTexture(texture);
+
+	renderer.SetTextureCombination(textureComb);
+	renderer.ApplyTextures(renderAPI);
+
 	/**************************************************************/
 
 

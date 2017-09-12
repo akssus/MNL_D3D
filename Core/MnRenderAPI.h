@@ -42,6 +42,12 @@ namespace MNL
 		void SetConstantBufferVS(const CPD3DBuffer& cpConstantBuffer, UINT index);
 		void SetConstantBufferPS(const CPD3DBuffer& cpConstantBuffer, UINT index);
 
+		/*
+		Only uses slot 0 for now
+		*/
+		void SetSamplerState(const CPD3DSamplerState& cpSamplerState);
+		void SetShaderResoureView(const CPD3DShaderResourceView& cpShaderResourceView, UINT slot);
+
 		void SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView, const CPD3DDepthStencilView& cpDepthStencilView);
 
 		void SetDepthStencilState(const CPD3DDepthStencilState& cpDepthStencilState);

@@ -18,6 +18,7 @@ namespace MNL
 	typedef Microsoft::WRL::ComPtr<ID3D11Texture2D>			CPD3DTexture2D;
 	typedef Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	CPD3DRenderTargetView;
 
+	typedef Microsoft::WRL::ComPtr<ID3D11SamplerState>		 CPD3DSamplerState;
 	typedef Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> CPD3DShaderResourceView;
 
 	typedef Microsoft::WRL::ComPtr<ID3D11InputLayout>		CPD3DInputLayout;

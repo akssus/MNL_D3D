@@ -21,6 +21,7 @@ struct VS_OUTPUT
 {
     float4 position : SV_POSITION;
 	float3 normal : NORMAL;
+	float2 texCoord : TEXCOORD;
 };
 
 
@@ -37,6 +38,8 @@ VS_OUTPUT VS_MAIN(VS_INPUT input)
 	output.normal = mul(input.normal,worldMatrix);
 	output.normal = mul(output.normal, viewMatrix);
 	output.normal = normalize(output.normal);
+
+	output.texCoord = input.texCoord;
     
     return output;
 }

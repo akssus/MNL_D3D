@@ -74,7 +74,7 @@ HRESULT MnMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)
 		//error log
 		return E_FAIL;
 	}
-	AddConstantBuffer(worldBuffer);
+	_AddConstantBuffer(worldBuffer);
 
 	//make world buffer
 	auto viewProjectionBufferType = std::make_shared<MnConstantBufferType>();
@@ -92,7 +92,7 @@ HRESULT MnMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)
 		//error log
 		return E_FAIL;
 	}
-	AddConstantBuffer(viewProjectionBuffer);
+	_AddConstantBuffer(viewProjectionBuffer);
 
 	return S_OK;
 }

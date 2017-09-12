@@ -19,7 +19,7 @@ HRESULT MnShaderPathInstance::_InitShaders(const CPD3DDevice& cpDevice, const st
 	if (FAILED(result))
 	{
 		//error log
-		return E_FAIL;
+		return result;
 	}
 
 	this->SetVertexShader(vertexShader);
@@ -30,7 +30,7 @@ HRESULT MnShaderPathInstance::_InitShaders(const CPD3DDevice& cpDevice, const st
 	if (FAILED(result))
 	{
 		//error log
-		return E_FAIL;
+		return result;
 	}
 
 	this->SetPixelShader(pixelShader);
@@ -44,10 +44,23 @@ HRESULT MnShaderPathInstance::_InitInputLayout(const CPD3DDevice& cpDevice, cons
 	if (FAILED(result))
 	{
 		//error log
-		return E_FAIL;
+		return result;
 	}
 
 	this->SetInputLayout(inputLayout);
 
+	return S_OK;
+}
+
+HRESULT MnShaderPathInstance::_InitSamplerState(const CPD3DDevice& cpDevice)
+{
+	auto samplerState = std::make_shared<MnSamplerState>();
+	HRESULT result = samplerState->Init(cpDevice);
+	if (FAILED(result))
+	{
+		//error log
+		return result;
+	}
+	this->SetSamplerState(samplerState);
 	return S_OK;
 }

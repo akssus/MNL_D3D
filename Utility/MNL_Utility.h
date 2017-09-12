@@ -4,4 +4,4 @@
 #include "MnShaderPath.h"
 #include "MnMesh.h"
 #include "MnCamera.h"
-#include "MnTexture.h"
+#include "MnMeshTexture.h"

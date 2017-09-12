@@ -1,17 +1,18 @@
 #pragma once
 #include <d3d11.h>
 #include <string>
-#include "../Core\MnTypedefs.h"
 #include "DXTK\WICTextureLoader.h"
+#include "../Core\MnTypedefs.h"
+#include "../Core/MnTexture2D.h"
 
 namespace MNL
 {
-	class MnTexture
+	class MnMeshTexture
 	{
 	public:
-		MnTexture();
-		~MnTexture();
-		HRESULT LoadFromFile(std::wstring textureFileName);
+		MnMeshTexture();
+		~MnMeshTexture();
+		HRESULT LoadFromFile(const CPD3DDevice& cpDevice, const std::wstring& textureFileName);
 
 		const CPD3DShaderResourceView GetShaderResourceView() const;
 

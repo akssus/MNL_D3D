@@ -18,5 +18,9 @@ namespace MNL
 		*/
 		HRESULT _InitShaders(const CPD3DDevice& cpDevice, const std::wstring& vsFileName, const std::wstring& psFileName);
 		HRESULT _InitInputLayout(const CPD3DDevice& cpDevice, const std::shared_ptr<MnVertexShader>& spVertexShader, const std::shared_ptr<MnCustomVertexType>& spVertexType);
+		/*
+		Default sampler state
+		*/
+		HRESULT _InitSamplerState(const CPD3DDevice& cpDevice);
 	};
 }

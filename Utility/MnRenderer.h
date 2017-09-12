@@ -5,6 +5,7 @@
 #include "../Core\MnRenderAPI.h"
 #include "MnShaderPathInstance.h"
 #include "MnMesh.h"
+#include "../MnMeshTextureCombination.h"
 
 namespace MNL
 {
@@ -29,7 +30,7 @@ namespace MNL
 		It does not support more than 2 shaders for now
 		*/
 		void ApplyShaderPaths(MnRenderAPI& renderAPI);
-		void AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer);
+
 		/*
 		Apply all constant buffers to context.
 		To map the data inside, use UpdateConstantBuffer instead
@@ -40,8 +41,11 @@ namespace MNL
 		const std::shared_ptr<MnConstantBuffer> GetConstantBuffer(UINT index) const;
 		void UpdateConstantBuffer(MnRenderAPI& renderAPI, UINT index, const D3D11_SUBRESOURCE_DATA& data);
 
+		void SetTextureCombination(const std::shared_ptr<MnMeshTextureCombination>& spMeshTextureCombination);
+		void ApplyTextures(MnRenderAPI& renderAPI);
 		
 	protected:
+		void _AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer);
 		void _BindConstantBuffers(MnRenderAPI& renderAPI);
 		void _ClearConstantBuffers();
 		void _ResizeConstantBuffers(UINT size);
@@ -49,6 +53,7 @@ namespace MNL
 	private:
 		std::vector<std::shared_ptr<MnShaderPathInstance>> m_shaderPaths;
 		std::vector<std::shared_ptr<MnConstantBuffer>> m_constantBuffers;
+		std::shared_ptr<MnMeshTextureCombination> m_spTextureCombination;
 	};
 
 }
