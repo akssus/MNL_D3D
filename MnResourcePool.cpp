@@ -220,6 +220,11 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 			aiString materialName;
 			material->Get(AI_MATKEY_NAME, materialName);
 			submesh.materialName = materialName.C_Str();
+			material->Get(AI_MATKEY_COLOR_DIFFUSE, submesh.material.diffuse);
+			material->Get(AI_MATKEY_COLOR_AMBIENT, submesh.material.ambient);
+			material->Get(AI_MATKEY_COLOR_EMISSIVE, submesh.material.emissive);
+			material->Get(AI_MATKEY_COLOR_SPECULAR, submesh.material.specular);
+			material->Get(AI_MATKEY_SHININESS_STRENGTH, submesh.material.specularPower);
 		}
 		//init vertex and index buffer
 		_InitBuffers(cpDevice, meshData, vertexType, vertexArray, totalVertexCount, indexArray, totalIndexCount);

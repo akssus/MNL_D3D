@@ -1,6 +1,8 @@
 #pragma once
 #include <d3d11.h>
 #include "Utility\MnRenderer.h"
+#include "MnLightSource.h"
+#include "MnMaterial.h"
 
 namespace MNL
 {
@@ -32,13 +34,17 @@ namespace MNL
 		{
 			DirectX::SimpleMath::Vector3 lightPos;
 			DirectX::SimpleMath::Vector3 lightDir;
-			DirectX::SimpleMath::Vector2 padding;
+			UINT lightType;
+			float padding;
 		};
 		struct _MaterialBufferType
 		{
 			DirectX::SimpleMath::Vector4 diffuse;
 			DirectX::SimpleMath::Vector4 ambient;
+			DirectX::SimpleMath::Vector4 emissive;
 			DirectX::SimpleMath::Vector4 specular;
+			float specularPower;
+			DirectX::SimpleMath::Vector3 padding;
 		};
 	public:
 		MnMeshRenderer();
@@ -51,6 +57,17 @@ namespace MNL
 		void SetViewProjectionBuffer(MnRenderAPI& renderAPI,
 			const DirectX::SimpleMath::Matrix& matView,
 			const DirectX::SimpleMath::Matrix& matProjection);
+
+		void SetLightBuffer(MnRenderAPI& renderAPI, const DirectX::SimpleMath::Vector3& lightPos, const DirectX::SimpleMath::Vector3& lightDir, MN_LIGHT_TYPE lightType);
+		void SetLightBuffer(MnRenderAPI& renderAPI, const MnLightSource& light);
+
+		void SetMaterial(MnRenderAPI& renderAPI,
+			const DirectX::SimpleMath::Vector4& diffuse,
+			const DirectX::SimpleMath::Vector4& ambient,
+			const DirectX::SimpleMath::Vector4& emissive,
+			const DirectX::SimpleMath::Vector4& specular,
+			float specularPower);
+		void SetMaterial(MnRenderAPI& renderAPI, const MnMaterial& material);
 
 	private:
 		HRESULT _InitConstantBuffers(const CPD3DDevice& cpDevice);

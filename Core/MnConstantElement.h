@@ -11,6 +11,7 @@ namespace MNL
 		MN_CONSTANT_ELEMENT_TYPE_FLOAT3,
 		MN_CONSTANT_ELEMENT_TYPE_FLOAT4,
 		MN_CONSTANT_ELEMENT_TYPE_MATRIX,
+		MN_CONSTANT_ELEMENT_TYPE_UINT,
 	};
 	/*
 	@function represents one data type in cbuffer

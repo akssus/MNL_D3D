@@ -53,6 +53,44 @@ void MnMeshRenderer::SetViewProjectionBuffer(MnRenderAPI& renderAPI,
 
 	UpdateConstantBuffer(renderAPI, _CONST_BUF_VIEWPROJECTION, data);
 }
+void MnMeshRenderer::SetLightBuffer(MnRenderAPI& renderAPI, const DirectX::SimpleMath::Vector3& lightPos, const DirectX::SimpleMath::Vector3& lightDir, MN_LIGHT_TYPE lightType)
+{
+	_LightBufferType bufferType;
+	bufferType.lightPos = lightPos;
+	bufferType.lightDir = lightDir;
+	bufferType.lightType = lightType;
+	bufferType.padding = 0.0f;
+
+	D3D11_SUBRESOURCE_DATA data;
+	data.pSysMem = &bufferType;
+	data.SysMemPitch = 0;
+	data.SysMemSlicePitch = 0;
+
+	UpdateConstantBuffer(renderAPI, _CONST_BUF_LIGHT, data);
+}
+void MnMeshRenderer::SetLightBuffer(MnRenderAPI& renderAPI, const MnLightSource& light)
+{
+	SetLightBuffer(renderAPI,light.GetPosition(), light.GetDirection(), light.GetLightType());
+}
+
+void MnMeshRenderer::SetMaterial(MnRenderAPI& renderAPI,
+	const DirectX::SimpleMath::Vector4& diffuse,
+	const DirectX::SimpleMath::Vector4& ambient,
+	const DirectX::SimpleMath::Vector4& emissive,
+	const DirectX::SimpleMath::Vector4& specular,
+	float specularPower)
+{
+	_MaterialBufferType bufferType;
+	bufferType.diffuse = diffuse;
+	bufferType.ambient = ambient;
+	bufferType.emissive = emissive;
+	bufferType.specular = specular;
+	bufferType.specularPower = specularPower;
+}
+void MnMeshRenderer::SetMaterial(MnRenderAPI& renderAPI, const MnMaterial& material)
+{
+
+}
 
 HRESULT MnMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)
 {

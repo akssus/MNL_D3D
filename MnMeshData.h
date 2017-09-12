@@ -4,9 +4,9 @@
 #include <memory>
 #include <d3d11.h>
 #include "DXTK\SimpleMath.h"
-#include "MnGenericVertexStruct.h"
 #include "Core/MnVertexBuffer.h"
 #include "Core/MnIndexBuffer.h"
+#include "MnMaterial.h"
 namespace MNL
 {
 	/*
@@ -18,6 +18,7 @@ namespace MNL
 		std::string materialName;
 		UINT indexOffset;
 		UINT indexCount;
+		MnMaterial material;
 	};
 	/*
 	A mesh data doesn't contain indices, only vertices. 

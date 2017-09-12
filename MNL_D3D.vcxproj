@@ -178,7 +178,6 @@
     <ClCompile Include="Core\MnViewport.cpp" />
     <ClCompile Include="Core\MnWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MnGenericVertexStruct.cpp" />
     <ClCompile Include="MnLightSource.cpp" />
     <ClCompile Include="MnMaterial.cpp" />
     <ClCompile Include="MnMeshData.cpp" />
@@ -226,7 +225,6 @@
     <ClInclude Include="Core\MnVideoAdapter.h" />
     <ClInclude Include="Core\MnViewport.h" />
     <ClInclude Include="Core\MnWindow.h" />
-    <ClInclude Include="MnGenericVertexStruct.h" />
     <ClInclude Include="MnLightSource.h" />
     <ClInclude Include="MnMaterial.h" />
     <ClInclude Include="MnMeshData.h" />

@@ -50,6 +50,7 @@ UINT MnConstantElement::_GetByteSizeOf(const MnConstantElementType& constantElem
 	case MN_CONSTANT_ELEMENT_TYPE_FLOAT3: byteSize = sizeof(float)*3;  break;
 	case MN_CONSTANT_ELEMENT_TYPE_FLOAT4: byteSize = sizeof(float)*4;  break;
 	case MN_CONSTANT_ELEMENT_TYPE_MATRIX: byteSize = sizeof(float)*16;  break;
+	case MN_CONSTANT_ELEMENT_TYPE_UINT: byteSize = sizeof(UINT);  break;
 	}
 	return byteSize;
 }

@@ -10,9 +10,10 @@ namespace MNL
 		MnMaterial();
 		~MnMaterial();
 
-		DirectX::SimpleMath::Vector4 m_diffuse;
-		DirectX::SimpleMath::Vector4 m_ambient;
-		DirectX::SimpleMath::Vector4 m_specular;
-
+		DirectX::SimpleMath::Vector4 diffuse;
+		DirectX::SimpleMath::Vector4 ambient;
+		DirectX::SimpleMath::Vector4 emissive;
+		DirectX::SimpleMath::Vector4 specular;
+		float specularPower;
 	};
 }

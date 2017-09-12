@@ -143,9 +143,6 @@
     <ClCompile Include="MnSkinnedMeshVertexType.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MnGenericVertexStruct.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="MnMaterial.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -284,9 +281,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnSkinnedMeshVertexType.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MnGenericVertexStruct.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnMaterial.h">

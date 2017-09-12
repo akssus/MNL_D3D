@@ -13,7 +13,5 @@ namespace MNL
 		~BasicShaderPath();
 		HRESULT Init(const CPD3DDevice& cpDevice,const std::shared_ptr<MnCustomVertexType>& spVertexType);
 
-	private:
-		//MnConstantBuffer m_transformBuffer;
 	};
 }
