@@ -126,14 +126,16 @@ void MnRenderWindow::SetWindowed()
 	m_swapChain.ToggleFullscreen(false);
 }
 
-void MnRenderWindow::SwapBuffers()
+HRESULT MnRenderWindow::SwapBuffers()
 {
+	HRESULT result = S_OK;
 	if (m_swapChain.IsVsync())
 	{
-		m_swapChain.GetSwapChain()->Present(1, 0);
+		result = m_swapChain.GetSwapChain()->Present(1, 0);
 	}
 	else
 	{
-		m_swapChain.GetSwapChain()->Present(0, 0);
+		result = m_swapChain.GetSwapChain()->Present(0, 0);
 	}
+	return result;
 }

@@ -52,7 +52,10 @@ namespace MNL
 		void SetFullscreen();
 		void SetWindowed();
 		
-		void SwapBuffers();
+		/*
+		@return DXGI_ERROR_DEVICE_REMOVED or DXGI_ERROR_DEVICE_RESET if device lost event happen
+		*/
+		HRESULT SwapBuffers();
 
 	private:
 		HRESULT _InitWindow(HINSTANCE hInstance,

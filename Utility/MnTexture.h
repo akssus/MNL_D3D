@@ -2,6 +2,7 @@
 #include <d3d11.h>
 #include <string>
 #include "../Core\MnTypedefs.h"
+#include "DXTK\WICTextureLoader.h"
 
 namespace MNL
 {
