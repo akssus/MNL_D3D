@@ -22,7 +22,7 @@ HRESULT MnMeshRenderer::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<
 	return S_OK;
 }
 
-void MnMeshRenderer::SetWorldBuffer(const CPD3DDeviceContext& cpDeviceContext,
+void MnMeshRenderer::SetWorldBuffer(MnRenderAPI& renderAPI,
 	const DirectX::SimpleMath::Matrix& matWorld)
 {
 	//row major to column major
@@ -34,10 +34,10 @@ void MnMeshRenderer::SetWorldBuffer(const CPD3DDeviceContext& cpDeviceContext,
 	data.SysMemPitch = 0;
 	data.SysMemSlicePitch = 0;
 
-	UpdateConstantBuffer(cpDeviceContext, _CONST_BUF_WORLD, data);
+	UpdateConstantBuffer(renderAPI, _CONST_BUF_WORLD, data);
 }
 
-void MnMeshRenderer::SetViewProjectionBuffer(const CPD3DDeviceContext& cpDeviceContext,
+void MnMeshRenderer::SetViewProjectionBuffer(MnRenderAPI& renderAPI,
 	const DirectX::SimpleMath::Matrix& matView,
 	const DirectX::SimpleMath::Matrix& matProjection)
 {
@@ -51,7 +51,7 @@ void MnMeshRenderer::SetViewProjectionBuffer(const CPD3DDeviceContext& cpDeviceC
 	data.SysMemPitch = 0;
 	data.SysMemSlicePitch = 0;
 
-	UpdateConstantBuffer(cpDeviceContext, _CONST_BUF_VIEWPROJECTION, data);
+	UpdateConstantBuffer(renderAPI, _CONST_BUF_VIEWPROJECTION, data);
 }
 
 HRESULT MnMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)

@@ -63,7 +63,8 @@ namespace MNL
 		void DrawIndexed(UINT indexCount, UINT indexOffset, UINT vertexBase);
 
 	public:
-		const std::shared_ptr<MnD3DDevice> GetD3DDevice() const;
+		const CPD3DDevice GetD3DDevice() const;
+		const CPD3DDeviceContext GetD3DDeviceContext() const;
 
 	private:		
 		std::shared_ptr<MnD3DDevice>		m_pD3DDevice;

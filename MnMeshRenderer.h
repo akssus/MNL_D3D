@@ -45,10 +45,10 @@ namespace MNL
 		~MnMeshRenderer();
 		HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnCustomVertexType>& spVertexType);
 
-		void SetWorldBuffer(const CPD3DDeviceContext& cpDeviceContext, 
+		void SetWorldBuffer(MnRenderAPI& renderAPI, 
 			const DirectX::SimpleMath::Matrix& matWorld);
 		
-		void SetViewProjectionBuffer(const CPD3DDeviceContext& cpDeviceContext,
+		void SetViewProjectionBuffer(MnRenderAPI& renderAPI,
 			const DirectX::SimpleMath::Matrix& matView,
 			const DirectX::SimpleMath::Matrix& matProjection);
 

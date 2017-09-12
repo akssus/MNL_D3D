@@ -110,7 +110,11 @@ void MnRenderAPI::DrawIndexed(UINT indexCount,UINT indexOffset, UINT vertexBase)
 /***************************
 *Getters
 ****************************/
-const std::shared_ptr<MnD3DDevice> MnRenderAPI::GetD3DDevice() const
+const CPD3DDevice MnRenderAPI::GetD3DDevice() const
 {
-	return m_pD3DDevice;
+	return m_pD3DDevice->GetDevice();
+}
+const CPD3DDeviceContext MnRenderAPI::GetD3DDeviceContext() const
+{
+	return m_pD3DDevice->GetDeviceContext();
 }

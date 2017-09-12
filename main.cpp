@@ -34,7 +34,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	MNL::MnRenderWindow renderWindow;
 	result = renderWindow.Init(hInstance, nCmdShow, L"MNL", L"MNL", 100, 100, 1024, 768, WndProc,
-		hardware, true, 1, 60, true, true, 1, renderAPI.GetD3DDevice()->GetDevice(), renderAPI.GetD3DDevice()->GetDeviceContext());
+		hardware, true, 1, 60, true, true, 1, renderAPI.GetD3DDevice(), renderAPI.GetD3DDeviceContext());
 	if (FAILED(result))
 	{
 		//error msg
@@ -42,7 +42,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	//init depth stencil state
 	MNL::MnDepthStencilState depthStencilState;
-	result = depthStencilState.Init(renderAPI.GetD3DDevice()->GetDevice(), true, true);
+	result = depthStencilState.Init(renderAPI.GetD3DDevice(), true, true);
 	if (FAILED(result))
 	{
 		//error msg
@@ -52,7 +52,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	//init depth stencil buffer
 	MNL::MnDepthStencilBuffer depthStencilBuffer;
-	result = depthStencilBuffer.Init(renderAPI.GetD3DDevice()->GetDevice(), 1024, 768);
+	result = depthStencilBuffer.Init(renderAPI.GetD3DDevice(), 1024, 768);
 	if (FAILED(result))
 	{
 		//error msg
@@ -63,7 +63,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	//init rasterizer state
 	MNL::MnRasterizerState rasterizerState;
-	result = rasterizerState.Init(renderAPI.GetD3DDevice()->GetDevice(), D3D11_FILL_SOLID, true);
+	result = rasterizerState.Init(renderAPI.GetD3DDevice(), D3D11_FILL_SOLID, true);
 	if (FAILED(result))
 	{
 		//error msg
@@ -86,7 +86,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	auto vertexType = std::make_shared<MnMeshVertexType>();
 
 	auto shaderPath = std::make_shared<BasicShaderPath>();
-	result = shaderPath->Init(renderAPI.GetD3DDevice()->GetDevice(),vertexType);
+	result = shaderPath->Init(renderAPI.GetD3DDevice(),vertexType);
 	if (FAILED(result))
 	{
 		//error msg
@@ -94,7 +94,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 
 	MNL::MnMeshRenderer renderer;
-	result = renderer.Init(renderAPI.GetD3DDevice()->GetDevice(), vertexType);
+	result = renderer.Init(renderAPI.GetD3DDevice(), vertexType);
 	if (FAILED(result))
 	{
 		//error msg
@@ -120,11 +120,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice()->GetDevice(),"rico.fbx",vertexType);
+	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(),"rico.fbx",vertexType);
 
 	auto mesh = std::make_shared<MnStaticMesh>();
 	auto meshData = resourcePool.GetMeshData("rico.fbx", "Rico");
-	mesh->Init(renderAPI.GetD3DDevice()->GetDevice(), meshData);
+	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
 	/**************************************************************/
 
@@ -148,8 +148,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			matWorld = mesh->GetTransform();
 			matWorld = matWorld * Matrix::CreateRotationY(rad);
 			matWorld = matWorld * Matrix::CreateTranslation(0.0f, -200.0f, 0.0f);
-			renderer.SetWorldBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), matWorld);
-			renderer.SetViewProjectionBuffer(renderAPI.GetD3DDevice()->GetDeviceContext(), camera.GetViewMatrix(), camera.GetProjectionMatrix());
+			renderer.SetWorldBuffer(renderAPI, matWorld);
+			renderer.SetViewProjectionBuffer(renderAPI, camera.GetViewMatrix(), camera.GetProjectionMatrix());
 			renderer.RenderMesh(renderAPI, mesh);
 
 			renderWindow.SwapBuffers();
