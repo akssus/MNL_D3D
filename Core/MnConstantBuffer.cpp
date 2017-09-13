@@ -13,7 +13,7 @@ MnConstantBuffer::~MnConstantBuffer()
 }
 
 
-HRESULT MnConstantBuffer::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnConstantBufferType>& constantBufferType, UINT index, const MnConstantBufferBelong& constantBufferBelong)
+HRESULT MnConstantBuffer::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnConstantBufferType>& constantBufferType, UINT index, const MN_CONSTANT_BUFFER_BELONG& constantBufferBelong)
 {
 	m_index = index;
 	m_belong = constantBufferBelong;
@@ -55,7 +55,7 @@ UINT MnConstantBuffer::GetIndex() const
 	return m_index;
 }
 
-MnConstantBufferBelong MnConstantBuffer::GetBelong() const
+MN_CONSTANT_BUFFER_BELONG MnConstantBuffer::GetBelong() const
 {
 	return m_belong;
 }

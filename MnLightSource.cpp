@@ -45,7 +45,10 @@ const DirectX::SimpleMath::Vector3& MnLightSource::GetDirection() const
 {
 	return m_direction;
 }
-
+void MnLightSource::SetLightType(MN_LIGHT_TYPE lightType)
+{
+	m_lightType = lightType;
+}
 const MN_LIGHT_TYPE MnLightSource::GetLightType() const
 {
 	return m_lightType;

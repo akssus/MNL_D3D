@@ -5,7 +5,6 @@
 #include "Core\MnVertexBuffer.h"
 #include "Core\MnIndexBuffer.h"
 #include "Core\MnCustomVertexType.h"
-#include "MnGenericVertexStruct.h"
 #include "MnMeshVertexType.h"
 #include "Utility\MnMesh.h"
 

@@ -2,6 +2,7 @@
 
 #include <d3d11.h>
 #include <memory>
+#include <map>
 #include "../Core\MnRenderAPI.h"
 #include "MnShaderPathInstance.h"
 #include "MnMesh.h"
@@ -48,12 +49,14 @@ namespace MNL
 		void _AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spConstantBuffer);
 		void _BindConstantBuffers(MnRenderAPI& renderAPI);
 		void _ClearConstantBuffers();
-		void _ResizeConstantBuffers(UINT size);
 
 	private:
 		std::vector<std::shared_ptr<MnShaderPathInstance>> m_shaderPaths;
 		std::vector<std::shared_ptr<MnConstantBuffer>> m_constantBuffers;
 		std::shared_ptr<MnMeshTextureCombination> m_spTextureCombination;
+		std::map<UINT, UINT> m_mapIndexToSlot;
+		UINT m_numVsConstantBuffers;
+		UINT m_numPsConstantBuffers;
 	};
 
 }

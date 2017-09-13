@@ -23,6 +23,7 @@ namespace MNL
 		void SetDirection(float x, float y, float z);
 		const DirectX::SimpleMath::Vector3& GetDirection() const;
 
+		void SetLightType(MN_LIGHT_TYPE lightType);
 		const MN_LIGHT_TYPE GetLightType() const;
 
 	private:

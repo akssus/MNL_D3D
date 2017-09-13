@@ -15,10 +15,8 @@ namespace MNL
 	struct MnSubMesh
 	{
 		std::string subMeshName;
-		std::string materialName;
 		UINT indexOffset;
 		UINT indexCount;
-		MnMaterial material;
 	};
 	/*
 	A mesh data doesn't contain indices, only vertices. 

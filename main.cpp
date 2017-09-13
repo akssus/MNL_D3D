@@ -134,6 +134,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	renderer.SetTextureCombination(textureComb);
 	renderer.ApplyTextures(renderAPI);
 
+	auto light = std::make_shared<MnLightSource>();
+	light->SetPosition(0.0f, 0.0f, 0.0f);
+	light->SetDirection(0.0f, 0.0f, 1.0f);
+	light->SetLightType(MN_LIGHT_DIRECTIONAL);
+	
+	//white plastic
+	auto material = std::make_shared<MnMaterial>();
+	material->ambient = Vector4(0.1f, 0.1f, 0.1f, 0.1f);
+	material->diffuse = Vector4(0.55f, 0.55f, 0.55f, 1.0f);
+	material->specular = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+	material->specularPower = 32.0f;
+
 	/**************************************************************/
 
 
@@ -158,6 +170,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			matWorld = matWorld * Matrix::CreateTranslation(0.0f, -200.0f, 0.0f);
 			renderer.SetWorldBuffer(renderAPI, matWorld);
 			renderer.SetViewProjectionBuffer(renderAPI, camera.GetViewMatrix(), camera.GetProjectionMatrix());
+			renderer.SetLightBuffer(renderAPI, light);
+			renderer.SetMaterial(renderAPI, material);
 			renderer.RenderMesh(renderAPI, mesh);
 
 			renderWindow.SwapBuffers();

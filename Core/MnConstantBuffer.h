@@ -7,11 +7,11 @@
 
 namespace MNL
 {
-	enum MnConstantBufferBelong
+	enum MN_CONSTANT_BUFFER_BELONG
 	{
 		Mn_CONSTANT_BUFFER_BELONG_NONE,
 		MN_CONSTANT_BUFFER_BELONG_VS,
-		MN_CONSTANT_BUFFER_BELONG_PS
+		MN_CONSTANT_BUFFER_BELONG_PS,
 	};
 	/*
 	MnConstantBuffer only allow to use UpdateSubresource, usage is default, constantBuffer size is automatically padded
@@ -22,7 +22,7 @@ namespace MNL
 		MnConstantBuffer();
 		~MnConstantBuffer();
 		
-		HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnConstantBufferType>& constantBufferType, UINT index, const MnConstantBufferBelong& constantBufferBelong);
+		HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnConstantBufferType>& constantBufferType, UINT index, const MN_CONSTANT_BUFFER_BELONG& constantBufferBelong);
 		/**
 		* @Usage 
 		* Create D3D11_SUBRESOURCE_DATA, 
@@ -34,11 +34,11 @@ namespace MNL
 		const CPD3DBuffer GetBuffer() const;
 		UINT GetBufferByteSize() const;
 		UINT GetIndex() const;
-		MnConstantBufferBelong GetBelong() const;
+		MN_CONSTANT_BUFFER_BELONG GetBelong() const;
 
 	private:
 		MnGpuBuffer m_buffer;
 		UINT m_index;
-		MnConstantBufferBelong m_belong;
+		MN_CONSTANT_BUFFER_BELONG m_belong;
 	};
 }

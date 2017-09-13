@@ -6,17 +6,23 @@
 
 namespace MNL
 {
+	/*
+	It contains world, view, projectoin matrix, light, material.
+	나중에 이것들 전부 컴포넌트화 시킬것
+	*/
 	class MnMeshRenderer : public MnRenderer
 	{
 	private:
 		/*
 		This enum value equals constance buffer's index
+		Must initialize in order
 		*/
 		enum _CONST_BUFFERS
 		{
 			_CONST_BUF_WORLD,
 			_CONST_BUF_VIEWPROJECTION,
-			_CONST_BUF_LIGHT,
+			_CONST_BUF_LIGHT_VS,
+			_CONST_BUF_LIGHT_PS,
 			_CONST_BUF_MATERIAL,
 			_CONST_BUF_TOTAL
 		};
@@ -32,10 +38,10 @@ namespace MNL
 		};
 		struct _LightBufferType
 		{
-			DirectX::SimpleMath::Vector3 lightPos;
-			DirectX::SimpleMath::Vector3 lightDir;
+			DirectX::SimpleMath::Vector4 lightPos;
+			DirectX::SimpleMath::Vector4 lightDir;
 			UINT lightType;
-			float padding;
+			DirectX::SimpleMath::Vector3  padding;
 		};
 		struct _MaterialBufferType
 		{
@@ -59,7 +65,7 @@ namespace MNL
 			const DirectX::SimpleMath::Matrix& matProjection);
 
 		void SetLightBuffer(MnRenderAPI& renderAPI, const DirectX::SimpleMath::Vector3& lightPos, const DirectX::SimpleMath::Vector3& lightDir, MN_LIGHT_TYPE lightType);
-		void SetLightBuffer(MnRenderAPI& renderAPI, const MnLightSource& light);
+		void SetLightBuffer(MnRenderAPI& renderAPI, const std::shared_ptr<MnLightSource> spLight);
 
 		void SetMaterial(MnRenderAPI& renderAPI,
 			const DirectX::SimpleMath::Vector4& diffuse,
@@ -67,9 +73,13 @@ namespace MNL
 			const DirectX::SimpleMath::Vector4& emissive,
 			const DirectX::SimpleMath::Vector4& specular,
 			float specularPower);
-		void SetMaterial(MnRenderAPI& renderAPI, const MnMaterial& material);
+		void SetMaterial(MnRenderAPI& renderAPI, const std::shared_ptr<MnMaterial> spMaterial);
 
 	private:
 		HRESULT _InitConstantBuffers(const CPD3DDevice& cpDevice);
+		HRESULT _InitWolrdBuffer(const CPD3DDevice& cpDevice);
+		HRESULT _InitViewProjectionBuffer(const CPD3DDevice& cpDevice);
+		HRESULT _InitLightBuffer(const CPD3DDevice& cpDevice);
+		HRESULT _InitMaterialBuffer(const CPD3DDevice& cpDevice);
 	};
 }

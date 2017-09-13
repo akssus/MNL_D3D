@@ -21,14 +21,12 @@ namespace MNL
 			UINT dataSize;
 		};
 		/*
-		A model file equals to a model package
+		A model file equals to a model package. Only read meshes and ignores lights and materials
 		*/
 		struct _ModelPackage
 		{
 			std::string m_packageName;
 			std::vector<std::shared_ptr<MnMeshData> > m_lstSpMeshes;
-			//std::vector<std::shared_ptr<MnLightSource> > m_lstSpLights;
-			std::vector<std::shared_ptr<MnMaterial> > m_lstSpMaterials;
 		};
 
 	public:

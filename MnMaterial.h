@@ -4,6 +4,9 @@
 
 namespace MNL
 {
+	/*
+	Materials are not producted by model files. Just make some fixed material datas with factory then use them.
+	*/
 	class MnMaterial
 	{
 	public:
