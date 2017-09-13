@@ -1,5 +1,5 @@
 #pragma once
-#include "Core\MnCustomVertexType.h"
+#include "../Core\MnCustomVertexType.h"
 
 namespace MNL
 {

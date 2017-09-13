@@ -6,7 +6,7 @@
 #include "../Core\MnRenderAPI.h"
 #include "MnShaderPathInstance.h"
 #include "MnMesh.h"
-#include "../MnMeshTextureCombination.h"
+#include "MnMeshTextureCombination.h"
 
 namespace MNL
 {

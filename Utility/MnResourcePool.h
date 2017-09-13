@@ -3,12 +3,12 @@
 #include <map>
 #include <memory>
 #include "assimp\scene.h"
-#include "Core/MnTypedefs.h"
-#include "Utility\MnMesh.h"
-#include "Utility/MnMesh.h"
-#include "MnMeshData.h"
-#include "MnMaterial.h"
-#include "MnLightSource.h"
+#include "../Core/MnTypedefs.h"
+#include "../Render\MnMesh.h"
+#include "../Render/MnMesh.h"
+#include "../Render/MnMeshData.h"
+#include "../Render/MnMaterial.h"
+#include "../Render/MnLightSource.h"
 
 
 namespace MNL

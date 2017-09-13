@@ -3,12 +3,9 @@
 #include <memory>
 #include "DXTK\SimpleMath.h"
 #include "Core\MNL_Core.h"
-#include "Utility\MNL_Utility.h"
+#include "Utility/MNL_Utility.h"
+#include "Render\MNL_Render.h"
 #include "BasicShaderPath.h"
-#include "MnResourcePool.h"
-#include "MnStaticMesh.h"
-#include "MnMeshVertexType.h"
-#include "MnMeshRenderer.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;

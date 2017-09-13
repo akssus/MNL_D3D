@@ -1,6 +1,6 @@
 #pragma once
 #include <d3d11.h>
-#include "Utility\MnRenderer.h"
+#include "MnRenderer.h"
 #include "MnLightSource.h"
 #include "MnMaterial.h"
 

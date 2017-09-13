@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include "DXTK/SimpleMath.h"
-#include "Core\MnCustomVertexType.h"
+#include "../Core\MnCustomVertexType.h"
 
 namespace MNL
 {

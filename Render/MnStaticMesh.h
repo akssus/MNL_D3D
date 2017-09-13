@@ -1,12 +1,13 @@
 #pragma once
 #include <d3d11.h>
 #include <string>
-#include "Core\MnTypedefs.h"
-#include "Core\MnVertexBuffer.h"
-#include "Core\MnIndexBuffer.h"
-#include "Core\MnCustomVertexType.h"
+#include "../Core\MnTypedefs.h"
+#include "../Core\MnVertexBuffer.h"
+#include "../Core\MnIndexBuffer.h"
+#include "../Core\MnCustomVertexType.h"
 #include "MnMeshVertexType.h"
-#include "Utility\MnMesh.h"
+#include "MnMeshData.h"
+#include "MnMesh.h"
 
 namespace MNL
 {

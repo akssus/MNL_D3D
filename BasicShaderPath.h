@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include "DXTK/SimpleMath.h"
-#include "Utility\MnShaderPathInstance.h"
+#include "Render\MnShaderPathInstance.h"
 #include "Core/MnConstantBuffer.h"
 
 namespace MNL

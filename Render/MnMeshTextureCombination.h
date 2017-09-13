@@ -1,10 +1,13 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "Utility/MnMeshTexture.h"
+#include "MnMeshTexture.h"
 
 namespace MNL
 {
+	/*
+	Provides serialized shader resource views
+	*/
 	class MnMeshTextureCombination
 	{
 	public:

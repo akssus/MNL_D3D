@@ -18,17 +18,26 @@
     <Filter Include="Core\Header">
       <UniqueIdentifier>{af25d8bd-23c5-4750-898c-e0b0effa8643}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utility">
-      <UniqueIdentifier>{ed716029-c0d0-471a-96b4-6b911f1b34f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility\Header">
-      <UniqueIdentifier>{04703886-44d2-4dd8-9e0a-a196a38f271c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility\Source">
-      <UniqueIdentifier>{52d83bd1-baed-4dab-8965-06e37d4a1aa0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Shader">
       <UniqueIdentifier>{24eb3e4c-eb67-4307-8e12-592872f84899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{ed716029-c0d0-471a-96b4-6b911f1b34f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Header">
+      <UniqueIdentifier>{04703886-44d2-4dd8-9e0a-a196a38f271c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Source">
+      <UniqueIdentifier>{52d83bd1-baed-4dab-8965-06e37d4a1aa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{1f2aeb1a-da46-4c66-9813-10a8c7fddb13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Header">
+      <UniqueIdentifier>{6b7327e2-a504-4e1d-94a7-c0fc6e4dcce1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Source">
+      <UniqueIdentifier>{6d03ddd1-22a2-44bf-9a61-733d7769e16f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +86,6 @@
     <ClCompile Include="Core\MnRenderAPI.cpp">
       <Filter>Core\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Core\MnRenderTargetView.cpp">
-      <Filter>Core\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Core\MnSwapChain.cpp">
       <Filter>Core\Source</Filter>
     </ClCompile>
@@ -107,59 +113,62 @@
     <ClCompile Include="Core\MnConstantBufferType.cpp">
       <Filter>Core\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\MnCamera.cpp">
-      <Filter>Utility\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\MnRenderer.cpp">
-      <Filter>Utility\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\MnRenderWindow.cpp">
-      <Filter>Utility\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\MnShaderPath.cpp">
-      <Filter>Utility\Source</Filter>
-    </ClCompile>
     <ClCompile Include="BasicShaderPath.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MnResourcePool.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Core\MnRenderTargetView.cpp">
+      <Filter>Core\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\MnMesh.cpp">
-      <Filter>Utility\Source</Filter>
+    <ClCompile Include="Render\MnCamera.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnMeshRenderer.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnLightSource.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\MnShaderPathInstance.cpp">
-      <Filter>Utility\Source</Filter>
+    <ClCompile Include="Render\MnMaterial.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnMeshData.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnMesh.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnMeshVertexType.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnMeshData.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnSkinnedMeshVertexType.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnMeshRenderer.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnMaterial.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnMeshTexture.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnLightSource.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnMeshTextureCombination.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnStaticMesh.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnMeshVertexType.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\MnMeshTexture.cpp">
-      <Filter>Utility\Source</Filter>
+    <ClCompile Include="Render\MnRenderer.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnMeshTextureCombination.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnRenderWindow.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnShaderPath.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnShaderPathInstance.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnStaticMesh.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
     <ClCompile Include="Core\MnSamplerState.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnResourcePool.cpp">
+      <Filter>Utility\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,65 +250,68 @@
     <ClInclude Include="Core\MnConstantBufferType.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\MnCamera.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\MnRenderer.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\MnRenderWindow.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\MnShaderPath.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\MNL_Utility.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Core\MNL_Core.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
     <ClInclude Include="BasicShaderPath.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MnResourcePool.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnCamera.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\MnMesh.h">
-      <Filter>Utility\Header</Filter>
+    <ClInclude Include="Render\MnLightSource.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnMeshRenderer.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnMaterial.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\MnShaderPathInstance.h">
-      <Filter>Utility\Header</Filter>
+    <ClInclude Include="Render\MnMesh.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnMeshData.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnMeshData.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnMeshVertexType.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnMeshRenderer.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnSkinnedMeshVertexType.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnMeshTexture.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnMaterial.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnMeshTextureCombination.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnLightSource.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnMeshVertexType.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnStaticMesh.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnRenderer.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\MnMeshTexture.h">
-      <Filter>Utility\Header</Filter>
+    <ClInclude Include="Render\MnRenderWindow.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnMeshTextureCombination.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnShaderPath.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnShaderPathInstance.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnSkinnedMeshVertexType.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnStaticMesh.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MNL_Render.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
     <ClInclude Include="Core\MnSamplerState.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnResourcePool.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MNL_Utility.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@
 #include "../Core\MnVertexBuffer.h"
 #include "../Core\MnIndexBuffer.h"
 #include "../Core\MnCustomVertexType.h"
-#include "../MnMeshData.h"
+#include "MnMeshData.h"
 
 namespace MNL
 {

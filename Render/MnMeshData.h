@@ -4,8 +4,8 @@
 #include <memory>
 #include <d3d11.h>
 #include "DXTK\SimpleMath.h"
-#include "Core/MnVertexBuffer.h"
-#include "Core/MnIndexBuffer.h"
+#include "../Core/MnVertexBuffer.h"
+#include "../Core/MnIndexBuffer.h"
 #include "MnMaterial.h"
 namespace MNL
 {
