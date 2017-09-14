@@ -13,6 +13,9 @@ BasicShaderPath::~BasicShaderPath()
 {
 }
 
+/*
+I should replace this process to data driven with factory pattern
+*/
 HRESULT BasicShaderPath::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnCustomVertexType>& spVertexType)
 {
 	HRESULT result = _InitShaders(cpDevice,L"vertexshader.hlsl",L"pixelshader.hlsl");

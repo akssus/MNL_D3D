@@ -125,31 +125,64 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 	meshData->SetTransform(DirectX::SimpleMath::Matrix((float*)&(transform.Transpose())));
 
 	//calculate total number of index and vertex
+	UINT totalVertexCount = _GetNodesTotalVertexCount(scene, node);
+	UINT totalIndexCount = _GetNodesTotalIndexCount(scene, node);
+
+	std::vector<float> vertexArray;
+	_ReadMeshVertices(scene,node,vertexType,totalVertexCount,vertexArray);
+
+	std::vector<UINT> indexArray;
+	_ReadMeshIndices(scene, node, meshData, totalIndexCount, indexArray);
+
+	for (int i = 0; i < node->mNumMeshes; ++i)
+	{
+		UINT meshIndex = node->mMeshes[i];
+		const aiMesh* mesh = scene->mMeshes[meshIndex];
+		//read bones
+		for (int j = 0; j < mesh->mNumBones; ++j)
+		{
+
+		}
+
+	}
+
+	//init vertex and index buffer
+	_InitBuffers(cpDevice, meshData, vertexType, vertexArray, totalVertexCount, indexArray, totalIndexCount);
+
+	return meshData;
+}
+UINT MnResourcePool::_GetNodesTotalVertexCount(const aiScene* scene, const aiNode* node)
+{
 	UINT totalVertexCount = 0;
-	UINT totalIndexCount = 0;
 	for (int i = 0; i < node->mNumMeshes; ++i)
 	{
 		UINT meshIndex = node->mMeshes[i];
 		UINT numVerts = scene->mMeshes[meshIndex]->mNumVertices;
 		totalVertexCount += numVerts;
+	}
+	return totalVertexCount;
+}
+UINT MnResourcePool::_GetNodesTotalIndexCount(const aiScene* scene, const aiNode* node)
+{
+	UINT totalIndexCount = 0;
+	for (int i = 0; i < node->mNumMeshes; ++i)
+	{
+		UINT meshIndex = node->mMeshes[i];
 		int numFaces = scene->mMeshes[meshIndex]->mNumFaces;
 		totalIndexCount += numFaces * 3;
 	}
-
+	return totalIndexCount;
+}
+void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray)
+{
 	//prepare vertex array
 	UINT vertexStride = vertexType->TotalByteSize();
 	UINT numFloats = vertexStride / 4;
-	std::vector<float> vertexArray;
-	vertexArray.resize(totalVertexCount * (numFloats));
+	vertexArray.resize(numVertices * (numFloats));
 	UINT16 flags = vertexType->GetFlags();
 
-	//prepare index array
-	std::vector<UINT> indexArray;
-	indexArray.resize(totalIndexCount);
-
-	//read submeshes
+	//read every mesh's vertices with serialization
 	UINT vertexBase = 0;
-	UINT indexBase = 0;
 	for (int i = 0; i < node->mNumMeshes; ++i)
 	{
 		UINT meshIndex = node->mMeshes[i];
@@ -192,15 +225,20 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 		}
 		//rebase vertex
 		vertexBase += numVerts * numFloats;
+	}
+}
+void MnResourcePool::_ReadMeshIndices(const aiScene* scene,const aiNode* node, std::shared_ptr<MnMeshData>& meshData, UINT numIndices, std::vector<UINT>& indexArray)
+{
+	indexArray.resize(numIndices);
 
-		//read indices;
-		MnSubMesh submesh;
-		//set submesh name and offset
-		submesh.subMeshName = mesh->mName.C_Str();
-		submesh.indexOffset = indexBase;
+	UINT indexBase = 0;
+	for (int i = 0; i < node->mNumMeshes; ++i)
+	{
+		UINT meshIndex = node->mMeshes[i];
+		const aiMesh* mesh = scene->mMeshes[meshIndex];
+
+		//read indices of all submeshes with serializing
 		int numFaces = mesh->mNumFaces;
-		submesh.indexCount = numFaces * 3;
-
 		for (int j = 0; j < numFaces; ++j)
 		{
 			UINT indexOffset = j * 3;
@@ -210,18 +248,26 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 				indexArray[indexBase + indexOffset + faceIndex] = face.mIndices[faceIndex];
 			}
 		}
+		//create submesh
+		MnSubMesh submesh = _CreateSubMesh(mesh, indexBase);
 		//update base offset of submesh indices
 		indexBase += submesh.indexCount;
-
-		//init vertex and index buffer
-		_InitBuffers(cpDevice, meshData, vertexType, vertexArray, totalVertexCount, indexArray, totalIndexCount);
-
 		//add to mesh data
 		meshData->AddSubMesh(submesh);
 	}
-
-	return meshData;
 }
+MnSubMesh MnResourcePool::_CreateSubMesh(const aiMesh* mesh, UINT indexBase)
+{
+	MnSubMesh submesh;
+	//set submesh name and offset
+	submesh.subMeshName = mesh->mName.C_Str();
+	submesh.indexOffset = indexBase;
+	int numFaces = mesh->mNumFaces;
+	submesh.indexCount = numFaces * 3;
+
+	return submesh;
+}
+
 HRESULT MnResourcePool::_InitBuffers(const CPD3DDevice& cpDevice, std::shared_ptr<MnMeshData> meshData, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::vector<float>& vertexArray,UINT vertexCount, const std::vector<UINT>& indexArray, UINT indexCount )
 {
 	D3D11_SUBRESOURCE_DATA vertexData;
