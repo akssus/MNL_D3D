@@ -141,7 +141,8 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 		//read bones
 		for (int j = 0; j < mesh->mNumBones; ++j)
 		{
-
+			const aiBone* bone = mesh->mBones[j];
+			//bone->
 		}
 
 	}
@@ -220,6 +221,17 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 				{
 					vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].x;
 					vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].y;
+				}
+			}
+			if (mesh->HasBones())
+			{
+				if (flags & MN_CVF_BONE_INDEX)
+				{
+
+				}
+				if (flags & MN_CVF_BONE_WEIGHT)
+				{
+
 				}
 			}
 		}

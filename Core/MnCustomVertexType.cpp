@@ -1,4 +1,5 @@
 #include <memory>
+#include <algorithm>
 #include "MnCustomVertexType.h"
 
 using namespace MNL;
@@ -12,6 +13,14 @@ MnCustomVertexType::~MnCustomVertexType()
 {
 }
 
+void MnCustomVertexType::AddInputElement(const MnInputElement& inputElement, MN_CUSTOM_VERTEX_FLAG flags)
+{
+	m_inputElements.push_back(inputElement);
+	m_totalByteSize += inputElement.GetByteSize();
+
+	_SetOptionalFlags(flags);
+	_SortInputElements();
+}
 void MnCustomVertexType::AddInputElement(const MnInputElement& inputElement)
 {
 	m_inputElements.push_back(inputElement);
@@ -19,8 +28,9 @@ void MnCustomVertexType::AddInputElement(const MnInputElement& inputElement)
 
 	UINT inputIndex = inputElement.GetIndex();
 	_SetFlag(inputElement.GetSemanticName(), inputIndex);
+	_SortInputElements();
 }
-void MnCustomVertexType::_SetFlag(std::string semanticName, UINT index)
+void MnCustomVertexType::_SetFlag(const std::string& semanticName, UINT index)
 {
 	if (semanticName == "POSITION")
 	{
@@ -53,6 +63,10 @@ void MnCustomVertexType::_SetFlag(std::string semanticName, UINT index)
 		}
 	}
 }
+void MnCustomVertexType::_SetOptionalFlags(MN_CUSTOM_VERTEX_FLAG flags)
+{
+	m_flags |= flags;
+}
 const MnInputElement& MnCustomVertexType::GetElement(UINT index) const
 {
 	return m_inputElements[index];
@@ -68,4 +82,26 @@ UINT MnCustomVertexType::NumElements() const
 const UINT16& MnCustomVertexType::GetFlags() const
 {
 	return m_flags;
+}
+void MnCustomVertexType::_SortInputElements()
+{
+	std::sort(m_inputElements.begin(), m_inputElements.end(), [](MnInputElement& inputElement_1, MnInputElement& inputElement_2) {
+		if (inputElement_1.GetSemanticName() == "POSITION" && inputElement_2.GetSemanticName() == "NORMAL")
+		{
+			return true;
+		}
+		else if (inputElement_1.GetSemanticName() == "POSITION" && inputElement_2.GetSemanticName() == "TEXCOORD")
+		{
+			return true;
+		}
+		else if (inputElement_1.GetSemanticName() == "NORMAL" && inputElement_2.GetSemanticName() == "TEXCOORD")
+		{
+			return true;
+		}
+		else if (inputElement_1.GetSemanticName() == inputElement_2.GetSemanticName())
+		{
+			if (inputElement_1.GetIndex() < inputElement_2.GetIndex()) return true;
+		}
+		return false;
+	});
 }
