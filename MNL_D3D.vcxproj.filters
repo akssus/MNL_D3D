@@ -170,6 +170,15 @@
     <ClCompile Include="Utility\MnResourcePool.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
+    <ClCompile Include="MnSkeleton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnBone.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnMatrixPalette.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MnConstantBuffer.h">
@@ -312,6 +321,15 @@
     </ClInclude>
     <ClInclude Include="Utility\MNL_Utility.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="MnSkeleton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnBone.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnMatrixPalette.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

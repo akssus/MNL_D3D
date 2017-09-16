@@ -178,6 +178,9 @@
     <ClCompile Include="Core\MnViewport.cpp" />
     <ClCompile Include="Core\MnWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MnBone.cpp" />
+    <ClCompile Include="MnMatrixPalette.cpp" />
+    <ClCompile Include="MnSkeleton.cpp" />
     <ClCompile Include="Render\MnCamera.cpp" />
     <ClCompile Include="Render\MnLightSource.cpp" />
     <ClCompile Include="Render\MnMaterial.cpp" />
@@ -225,6 +228,9 @@
     <ClInclude Include="Core\MnVideoAdapter.h" />
     <ClInclude Include="Core\MnViewport.h" />
     <ClInclude Include="Core\MnWindow.h" />
+    <ClInclude Include="MnBone.h" />
+    <ClInclude Include="MnMatrixPalette.h" />
+    <ClInclude Include="MnSkeleton.h" />
     <ClInclude Include="Render\MnCamera.h" />
     <ClInclude Include="Render\MnLightSource.h" />
     <ClInclude Include="Render\MNL_Render.h" />

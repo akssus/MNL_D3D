@@ -4,6 +4,7 @@
 #include "assimp\postprocess.h"
 
 using namespace MNL;
+using namespace DirectX::SimpleMath;
 
 MnResourcePool::MnResourcePool()
 {
@@ -102,7 +103,7 @@ HRESULT MnResourcePool::_ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* 
 	}
 
 	//recursively read mesh data;
-	for (int i = 0; i < node->mNumChildren; ++i)
+	for (UINT i = 0; i < node->mNumChildren; ++i)
 	{
 		HRESULT result = _ReadMeshes(cpDevice, scene, node->mChildren[i], currentMeshIndex, modelPackage, vertexType);
 		if (FAILED(result))
@@ -128,24 +129,55 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 	UINT totalVertexCount = _GetNodesTotalVertexCount(scene, node);
 	UINT totalIndexCount = _GetNodesTotalIndexCount(scene, node);
 
+	auto skeleton = std::make_shared<MnSkeleton>();
+	std::vector<_BoneData> boneData;
+	std::vector<UINT> boneDataCounter;
+	if (vertexType->GetFlags() & MN_CVF_BONE_INDEX
+		&& vertexType->GetFlags() & MN_CVF_BONE_WEIGHT)
+	{
+		boneData.resize(totalVertexCount);
+		boneDataCounter.resize(totalVertexCount);
+		for (UINT i = 0; i < node->mNumMeshes; ++i)
+		{
+			UINT meshIndex = node->mMeshes[i];
+			const aiMesh* mesh = scene->mMeshes[meshIndex];
+			//read bones
+			for (UINT j = 0; j < mesh->mNumBones; ++j)
+			{
+				const aiBone* currentBone = mesh->mBones[j];
+				MnBone newBone;
+				newBone.SetName(currentBone->mName.C_Str());
+				aiMatrix4x4 initTransform = currentBone->mOffsetMatrix;
+				aiVector3D bonePos, boneScale;
+				aiQuaternion boneRot;
+				initTransform.Decompose(boneScale, boneRot, bonePos);
+				//force casting
+				newBone.SetPosition(*(Vector3*)(&bonePos));
+				newBone.SetRotation(*(Quaternion*)(&boneRot));
+				newBone.SetScale(*(Vector3*)(&boneScale));
+				skeleton->AddBone(newBone);
+
+				UINT numWeights = currentBone->mNumWeights;
+				for (UINT weightIndex = 0; weightIndex < numWeights; weightIndex++)
+				{
+					aiVertexWeight& vertexWeight = currentBone->mWeights[weightIndex];
+					UINT vertexIndex = vertexWeight.mVertexId;
+					UINT boneCount = boneDataCounter[vertexIndex];
+					float boneWeight = vertexWeight.mWeight;
+					boneData[vertexIndex].boneIndex[boneCount] = j;
+					boneData[vertexIndex].boneWeight[boneCount] = boneWeight;
+					boneDataCounter[vertexIndex] += 1;
+				}
+			}
+		}
+	}
+	meshData->SetSkeleton(skeleton);
 	std::vector<float> vertexArray;
-	_ReadMeshVertices(scene,node,vertexType,totalVertexCount,vertexArray);
+	_ReadMeshVertices(scene,node,vertexType,totalVertexCount,vertexArray,boneData);
 
 	std::vector<UINT> indexArray;
 	_ReadMeshIndices(scene, node, meshData, totalIndexCount, indexArray);
 
-	for (int i = 0; i < node->mNumMeshes; ++i)
-	{
-		UINT meshIndex = node->mMeshes[i];
-		const aiMesh* mesh = scene->mMeshes[meshIndex];
-		//read bones
-		for (int j = 0; j < mesh->mNumBones; ++j)
-		{
-			const aiBone* bone = mesh->mBones[j];
-			//bone->
-		}
-
-	}
 
 	//init vertex and index buffer
 	_InitBuffers(cpDevice, meshData, vertexType, vertexArray, totalVertexCount, indexArray, totalIndexCount);
@@ -155,7 +187,7 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 UINT MnResourcePool::_GetNodesTotalVertexCount(const aiScene* scene, const aiNode* node)
 {
 	UINT totalVertexCount = 0;
-	for (int i = 0; i < node->mNumMeshes; ++i)
+	for (UINT i = 0; i < node->mNumMeshes; ++i)
 	{
 		UINT meshIndex = node->mMeshes[i];
 		UINT numVerts = scene->mMeshes[meshIndex]->mNumVertices;
@@ -166,7 +198,7 @@ UINT MnResourcePool::_GetNodesTotalVertexCount(const aiScene* scene, const aiNod
 UINT MnResourcePool::_GetNodesTotalIndexCount(const aiScene* scene, const aiNode* node)
 {
 	UINT totalIndexCount = 0;
-	for (int i = 0; i < node->mNumMeshes; ++i)
+	for (UINT i = 0; i < node->mNumMeshes; ++i)
 	{
 		UINT meshIndex = node->mMeshes[i];
 		int numFaces = scene->mMeshes[meshIndex]->mNumFaces;
@@ -174,7 +206,7 @@ UINT MnResourcePool::_GetNodesTotalIndexCount(const aiScene* scene, const aiNode
 	}
 	return totalIndexCount;
 }
-void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray)
+void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray, const std::vector<_BoneData>& boneData)
 {
 	//prepare vertex array
 	UINT vertexStride = vertexType->TotalByteSize();
@@ -184,14 +216,14 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 
 	//read every mesh's vertices with serialization
 	UINT vertexBase = 0;
-	for (int i = 0; i < node->mNumMeshes; ++i)
+	for (UINT i = 0; i < node->mNumMeshes; ++i)
 	{
 		UINT meshIndex = node->mMeshes[i];
 		const aiMesh* mesh = scene->mMeshes[meshIndex];
 
 		//read vertices
 		UINT numVerts = mesh->mNumVertices;
-		for (int j = 0; j < numVerts; ++j)
+		for (UINT j = 0; j < numVerts; ++j)
 		{
 			UINT vertexOffset = vertexBase + (j * numFloats);
 			UINT currentOffset = 0;
@@ -227,11 +259,17 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 			{
 				if (flags & MN_CVF_BONE_INDEX)
 				{
-
+					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[0];
+					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[1];
+					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[2];
+					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[3];
 				}
 				if (flags & MN_CVF_BONE_WEIGHT)
 				{
-
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[0];
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[1];
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[2];
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[3];
 				}
 			}
 		}
@@ -244,7 +282,7 @@ void MnResourcePool::_ReadMeshIndices(const aiScene* scene,const aiNode* node, s
 	indexArray.resize(numIndices);
 
 	UINT indexBase = 0;
-	for (int i = 0; i < node->mNumMeshes; ++i)
+	for (UINT i = 0; i < node->mNumMeshes; ++i)
 	{
 		UINT meshIndex = node->mMeshes[i];
 		const aiMesh* mesh = scene->mMeshes[meshIndex];
@@ -255,7 +293,7 @@ void MnResourcePool::_ReadMeshIndices(const aiScene* scene,const aiNode* node, s
 		{
 			UINT indexOffset = j * 3;
 			aiFace& face = mesh->mFaces[j];
-			for (int faceIndex = 0; faceIndex < face.mNumIndices; ++faceIndex)
+			for (UINT faceIndex = 0; faceIndex < face.mNumIndices; ++faceIndex)
 			{
 				indexArray[indexBase + indexOffset + faceIndex] = face.mIndices[faceIndex];
 			}

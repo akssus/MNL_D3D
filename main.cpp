@@ -80,7 +80,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	/**********************************************************/
 
-	auto vertexType = std::make_shared<MnMeshVertexType>();
+	//auto vertexType = std::make_shared<MnMeshVertexType>();
+	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
 
 	auto shaderPath = std::make_shared<BasicShaderPath>();
 	result = shaderPath->Init(renderAPI.GetD3DDevice(),vertexType);

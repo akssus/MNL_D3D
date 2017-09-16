@@ -9,7 +9,7 @@
 #include "../Render/MnMeshData.h"
 #include "../Render/MnMaterial.h"
 #include "../Render/MnLightSource.h"
-
+#include "../MnSkeleton.h"
 
 namespace MNL
 {
@@ -27,6 +27,12 @@ namespace MNL
 		{
 			std::string m_packageName;
 			std::vector<std::shared_ptr<MnMeshData> > m_lstSpMeshes;
+		};
+
+		struct _BoneData
+		{
+			UINT boneIndex[4] = { 0, };
+			float boneWeight[4] = { 0.0f, };
 		};
 
 	public:
@@ -63,7 +69,7 @@ namespace MNL
 		std::shared_ptr<MnMeshData> _ReadSingleMesh(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType);
 		UINT _GetNodesTotalVertexCount(const aiScene* scene,const aiNode* node);
 		UINT _GetNodesTotalIndexCount(const aiScene* scene,const aiNode* node);
-		void _ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray);
+		void _ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray, const std::vector<_BoneData>& boneData);
 		void _ReadMeshIndices(const aiScene* scene, const aiNode* node, std::shared_ptr<MnMeshData>& meshData, UINT numIndices, std::vector<UINT>& indexArray);
 		MnSubMesh _CreateSubMesh(const aiMesh* mesh, UINT indexBase);
 		HRESULT _InitBuffers(const CPD3DDevice& cpDevice, std::shared_ptr<MnMeshData> meshData, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::vector<float>& vertexArray, UINT vertexCount, const std::vector<UINT>& indexArray, UINT indexCount);

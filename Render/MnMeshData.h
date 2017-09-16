@@ -7,6 +7,7 @@
 #include "../Core/MnVertexBuffer.h"
 #include "../Core/MnIndexBuffer.h"
 #include "MnMaterial.h"
+#include "../MnSkeleton.h"
 namespace MNL
 {
 	/*
@@ -33,13 +34,16 @@ namespace MNL
 		void SetTransform(const DirectX::SimpleMath::Matrix& matTransform);
 		void SetParentIndex(UINT index);
 		void SetName(const std::string& name);
+		void SetSkeleton(const std::shared_ptr<MnSkeleton> spSkeleton);
 		void SetVertexBuffer(const std::shared_ptr<MnVertexBuffer> spVertexBuffer);
 		void SetIndexBuffer(const std::shared_ptr<MnIndexBuffer> spIndexBuffer);
+
 
 
 		bool					HasBone() const;
 		std::shared_ptr<UINT>	GetParentIndex() const;
 		const std::string&		GetName() const;
+		const std::shared_ptr<MnSkeleton> GetSkeleton() const;
 		const DirectX::SimpleMath::Matrix& GetTransform() const;
 
 		std::shared_ptr<MnVertexBuffer> GetVertexBuffer() const;
@@ -55,6 +59,7 @@ namespace MNL
 		bool m_hasBone;
 		std::string m_meshName;
 		std::vector<MnSubMesh> m_lstSubMeshes;
+		std::shared_ptr<MnSkeleton> m_spSkeleton;
 		//material
 
 		//buffers

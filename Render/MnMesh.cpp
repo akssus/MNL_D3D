@@ -19,6 +19,7 @@ HRESULT MnMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshDa
 	{
 		return E_FAIL;
 	}
+	return S_OK;
 }
 void MnMesh::SetParent(const std::shared_ptr<MnMesh>& spMesh)
 {

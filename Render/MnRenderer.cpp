@@ -20,7 +20,7 @@ HRESULT MnRenderer::RenderMesh(MnRenderAPI& renderAPI, const std::shared_ptr<MnM
 	//draw call
 	//renderAPI.DrawIndexed(mesh->GetIndexCount());
 	UINT numSubMeshes = mesh->GetNumSubMeshes();
-	for (int i = 0; i < numSubMeshes; ++i)
+	for (UINT i = 0; i < numSubMeshes; ++i)
 	{
 		auto& submesh = mesh->GetSubMesh(i);
 		renderAPI.DrawIndexed(submesh.indexCount, 0, submesh.indexOffset);
@@ -82,7 +82,7 @@ void MnRenderer::SetTextureCombination(const std::shared_ptr<MnMeshTextureCombin
 void MnRenderer::ApplyTextures(MnRenderAPI& renderAPI)
 {
 	const std::vector<CPD3DShaderResourceView>& shaderResourceViews = m_spTextureCombination->GetShaderResourceViews();
-	for (int i = 0; i < shaderResourceViews.size(); ++i)
+	for (UINT i = 0; i < shaderResourceViews.size(); ++i)
 	{
 		renderAPI.SetShaderResoureView(shaderResourceViews[i],i);
 	}
@@ -91,7 +91,7 @@ void MnRenderer::ApplyTextures(MnRenderAPI& renderAPI)
 void MnRenderer::_BindConstantBuffers(MnRenderAPI& renderAPI)
 {
 	UINT numConstantBuffers = m_constantBuffers.size();
-	for (int i = 0; i < numConstantBuffers; ++i)
+	for (UINT i = 0; i < numConstantBuffers; ++i)
 	{
 		auto constantBuffer = m_constantBuffers[i];
 		auto belong = constantBuffer->GetBelong();

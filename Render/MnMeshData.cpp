@@ -20,6 +20,10 @@ void MnMeshData::SetName(const std::string& name)
 {
 	m_meshName = name;
 }
+void MnMeshData::SetSkeleton(const std::shared_ptr<MnSkeleton> spSkeleton)
+{
+	m_spSkeleton = spSkeleton;
+}
 void MnMeshData::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
 {
 	m_matTransform = matTransform;
@@ -58,6 +62,10 @@ std::shared_ptr<MnIndexBuffer> MnMeshData::GetIndexBuffer() const
 const std::string& MnMeshData::GetName() const
 {
 	return m_meshName;
+}
+const std::shared_ptr<MnSkeleton> MnMeshData::GetSkeleton() const
+{
+	return m_spSkeleton;
 }
 std::shared_ptr<UINT> MnMeshData::GetParentIndex() const
 {
