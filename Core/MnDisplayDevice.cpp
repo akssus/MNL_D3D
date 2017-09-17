@@ -31,7 +31,7 @@ HRESULT MnDisplayDevice::Init(CPDXGIOutput cpOutput)
 	{
 		return E_FAIL;
 	}
-	for (int i = 0; i < numModes; ++i)
+	for (UINT i = 0; i < numModes; ++i)
 	{
 		m_displayModes[i].width = m_displayModeDescs[i].Width;
 		m_displayModes[i].height = m_displayModeDescs[i].Height;
@@ -51,16 +51,16 @@ MnDisplayMode MnDisplayDevice::GetClosestMode(UINT width, UINT height, UINT nume
 	MnDisplayMode closestMode;
 	ZeroMemory(&closestMode, sizeof(MnDisplayMode));
 
-	Vector2 targetSize(width,height);
-	Vector2 targetRate(numerator, denominator);
+	Vector2 targetSize((float)width, (float)height);
+	Vector2 targetRate((float)numerator, (float)denominator);
 	UINT minDist = 100000;
 	std::vector<MnDisplayMode> minSizes;
 
 	//find closest resolution first
 	for (MnDisplayMode mode : m_displayModes)
 	{
-		Vector2 comparedSize(mode.width, mode.height);
-		UINT dist =  Vector2::Distance(targetSize, comparedSize);
+		Vector2 comparedSize((float)mode.width, (float)mode.height);
+		UINT dist =  (UINT)Vector2::Distance(targetSize, comparedSize);
 		if (dist < minDist)
 		{
 			minSizes.clear();
@@ -77,8 +77,8 @@ MnDisplayMode MnDisplayDevice::GetClosestMode(UINT width, UINT height, UINT nume
 	//find closest refresh rate among closest resolution modes
 	for (MnDisplayMode& mode : minSizes)
 	{
-		Vector2 comparedRate(mode.numerator, mode.denominator);
-		UINT dist = Vector2::Distance(targetRate, comparedRate);
+		Vector2 comparedRate((float)mode.numerator, (float)mode.denominator);
+		UINT dist = (UINT)Vector2::Distance(targetRate, comparedRate);
 		if (dist < minDist)
 		{
 			closestMode = mode;

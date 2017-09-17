@@ -89,7 +89,7 @@ HRESULT MnRenderWindow::_InitSwapChain(const MnHardware& hardwareInfo,
 	}
 
 	//get closest display mode in the supported display modes
-	MnDisplayMode closestMode = displayDevice.GetClosestMode(width, height, numerator, denominator);
+	MnDisplayMode closestMode = displayDevice.GetClosestMode(static_cast<UINT>(width), static_cast<UINT>(height), numerator, denominator);
 
 	//initialize swap chain
 	HRESULT result = m_swapChain.Init(closestMode, isVsync, cpD3DDevice, numBuffers, m_window.GetWindowHandle(), isWindowed);

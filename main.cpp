@@ -5,7 +5,10 @@
 #include "Core\MNL_Core.h"
 #include "Utility/MNL_Utility.h"
 #include "Render\MNL_Render.h"
+#include "MnSkinnedMeshRenderer.h"
 #include "BasicShaderPath.h"
+#include "SkinnedMeshShaderPath.h"
+#include "MnSkinnedMesh.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -83,7 +86,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	//auto vertexType = std::make_shared<MnMeshVertexType>();
 	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
 
-	auto shaderPath = std::make_shared<BasicShaderPath>();
+	//auto shaderPath = std::make_shared<BasicShaderPath>();
+	auto shaderPath = std::make_shared<SkinnedMeshShaderPath>();
 	result = shaderPath->Init(renderAPI.GetD3DDevice(),vertexType);
 	if (FAILED(result))
 	{
@@ -91,7 +95,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		return 0;
 	}
 
-	MNL::MnMeshRenderer renderer;
+	//MNL::MnMeshRenderer renderer;
+	MNL::MnSkinnedMeshRenderer renderer;
 	result = renderer.Init(renderAPI.GetD3DDevice(), vertexType);
 	if (FAILED(result))
 	{
@@ -120,7 +125,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	MnResourcePool resourcePool;
 	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(),"rico.fbx",vertexType);
 
-	auto mesh = std::make_shared<MnStaticMesh>();
+	//auto mesh = std::make_shared<MnStaticMesh>();
+	auto mesh = std::make_shared<MnSkinnedMesh>();
 	auto meshData = resourcePool.GetMeshData("rico.fbx", "Rico");
 	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
@@ -170,6 +176,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			renderer.SetViewProjectionBuffer(renderAPI, camera.GetViewMatrix(), camera.GetProjectionMatrix());
 			renderer.SetLightBuffer(renderAPI, light);
 			renderer.SetMaterial(renderAPI, material);
+			renderer.SetBonePalette(renderAPI, mesh->GetSkeleton());
 			renderer.RenderMesh(renderAPI, mesh);
 
 			renderWindow.SwapBuffers();

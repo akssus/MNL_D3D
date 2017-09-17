@@ -18,7 +18,7 @@ MnSkeleton::~MnSkeleton()
 void MnSkeleton::AddBone(const MnBone& bone)
 {
 	m_lstBones.push_back(bone);
-	m_lstBoneMatrix[GetNumBones()-1] = bone.GetTransform();
+	m_lstBoneMatrix[GetNumBones()-1] = bone.GetTransform().Transpose();
 }
 
 UINT MnSkeleton::GetNumBones() const
@@ -39,7 +39,7 @@ void MnSkeleton::UpdateBone(const std::string& boneName, const DirectX::SimpleMa
 	bone.SetRotation(rotation);
 	bone.SetScale(scale);
 
-	m_lstBoneMatrix[index] = bone.GetTransform();
+	m_lstBoneMatrix[index] = bone.GetTransform().Transpose();
 }
 
 D3D11_SUBRESOURCE_DATA MnSkeleton::GetBonePalette()

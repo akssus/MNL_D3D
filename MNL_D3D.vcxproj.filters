@@ -179,6 +179,15 @@
     <ClCompile Include="MnMatrixPalette.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MnSkinnedMeshRenderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SkinnedMeshShaderPath.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnSkinnedMesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MnConstantBuffer.h">
@@ -331,12 +340,27 @@
     <ClInclude Include="MnMatrixPalette.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="MnSkinnedMeshRenderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SkinnedMeshShaderPath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnSkinnedMesh.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelshader.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
     <FxCompile Include="vertexshader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="skinnedpixelshader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="skinnedvertexshader.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>

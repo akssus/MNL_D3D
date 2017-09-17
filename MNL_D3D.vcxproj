@@ -181,6 +181,8 @@
     <ClCompile Include="MnBone.cpp" />
     <ClCompile Include="MnMatrixPalette.cpp" />
     <ClCompile Include="MnSkeleton.cpp" />
+    <ClCompile Include="MnSkinnedMesh.cpp" />
+    <ClCompile Include="MnSkinnedMeshRenderer.cpp" />
     <ClCompile Include="Render\MnCamera.cpp" />
     <ClCompile Include="Render\MnLightSource.cpp" />
     <ClCompile Include="Render\MnMaterial.cpp" />
@@ -196,6 +198,7 @@
     <ClCompile Include="Render\MnShaderPathInstance.cpp" />
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp" />
     <ClCompile Include="Render\MnStaticMesh.cpp" />
+    <ClCompile Include="SkinnedMeshShaderPath.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +234,8 @@
     <ClInclude Include="MnBone.h" />
     <ClInclude Include="MnMatrixPalette.h" />
     <ClInclude Include="MnSkeleton.h" />
+    <ClInclude Include="MnSkinnedMesh.h" />
+    <ClInclude Include="MnSkinnedMeshRenderer.h" />
     <ClInclude Include="Render\MnCamera.h" />
     <ClInclude Include="Render\MnLightSource.h" />
     <ClInclude Include="Render\MNL_Render.h" />
@@ -247,6 +252,7 @@
     <ClInclude Include="Render\MnShaderPathInstance.h" />
     <ClInclude Include="Render\MnSkinnedMeshVertexType.h" />
     <ClInclude Include="Render\MnStaticMesh.h" />
+    <ClInclude Include="SkinnedMeshShaderPath.h" />
     <ClInclude Include="Utility\MNL_Utility.h" />
     <ClInclude Include="Utility\MnResourcePool.h" />
   </ItemGroup>
@@ -255,6 +261,11 @@
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
     </FxCompile>
+    <FxCompile Include="skinnedpixelshader.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="skinnedvertexshader.hlsl" />
     <FxCompile Include="vertexshader.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
