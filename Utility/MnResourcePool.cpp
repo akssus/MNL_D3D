@@ -147,19 +147,38 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 				const aiBone* currentBone = mesh->mBones[j];
 				MnBone newBone;
 				newBone.SetName(currentBone->mName.C_Str());
+				aiMatrix4x4 om = currentBone->mOffsetMatrix;
+				om.Transpose();
 				/*
+				Matrix toLocalMatrix(om.a1, om.b1, om.c1, om.d1,
+					om.a2, om.b2, om.c2, om.d2,
+					om.a3, om.b3, om.c3, om.d3,
+					om.a4, om.b4, om.c4, om.d4); */
+				newBone.SetOffsetMatrix(*(Matrix*)(&om));
+				
 				aiMatrix4x4 initTransform = currentBone->mOffsetMatrix;
+				initTransform.Inverse();
+				initTransform.Transpose();
+				newBone.SetTransform(*(Matrix*)(&initTransform));
+
 				aiVector3D bonePos, boneScale;
 				aiQuaternion boneRot;
 				initTransform.Decompose(boneScale, boneRot, bonePos);
 				//force casting
-				newBone.SetPosition(*(Vector3*)(&bonePos));
-				newBone.SetRotation(*(Quaternion*)(&boneRot));
-				newBone.SetScale(*(Vector3*)(&boneScale));
-				*/
+				
+				Vector3 pos(bonePos.x, bonePos.y, bonePos.z);
+				Vector3 scale(boneScale.x, boneScale.y, boneScale.z);
+				newBone.SetPosition(pos);
+				Quaternion quat(boneRot.x, boneRot.y, boneRot.z, boneRot.w);
+				newBone.SetRotation(quat);
+				newBone.SetScale(scale);
+				/*
 				newBone.SetPosition(Vector3(0,0,0));
 				newBone.SetRotation(Quaternion(0,0,0,0));
 				newBone.SetScale(Vector3(1, 1, 1));
+				*/
+				Matrix asd = newBone.GetTransform();
+				
 				skeleton->AddBone(newBone);
 
 				UINT numWeights = currentBone->mNumWeights;
@@ -264,10 +283,10 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 			{
 				if (flags & MN_CVF_BONE_INDEX)
 				{
-					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[0];
-					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[1];
-					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[2];
-					*(UINT*)(&vertexArray[vertexOffset + currentOffset++]) = boneData[j].boneIndex[3];
+					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[0];
+					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[1];
+					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[2];
+					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[3];
 				}
 				if (flags & MN_CVF_BONE_WEIGHT)
 				{
@@ -277,6 +296,17 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[3];
 				}
 			}
+			//if it is skinned mesh, 
+			/*
+			if ((flags & MN_CVF_BONE_INDEX) && (flags & MN_CVF_BONE_WEIGHT))
+			{
+				if (flags & MN_CVF_POSITION0)
+				{
+					vertexArray[vertexOffset];
+					vertexArray[vertexOffset + 1];
+					vertexArray[vertexOffset + 2];
+				}
+			}*/
 		}
 		//rebase vertex
 		vertexBase += numVerts * numFloats;

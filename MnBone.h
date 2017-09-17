@@ -16,9 +16,14 @@ namespace MNL
 		MnBone();
 		~MnBone();
 
+		/**
+		Set mesh space to bone's local space matrix
+		*/
+		void SetOffsetMatrix(const DirectX::SimpleMath::Matrix& offsetMatrix);
 		void SetPosition(const DirectX::SimpleMath::Vector3& position);
 		void SetRotation(const DirectX::SimpleMath::Quaternion& rotation);
 		void SetScale(const DirectX::SimpleMath::Vector3& scale);
+		void SetTransform(const DirectX::SimpleMath::Matrix& transform);
 		/**
 		Get bone's transformation from the mesh's local space.
 		Notice that the transformation is NOT RELATIVE TO ITS PARENT
@@ -29,6 +34,8 @@ namespace MNL
 		std::string GetName() const;
 	private:
 		std::string m_name;
+		DirectX::SimpleMath::Matrix m_transform;
+		DirectX::SimpleMath::Matrix m_toBoneLocalMatrix;
 		DirectX::SimpleMath::Vector3 m_position;
 		DirectX::SimpleMath::Quaternion m_rotation;
 		DirectX::SimpleMath::Vector3 m_scale;
