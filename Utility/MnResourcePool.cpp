@@ -157,28 +157,8 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 				newBone.SetOffsetMatrix(*(Matrix*)(&om));
 				
 				aiMatrix4x4 initTransform = currentBone->mOffsetMatrix;
-				initTransform.Inverse();
-				initTransform.Transpose();
+				initTransform.Inverse().Transpose();
 				newBone.SetTransform(*(Matrix*)(&initTransform));
-
-				aiVector3D bonePos, boneScale;
-				aiQuaternion boneRot;
-				initTransform.Decompose(boneScale, boneRot, bonePos);
-				//force casting
-				
-				Vector3 pos(bonePos.x, bonePos.y, bonePos.z);
-				Vector3 scale(boneScale.x, boneScale.y, boneScale.z);
-				newBone.SetPosition(pos);
-				Quaternion quat(boneRot.x, boneRot.y, boneRot.z, boneRot.w);
-				newBone.SetRotation(quat);
-				newBone.SetScale(scale);
-				/*
-				newBone.SetPosition(Vector3(0,0,0));
-				newBone.SetRotation(Quaternion(0,0,0,0));
-				newBone.SetScale(Vector3(1, 1, 1));
-				*/
-				Matrix asd = newBone.GetTransform();
-				
 				skeleton->AddBone(newBone);
 
 				UINT numWeights = currentBone->mNumWeights;

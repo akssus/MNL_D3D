@@ -21,30 +21,21 @@ void MnBone::SetOffsetMatrix(const DirectX::SimpleMath::Matrix& offsetMatrix)
 {
 	m_toBoneLocalMatrix = offsetMatrix;
 }
-void MnBone::SetPosition(const DirectX::SimpleMath::Vector3& position)
-{
-	m_position = position;
-}
-void MnBone::SetRotation(const DirectX::SimpleMath::Quaternion& rotation)
-{
-	m_rotation = rotation;
-}
-void MnBone::SetScale(const DirectX::SimpleMath::Vector3& scale)
-{
-	m_scale = scale;
-}
 void MnBone::SetTransform(const DirectX::SimpleMath::Matrix& transform)
 {
 	m_transform = transform;
 }
 
+void MNL::MnBone::SetTransform(const DirectX::SimpleMath::Vector3 & position, const DirectX::SimpleMath::Quaternion & rotation, const DirectX::SimpleMath::Vector3 & scale)
+{
+	auto matTranslation = Matrix::CreateTranslation(position);
+	auto matRotation = Matrix::CreateFromQuaternion(rotation);
+	auto matScale = Matrix::CreateScale(scale);
+	m_transform = matScale * matRotation * matTranslation;
+}
+
 DirectX::SimpleMath::Matrix MnBone::GetTransform() const
 {
-	auto matTranslation = Matrix::CreateTranslation(m_position);
-	auto matRotation = Matrix::CreateFromQuaternion(m_rotation);
-	auto matScale = Matrix::CreateScale(m_scale);
-	//m_transform = matScale * matRotation * matTranslation;
-
 	return m_toBoneLocalMatrix * m_transform;
 }
 void MnBone::SetName(const std::string& name)

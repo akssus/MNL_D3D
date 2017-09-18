@@ -28,18 +28,16 @@ UINT MnSkeleton::GetNumBones() const
 
 void MnSkeleton::UpdateBone(const std::string& boneName, const DirectX::SimpleMath::Vector3& position, const DirectX::SimpleMath::Quaternion& rotation, const DirectX::SimpleMath::Vector3& scale)
 {
-	int index = _GetBoneIndex(boneName);
-	if (index == -1)
+	int boneIndex = _GetBoneIndex(boneName);
+	if (boneIndex == -1)
 	{
 		//bone is not exist
 		return;
 	}
-	auto& bone = m_lstBones[index];
-	bone.SetPosition(position);
-	bone.SetRotation(rotation);
-	bone.SetScale(scale);
+	auto& bone = m_lstBones[boneIndex];
+	bone.SetTransform(position, rotation, scale);
 
-	m_lstBoneMatrix[index] = bone.GetTransform().Transpose();
+	m_lstBoneMatrix[boneIndex] = bone.GetTransform().Transpose();
 }
 
 D3D11_SUBRESOURCE_DATA MnSkeleton::GetBonePalette()
