@@ -179,6 +179,8 @@
     <ClCompile Include="Core\MnWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MnBone.cpp" />
+    <ClCompile Include="MnBoneAnimation.cpp" />
+    <ClCompile Include="MnBoneAnimationKeyFrame.cpp" />
     <ClCompile Include="MnMatrixPalette.cpp" />
     <ClCompile Include="MnSkeleton.cpp" />
     <ClCompile Include="MnSkinnedMesh.cpp" />
@@ -232,6 +234,8 @@
     <ClInclude Include="Core\MnViewport.h" />
     <ClInclude Include="Core\MnWindow.h" />
     <ClInclude Include="MnBone.h" />
+    <ClInclude Include="MnBoneAnimation.h" />
+    <ClInclude Include="MnBoneAnimationKeyFrame.h" />
     <ClInclude Include="MnMatrixPalette.h" />
     <ClInclude Include="MnSkeleton.h" />
     <ClInclude Include="MnSkinnedMesh.h" />

@@ -60,7 +60,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	}
 	renderAPI.SetRenderTarget(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView());
 
-
 	//init rasterizer state
 	MNL::MnRasterizerState rasterizerState;
 	result = rasterizerState.Init(renderAPI.GetD3DDevice(), D3D11_FILL_SOLID, true);
@@ -88,7 +87,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	//auto shaderPath = std::make_shared<BasicShaderPath>();
 	auto shaderPath = std::make_shared<SkinnedMeshShaderPath>();
-	result = shaderPath->Init(renderAPI.GetD3DDevice(),vertexType);
+	result = shaderPath->Init(renderAPI.GetD3DDevice(), vertexType);
 	if (FAILED(result))
 	{
 		//error msg
@@ -113,7 +112,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	camera.SetFOV(3.14f / 5.0f);
 	camera.SetNearDistance(0.1f);
 	camera.SetFarDistance(10000.0f);
-	camera.SetAspectRatio(1024.0f/768.0f);
+	camera.SetAspectRatio(1024.0f / 768.0f);
 	camera.SetPosition(Vector3(0, 0, -1000.0f));
 	camera.LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
@@ -123,11 +122,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(),"rico.fbx",vertexType);
+	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim.fbx", vertexType);
 
 	//auto mesh = std::make_shared<MnStaticMesh>();
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = resourcePool.GetMeshData("rico.fbx", "Rico");
+	auto meshData = resourcePool.GetMeshData("rico_anim.fbx", "Rico");
 	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
 	auto textureComb = std::make_shared<MnMeshTextureCombination>();
@@ -142,7 +141,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	light->SetPosition(0.0f, 0.0f, 0.0f);
 	light->SetDirection(0.0f, 0.0f, 1.0f);
 	light->SetLightType(MN_LIGHT_DIRECTIONAL);
-	
+
 	//white plastic
 	auto material = std::make_shared<MnMaterial>();
 	material->ambient = Vector4(0.1f, 0.1f, 0.1f, 0.1f);
@@ -152,12 +151,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	/**************************************************************/
 
-
 	MSG wndMsg;
 	ZeroMemory(&wndMsg, sizeof(MSG));
 	while (wndMsg.message != WM_QUIT)
 	{
-		if(PeekMessage(&wndMsg, nullptr, 0, 0, PM_REMOVE))
+		if (PeekMessage(&wndMsg, nullptr, 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&wndMsg);
 			DispatchMessage(&wndMsg);
@@ -166,7 +164,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		{
 			renderAPI.ClearRenderTargets(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView(), Vector4(0.5f, 0.5f, 0.5f, 1.0f));
 			//render here
-			
+
 			rad += 0.01f;
 			//matWorld = Matrix::CreateRotationY(rad);
 			matWorld = mesh->GetTransform();
@@ -183,10 +181,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		}
 	}
 
-
 	return 0;
 }
-
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {

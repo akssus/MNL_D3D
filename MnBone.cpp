@@ -12,7 +12,6 @@ MnBone::MnBone()
 	m_transform = Matrix::Identity;
 }
 
-
 MnBone::~MnBone()
 {
 }

@@ -10,6 +10,8 @@
 #include "../Render/MnMaterial.h"
 #include "../Render/MnLightSource.h"
 #include "../MnSkeleton.h"
+#include "../MnBoneAnimation.h"
+#include "../MnBoneAnimationKeyFrame.h"
 
 namespace MNL
 {
@@ -39,19 +41,17 @@ namespace MNL
 		MnResourcePool();
 		~MnResourcePool();
 
-		/*
+		/**
 		Load meshes from file into the model package
 		*/
 		HRESULT LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType);
-		/*
+		/**
 		Load only a specific mesh in the file
 		*/
 		HRESULT LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::string& meshName);
 
-		
-
 	public:
-		/*
+		/**
 		Find mesh in the model package.
 		@return nullptr if modelPackage unfound or meshName unfound
 		*/
@@ -61,7 +61,7 @@ namespace MNL
 		HRESULT _LoadModelFromMemory(const _MemoryChunk& memoryChunk, std::string modelPackageName);
 		HRESULT _ReadFromAssimpScene(const aiScene* scene);
 
-		/*
+		/**
 		Every sub mesh's vertices are serialized in unified lists in a MnMeshData.
 		Each sub meshes has index offset so that a sub mesh is conceptually allocated in a partial space in the serialized list of MnMeshData
 		*/
@@ -69,6 +69,8 @@ namespace MNL
 		std::shared_ptr<MnMeshData> _ReadSingleMesh(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType);
 		UINT _GetNodesTotalVertexCount(const aiScene* scene,const aiNode* node);
 		UINT _GetNodesTotalIndexCount(const aiScene* scene,const aiNode* node);
+		std::shared_ptr<MnSkeleton> _CreateSkeleton(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType);
+		void _ReadBoneData(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType, UINT numVertices, std::vector<_BoneData>& boneData);
 		void _ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray, const std::vector<_BoneData>& boneData);
 		void _ReadMeshIndices(const aiScene* scene, const aiNode* node, std::shared_ptr<MnMeshData>& meshData, UINT numIndices, std::vector<UINT>& indexArray);
 		MnSubMesh _CreateSubMesh(const aiMesh* mesh, UINT indexBase);

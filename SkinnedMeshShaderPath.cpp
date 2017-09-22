@@ -8,7 +8,6 @@ SkinnedMeshShaderPath::SkinnedMeshShaderPath()
 {
 }
 
-
 SkinnedMeshShaderPath::~SkinnedMeshShaderPath()
 {
 }

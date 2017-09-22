@@ -7,11 +7,9 @@ MnSkinnedMeshRenderer::MnSkinnedMeshRenderer()
 {
 }
 
-
 MnSkinnedMeshRenderer::~MnSkinnedMeshRenderer()
 {
 }
-
 
 HRESULT MnSkinnedMeshRenderer::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnCustomVertexType>& spVertexType)
 {
@@ -142,7 +140,7 @@ HRESULT MnSkinnedMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)
 	{
 		return result;
 	}
-	
+
 	//make material buffer
 	result = _InitBonePaletteBuffer(cpDevice);
 	if (FAILED(result))

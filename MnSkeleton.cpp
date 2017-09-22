@@ -10,7 +10,6 @@ MnSkeleton::MnSkeleton()
 	ZeroMemory(m_lstBoneMatrix.data(), sizeof(Matrix) * m_lstBoneMatrix.size());
 }
 
-
 MnSkeleton::~MnSkeleton()
 {
 }
@@ -18,7 +17,7 @@ MnSkeleton::~MnSkeleton()
 void MnSkeleton::AddBone(const MnBone& bone)
 {
 	m_lstBones.push_back(bone);
-	m_lstBoneMatrix[GetNumBones()-1] = bone.GetTransform().Transpose();
+	m_lstBoneMatrix[GetNumBones() - 1] = bone.GetTransform().Transpose();
 }
 
 UINT MnSkeleton::GetNumBones() const
@@ -53,7 +52,7 @@ int MnSkeleton::_GetBoneIndex(const std::string& boneName)
 {
 	// is it... too complicated..? Doubtful
 	auto it_bone = std::find_if(m_lstBones.begin(), m_lstBones.end(), [&](MnBone& bone) {
-		if (bone.GetName() == boneName) 
+		if (bone.GetName() == boneName)
 			return true;
 		return false;
 	});

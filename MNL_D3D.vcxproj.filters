@@ -188,6 +188,12 @@
     <ClCompile Include="MnSkinnedMesh.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MnBoneAnimation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MnBoneAnimationKeyFrame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MnConstantBuffer.h">
@@ -347,6 +353,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnSkinnedMesh.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnBoneAnimation.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnBoneAnimationKeyFrame.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
