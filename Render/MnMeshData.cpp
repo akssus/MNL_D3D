@@ -45,6 +45,10 @@ void MnMeshData::SetIndexBuffer(const std::shared_ptr<MnIndexBuffer> spIndexBuff
 {
 	m_spIndexBuffer = spIndexBuffer;
 }
+void MnMeshData::AddAnimation(const MnBoneAnimation& animation)
+{
+	m_lstBoneAnimations.push_back(animation);
+}
 
 bool MnMeshData::HasBone() const
 {

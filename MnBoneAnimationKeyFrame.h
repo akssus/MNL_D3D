@@ -1,10 +1,21 @@
 #pragma once
 
 #include <d3d11.h>
+#include "DXTK\SimpleMath.h"
 #include <string>
+#include <vector>
 
 namespace MNL
 {
+	struct MnBoneAnimationKey
+	{
+		std::string affectingBoneName;
+		UINT affectingBoneIndex = 0;
+		DirectX::SimpleMath::Vector3 keyPosition;
+		DirectX::SimpleMath::Quaternion keyRotation;
+		DirectX::SimpleMath::Vector3 keyScale;
+	};
+
 	class MnBoneAnimationKeyFrame
 	{
 	public:
@@ -12,7 +23,10 @@ namespace MNL
 		~MnBoneAnimationKeyFrame();
 
 	public:
-		std::string affectingMeshName;
-
+		double keyTime;
+		/**
+		keys' index and bones' index is 1:1 corresponding
+		*/
+		std::vector<MnBoneAnimationKey> keys;
 	};
 }

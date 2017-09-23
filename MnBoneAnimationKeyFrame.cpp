@@ -2,7 +2,7 @@
 
 using namespace MNL;
 
-MnBoneAnimationKeyFrame::MnBoneAnimationKeyFrame()
+MnBoneAnimationKeyFrame::MnBoneAnimationKeyFrame():keyTime(0.0)
 {
 
 }

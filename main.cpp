@@ -126,7 +126,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	//auto mesh = std::make_shared<MnStaticMesh>();
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = resourcePool.GetMeshData("rico_anim.fbx", "Rico");
+	auto meshData = resourcePool.GetMeshData("rico_anim.fbx", "RIco");
 	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
 	auto textureComb = std::make_shared<MnMeshTextureCombination>();

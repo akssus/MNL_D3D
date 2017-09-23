@@ -133,7 +133,54 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 	meshData->SetSkeleton(skeleton);
 
 	std::vector<_BoneData> boneData;
-	_ReadBoneData(scene, node, vertexType, totalVertexCount,boneData);
+	_ReadBoneData(scene, node, vertexType, totalVertexCount, boneData);
+
+	
+	if (scene->HasAnimations())
+	{
+		if (vertexType->GetFlags() & MN_CVF_BONE_INDEX
+			&& vertexType->GetFlags() & MN_CVF_BONE_WEIGHT)
+		{
+			for (int i = 0; i < scene->mNumAnimations; ++i)
+			{
+				const aiAnimation* anim = scene->mAnimations[i];
+				MnBoneAnimation newAnim;
+				newAnim.SetName(anim->mName.C_Str());
+				if (anim->mTicksPerSecond != 0)
+				{
+					double durationInMilliSecond = anim->mDuration / anim->mTicksPerSecond;
+					newAnim.SetDuration(durationInMilliSecond);
+				}
+				else
+				{
+					newAnim.SetDuration(anim->mDuration);
+				}
+				for (int keyFrameIndex = 0; keyFrameIndex < anim->mChannels[0]->mNumPositionKeys; ++keyFrameIndex)
+				{
+					MnBoneAnimationKeyFrame newKeyFrame;
+					newKeyFrame.keys.resize(anim->mNumChannels-1);
+					newKeyFrame.keyTime = anim->mChannels[0]->mPositionKeys[keyFrameIndex].mTime;
+
+					for (int boneIndex = 0; boneIndex < anim->mNumChannels - 1; ++boneIndex)
+					{
+						const aiNodeAnim* animNode = anim->mChannels[boneIndex+1];
+						newKeyFrame.keys[boneIndex].affectingBoneName = skeleton->GetBoneName(boneIndex);
+						newKeyFrame.keys[boneIndex].affectingBoneIndex = boneIndex;
+
+						const aiVectorKey& keyPos = animNode->mPositionKeys[keyFrameIndex];
+						const aiQuatKey& keyRot = animNode->mRotationKeys[keyFrameIndex];
+						const aiVectorKey& keyScale = animNode->mScalingKeys[keyFrameIndex];
+
+						newKeyFrame.keys[boneIndex].keyPosition = Vector3(keyPos.mValue.x, keyPos.mValue.y, keyPos.mValue.z);
+						newKeyFrame.keys[boneIndex].keyRotation = Quaternion(keyRot.mValue.x, keyRot.mValue.y, keyRot.mValue.z, keyRot.mValue.w);
+						newKeyFrame.keys[boneIndex].keyScale = Vector3(keyScale.mValue.x, keyScale.mValue.y, keyScale.mValue.z);
+					}
+					newAnim.AddKeyFrame(newKeyFrame);
+				}
+				meshData->AddAnimation(newAnim);
+			}
+		}
+	}
 
 	std::vector<float> vertexArray;
 	_ReadMeshVertices(scene, node, vertexType, totalVertexCount, vertexArray, boneData);
@@ -175,11 +222,15 @@ std::shared_ptr<MnSkeleton> MnResourcePool::_CreateSkeleton(const aiScene* scene
 	if (vertexType->GetFlags() & MN_CVF_BONE_INDEX
 		&& vertexType->GetFlags() & MN_CVF_BONE_WEIGHT)
 	{
+		aiMatrix4x4 localTransform = node->mTransformation;
+		localTransform.Transpose();
+		skeleton->SetTransform(*(Matrix*)(&localTransform));
 		for (UINT i = 0; i < node->mNumMeshes; ++i)
 		{
 			UINT meshIndex = node->mMeshes[i];
 			const aiMesh* mesh = scene->mMeshes[meshIndex];
 			//read bones
+			
 			for (UINT j = 0; j < mesh->mNumBones; ++j)
 			{
 				const aiBone* currentBone = mesh->mBones[j];

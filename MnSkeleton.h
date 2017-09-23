@@ -16,6 +16,10 @@ namespace MNL
 
 		void AddBone(const MnBone& bone);
 		UINT GetNumBones() const;
+		std::string GetBoneName(UINT index) const;
+
+		void SetTransform(const DirectX::SimpleMath::Matrix& transform);
+		const DirectX::SimpleMath::Matrix& GetTransform() const;
 
 	public:
 		/**
@@ -33,7 +37,8 @@ namespace MNL
 		*/
 		int _GetBoneIndex(const std::string& boneName);
 	private:
-		std::vector<MnBone> m_lstBones;
+		DirectX::SimpleMath::Matrix m_matLocalTransform;
+		std::vector<MnBone>			m_lstBones;
 		std::vector<DirectX::SimpleMath::Matrix> m_lstBoneMatrix;
 
 	};

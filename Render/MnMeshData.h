@@ -8,6 +8,7 @@
 #include "../Core/MnIndexBuffer.h"
 #include "MnMaterial.h"
 #include "../MnSkeleton.h"
+#include "../MnBoneAnimation.h"
 namespace MNL
 {
 	/*
@@ -37,6 +38,7 @@ namespace MNL
 		void SetSkeleton(const std::shared_ptr<MnSkeleton> spSkeleton);
 		void SetVertexBuffer(const std::shared_ptr<MnVertexBuffer> spVertexBuffer);
 		void SetIndexBuffer(const std::shared_ptr<MnIndexBuffer> spIndexBuffer);
+		void AddAnimation(const MnBoneAnimation& animation);
 
 
 
@@ -60,6 +62,7 @@ namespace MNL
 		std::string m_meshName;
 		std::vector<MnSubMesh> m_lstSubMeshes;
 		std::shared_ptr<MnSkeleton> m_spSkeleton;
+		std::vector<MnBoneAnimation> m_lstBoneAnimations;
 		//material
 
 		//buffers

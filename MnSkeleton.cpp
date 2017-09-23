@@ -25,6 +25,18 @@ UINT MnSkeleton::GetNumBones() const
 	return m_lstBones.size();
 }
 
+std::string MnSkeleton::GetBoneName(UINT index) const
+{
+	return m_lstBones[index].GetName();
+}
+void MnSkeleton::SetTransform(const DirectX::SimpleMath::Matrix& transform)
+{
+	m_matLocalTransform = transform;
+}
+const DirectX::SimpleMath::Matrix& MnSkeleton::GetTransform() const
+{
+	return m_matLocalTransform;
+}
 void MnSkeleton::UpdateBone(const std::string& boneName, const DirectX::SimpleMath::Vector3& position, const DirectX::SimpleMath::Quaternion& rotation, const DirectX::SimpleMath::Vector3& scale)
 {
 	int boneIndex = _GetBoneIndex(boneName);
