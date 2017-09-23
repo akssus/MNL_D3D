@@ -41,12 +41,13 @@ namespace MNL
 		void AddAnimation(const MnBoneAnimation& animation);
 
 
-
 		bool					HasBone() const;
 		std::shared_ptr<UINT>	GetParentIndex() const;
 		const std::string&		GetName() const;
 		const std::shared_ptr<MnSkeleton> GetSkeleton() const;
 		const DirectX::SimpleMath::Matrix& GetTransform() const;
+		
+		const std::vector<MnBoneAnimation>& GetAnimations() const;
 
 		std::shared_ptr<MnVertexBuffer> GetVertexBuffer() const;
 		std::shared_ptr<MnIndexBuffer>	GetIndexBuffer() const;

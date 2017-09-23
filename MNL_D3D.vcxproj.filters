@@ -194,6 +194,9 @@
     <ClCompile Include="MnBoneAnimationKeyFrame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MnBoneAnimationTracker.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MnConstantBuffer.h">
@@ -359,6 +362,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MnBoneAnimationKeyFrame.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MnBoneAnimationTracker.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

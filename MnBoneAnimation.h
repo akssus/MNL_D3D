@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include <string>
-#include <list>
+#include <vector>
 #include "MnBoneAnimationKeyFrame.h"
 
 namespace MNL
@@ -20,11 +20,12 @@ namespace MNL
 
 		void AddKeyFrame(const MnBoneAnimationKeyFrame& keyFrame);
 		UINT GetNumKeyFrames() const;
+		MnBoneAnimationKeyFrame GetKeyFrame(UINT index) const;
 
 	private:
 		std::string m_name;
 		double m_duration;
-		std::list<MnBoneAnimationKeyFrame> m_lstKeyFrames;
+		std::vector<MnBoneAnimationKeyFrame> m_lstKeyFrames;
 
 	};
 }

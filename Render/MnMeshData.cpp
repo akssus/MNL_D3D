@@ -28,10 +28,6 @@ void MnMeshData::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
 {
 	m_matTransform = matTransform;
 }
-const DirectX::SimpleMath::Matrix& MnMeshData::GetTransform() const
-{
-	return m_matTransform;
-}
 void MnMeshData::SetParentIndex(UINT index)
 {
 	m_spParentIndex = std::make_shared<UINT>(index);
@@ -70,6 +66,14 @@ const std::string& MnMeshData::GetName() const
 const std::shared_ptr<MnSkeleton> MnMeshData::GetSkeleton() const
 {
 	return m_spSkeleton;
+}
+const DirectX::SimpleMath::Matrix& MnMeshData::GetTransform() const
+{
+	return m_matTransform;
+}
+const std::vector<MnBoneAnimation>& MnMeshData::GetAnimations() const
+{
+	return m_lstBoneAnimations;
 }
 std::shared_ptr<UINT> MnMeshData::GetParentIndex() const
 {

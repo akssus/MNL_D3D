@@ -10,7 +10,6 @@ namespace MNL
 	struct MnBoneAnimationKey
 	{
 		std::string affectingBoneName;
-		UINT affectingBoneIndex = 0;
 		DirectX::SimpleMath::Vector3 keyPosition;
 		DirectX::SimpleMath::Quaternion keyRotation;
 		DirectX::SimpleMath::Vector3 keyScale;

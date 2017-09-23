@@ -9,6 +9,7 @@
 #include "BasicShaderPath.h"
 #include "SkinnedMeshShaderPath.h"
 #include "MnSkinnedMesh.h"
+#include "MnBoneAnimationTracker.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -126,7 +127,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	//auto mesh = std::make_shared<MnStaticMesh>();
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = resourcePool.GetMeshData("rico_anim.fbx", "RIco");
+	auto meshData = resourcePool.GetMeshData("rico_anim.fbx", "Rico");
 	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
 	auto textureComb = std::make_shared<MnMeshTextureCombination>();
@@ -149,6 +150,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	material->specular = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 	material->specularPower = 32.0f;
 
+	auto testAnim = resourcePool.GetBoneAnimation("rico_anim.fbx", 0);
+
+	MnBoneAnimationTracker tracker;
+	tracker.Init(mesh->GetSkeleton(), testAnim);
+
+	tracker.PlayAnimation();
 	/**************************************************************/
 
 	MSG wndMsg;

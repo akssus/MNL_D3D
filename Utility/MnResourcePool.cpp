@@ -33,9 +33,15 @@ HRESULT MnResourcePool::LoadModelFromFile(const CPD3DDevice& cpDevice, const std
 	if (FAILED(result))
 	{
 		//error log
-		return E_FAIL;
+		return result;
 	}
-	//read materials, lights..
+
+	result = _ReadAnimations(scene, package);
+	if (FAILED(result))
+	{
+		//error log
+		return result;
+	}
 
 	//mapping to table
 	m_modelPackages[fileName] = package;
@@ -118,7 +124,7 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 {
 	//ONE NODE ONE MESH
 	std::shared_ptr<MnMeshData> meshData = nullptr;
-
+	
 	meshData = std::make_shared<MnMeshData>();
 
 	meshData->SetName(node->mName.C_Str());
@@ -134,53 +140,6 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 
 	std::vector<_BoneData> boneData;
 	_ReadBoneData(scene, node, vertexType, totalVertexCount, boneData);
-
-	
-	if (scene->HasAnimations())
-	{
-		if (vertexType->GetFlags() & MN_CVF_BONE_INDEX
-			&& vertexType->GetFlags() & MN_CVF_BONE_WEIGHT)
-		{
-			for (int i = 0; i < scene->mNumAnimations; ++i)
-			{
-				const aiAnimation* anim = scene->mAnimations[i];
-				MnBoneAnimation newAnim;
-				newAnim.SetName(anim->mName.C_Str());
-				if (anim->mTicksPerSecond != 0)
-				{
-					double durationInMilliSecond = anim->mDuration / anim->mTicksPerSecond;
-					newAnim.SetDuration(durationInMilliSecond);
-				}
-				else
-				{
-					newAnim.SetDuration(anim->mDuration);
-				}
-				for (int keyFrameIndex = 0; keyFrameIndex < anim->mChannels[0]->mNumPositionKeys; ++keyFrameIndex)
-				{
-					MnBoneAnimationKeyFrame newKeyFrame;
-					newKeyFrame.keys.resize(anim->mNumChannels-1);
-					newKeyFrame.keyTime = anim->mChannels[0]->mPositionKeys[keyFrameIndex].mTime;
-
-					for (int boneIndex = 0; boneIndex < anim->mNumChannels - 1; ++boneIndex)
-					{
-						const aiNodeAnim* animNode = anim->mChannels[boneIndex+1];
-						newKeyFrame.keys[boneIndex].affectingBoneName = skeleton->GetBoneName(boneIndex);
-						newKeyFrame.keys[boneIndex].affectingBoneIndex = boneIndex;
-
-						const aiVectorKey& keyPos = animNode->mPositionKeys[keyFrameIndex];
-						const aiQuatKey& keyRot = animNode->mRotationKeys[keyFrameIndex];
-						const aiVectorKey& keyScale = animNode->mScalingKeys[keyFrameIndex];
-
-						newKeyFrame.keys[boneIndex].keyPosition = Vector3(keyPos.mValue.x, keyPos.mValue.y, keyPos.mValue.z);
-						newKeyFrame.keys[boneIndex].keyRotation = Quaternion(keyRot.mValue.x, keyRot.mValue.y, keyRot.mValue.z, keyRot.mValue.w);
-						newKeyFrame.keys[boneIndex].keyScale = Vector3(keyScale.mValue.x, keyScale.mValue.y, keyScale.mValue.z);
-					}
-					newAnim.AddKeyFrame(newKeyFrame);
-				}
-				meshData->AddAnimation(newAnim);
-			}
-		}
-	}
 
 	std::vector<float> vertexArray;
 	_ReadMeshVertices(scene, node, vertexType, totalVertexCount, vertexArray, boneData);
@@ -425,7 +384,42 @@ HRESULT MnResourcePool::_InitBuffers(const CPD3DDevice& cpDevice, std::shared_pt
 
 	return S_OK;
 }
+HRESULT MnResourcePool::_ReadAnimations(const aiScene* scene, _ModelPackage& modelPackage)
+{
+	if (scene->HasAnimations())
+	{
+		for (int i = 0; i < scene->mNumAnimations; ++i)
+		{
+			const aiAnimation* anim = scene->mAnimations[i];
+			MnBoneAnimation newAnim;
+			newAnim.SetName(anim->mName.C_Str());
+			newAnim.SetDuration(anim->mDuration);
+			for (int keyFrameIndex = 0; keyFrameIndex < anim->mChannels[0]->mNumPositionKeys; ++keyFrameIndex)
+			{
+				MnBoneAnimationKeyFrame newKeyFrame;
+				newKeyFrame.keys.resize(anim->mNumChannels);
+				newKeyFrame.keyTime = anim->mChannels[0]->mPositionKeys[keyFrameIndex].mTime;
 
+				for (int boneIndex = 0; boneIndex < anim->mNumChannels; ++boneIndex)
+				{
+					const aiNodeAnim* animNode = anim->mChannels[boneIndex];
+					newKeyFrame.keys[boneIndex].affectingBoneName = animNode->mNodeName.C_Str();
+
+					const aiVectorKey& keyPos = animNode->mPositionKeys[keyFrameIndex];
+					const aiQuatKey& keyRot = animNode->mRotationKeys[keyFrameIndex];
+					const aiVectorKey& keyScale = animNode->mScalingKeys[keyFrameIndex];
+
+					newKeyFrame.keys[boneIndex].keyPosition = Vector3(keyPos.mValue.x, keyPos.mValue.y, keyPos.mValue.z);
+					newKeyFrame.keys[boneIndex].keyRotation = Quaternion(keyRot.mValue.x, keyRot.mValue.y, keyRot.mValue.z, keyRot.mValue.w);
+					newKeyFrame.keys[boneIndex].keyScale = Vector3(keyScale.mValue.x, keyScale.mValue.y, keyScale.mValue.z);
+				}
+				newAnim.AddKeyFrame(newKeyFrame);
+			}
+			modelPackage.m_lstAnimations.push_back(newAnim);
+		}
+	}
+	return S_OK;
+}
 
 std::shared_ptr<MnMeshData> MnResourcePool::GetMeshData(const std::string& modelPackageName, const std::string& meshName) const
 {
@@ -434,7 +428,7 @@ std::shared_ptr<MnMeshData> MnResourcePool::GetMeshData(const std::string& model
 		//model package not found
 		return nullptr;
 	}
-	auto lstMeshes = m_modelPackages.at(modelPackageName).m_lstSpMeshes;
+	auto& lstMeshes = m_modelPackages.at(modelPackageName).m_lstSpMeshes;
 	//find matched mesh data
 	auto it = std::find_if(lstMeshes.begin(),lstMeshes.end(),
 		[&](const std::shared_ptr<MnMeshData>& meshData)
@@ -450,3 +444,33 @@ std::shared_ptr<MnMeshData> MnResourcePool::GetMeshData(const std::string& model
 	return *it;
 }
 
+MnBoneAnimation MnResourcePool::GetBoneAnimation(const std::string& modelPackageName, const std::string& animationName) const
+{
+	if (m_modelPackages.count(modelPackageName) == 0)
+	{
+		//model package not found
+		return MnBoneAnimation();
+	}
+	auto& lstAnimations = m_modelPackages.at(modelPackageName).m_lstAnimations;
+	auto it = std::find_if(lstAnimations.begin(), lstAnimations.end(),
+		[&](const MnBoneAnimation& anim)
+	{
+		if (anim.GetName() == animationName) return true;
+		return false;
+	});
+	if (it == lstAnimations.end())
+	{
+		return MnBoneAnimation();
+	}
+	return *it;
+}
+
+MnBoneAnimation MnResourcePool::GetBoneAnimation(const std::string& modelPackageName, UINT index) const
+{
+	if (m_modelPackages.count(modelPackageName) == 0)
+	{
+		//model package not found
+		return MnBoneAnimation();
+	}
+	return m_modelPackages.at(modelPackageName).m_lstAnimations[index];
+}

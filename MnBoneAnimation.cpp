@@ -2,7 +2,7 @@
 
 using namespace MNL;
 
-MnBoneAnimation::MnBoneAnimation()
+MnBoneAnimation::MnBoneAnimation():m_duration(0.0)
 {
 
 }
@@ -34,4 +34,8 @@ void MnBoneAnimation::AddKeyFrame(const MnBoneAnimationKeyFrame& keyFrame)
 UINT MnBoneAnimation::GetNumKeyFrames() const
 {
 	return m_lstKeyFrames.size();
+}
+MnBoneAnimationKeyFrame MnBoneAnimation::GetKeyFrame(UINT index) const
+{
+	return m_lstKeyFrames[index];
 }

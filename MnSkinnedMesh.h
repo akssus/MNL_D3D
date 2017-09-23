@@ -10,6 +10,7 @@
 #include "Render/MnMeshData.h"
 #include "Render/MnMesh.h"
 #include "MnSkeleton.h"
+#include "MnBoneAnimation.h"
 
 namespace MNL
 {

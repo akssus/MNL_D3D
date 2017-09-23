@@ -24,7 +24,9 @@ HRESULT MnSkinnedMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<M
 	//copy sub meshes
 	m_subMeshes.assign(spMeshData->GetSubMeshes().begin(), spMeshData->GetSubMeshes().end());
 
-	m_spSkeleton = spMeshData->GetSkeleton();
+	m_spSkeleton = std::make_shared<MnSkeleton>(); 
+	*m_spSkeleton = *(spMeshData->GetSkeleton());
+
 	return S_OK;
 }
 

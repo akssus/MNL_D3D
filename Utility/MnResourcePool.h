@@ -29,6 +29,7 @@ namespace MNL
 		{
 			std::string m_packageName;
 			std::vector<std::shared_ptr<MnMeshData> > m_lstSpMeshes;
+			std::vector<MnBoneAnimation> m_lstAnimations;
 		};
 
 		struct _BoneData
@@ -56,6 +57,8 @@ namespace MNL
 		@return nullptr if modelPackage unfound or meshName unfound
 		*/
 		std::shared_ptr<MnMeshData> GetMeshData(const std::string& modelPackageName, const std::string& meshName) const;
+		MnBoneAnimation GetBoneAnimation(const std::string& modelPackageName, const std::string& animationName) const;
+		MnBoneAnimation GetBoneAnimation(const std::string& modelPackageName, UINT index) const;
 
 	private:
 		HRESULT _LoadModelFromMemory(const _MemoryChunk& memoryChunk, std::string modelPackageName);
@@ -76,6 +79,7 @@ namespace MNL
 		MnSubMesh _CreateSubMesh(const aiMesh* mesh, UINT indexBase);
 		HRESULT _InitBuffers(const CPD3DDevice& cpDevice, std::shared_ptr<MnMeshData> meshData, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::vector<float>& vertexArray, UINT vertexCount, const std::vector<UINT>& indexArray, UINT indexCount);
 
+		HRESULT _ReadAnimations(const aiScene* scene, _ModelPackage& modelPackage);
 	private:
 		std::map<std::string, _ModelPackage> m_modelPackages;
 	};
