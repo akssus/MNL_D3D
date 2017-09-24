@@ -135,7 +135,7 @@ std::shared_ptr<MnMeshData> MnResourcePool::_ReadSingleMesh(const CPD3DDevice& c
 	UINT totalVertexCount = _GetNodesTotalVertexCount(scene, node);
 	UINT totalIndexCount = _GetNodesTotalIndexCount(scene, node);
 
-	auto skeleton = _CreateSkeleton(scene, node, vertexType);
+	auto skeleton = _CreateSkeleton(scene, node);
 	meshData->SetSkeleton(skeleton);
 
 	std::vector<_BoneData> boneData;
@@ -175,26 +175,38 @@ UINT MnResourcePool::_GetNodesTotalIndexCount(const aiScene* scene, const aiNode
 	return totalIndexCount;
 }
 
-std::shared_ptr<MnSkeleton> MnResourcePool::_CreateSkeleton(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType)
+std::shared_ptr<MnSkeleton> MnResourcePool::_CreateSkeleton(const aiScene* scene, const aiNode* node)
 {
 	auto skeleton = std::make_shared<MnSkeleton>();
-	if (vertexType->GetFlags() & MN_CVF_BONE_INDEX
-		&& vertexType->GetFlags() & MN_CVF_BONE_WEIGHT)
+
+	for (UINT i = 0; i < node->mNumMeshes; ++i)
 	{
-		aiMatrix4x4 localTransform = node->mTransformation;
-		localTransform.Transpose();
-		skeleton->SetTransform(*(Matrix*)(&localTransform));
-		for (UINT i = 0; i < node->mNumMeshes; ++i)
+		UINT meshIndex = node->mMeshes[i];
+		const aiMesh* mesh = scene->mMeshes[meshIndex];
+		//read bones
+		if (mesh->HasBones())
 		{
-			UINT meshIndex = node->mMeshes[i];
-			const aiMesh* mesh = scene->mMeshes[meshIndex];
-			//read bones
+			const aiNode* rootBoneNode = _FindRootBoneNode(scene, node, mesh->mBones[0]);
+			skeleton->SetRootBoneName(rootBoneNode->mName.C_Str());
 			
+			MnBone rootBone;
+			rootBone.SetName(rootBoneNode->mName.C_Str());
+			
+			aiMatrix4x4 rootBoneTransform = rootBoneNode->mTransformation;
+			rootBoneTransform.Transpose();
+			rootBone.SetTransform(*(Matrix*)(&rootBoneTransform));
+			
+			rootBone.SetOffsetMatrix(Matrix::Identity);
+			skeleton->AddBone(rootBone);
+
 			for (UINT j = 0; j < mesh->mNumBones; ++j)
 			{
 				const aiBone* currentBone = mesh->mBones[j];
 				MnBone newBone;
 				newBone.SetName(currentBone->mName.C_Str());
+
+				const aiNode* boneNode = scene->mRootNode->FindNode(currentBone->mName);
+				newBone.SetParentName(boneNode->mParent->mName.C_Str());
 
 				aiMatrix4x4 om = currentBone->mOffsetMatrix;
 				om.Transpose();
@@ -210,7 +222,16 @@ std::shared_ptr<MnSkeleton> MnResourcePool::_CreateSkeleton(const aiScene* scene
 	}
 	return skeleton;
 }
-
+const aiNode* MnResourcePool::_FindRootBoneNode(const aiScene* scene, const aiNode* currentMeshNode, const aiBone* bone)
+{
+	auto& boneName = bone->mName;
+	const aiNode* boneNode = scene->mRootNode->FindNode(boneName);
+	while ((boneNode->mParent != currentMeshNode->mParent) && (boneNode->mParent != currentMeshNode) && (boneNode->mParent != scene->mRootNode))
+	{
+		boneNode = boneNode->mParent;
+	}
+	return boneNode;
+}
 void MnResourcePool::_ReadBoneData(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType, UINT numVertices, std::vector<_BoneData>& boneData)
 {
 	std::vector<UINT> boneDataCounter;
@@ -234,7 +255,8 @@ void MnResourcePool::_ReadBoneData(const aiScene* scene, const aiNode* node, std
 					UINT vertexIndex = vertexWeight.mVertexId;
 					UINT boneCount = boneDataCounter[vertexIndex];
 					float boneWeight = vertexWeight.mWeight;
-					boneData[vertexIndex].boneIndex[boneCount] = j;
+					//index + 1 because index 0 is for the root bone
+					boneData[vertexIndex].boneIndex[boneCount] = j+1;
 					boneData[vertexIndex].boneWeight[boneCount] = boneWeight;
 					boneDataCounter[vertexIndex] += 1;
 				}
@@ -280,6 +302,15 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 					vertexArray[vertexOffset + currentOffset++] = mesh->mNormals[j].z;
 				}
 			}
+			else //default normal
+			{
+				if (flags & MN_CVF_NORMAL0)
+				{
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+				}
+			}
 
 			//read texcoords
 			int texCoordIndex = 0;
@@ -289,6 +320,14 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 				{
 					vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].x;
 					vertexArray[vertexOffset + currentOffset++] = mesh->mTextureCoords[texCoordIndex][j].y;
+				}
+			}
+			else //default texcoord
+			{
+				if (flags & MN_CVF_TEXCOORD0)
+				{
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
 				}
 			}
 			if (mesh->HasBones())
@@ -306,6 +345,23 @@ void MnResourcePool::_ReadMeshVertices(const aiScene* scene, const aiNode* node,
 					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[1];
 					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[2];
 					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneWeight[3];
+				}
+			}
+			else //default bone index
+			{
+				if (flags & MN_CVF_BONE_INDEX)
+				{
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+				}
+				if (flags & MN_CVF_BONE_WEIGHT)
+				{
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
+					vertexArray[vertexOffset + currentOffset++] = 0.0f;
 				}
 			}
 		}

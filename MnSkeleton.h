@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include <vector>
+#include <map>
 #include "DXTK\SimpleMath.h"
 #include "Core\MnTypedefs.h"
 #include "MnBone.h"
@@ -17,15 +18,17 @@ namespace MNL
 		void AddBone(const MnBone& bone);
 		UINT GetNumBones() const;
 		std::string GetBoneName(UINT index) const;
-
-		void SetTransform(const DirectX::SimpleMath::Matrix& transform);
-		const DirectX::SimpleMath::Matrix& GetTransform() const;
+		void SetRootBoneName(const std::string& rootBoneName);
 
 	public:
 		/**
-		Update bone property. if bone name does not exist, do nothing 
+		Update bone's local transformation. if bone name does not exist, do nothing 
 		*/
 		void UpdateBone(const std::string& boneName, const DirectX::SimpleMath::Vector3& position, const DirectX::SimpleMath::Quaternion& rotation, const DirectX::SimpleMath::Vector3& scale);
+		/*
+		Repose all the bones according to its parent's transformation
+		*/
+		void ReposeBones();
 
 		/*
 		Number of matrix is 96. This is fixed specification
@@ -36,9 +39,13 @@ namespace MNL
 		@return -1 if bone is not exist
 		*/
 		int _GetBoneIndex(const std::string& boneName);
+
+		void _ReposeBone(const std::string& boneName, const DirectX::SimpleMath::Matrix& baseMatrix);
+	
 	private:
-		DirectX::SimpleMath::Matrix m_matLocalTransform;
-		std::vector<MnBone>			m_lstBones;
+		std::string m_rootBoneName;
+		std::map<std::string, std::vector<std::string>> m_boneTree;
+		std::vector<MnBone>	m_lstBones;
 		std::vector<DirectX::SimpleMath::Matrix> m_lstBoneMatrix;
 
 	};

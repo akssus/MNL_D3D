@@ -27,12 +27,17 @@ namespace MNL
 		Notice that the transformation is NOT RELATIVE TO ITS PARENT
 		*/
 		DirectX::SimpleMath::Matrix GetTransform() const;
+		DirectX::SimpleMath::Matrix GetOffsetTransform() const;
 
 		void SetName(const std::string& name);
 		std::string GetName() const;
 
+		void SetParentName(const std::string& parentName);
+		std::string GetParentName() const;
+
 	private:
 		std::string m_name;
+		std::string m_parentName;
 		DirectX::SimpleMath::Matrix m_transform;
 		DirectX::SimpleMath::Matrix m_toBoneLocalMatrix;
 		DirectX::SimpleMath::Vector3 m_position;

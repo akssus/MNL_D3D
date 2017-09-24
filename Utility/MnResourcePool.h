@@ -72,7 +72,9 @@ namespace MNL
 		std::shared_ptr<MnMeshData> _ReadSingleMesh(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType);
 		UINT _GetNodesTotalVertexCount(const aiScene* scene,const aiNode* node);
 		UINT _GetNodesTotalIndexCount(const aiScene* scene,const aiNode* node);
-		std::shared_ptr<MnSkeleton> _CreateSkeleton(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType);
+		std::shared_ptr<MnSkeleton> _CreateSkeleton(const aiScene* scene, const aiNode* node);
+		const aiNode* _FindRootBoneNode(const aiScene* scene, const aiNode* currentMeshNode, const aiBone* bone);
+
 		void _ReadBoneData(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType, UINT numVertices, std::vector<_BoneData>& boneData);
 		void _ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray, const std::vector<_BoneData>& boneData);
 		void _ReadMeshIndices(const aiScene* scene, const aiNode* node, std::shared_ptr<MnMeshData>& meshData, UINT numIndices, std::vector<UINT>& indexArray);

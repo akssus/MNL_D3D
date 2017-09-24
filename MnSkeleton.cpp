@@ -17,7 +17,8 @@ MnSkeleton::~MnSkeleton()
 void MnSkeleton::AddBone(const MnBone& bone)
 {
 	m_lstBones.push_back(bone);
-	m_lstBoneMatrix[GetNumBones() - 1] = bone.GetTransform().Transpose();
+	m_lstBoneMatrix[GetNumBones() - 1] = (bone.GetOffsetTransform() * bone.GetTransform()).Transpose();
+	m_boneTree[bone.GetParentName()].push_back(bone.GetName());
 }
 
 UINT MnSkeleton::GetNumBones() const
@@ -29,13 +30,9 @@ std::string MnSkeleton::GetBoneName(UINT index) const
 {
 	return m_lstBones[index].GetName();
 }
-void MnSkeleton::SetTransform(const DirectX::SimpleMath::Matrix& transform)
+void MnSkeleton::SetRootBoneName(const std::string& rootBoneName)
 {
-	m_matLocalTransform = transform;
-}
-const DirectX::SimpleMath::Matrix& MnSkeleton::GetTransform() const
-{
-	return m_matLocalTransform;
+	m_rootBoneName = rootBoneName;
 }
 void MnSkeleton::UpdateBone(const std::string& boneName, const DirectX::SimpleMath::Vector3& position, const DirectX::SimpleMath::Quaternion& rotation, const DirectX::SimpleMath::Vector3& scale)
 {
@@ -47,8 +44,30 @@ void MnSkeleton::UpdateBone(const std::string& boneName, const DirectX::SimpleMa
 	}
 	auto& bone = m_lstBones[boneIndex];
 	bone.SetTransform(position, rotation, scale);
+}
 
-	m_lstBoneMatrix[boneIndex] = bone.GetTransform().Transpose();
+void MnSkeleton::ReposeBones()
+{
+	_ReposeBone(m_rootBoneName, Matrix::Identity);
+}
+void MnSkeleton::_ReposeBone(const std::string& boneName, const DirectX::SimpleMath::Matrix& baseMatrix)
+{
+	int boneIndex = _GetBoneIndex(boneName);
+	if (boneIndex == -1)
+	{
+		//bone is not exist
+		return;
+	}
+	auto& bone = m_lstBones[boneIndex];
+	Matrix stackedMatrix = bone.GetTransform() * baseMatrix;
+	Matrix reposedMatrix = bone.GetOffsetTransform() * stackedMatrix;
+	m_lstBoneMatrix[boneIndex] = reposedMatrix.Transpose();
+
+	const auto& lstChildren = m_boneTree[boneName];
+	for (const auto& childName : lstChildren)
+	{
+		_ReposeBone(childName, stackedMatrix);
+	}
 }
 
 D3D11_SUBRESOURCE_DATA MnSkeleton::GetBonePalette()

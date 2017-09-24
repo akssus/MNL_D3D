@@ -29,11 +29,31 @@ void MnBoneAnimationTracker::PlayAnimation()
 	//fixed temporarilly
 	m_currentTime += 1.0;
 
+	_UpdateBones();
+}
+
+void MnBoneAnimationTracker::_UpdateBones(const MnBoneAnimationKeyFrame& keyFrame_from, const MnBoneAnimationKeyFrame& keyFrame_to, float factor)
+{
 	int keysSize = m_currentKeyFrame.keys.size();
 	for (int i = 0; i < keysSize; ++i)
-	{
-		auto& key = m_currentKeyFrame.keys[i];
-		m_spCurrentSkeleton->UpdateBone(key.affectingBoneName, key.keyPosition, key.keyRotation, key.keyScale);
+	{ 
+		auto& key_from = keyFrame_from.keys[i];
+		auto& key_to = keyFrame_to.keys[i];
+		auto& key_lerp = _LerpKeys(key_from, key_to, factor);
+		std::string affectingBoneName = key_from.affectingBoneName;
+		m_spCurrentSkeleton->UpdateBone(affectingBoneName, key_lerp.keyPosition, key_lerp.keyRotation, key_lerp.keyScale);
 	}
+	m_spCurrentSkeleton->ReposeBones();
+}
 
+MnBoneAnimationKey MnBoneAnimationTracker::_LerpKeys(const MnBoneAnimationKey& key_from, const MnBoneAnimationKey& key_to, float factor)
+{
+	MnBoneAnimationKey retKey;
+	
+	retKey.affectingBoneName = key_from.affectingBoneName;
+	retKey.keyPosition = key_from.keyPosition * factor + key_to.keyPosition * (1.0f - factor);
+	retKey.keyRotation = key_from.keyRotation * factor + key_to.keyRotation * (1.0f - factor);
+	retKey.keyScale = key_from.keyScale * factor + key_to.keyScale * (1.0f - factor);
+
+	return retKey;
 }

@@ -25,17 +25,23 @@ void MnBone::SetTransform(const DirectX::SimpleMath::Matrix& transform)
 	m_transform = transform;
 }
 
+/********************PROBLEM****************************************/
 void MNL::MnBone::SetTransform(const DirectX::SimpleMath::Vector3 & position, const DirectX::SimpleMath::Quaternion & rotation, const DirectX::SimpleMath::Vector3 & scale)
 {
 	auto matTranslation = Matrix::CreateTranslation(position);
 	auto matRotation = Matrix::CreateFromQuaternion(rotation);
 	auto matScale = Matrix::CreateScale(scale);
-	m_transform = matScale * matRotation * matTranslation;
+	m_transform = (matScale * matRotation) * matTranslation;
 }
+/********************PROBLEM****************************************/
 
 DirectX::SimpleMath::Matrix MnBone::GetTransform() const
 {
-	return m_toBoneLocalMatrix * m_transform;
+	return m_transform;
+}
+DirectX::SimpleMath::Matrix MnBone::GetOffsetTransform() const
+{
+	return m_toBoneLocalMatrix;
 }
 void MnBone::SetName(const std::string& name)
 {
@@ -45,4 +51,13 @@ void MnBone::SetName(const std::string& name)
 std::string MnBone::GetName() const
 {
 	return m_name;
+}
+
+void MnBone::SetParentName(const std::string& parentName)
+{
+	m_parentName = parentName;
+}
+std::string MnBone::GetParentName() const
+{
+	return m_parentName;
 }

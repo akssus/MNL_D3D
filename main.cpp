@@ -114,7 +114,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	camera.SetNearDistance(0.1f);
 	camera.SetFarDistance(10000.0f);
 	camera.SetAspectRatio(1024.0f / 768.0f);
-	camera.SetPosition(Vector3(0, 0, -1000.0f));
+	//camera.SetPosition(Vector3(0, 0, -1000.0f));
+	camera.SetPosition(Vector3(0, 0, -1500.0f));
 	camera.LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	Matrix matWorld;
@@ -123,11 +124,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim.fbx", vertexType);
+	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "test.fbx", vertexType);
 
 	//auto mesh = std::make_shared<MnStaticMesh>();
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = resourcePool.GetMeshData("rico_anim.fbx", "Rico");
+	auto meshData = resourcePool.GetMeshData("test.fbx", "Cube");
 	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
 	auto textureComb = std::make_shared<MnMeshTextureCombination>();
@@ -150,12 +151,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	material->specular = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 	material->specularPower = 32.0f;
 
-	auto testAnim = resourcePool.GetBoneAnimation("rico_anim.fbx", 0);
+	auto testAnim = resourcePool.GetBoneAnimation("test.fbx", 0);
 
 	MnBoneAnimationTracker tracker;
 	tracker.Init(mesh->GetSkeleton(), testAnim);
-
 	tracker.PlayAnimation();
+
 	/**************************************************************/
 
 	MSG wndMsg;
@@ -173,8 +174,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			//render here
 
 			rad += 0.01f;
-			//matWorld = Matrix::CreateRotationY(rad);
-			matWorld = mesh->GetTransform();
+			//matWorld = mesh->GetTransform();
+			matWorld = Matrix::Identity;
 			matWorld = matWorld * Matrix::CreateRotationY(rad);
 			matWorld = matWorld * Matrix::CreateTranslation(0.0f, -200.0f, 0.0f);
 			renderer.SetWorldBuffer(renderAPI, matWorld);

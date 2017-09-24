@@ -14,6 +14,10 @@ namespace MNL
 		void PlayAnimation();
 
 	private:
+		void _UpdateBones(const MnBoneAnimationKeyFrame& keyFrame_from, const MnBoneAnimationKeyFrame& keyFrame_to, float factor);
+		MnBoneAnimationKey _LerpKeys(const MnBoneAnimationKey& key_from, const MnBoneAnimationKey& key_to, float factor);
+
+	private:
 		std::shared_ptr<MnSkeleton> m_spCurrentSkeleton;
 		MnBoneAnimation m_currentAnimation;
 		MnBoneAnimationKeyFrame m_currentKeyFrame;
