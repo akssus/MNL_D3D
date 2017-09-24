@@ -180,7 +180,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MnBone.cpp" />
     <ClCompile Include="MnBoneAnimation.cpp" />
-    <ClCompile Include="MnBoneAnimationKeyFrame.cpp" />
+    <ClCompile Include="MnBoneAnimationElement.cpp" />
     <ClCompile Include="MnBoneAnimationTracker.cpp" />
     <ClCompile Include="MnMatrixPalette.cpp" />
     <ClCompile Include="MnSkeleton.cpp" />
@@ -236,7 +236,7 @@
     <ClInclude Include="Core\MnWindow.h" />
     <ClInclude Include="MnBone.h" />
     <ClInclude Include="MnBoneAnimation.h" />
-    <ClInclude Include="MnBoneAnimationKeyFrame.h" />
+    <ClInclude Include="MnBoneAnimationElement.h" />
     <ClInclude Include="MnBoneAnimationTracker.h" />
     <ClInclude Include="MnMatrixPalette.h" />
     <ClInclude Include="MnSkeleton.h" />

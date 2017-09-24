@@ -18,45 +18,24 @@ const std::string& MnBoneAnimation::GetName() const
 {
 	return m_name;
 }
-
 void MnBoneAnimation::SetTotalDuration(double duration)
 {
 	m_totalDuration = duration;
 }
-const double& MnBoneAnimation::GetTotalDuration() const
+double MnBoneAnimation::GetTotalDuration() const
 {
 	return m_totalDuration;
 }
-void MnBoneAnimation::AddKeyFrame(const MnBoneAnimationKeyFrame& keyFrame)
+void MnBoneAnimation::AddElement(const MnBoneAnimationElement& keyFrame)
 {
-	m_lstKeyFrames.push_back(keyFrame);
+	m_lstElements.push_back(keyFrame);
 }
-UINT MnBoneAnimation::GetNumKeyFrames() const
+UINT MnBoneAnimation::GetNumElements() const
 {
-	return m_lstKeyFrames.size();
-}
-MnBoneAnimationKeyFrame MnBoneAnimation::GetKeyFrame(UINT index) const
-{
-	return m_lstKeyFrames[index];
-}
-MnBoneAnimationKeyFrame MnBoneAnimation::GetKeyFrameAtTime(float timeFactor) const
-{
-	UINT keyFrameIndex = GetKeyFrameIndex(timeFactor);
-	return m_lstKeyFrames[keyFrameIndex];
+	return m_lstElements.size();
 }
 
-UINT MnBoneAnimation::GetKeyFrameIndex(float timeFactor) const
+MnBoneAnimationElement MnBoneAnimation::GetElement(UINT index) const
 {
-	double time = timeFactor * m_totalDuration;
-	int numKeyFrames = GetNumKeyFrames();
-	for (int i = 0; i < numKeyFrames; ++i)
-	{
-		auto& keyFrame = m_lstKeyFrames[i];
-		if (time <= keyFrame.keyTime)
-		{
-			return i-1;
-		}
-	}
-	int lastFrameIndex = numKeyFrames - 1;
-	return lastFrameIndex;
+	return m_lstElements[index];
 }

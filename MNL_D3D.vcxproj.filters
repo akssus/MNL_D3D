@@ -191,10 +191,10 @@
     <ClCompile Include="MnBoneAnimation.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MnBoneAnimationKeyFrame.cpp">
+    <ClCompile Include="MnBoneAnimationTracker.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MnBoneAnimationTracker.cpp">
+    <ClCompile Include="MnBoneAnimationElement.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -361,10 +361,10 @@
     <ClInclude Include="MnBoneAnimation.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MnBoneAnimationKeyFrame.h">
+    <ClInclude Include="MnBoneAnimationTracker.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MnBoneAnimationTracker.h">
+    <ClInclude Include="MnBoneAnimationElement.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

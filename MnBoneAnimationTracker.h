@@ -14,16 +14,12 @@ namespace MNL
 		void PlayAnimation();
 
 	private:
-		UINT _GetNextFrameIndex(UINT currentFrameIndex);
-		void _UpdateBones(const MnBoneAnimationKeyFrame& keyFrame_from, const MnBoneAnimationKeyFrame& keyFrame_to, float factor);
-		MnBoneAnimationKey _LerpKeys(const MnBoneAnimationKey& key_from, const MnBoneAnimationKey& key_to, float factor);
+		void _UpdateBones(float timeFactor);
 
 	private:
 		std::shared_ptr<MnSkeleton> m_spCurrentSkeleton;
 		MnBoneAnimation m_currentAnimation;
-		MnBoneAnimationKeyFrame m_currentKeyFrame;
 		double m_currentTime;
-		double m_duration;
 
 		bool m_isLoop;
 		bool m_isPlaying;

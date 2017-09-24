@@ -18,7 +18,7 @@ MnResourcePool::~MnResourcePool()
 HRESULT MnResourcePool::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType)
 {
 	Assimp::Importer importer;
-	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs);
+	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_LimitBoneWeights);
 	if (!scene)
 	{
 		//error log
@@ -450,27 +450,31 @@ HRESULT MnResourcePool::_ReadAnimations(const aiScene* scene, _ModelPackage& mod
 			MnBoneAnimation newAnim;
 			newAnim.SetName(anim->mName.C_Str());
 			newAnim.SetTotalDuration(anim->mDuration);
-			int a = anim->mChannels[2]->mNumRotationKeys;
-			for (int keyFrameIndex = 0; keyFrameIndex < anim->mChannels[0]->mNumPositionKeys; ++keyFrameIndex)
-			{
-				MnBoneAnimationKeyFrame newKeyFrame;
-				newKeyFrame.keys.resize(anim->mNumChannels);
-				newKeyFrame.keyTime = anim->mChannels[0]->mPositionKeys[keyFrameIndex].mTime;
 
-				for (int boneIndex = 0; boneIndex < anim->mNumChannels; ++boneIndex)
+			for (int boneIndex = 0; boneIndex < anim->mNumChannels; ++boneIndex)
+			{
+				const aiNodeAnim* animNode = anim->mChannels[boneIndex];
+				MnBoneAnimationElement newAnimElement;
+				newAnimElement.SetAffectingBoneName(animNode->mNodeName.C_Str());
+				newAnimElement.SetDuration(anim->mDuration);
+
+				for (int keyFrameIndex = 0; keyFrameIndex < animNode->mNumPositionKeys; ++keyFrameIndex)
 				{
-					const aiNodeAnim* animNode = anim->mChannels[boneIndex];
-					newKeyFrame.keys[boneIndex].affectingBoneName = animNode->mNodeName.C_Str();
+					MnBoneAnimationKeyFrame newKeyFrame;
 
 					const aiVectorKey& keyPos = animNode->mPositionKeys[keyFrameIndex];
 					const aiQuatKey& keyRot = animNode->mRotationKeys[keyFrameIndex];
 					const aiVectorKey& keyScale = animNode->mScalingKeys[keyFrameIndex];
 
-					newKeyFrame.keys[boneIndex].keyPosition = Vector3(keyPos.mValue.x, keyPos.mValue.y, keyPos.mValue.z);
-					newKeyFrame.keys[boneIndex].keyRotation = Quaternion(keyRot.mValue.x, keyRot.mValue.y, keyRot.mValue.z, keyRot.mValue.w);
-					newKeyFrame.keys[boneIndex].keyScale = Vector3(keyScale.mValue.x, keyScale.mValue.y, keyScale.mValue.z);
+					newKeyFrame.keyPosition = Vector3(keyPos.mValue.x, keyPos.mValue.y, keyPos.mValue.z);
+					newKeyFrame.keyRotation = Quaternion(keyRot.mValue.x, keyRot.mValue.y, keyRot.mValue.z, keyRot.mValue.w);
+					newKeyFrame.keyScale = Vector3(keyScale.mValue.x, keyScale.mValue.y, keyScale.mValue.z);
+
+					newKeyFrame.keyTime = keyPos.mTime;
+
+					newAnimElement.AddKeyFrame(newKeyFrame);
 				}
-				newAnim.AddKeyFrame(newKeyFrame);
+				newAnim.AddElement(newAnimElement);
 			}
 			modelPackage.m_lstAnimations.push_back(newAnim);
 		}

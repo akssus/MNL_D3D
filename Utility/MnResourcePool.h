@@ -11,7 +11,7 @@
 #include "../Render/MnLightSource.h"
 #include "../MnSkeleton.h"
 #include "../MnBoneAnimation.h"
-#include "../MnBoneAnimationKeyFrame.h"
+#include "../MnBoneAnimationElement.h"
 
 namespace MNL
 {

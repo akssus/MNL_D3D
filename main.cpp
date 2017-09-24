@@ -115,7 +115,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	camera.SetFarDistance(10000.0f);
 	camera.SetAspectRatio(1024.0f / 768.0f);
 	//camera.SetPosition(Vector3(0, 0, -1000.0f));
-	camera.SetPosition(Vector3(0, 0, -1500.0f));
+	camera.SetPosition(Vector3(0, 0, 1000.0f));
 	camera.LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	Matrix matWorld;
@@ -124,11 +124,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	float rad = 0.0f;
 
 	MnResourcePool resourcePool;
-	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "test.fbx", vertexType);
+	resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim2.fbx", vertexType);
 
 	//auto mesh = std::make_shared<MnStaticMesh>();
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = resourcePool.GetMeshData("test.fbx", "Cube");
+	auto meshData = resourcePool.GetMeshData("rico_anim2.fbx", "Rico");
 	mesh->Init(renderAPI.GetD3DDevice(), meshData);
 
 	auto textureComb = std::make_shared<MnMeshTextureCombination>();
@@ -141,7 +141,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	auto light = std::make_shared<MnLightSource>();
 	light->SetPosition(0.0f, 0.0f, 0.0f);
-	light->SetDirection(0.0f, 0.0f, 1.0f);
+	light->SetDirection(0.0f, 0.0f, -1.0f);
 	light->SetLightType(MN_LIGHT_DIRECTIONAL);
 
 	//white plastic
@@ -151,7 +151,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	material->specular = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 	material->specularPower = 32.0f;
 
-	auto testAnim = resourcePool.GetBoneAnimation("test.fbx", 0);
+	auto testAnim = resourcePool.GetBoneAnimation("rico_anim2.fbx", 0);
 
 	MnBoneAnimationTracker tracker;
 	tracker.Init(mesh->GetSkeleton(), testAnim);
