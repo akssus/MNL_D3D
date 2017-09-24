@@ -449,7 +449,8 @@ HRESULT MnResourcePool::_ReadAnimations(const aiScene* scene, _ModelPackage& mod
 			const aiAnimation* anim = scene->mAnimations[i];
 			MnBoneAnimation newAnim;
 			newAnim.SetName(anim->mName.C_Str());
-			newAnim.SetDuration(anim->mDuration);
+			newAnim.SetTotalDuration(anim->mDuration);
+			int a = anim->mChannels[2]->mNumRotationKeys;
 			for (int keyFrameIndex = 0; keyFrameIndex < anim->mChannels[0]->mNumPositionKeys; ++keyFrameIndex)
 			{
 				MnBoneAnimationKeyFrame newKeyFrame;

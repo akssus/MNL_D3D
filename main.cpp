@@ -155,7 +155,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	MnBoneAnimationTracker tracker;
 	tracker.Init(mesh->GetSkeleton(), testAnim);
-	tracker.PlayAnimation();
 
 	/**************************************************************/
 
@@ -172,6 +171,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 		{
 			renderAPI.ClearRenderTargets(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView(), Vector4(0.5f, 0.5f, 0.5f, 1.0f));
 			//render here
+
+			tracker.PlayAnimation();
 
 			rad += 0.01f;
 			//matWorld = mesh->GetTransform();

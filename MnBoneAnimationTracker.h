@@ -14,6 +14,7 @@ namespace MNL
 		void PlayAnimation();
 
 	private:
+		UINT _GetNextFrameIndex(UINT currentFrameIndex);
 		void _UpdateBones(const MnBoneAnimationKeyFrame& keyFrame_from, const MnBoneAnimationKeyFrame& keyFrame_to, float factor);
 		MnBoneAnimationKey _LerpKeys(const MnBoneAnimationKey& key_from, const MnBoneAnimationKey& key_to, float factor);
 
