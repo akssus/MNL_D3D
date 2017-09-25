@@ -1,8 +1,8 @@
 #pragma once
 #include <d3d11.h>
-#include "Render/MnRenderer.h"
-#include "Render/MnLightSource.h"
-#include "Render/MnMaterial.h"
+#include "MnRenderer.h"
+#include "MnLightSource.h"
+#include "MnMaterial.h"
 #include "MnSkeleton.h"
 
 namespace MNL

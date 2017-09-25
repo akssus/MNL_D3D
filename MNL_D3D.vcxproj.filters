@@ -170,32 +170,35 @@
     <ClCompile Include="Utility\MnResourcePool.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnSkeleton.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MnBone.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MnMatrixPalette.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MnSkinnedMeshRenderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="SkinnedMeshShaderPath.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MnSkinnedMesh.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnBone.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnBoneAnimation.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnBoneAnimation.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnBoneAnimationTracker.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnBoneAnimationElement.cpp">
+      <Filter>Render\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MnBoneAnimationElement.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Render\MnBoneAnimationTracker.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnMatrixPalette.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnSkeleton.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnSkinnedMesh.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnSkinnedMeshRenderer.cpp">
+      <Filter>Render\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnTimer.cpp">
+      <Filter>Utility\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -340,32 +343,35 @@
     <ClInclude Include="Utility\MNL_Utility.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="MnSkeleton.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MnBone.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MnMatrixPalette.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MnSkinnedMeshRenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="SkinnedMeshShaderPath.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MnSkinnedMesh.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnBone.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnBoneAnimation.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnBoneAnimation.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnBoneAnimationTracker.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnBoneAnimationElement.h">
+      <Filter>Render\Header</Filter>
     </ClInclude>
-    <ClInclude Include="MnBoneAnimationElement.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Render\MnBoneAnimationTracker.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnMatrixPalette.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnSkeleton.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnSkinnedMesh.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnSkinnedMeshRenderer.h">
+      <Filter>Render\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnTimer.h">
+      <Filter>Utility\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

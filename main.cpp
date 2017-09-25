@@ -5,11 +5,12 @@
 #include "Core\MNL_Core.h"
 #include "Utility/MNL_Utility.h"
 #include "Render\MNL_Render.h"
-#include "MnSkinnedMeshRenderer.h"
+#include "Render/MnSkinnedMeshRenderer.h"
 #include "BasicShaderPath.h"
 #include "SkinnedMeshShaderPath.h"
-#include "MnSkinnedMesh.h"
-#include "MnBoneAnimationTracker.h"
+#include "Render/MnSkinnedMesh.h"
+#include "Render/MnBoneAnimationTracker.h"
+#include "Utility\MnTimer.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -141,7 +142,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	auto light = std::make_shared<MnLightSource>();
 	light->SetPosition(0.0f, 0.0f, 0.0f);
-	light->SetDirection(0.0f, 0.0f, -1.0f);
+	light->SetDirection(-0.5f, 0.0f, -1.0f);
 	light->SetLightType(MN_LIGHT_DIRECTIONAL);
 
 	//white plastic
@@ -158,6 +159,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 	/**************************************************************/
 
+	MnTimer timer;
+	timer.Start();
+
 	MSG wndMsg;
 	ZeroMemory(&wndMsg, sizeof(MSG));
 	while (wndMsg.message != WM_QUIT)
@@ -172,7 +176,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 			renderAPI.ClearRenderTargets(renderWindow.GetBackBufferView(), depthStencilBuffer.GetDepthStencilView(), Vector4(0.5f, 0.5f, 0.5f, 1.0f));
 			//render here
 
-			tracker.PlayAnimation();
+			MnTime elapsedTime = timer.GetElapsedTime();
+			tracker.UpdateAnimation(elapsedTime.GenuineTime());
 
 			rad += 0.01f;
 			//matWorld = mesh->GetTransform();

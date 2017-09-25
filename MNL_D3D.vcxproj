@@ -89,7 +89,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\cpplibraries\DXTK\include;C:\cpplibraries\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cpplibraries\DXTK\include;C:\cpplibraries\assimp\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -178,17 +178,14 @@
     <ClCompile Include="Core\MnViewport.cpp" />
     <ClCompile Include="Core\MnWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MnBone.cpp" />
-    <ClCompile Include="MnBoneAnimation.cpp" />
-    <ClCompile Include="MnBoneAnimationElement.cpp" />
-    <ClCompile Include="MnBoneAnimationTracker.cpp" />
-    <ClCompile Include="MnMatrixPalette.cpp" />
-    <ClCompile Include="MnSkeleton.cpp" />
-    <ClCompile Include="MnSkinnedMesh.cpp" />
-    <ClCompile Include="MnSkinnedMeshRenderer.cpp" />
+    <ClCompile Include="Render\MnBone.cpp" />
+    <ClCompile Include="Render\MnBoneAnimation.cpp" />
+    <ClCompile Include="Render\MnBoneAnimationElement.cpp" />
+    <ClCompile Include="Render\MnBoneAnimationTracker.cpp" />
     <ClCompile Include="Render\MnCamera.cpp" />
     <ClCompile Include="Render\MnLightSource.cpp" />
     <ClCompile Include="Render\MnMaterial.cpp" />
+    <ClCompile Include="Render\MnMatrixPalette.cpp" />
     <ClCompile Include="Render\MnMesh.cpp" />
     <ClCompile Include="Render\MnMeshData.cpp" />
     <ClCompile Include="Render\MnMeshRenderer.cpp" />
@@ -199,10 +196,14 @@
     <ClCompile Include="Render\MnRenderWindow.cpp" />
     <ClCompile Include="Render\MnShaderPath.cpp" />
     <ClCompile Include="Render\MnShaderPathInstance.cpp" />
+    <ClCompile Include="Render\MnSkeleton.cpp" />
+    <ClCompile Include="Render\MnSkinnedMesh.cpp" />
+    <ClCompile Include="Render\MnSkinnedMeshRenderer.cpp" />
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp" />
     <ClCompile Include="Render\MnStaticMesh.cpp" />
     <ClCompile Include="SkinnedMeshShaderPath.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
+    <ClCompile Include="Utility\MnTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicShaderPath.h" />
@@ -234,18 +235,15 @@
     <ClInclude Include="Core\MnVideoAdapter.h" />
     <ClInclude Include="Core\MnViewport.h" />
     <ClInclude Include="Core\MnWindow.h" />
-    <ClInclude Include="MnBone.h" />
-    <ClInclude Include="MnBoneAnimation.h" />
-    <ClInclude Include="MnBoneAnimationElement.h" />
-    <ClInclude Include="MnBoneAnimationTracker.h" />
-    <ClInclude Include="MnMatrixPalette.h" />
-    <ClInclude Include="MnSkeleton.h" />
-    <ClInclude Include="MnSkinnedMesh.h" />
-    <ClInclude Include="MnSkinnedMeshRenderer.h" />
+    <ClInclude Include="Render\MnBone.h" />
+    <ClInclude Include="Render\MnBoneAnimation.h" />
+    <ClInclude Include="Render\MnBoneAnimationElement.h" />
+    <ClInclude Include="Render\MnBoneAnimationTracker.h" />
     <ClInclude Include="Render\MnCamera.h" />
     <ClInclude Include="Render\MnLightSource.h" />
     <ClInclude Include="Render\MNL_Render.h" />
     <ClInclude Include="Render\MnMaterial.h" />
+    <ClInclude Include="Render\MnMatrixPalette.h" />
     <ClInclude Include="Render\MnMesh.h" />
     <ClInclude Include="Render\MnMeshData.h" />
     <ClInclude Include="Render\MnMeshRenderer.h" />
@@ -256,11 +254,15 @@
     <ClInclude Include="Render\MnRenderWindow.h" />
     <ClInclude Include="Render\MnShaderPath.h" />
     <ClInclude Include="Render\MnShaderPathInstance.h" />
+    <ClInclude Include="Render\MnSkeleton.h" />
+    <ClInclude Include="Render\MnSkinnedMesh.h" />
+    <ClInclude Include="Render\MnSkinnedMeshRenderer.h" />
     <ClInclude Include="Render\MnSkinnedMeshVertexType.h" />
     <ClInclude Include="Render\MnStaticMesh.h" />
     <ClInclude Include="SkinnedMeshShaderPath.h" />
     <ClInclude Include="Utility\MNL_Utility.h" />
     <ClInclude Include="Utility\MnResourcePool.h" />
+    <ClInclude Include="Utility\MnTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelshader.hlsl">

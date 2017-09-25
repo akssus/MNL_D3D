@@ -4,6 +4,8 @@ using namespace MNL;
 using namespace DirectX::SimpleMath;
 
 MnBoneAnimationTracker::MnBoneAnimationTracker():m_currentTime(0.0),
+m_animatingSpeed(1.0f),
+m_durationPerSeconds(24.0),
 m_isLoop(false),
 m_isPlaying(false),
 m_isPaused(false)
@@ -22,10 +24,21 @@ HRESULT MnBoneAnimationTracker::Init(const std::shared_ptr<MnSkeleton>& spSkelet
 	return S_OK;
 }
 
-void MnBoneAnimationTracker::PlayAnimation()
+void MnBoneAnimationTracker::SetFPS(double fps)
+{
+	m_durationPerSeconds = fps;
+}
+void MnBoneAnimationTracker::SetAnimatingSpeed(float speed)
+{
+	if (speed <= 0)
+		speed = 1.0f;
+	m_animatingSpeed = speed;
+}
+
+void MnBoneAnimationTracker::UpdateAnimation(double timeDelta)
 {
 	//fixed temporarilly
-	m_currentTime += 0.5;
+	m_currentTime += timeDelta * 0.001 * m_durationPerSeconds;
 	if (m_currentTime > m_currentAnimation.GetTotalDuration())
 	{
 		m_currentTime -= m_currentAnimation.GetTotalDuration();

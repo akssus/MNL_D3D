@@ -3,15 +3,15 @@
 #include <map>
 #include <memory>
 #include "assimp\scene.h"
-#include "../Core/MnTypedefs.h"
-#include "../Render\MnMesh.h"
-#include "../Render/MnMesh.h"
-#include "../Render/MnMeshData.h"
-#include "../Render/MnMaterial.h"
-#include "../Render/MnLightSource.h"
-#include "../MnSkeleton.h"
-#include "../MnBoneAnimation.h"
-#include "../MnBoneAnimationElement.h"
+#include "Core/MnTypedefs.h"
+#include "Render\MnMesh.h"
+#include "Render/MnMesh.h"
+#include "Render/MnMeshData.h"
+#include "Render/MnMaterial.h"
+#include "Render/MnLightSource.h"
+#include "Render/MnSkeleton.h"
+#include "Render/MnBoneAnimation.h"
+#include "Render/MnBoneAnimationElement.h"
 
 namespace MNL
 {

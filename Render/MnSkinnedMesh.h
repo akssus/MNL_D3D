@@ -6,9 +6,9 @@
 #include "Core\MnVertexBuffer.h"
 #include "Core\MnIndexBuffer.h"
 #include "Core\MnCustomVertexType.h"
-#include "Render/MnMeshVertexType.h"
-#include "Render/MnMeshData.h"
-#include "Render/MnMesh.h"
+#include "MnMeshVertexType.h"
+#include "MnMeshData.h"
+#include "MnMesh.h"
 #include "MnSkeleton.h"
 #include "MnBoneAnimation.h"
 
