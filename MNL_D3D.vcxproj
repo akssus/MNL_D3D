@@ -202,6 +202,7 @@
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp" />
     <ClCompile Include="Render\MnStaticMesh.cpp" />
     <ClCompile Include="SkinnedMeshShaderPath.cpp" />
+    <ClCompile Include="Utility\MnLog.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
     <ClCompile Include="Utility\MnTimer.cpp" />
   </ItemGroup>
@@ -260,6 +261,7 @@
     <ClInclude Include="Render\MnSkinnedMeshVertexType.h" />
     <ClInclude Include="Render\MnStaticMesh.h" />
     <ClInclude Include="SkinnedMeshShaderPath.h" />
+    <ClInclude Include="Utility\MnLog.h" />
     <ClInclude Include="Utility\MNL_Utility.h" />
     <ClInclude Include="Utility\MnResourcePool.h" />
     <ClInclude Include="Utility\MnTimer.h" />

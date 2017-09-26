@@ -200,6 +200,9 @@
     <ClCompile Include="Utility\MnTimer.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Utility\MnLog.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MnConstantBuffer.h">
@@ -371,6 +374,9 @@
       <Filter>Render\Header</Filter>
     </ClInclude>
     <ClInclude Include="Utility\MnTimer.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnLog.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
   </ItemGroup>

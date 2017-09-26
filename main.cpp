@@ -12,6 +12,8 @@
 #include "Render/MnBoneAnimationTracker.h"
 #include "Utility\MnTimer.h"
 
+#include "Utility\MnLog.h"
+
 using namespace DirectX::SimpleMath;
 using namespace MNL;
 
