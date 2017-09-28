@@ -1,4 +1,5 @@
 #include "MnWindow.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -31,6 +32,7 @@ HRESULT MnWindow::Create(HINSTANCE hInstance, int nCmdShow, std::wstring windowN
 	m_wndClass.lpszClassName = className.c_str();
 	if (!RegisterClass(&m_wndClass))
 	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(RegisterClass));
 		return E_FAIL;
 	}
 

@@ -1,4 +1,5 @@
 #include "MnConstantElement.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -15,7 +16,7 @@ MnConstantElement::MnConstantElement(const MnConstantElementType& constantElemen
 	HRESULT result = _Init(constantElementType);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(MnConstantElement));
 	}
 }
 MnConstantElementType MnConstantElement::GetType() const
@@ -31,7 +32,7 @@ HRESULT MnConstantElement::_Init(const MnConstantElementType& constantElementTyp
 {
 	if (constantElementType == MN_CONSTANT_ELEMENT_TYPE_NONE)
 	{
-		//error log here
+		MnLog::MB_IsNull(MN_VAR_INFO(constantElementType));
 		return E_FAIL;
 	}
 

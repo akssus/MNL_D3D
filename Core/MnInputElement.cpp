@@ -57,24 +57,6 @@ UINT MnInputElement::GetIndex() const
 {
 	return m_index;
 }
-/*
-bool MnInputElement::_SetDesc(std::string semanticName, MnInputElementType& inputElementType)
-{
-	if (inputElementType == MN_INPUT_ELEMENT_TYPE_NONE)
-	{
-		//error log here
-		return false;
-	}
-
-	m_desc.SemanticName = semanticName.c_str();
-	m_desc.SemanticIndex = 0;
-	m_desc.InputSlot = 0;
-	m_desc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-	m_desc.InstanceDataStepRate = 0;
-	m_desc.AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
-	return true;
-}
-*/
 
 DXGI_FORMAT MnInputElement::_ConvertToDXGIFormat(const MnInputElementType& inputElementType)
 {

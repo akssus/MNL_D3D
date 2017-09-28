@@ -1,4 +1,5 @@
 #include "MnInputLayout.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -35,8 +36,8 @@ HRESULT MnInputLayout::Init(CPD3DDevice cpD3DDevice, const std::shared_ptr<MnCus
 		cpInputLayout.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateInputLayout));
+		return result;
 	}
 	m_inputLayout = cpInputLayout;
 	return S_OK;

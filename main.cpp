@@ -11,8 +11,7 @@
 #include "Render/MnSkinnedMesh.h"
 #include "Render/MnBoneAnimationTracker.h"
 #include "Utility\MnTimer.h"
-
-#include "Utility\MnLog.h"
+#include "Core\MnLog.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -26,7 +25,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	HRESULT result = hardware.Init();
 	if (FAILED(result))
 	{
-		//error msg
 		return 0;
 	}
 	MNL::MnRenderAPI renderAPI;

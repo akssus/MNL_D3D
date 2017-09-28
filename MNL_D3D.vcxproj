@@ -165,6 +165,7 @@
     <ClCompile Include="Core\MnIndexBuffer.cpp" />
     <ClCompile Include="Core\MnInputElement.cpp" />
     <ClCompile Include="Core\MnInputLayout.cpp" />
+    <ClCompile Include="Core\MnLog.cpp" />
     <ClCompile Include="Core\MnPixelShader.cpp" />
     <ClCompile Include="Core\MnRasterizerState.cpp" />
     <ClCompile Include="Core\MnRenderAPI.cpp" />
@@ -202,7 +203,6 @@
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp" />
     <ClCompile Include="Render\MnStaticMesh.cpp" />
     <ClCompile Include="SkinnedMeshShaderPath.cpp" />
-    <ClCompile Include="Utility\MnLog.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
     <ClCompile Include="Utility\MnTimer.cpp" />
   </ItemGroup>
@@ -221,6 +221,7 @@
     <ClInclude Include="Core\MnIndexBuffer.h" />
     <ClInclude Include="Core\MnInputElement.h" />
     <ClInclude Include="Core\MnInputLayout.h" />
+    <ClInclude Include="Core\MnLog.h" />
     <ClInclude Include="Core\MNL_Core.h" />
     <ClInclude Include="Core\MnMacros.h" />
     <ClInclude Include="Core\MnPixelShader.h" />
@@ -261,7 +262,6 @@
     <ClInclude Include="Render\MnSkinnedMeshVertexType.h" />
     <ClInclude Include="Render\MnStaticMesh.h" />
     <ClInclude Include="SkinnedMeshShaderPath.h" />
-    <ClInclude Include="Utility\MnLog.h" />
     <ClInclude Include="Utility\MNL_Utility.h" />
     <ClInclude Include="Utility\MnResourcePool.h" />
     <ClInclude Include="Utility\MnTimer.h" />

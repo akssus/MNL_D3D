@@ -1,4 +1,5 @@
 #include "MnRenderAPI.h"
+#include "MnLog.h"
 #include <memory>
 
 
@@ -20,8 +21,8 @@ HRESULT MnRenderAPI::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 	HRESULT result = m_pD3DDevice->Init(hardwareInfo, useDefaultAdapter);
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_pD3DDevice));
+		return result;
 	}
 	return S_OK;
 }

@@ -1,5 +1,7 @@
 #include "MnDisplayDevice.h"
+#include "MnLog.h"
 #include <algorithm>
+
 
 using namespace MNL;
 using namespace DirectX::SimpleMath;
@@ -29,6 +31,7 @@ HRESULT MnDisplayDevice::Init(CPDXGIOutput cpOutput)
 	result = cpOutput->GetDisplayModeList(DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_ENUM_MODES_INTERLACED, &numModes, m_displayModeDescs.data());
 	if (FAILED(result))
 	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(cpOutput->GetDisplayModeList));
 		return E_FAIL;
 	}
 	for (UINT i = 0; i < numModes; ++i)

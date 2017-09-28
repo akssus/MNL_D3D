@@ -200,8 +200,8 @@
     <ClCompile Include="Utility\MnTimer.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Utility\MnLog.cpp">
-      <Filter>Utility\Source</Filter>
+    <ClCompile Include="Core\MnLog.cpp">
+      <Filter>Core\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -376,8 +376,8 @@
     <ClInclude Include="Utility\MnTimer.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\MnLog.h">
-      <Filter>Utility\Header</Filter>
+    <ClInclude Include="Core\MnLog.h">
+      <Filter>Core\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

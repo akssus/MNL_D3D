@@ -1,4 +1,5 @@
 #include "MnSamplerState.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -30,7 +31,7 @@ HRESULT MnSamplerState::Init(const CPD3DDevice& cpDevice)
 	HRESULT result = cpDevice->CreateSamplerState(&samplerDesc, m_cpSamplerState.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateSamplerState));
 		return result;
 	}
 	return S_OK;

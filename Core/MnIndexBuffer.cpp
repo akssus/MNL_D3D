@@ -1,4 +1,5 @@
 #include "MnIndexBuffer.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -27,7 +28,8 @@ HRESULT MnIndexBuffer::Init(CPD3DDevice cpDevice, UINT indexCount, const D3D11_S
 	HRESULT result = m_buffer.Init(cpDevice, m_bufferDesc, initialData);
 	if (FAILED(result))
 	{
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_buffer));
+		return result;
 	}
 	return S_OK;
 }

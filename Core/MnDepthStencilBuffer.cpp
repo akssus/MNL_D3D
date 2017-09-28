@@ -1,4 +1,5 @@
 #include "MnDepthStencilBuffer.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -32,8 +33,8 @@ HRESULT MnDepthStencilBuffer::Init(const CPD3DDevice cpDevice, UINT width, UINT 
 	HRESULT result = cpDevice->CreateTexture2D(&m_depthStencilBufferDesc, nullptr, m_depthStencilBuffer.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilBuffer));
+		return result;
 	}
 
 	//create depth stencil buffer view
@@ -45,8 +46,8 @@ HRESULT MnDepthStencilBuffer::Init(const CPD3DDevice cpDevice, UINT width, UINT 
 	result = cpDevice->CreateDepthStencilView(m_depthStencilBuffer.Get(), &m_depthStencilViewDesc, m_depthStencilView.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilView));
+		return result;
 	}
 
 	return S_OK;

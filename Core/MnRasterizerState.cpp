@@ -1,4 +1,5 @@
 #include "MnRasterizerState.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -29,8 +30,8 @@ HRESULT MnRasterizerState::Init(CPD3DDevice cpDevice, D3D11_FILL_MODE fillMode, 
 	HRESULT result = cpDevice->CreateRasterizerState(&m_rasterizerDesc, m_cpRasterizerState.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateRasterizerState));
+		return result;
 	}
 
 	return S_OK;

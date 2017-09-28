@@ -1,5 +1,5 @@
 #include "MnConstantBuffer.h"
-#include <cassert>
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -30,8 +30,8 @@ HRESULT MnConstantBuffer::Init(const CPD3DDevice& cpDevice, const std::shared_pt
 	HRESULT result = m_buffer.Init(cpDevice, bufferDesc, nullptr);
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_buffer));
+		return result;
 	}
 
 	return S_OK;

@@ -15,7 +15,6 @@ namespace MNL
 		MnConstantBufferType();
 		~MnConstantBufferType();
 
-
 		/**
 		* Add a input element to description. input layout will be placed by adding order
 		*/

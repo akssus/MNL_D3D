@@ -1,4 +1,5 @@
 #include "MnRenderTargetView.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -16,8 +17,8 @@ HRESULT MnRenderTargetView::Init(const CPD3DDevice cpDevice, const CPD3DTexture2
 	HRESULT result = cpDevice->CreateRenderTargetView(renderSurface.Get(), pRenderTargetViewDesc.get(), m_cpRenderTargetView.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateRenderTargetView));
+		return result;
 	}
 
 	return S_OK;

@@ -1,4 +1,5 @@
 #include "MnSwapChain.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -27,15 +28,15 @@ HRESULT MnSwapChain::Init(
 	HRESULT result = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)cpDXGIFactory.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateDXGIFactory));
+		return result;
 	}
 	
 	result = _InitSwapChain(hWnd, isWindowed, numBuffers, isVsync, displayMode, cpDevice, cpDXGIFactory);
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(_InitSwapChain));
+		return result;
 	}
 	return S_OK;
 }
@@ -75,8 +76,8 @@ HRESULT MnSwapChain::_InitSwapChain(HWND hWnd, bool isWindowed, UINT numBuffers,
 	HRESULT result = cpDXGIFactory->CreateSwapChain(cpDevice.Get(), &swapChainDesc, m_cpSwapChain.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateSwapChain));
+		return result;
 	}
 	//set swap chain description
 	m_swapChainDesc = swapChainDesc;
@@ -85,8 +86,8 @@ HRESULT MnSwapChain::_InitSwapChain(HWND hWnd, bool isWindowed, UINT numBuffers,
 	result = m_cpSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)m_backBuffer.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(GetBuffer));
+		return result;
 	}
 	return S_OK;
 }

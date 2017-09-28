@@ -1,4 +1,5 @@
 #include "MnD3DDevice.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -37,8 +38,8 @@ HRESULT MnD3DDevice::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 	);
 	if (FAILED(deviceCreated))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(MnD3DDevice));
+		return deviceCreated;
 	}
 	return S_OK;
 }

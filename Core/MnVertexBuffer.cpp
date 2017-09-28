@@ -1,4 +1,5 @@
 #include "MnVertexBuffer.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -36,7 +37,8 @@ HRESULT MnVertexBuffer::Init(CPD3DDevice cpDevice,const std::shared_ptr<MnCustom
 	HRESULT result = m_buffer.Init(cpDevice, m_bufferDesc, initialData);
 	if (FAILED(result))
 	{
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_buffer));
+		return result;
 	}
 
 	return S_OK;

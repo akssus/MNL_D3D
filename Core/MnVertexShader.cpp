@@ -1,4 +1,5 @@
 #include "MnVertexShader.h"
+#include "MnLog.h"
 #include <d3dcompiler.h>
 #include <fstream>
 
@@ -26,8 +27,8 @@ HRESULT MnVertexShader::Init(CPD3DDevice cpDevice, std::wstring shaderFileName,s
 	HRESULT result = _CreateShader(cpDevice,cpByteCode);
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(_CreateShader));
+		return result;
 	}
 
 	return S_OK;
@@ -49,7 +50,7 @@ CPD3DBlob MnVertexShader::_CompileShaderFromFile(const std::wstring fileName, co
 	HRESULT result = D3DCompileFromFile(fileName.c_str(), nullptr, nullptr, entryPoint.c_str(), shaderVersion.c_str(), 0, 0, byteCode.ReleaseAndGetAddressOf(), errorMsg.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(D3DCompileFromFile));
 		_OutputShaderErrorMessage(errorMsg);
 		return nullptr;
 	}
@@ -60,8 +61,8 @@ HRESULT MnVertexShader::_CreateShader(const CPD3DDevice cpDevice, const CPD3DBlo
 	HRESULT result = cpDevice->CreateVertexShader(cpByteCode.Get()->GetBufferPointer(), cpByteCode.Get()->GetBufferSize(), nullptr, m_cpShader.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateVertexShader));
+		return result;
 	}
 	return S_OK;
 }

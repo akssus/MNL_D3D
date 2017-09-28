@@ -1,4 +1,5 @@
 #include "MnSkinnedMesh.h"
+#include "Core/MnLog.h"
 
 using namespace MNL;
 
@@ -14,6 +15,7 @@ HRESULT MnSkinnedMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<M
 {
 	if (spMeshData == nullptr)
 	{
+		MnLog::MB_IsNull(MN_VAR_INFO(spMeshData));
 		return E_FAIL;
 	}
 	m_matTransform = spMeshData->GetTransform();

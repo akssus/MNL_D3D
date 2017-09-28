@@ -1,4 +1,5 @@
 #include "MnRenderWindow.h"
+#include "Core/MnLog.h"
 
 using namespace MNL;
 
@@ -49,7 +50,7 @@ HRESULT MnRenderWindow::Init(
 	result = m_backBufferView.Init(cpDevice, cpBackBuffer, nullptr);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_backBufferView));
 		return E_FAIL;
 	}
 
@@ -66,7 +67,7 @@ HRESULT MnRenderWindow::_InitWindow(HINSTANCE hInstance,
 	HRESULT result = m_window.Create(hInstance, nCmdShow, windowName, className, x, y, width, height, WndProc);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_window));
 		return E_FAIL;
 	}
 	return S_OK;
@@ -95,7 +96,7 @@ HRESULT MnRenderWindow::_InitSwapChain(const MnHardware& hardwareInfo,
 	HRESULT result = m_swapChain.Init(closestMode, isVsync, cpD3DDevice, numBuffers, m_window.GetWindowHandle(), isWindowed);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_swapChain));
 		return E_FAIL;
 	}
 	return S_OK;
@@ -114,7 +115,7 @@ void MnRenderWindow::Resize(UINT width, UINT height)
 	HRESULT result = m_swapChain.Resize(width, height);
 	if (FAILED(result))
 	{
-		//error msg
+		MnLog::MB_Failed(MN_VAR_INFO(m_swapChain.Resize));
 	}
 }
 void MnRenderWindow::SetFullscreen()

@@ -1,4 +1,5 @@
 #include "MnMeshRenderer.h"
+#include "Core/MnLog.h"
 
 using namespace MNL;
 using namespace DirectX::SimpleMath;
@@ -18,6 +19,7 @@ HRESULT MnMeshRenderer::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<
 	HRESULT result = _InitConstantBuffers(cpDevice);
 	if (FAILED(result))
 	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(_InitConstantBuffers));
 		return E_FAIL;
 	}
 	return S_OK;
@@ -151,7 +153,7 @@ HRESULT MnMeshRenderer::_InitWolrdBuffer(const CPD3DDevice& cpDevice)
 	HRESULT result = worldBuffer->Init(cpDevice, worldBufferType, _CONST_BUF_WORLD, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(worldBuffer));
 		return result;
 	}
 	_AddConstantBuffer(worldBuffer);
@@ -171,7 +173,7 @@ HRESULT MnMeshRenderer::_InitViewProjectionBuffer(const CPD3DDevice& cpDevice)
 	HRESULT result = viewProjectionBuffer->Init(cpDevice, viewProjectionBufferType, _CONST_BUF_VIEWPROJECTION, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(viewProjectionBuffer));
 		return result;
 	}
 	_AddConstantBuffer(viewProjectionBuffer);
@@ -193,7 +195,7 @@ HRESULT MnMeshRenderer::_InitLightBuffer(const CPD3DDevice& cpDevice)
 	HRESULT result = lightBufferVS->Init(cpDevice, lightBufferType, _CONST_BUF_LIGHT_VS, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(lightBufferVS));
 		return result;
 	}
 	//light buffer uses in both VS and PS
@@ -205,7 +207,7 @@ HRESULT MnMeshRenderer::_InitLightBuffer(const CPD3DDevice& cpDevice)
 	result = lightBufferPS->Init(cpDevice, lightBufferType, _CONST_BUF_LIGHT_PS, MN_CONSTANT_BUFFER_BELONG_PS);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(lightBufferPS));
 		return result;
 	}
 	//light buffer uses in both VS and PS
@@ -231,7 +233,7 @@ HRESULT MnMeshRenderer::_InitMaterialBuffer(const CPD3DDevice& cpDevice)
 	HRESULT result = materialBuffer->Init(cpDevice, materialBufferType, _CONST_BUF_MATERIAL, MN_CONSTANT_BUFFER_BELONG_PS);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(materialBuffer));
 		return result;
 	}
 	_AddConstantBuffer(materialBuffer);

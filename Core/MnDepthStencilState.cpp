@@ -1,4 +1,5 @@
 #include "MnDepthStencilState.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -36,8 +37,8 @@ HRESULT MnDepthStencilState::Init(CPD3DDevice cpDevice, bool depthEnable, bool s
 	HRESULT result = cpDevice->CreateDepthStencilState(&m_depthStencilStateDesc, m_cpDepthStencilState.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpDepthStencilState));
+		return result;
 	}
 
 	return S_OK;

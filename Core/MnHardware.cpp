@@ -1,4 +1,5 @@
 #include "MnHardware.h"
+#include "MnLog.h"
 #include <memory>
 
 using namespace MNL;
@@ -29,16 +30,16 @@ HRESULT	 MnHardware::Init()
 		}
 		else if (FAILED(enumResult))
 		{
-			//error log
-			return E_FAIL;
+			MnLog::MB_InitFailed(MN_VAR_INFO(EnumAdapters));
+			return enumResult;
 		}
 		//create video adapter instance
 		MnVideoAdapter videoAdapter;
 		result = videoAdapter.Init(cpAdapter);
 		if (FAILED(result))
 		{
-			//error log
-			return E_FAIL;
+			MnLog::MB_InitFailed(MN_VAR_INFO(MnVideoAdapter));
+			return result;
 		}
 		//add to video adapter list
 		m_videoAdapters.push_back(videoAdapter);

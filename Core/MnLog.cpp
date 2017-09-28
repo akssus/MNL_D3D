@@ -2,17 +2,6 @@
 
 using namespace MNL;
 
-MNL::MnLog MNL::g_MnLog;
-
-MnLog::MnLog()
-{
-}
-
-
-MnLog::~MnLog()
-{
-}
-
 void MnLog::MB_Error(const char* format, ...)
 {
 	va_list argList;
@@ -38,6 +27,26 @@ void MnLog::MB_Error(const wchar_t* format, ...)
 	::MessageBox(0, s_buffer, L"Error", MB_ICONERROR);
 
 	va_end(argList);
+}
+void MnLog::MB_Failed(const std::wstring& failedThing)
+{
+	std::wstring msg = failedThing + L" failed.";
+	::MessageBox(0, msg.c_str(), L"Error", MB_ICONERROR);
+}
+void MnLog::MB_Failed(const std::string& failedThing)
+{
+	std::string msg = failedThing + " failed.";
+	::MessageBoxA(0, msg.c_str(), "Error", MB_ICONERROR);
+}
+void MnLog::MB_InitFailed(const std::wstring& initThing)
+{
+	std::wstring msg = initThing + L" initializing failed.";
+	::MessageBox(0, msg.c_str(), L"Error", MB_ICONERROR);
+}
+void MnLog::MB_InitFailed(const std::string& initThing)
+{
+	std::string msg = initThing + " initializing failed.";
+	::MessageBoxA(0, msg.c_str(), "Error", MB_ICONERROR);
 }
 void MnLog::MB_Missing(const std::wstring& missingThing)
 {

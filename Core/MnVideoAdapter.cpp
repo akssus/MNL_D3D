@@ -1,4 +1,5 @@
 #include "MnVideoAdapter.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -31,16 +32,16 @@ HRESULT MnVideoAdapter::Init(CPDXGIAdapter cpAdapter)
 		}
 		else if (FAILED(enumResult))
 		{
-			//error log
-			return E_FAIL;
+			MnLog::MB_InitFailed(MN_VAR_INFO(EnumOutputs));
+			return enumResult;
 		}
 		//create display instance
 		MnDisplayDevice displayDevice;
 		result = displayDevice.Init(cpDisplay);
 		if (FAILED(result))
 		{
-			//error log
-			return E_FAIL;
+			MnLog::MB_InitFailed(MN_VAR_INFO(MnDisplayDevice));
+			return result;
 		}
 		//add to display list
 		m_displayDevices.push_back(displayDevice);
@@ -80,8 +81,8 @@ HRESULT MnVideoAdapter::_InitMaxSupportedFeatureLevel(CPDXGIAdapter cpAdapter)
 	HRESULT result = D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0, featureLevels, 6, D3D11_SDK_VERSION, nullptr, &maxSupportedFeatureLevel, nullptr);
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(D3D11CreateDevice));
+		return result;
 	}
 	m_maxFeatureLevel = maxSupportedFeatureLevel;
 	return S_OK;

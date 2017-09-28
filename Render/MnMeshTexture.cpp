@@ -1,4 +1,5 @@
 #include "MnMeshTexture.h"
+#include "Core/MnLog.h"
 
 using namespace MNL;
 
@@ -17,7 +18,7 @@ HRESULT MnMeshTexture::LoadFromFile(const CPD3DDevice& cpDevice, const std::wstr
 	HRESULT result = DirectX::CreateWICTextureFromFile(cpDevice.Get(),textureFileName.c_str(), nullptr, m_cpShaderResourceView.ReleaseAndGetAddressOf(), 4096);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateWICTextureFromFile));
 		return result;
 	}
 	return S_OK;

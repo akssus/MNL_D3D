@@ -1,4 +1,5 @@
 #include "MnShaderPathInstance.h"
+#include "Core/MnLog.h"
 
 using namespace MNL;
 
@@ -18,7 +19,6 @@ HRESULT MnShaderPathInstance::_InitShaders(const CPD3DDevice& cpDevice, const st
 	HRESULT result = vertexShader->Init(cpDevice, vsFileName.c_str(), "VS_MAIN", "vs_5_0");
 	if (FAILED(result))
 	{
-		//error log
 		return result;
 	}
 
@@ -29,7 +29,6 @@ HRESULT MnShaderPathInstance::_InitShaders(const CPD3DDevice& cpDevice, const st
 	result = pixelShader->Init(cpDevice, psFileName.c_str(), "PS_MAIN", "ps_5_0");
 	if (FAILED(result))
 	{
-		//error log
 		return result;
 	}
 
@@ -43,7 +42,6 @@ HRESULT MnShaderPathInstance::_InitInputLayout(const CPD3DDevice& cpDevice, cons
 	HRESULT result = inputLayout->Init(cpDevice, spVertexType, spVertexShader);
 	if (FAILED(result))
 	{
-		//error log
 		return result;
 	}
 
@@ -58,7 +56,6 @@ HRESULT MnShaderPathInstance::_InitSamplerState(const CPD3DDevice& cpDevice)
 	HRESULT result = samplerState->Init(cpDevice);
 	if (FAILED(result))
 	{
-		//error log
 		return result;
 	}
 	this->SetSamplerState(samplerState);

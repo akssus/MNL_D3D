@@ -8,17 +8,12 @@
 namespace MNL
 {
 	/*
-	Helper class to show error messges.
-	g_MnLog is already declared so don't need to instantiate this.
+	Helper functions to show error messges.
 	@Usage:
-	g_MnLog.MB_Missing(MN_VAR_INFO(var));
+	MnLog::MB_Missing(MN_VAR_INFO(var));
 	*/
-	class MnLog
+	namespace MnLog
 	{
-	public:
-		MnLog();
-		~MnLog();
-
 		/*
 		Formatted message box. Not safe and not efficient, so not recommend to use
 		*/
@@ -27,11 +22,13 @@ namespace MNL
 		Formatted message box. Not safe and not efficient, so not recommend to use
 		*/
 		void MB_Error(const wchar_t* format, ...);
+		void MB_Failed(const std::wstring& failedThing);
+		void MB_Failed(const std::string& failedThing);
+		void MB_InitFailed(const std::wstring& initThing);
+		void MB_InitFailed(const std::string& initThing);
 		void MB_Missing(const std::wstring& missingThing);
 		void MB_Missing(const std::string& missingThing);
 		void MB_IsNull(const std::wstring& nullThing);
 		void MB_IsNull(const std::string& nullThing);
 	};
-
-	extern MnLog g_MnLog;
 }

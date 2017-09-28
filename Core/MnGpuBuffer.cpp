@@ -1,4 +1,5 @@
 #include "MnGpuBuffer.h"
+#include "MnLog.h"
 
 using namespace MNL;
 
@@ -20,8 +21,8 @@ HRESULT MnGpuBuffer::Init(const CPD3DDevice& cpDevice, const D3D11_BUFFER_DESC& 
 	HRESULT result = cpDevice->CreateBuffer(&bufferDesc, initialData, m_cpBuffer.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		//error log
-		return E_FAIL;
+		MnLog::MB_InitFailed(MN_VAR_INFO(CreateBuffer));
+		return result;
 	}
 	return S_OK;
 }
@@ -32,7 +33,7 @@ D3D11_MAPPED_SUBRESOURCE MnGpuBuffer::Map(const CPD3DDeviceContext& cpDeviceCont
 	HRESULT result = cpDeviceContext->Map(m_cpBuffer.Get(), subresourceIndex, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource);
 	if (FAILED(result))
 	{
-		//error log
+		MnLog::MB_InitFailed(MN_VAR_INFO(Map));
 	}
 	return mappedSubresource;
 }

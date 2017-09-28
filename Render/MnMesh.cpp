@@ -1,4 +1,5 @@
 #include "MnMesh.h"
+#include "Core/MnLog.h"
 
 using namespace MNL;
 
@@ -17,6 +18,7 @@ HRESULT MnMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshDa
 {
 	if (spMeshData == nullptr)
 	{
+		MnLog::MB_IsNull(MN_VAR_INFO(spMeshData));
 		return E_FAIL;
 	}
 	return S_OK;
