@@ -1,0 +1,15 @@
+<map id="MNL::MnRenderWindow::Init" name="MNL::MnRenderWindow::Init">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_render_window.html#afb3f077d0738f9db3efe605597f88da8" title="MNL::MnRenderWindow\l::_InitWindow" alt="" coords="479,41,642,82"/>
+<area shape="rect" id="node5" href="$namespace_m_n_l_1_1_mn_log.html#aef654e043a712a8b54ab59049d43881c" title="MNL::MnLog::MB_InitFailed" alt="" coords="935,157,1117,184"/>
+<area shape="rect" id="node6" href="$class_m_n_l_1_1_mn_render_window.html#afbcafa43f1186347d52d332353f8e430" title="MNL::MnRenderWindow\l::_InitSwapChain" alt="" coords="234,274,397,315"/>
+<area shape="rect" id="node13" href="$class_m_n_l_1_1_mn_swap_chain.html#a30e822e1b06f07a89dcab11412213cc6" title="MNL::MnSwapChain::GetBack\lBuffer" alt="" coords="216,339,415,381"/>
+<area shape="rect" id="node14" href="$class_m_n_l_1_1_mn_render_target_view.html#a4ca6cfdd184cec57e8a8d2e1c87e6bbb" title="MNL::MnRenderTargetView\l::Init" alt="" coords="707,491,887,533"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_window.html#aaa2478013ccab0097369c641b5f6a62e" title="MNL::MnWindow::Create" alt="" coords="713,5,880,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ac996a0edf7f6d6736f7f2920665a453d" title="WndProc" alt="" coords="988,5,1064,32"/>
+<area shape="rect" id="node7" href="$class_m_n_l_1_1_mn_hardware.html#a84b1095acf9196e1bb0fe6a1f996b697" title="컨테이너 내의 MnVideoAdapter를 얻어온다. " alt="" coords="465,209,656,250"/>
+<area shape="rect" id="node8" href="$class_m_n_l_1_1_mn_video_adapter.html#a43a6fc9c2bafd81b77718b0ea8bf6885" title="컨테이너 내의 디스플레이 장치를 반환한다. " alt="" coords="484,274,637,315"/>
+<area shape="rect" id="node9" href="$class_m_n_l_1_1_mn_display_device.html#a8190e43b743203ccd485061df6e37565" title="지원되는 디스플레이 모드 중 가장 흡사한 디스플레이 모드를 찾아 반환한다. " alt="" coords="483,339,639,381"/>
+<area shape="rect" id="node10" href="$class_m_n_l_1_1_mn_swap_chain.html#a169ea7905717fe2f804588101a17632d" title="MNL::MnSwapChain::Init" alt="" coords="478,405,643,432"/>
+<area shape="rect" id="node12" href="$class_m_n_l_1_1_mn_window.html#abd7d89c761943fe7d1752bd75322b6dd" title="MNL::MnWindow::GetWindow\lHandle" alt="" coords="463,457,659,498"/>
+<area shape="rect" id="node11" href="$class_m_n_l_1_1_mn_swap_chain.html#a65a6275867f83674145948dfd9fc2e9f" title="MNL::MnSwapChain::\l_InitSwapChain" alt="" coords="723,331,871,373"/>
+</map>

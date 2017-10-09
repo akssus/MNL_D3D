@@ -1,0 +1,7 @@
+<map id="MNL::MnD3DDevice::Init" name="MNL::MnD3DDevice::Init">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_hardware.html#a8912748dc6e28ac992efb0282ee03ce5" title="GPU가 지원하는 최대 피쳐 레벨을 얻는다. " alt="" coords="216,5,459,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_hardware.html#a4b614d4e29b4bd48f0d952f3ec707d12" title="비디오 어댑터의 개수를 얻어온다. " alt="" coords="228,71,447,112"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_hardware.html#a84b1095acf9196e1bb0fe6a1f996b697" title="컨테이너 내의 MnVideoAdapter를 얻어온다. " alt="" coords="242,136,433,177"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_video_adapter.html#a00045e64751e6804e2901ed6bdf49e40" title="비디오 어댑터의 인터페이스를 반환한다. " alt="" coords="261,201,414,243"/>
+<area shape="rect" id="node6" href="$namespace_m_n_l_1_1_mn_log.html#aef654e043a712a8b54ab59049d43881c" title="MNL::MnLog::MB_InitFailed" alt="" coords="246,267,429,294"/>
+</map>

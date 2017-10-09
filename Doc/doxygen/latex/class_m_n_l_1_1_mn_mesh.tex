@@ -1,0 +1,296 @@
+\hypertarget{class_m_n_l_1_1_mn_mesh}{}\section{M\+NL\+:\+:Mn\+Mesh 클래스 참조}
+\label{class_m_n_l_1_1_mn_mesh}\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+
+
+{\ttfamily \#include $<$Mn\+Mesh.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Mesh에 대한 상속 다이어그램 \+: \nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{class_m_n_l_1_1_mn_mesh__inherit__graph}
+\end{center}
+\end{figure}
+
+
+M\+NL\+:\+:Mn\+Mesh에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{class_m_n_l_1_1_mn_mesh__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_mesh_a5a2ad03a6baa88d7563df3cc17e36b12}{Mn\+Mesh} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_mesh_a35cdd9cc547aa3e32ba67f09b74bac01}{$\sim$\+Mn\+Mesh} ()
+\item 
+virtual H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_mesh_a694b6dfe0ae3ed0f97bcf055525b8659}{Init} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ sp\+Mesh\+Data)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_mesh_a05cb7889b4f8ce6ed32334082ea9ac4c}{Set\+Parent} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh}{Mn\+Mesh} $>$ \&sp\+Mesh)
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh}{Mn\+Mesh} $>$ \hyperlink{class_m_n_l_1_1_mn_mesh_a04364fc880cefe0dfbf99c4196d25cfd}{Get\+Parent} () const
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_mesh_a47ce5880e4d73b11887c83921824f43d}{Set\+Transform} (const Direct\+X\+::\+Simple\+Math\+::\+Matrix \&mat\+Transform)
+\item 
+const Direct\+X\+::\+Simple\+Math\+::\+Matrix \& \hyperlink{class_m_n_l_1_1_mn_mesh_a6e1178196c41f872f432a65a02a786e5}{Get\+Transform} () const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_mesh_aee1f713bc53686879397376a064cdf2b}{Get\+Num\+Sub\+Meshes} () const
+\item 
+const \hyperlink{struct_m_n_l_1_1_mn_sub_mesh}{Mn\+Sub\+Mesh} \& \hyperlink{class_m_n_l_1_1_mn_mesh_ab765c79f606507de6d1be69f51ec2502}{Get\+Sub\+Mesh} (U\+I\+NT index) const
+\item 
+const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} \hyperlink{class_m_n_l_1_1_mn_mesh_a3c8f3380c7ea8a5927a61e667400e9a8}{Get\+Vertex\+Buffer} () const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_mesh_aa8706a7d5ca39d4666867c24d5a3be5a}{Get\+Vertex\+Buffer\+Stride} () const
+\item 
+const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} \hyperlink{class_m_n_l_1_1_mn_mesh_a2e8ea6dbb3625a0700e092a7293bd6e7}{Get\+Index\+Buffer} () const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_mesh_aba80f0a52329029f340414c71cdfe8c8}{Get\+Index\+Count} () const
+\item 
+D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT \hyperlink{class_m_n_l_1_1_mn_mesh_a48b3d12651791c91095a883aef2e577d}{Get\+Index\+Buffer\+Format} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected 속성}
+\begin{DoxyCompactItemize}
+\item 
+Direct\+X\+::\+Simple\+Math\+::\+Matrix \hyperlink{class_m_n_l_1_1_mn_mesh_a3617de4ff06fb44e929375c976749e39}{m\+\_\+mat\+Transform}
+\item 
+std\+::string \hyperlink{class_m_n_l_1_1_mn_mesh_a571897045eb370a1f780cf13e9c34113}{m\+\_\+name}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh}{Mn\+Mesh} $>$ \hyperlink{class_m_n_l_1_1_mn_mesh_a5fcd00e08db33a48849fb837a4ac971f}{m\+\_\+sp\+Parent}
+\item 
+std\+::vector$<$ \hyperlink{struct_m_n_l_1_1_mn_sub_mesh}{Mn\+Sub\+Mesh} $>$ \hyperlink{class_m_n_l_1_1_mn_mesh_a1319f6800c28153c09fba2eb1843a41d}{m\+\_\+sub\+Meshes}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_vertex_buffer}{Mn\+Vertex\+Buffer} $>$ \hyperlink{class_m_n_l_1_1_mn_mesh_aff6e55968332581a0848069303689fa4}{m\+\_\+sp\+Vertex\+Buffer}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_index_buffer}{Mn\+Index\+Buffer} $>$ \hyperlink{class_m_n_l_1_1_mn_mesh_a03f3e7ccea4728ab9f6846eca2794dd8}{m\+\_\+sp\+Index\+Buffer}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Mesh.\+h 파일의 17 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a5a2ad03a6baa88d7563df3cc17e36b12}\label{class_m_n_l_1_1_mn_mesh_a5a2ad03a6baa88d7563df3cc17e36b12}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Mn\+Mesh@{Mn\+Mesh}}
+\index{Mn\+Mesh@{Mn\+Mesh}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Mn\+Mesh()}{MnMesh()}}
+{\footnotesize\ttfamily Mn\+Mesh\+::\+Mn\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Mesh.\+cpp 파일의 6 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a35cdd9cc547aa3e32ba67f09b74bac01}\label{class_m_n_l_1_1_mn_mesh_a35cdd9cc547aa3e32ba67f09b74bac01}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!````~Mn\+Mesh@{$\sim$\+Mn\+Mesh}}
+\index{````~Mn\+Mesh@{$\sim$\+Mn\+Mesh}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Mesh()}{~MnMesh()}}
+{\footnotesize\ttfamily Mn\+Mesh\+::$\sim$\+Mn\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Mesh.\+cpp 파일의 12 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a2e8ea6dbb3625a0700e092a7293bd6e7}\label{class_m_n_l_1_1_mn_mesh_a2e8ea6dbb3625a0700e092a7293bd6e7}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Index\+Buffer@{Get\+Index\+Buffer}}
+\index{Get\+Index\+Buffer@{Get\+Index\+Buffer}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Index\+Buffer()}{GetIndexBuffer()}}
+{\footnotesize\ttfamily const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} Mn\+Mesh\+::\+Get\+Index\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 58 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a48b3d12651791c91095a883aef2e577d}\label{class_m_n_l_1_1_mn_mesh_a48b3d12651791c91095a883aef2e577d}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Index\+Buffer\+Format@{Get\+Index\+Buffer\+Format}}
+\index{Get\+Index\+Buffer\+Format@{Get\+Index\+Buffer\+Format}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Index\+Buffer\+Format()}{GetIndexBufferFormat()}}
+{\footnotesize\ttfamily D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT Mn\+Mesh\+::\+Get\+Index\+Buffer\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 66 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_aba80f0a52329029f340414c71cdfe8c8}\label{class_m_n_l_1_1_mn_mesh_aba80f0a52329029f340414c71cdfe8c8}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Index\+Count@{Get\+Index\+Count}}
+\index{Get\+Index\+Count@{Get\+Index\+Count}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Index\+Count()}{GetIndexCount()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Mesh\+::\+Get\+Index\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 62 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_aee1f713bc53686879397376a064cdf2b}\label{class_m_n_l_1_1_mn_mesh_aee1f713bc53686879397376a064cdf2b}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Num\+Sub\+Meshes@{Get\+Num\+Sub\+Meshes}}
+\index{Get\+Num\+Sub\+Meshes@{Get\+Num\+Sub\+Meshes}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Num\+Sub\+Meshes()}{GetNumSubMeshes()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Mesh\+::\+Get\+Num\+Sub\+Meshes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 42 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a04364fc880cefe0dfbf99c4196d25cfd}\label{class_m_n_l_1_1_mn_mesh_a04364fc880cefe0dfbf99c4196d25cfd}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Parent@{Get\+Parent}}
+\index{Get\+Parent@{Get\+Parent}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Parent()}{GetParent()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh}{Mn\+Mesh} $>$ Mn\+Mesh\+::\+Get\+Parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 30 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_ab765c79f606507de6d1be69f51ec2502}\label{class_m_n_l_1_1_mn_mesh_ab765c79f606507de6d1be69f51ec2502}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Sub\+Mesh@{Get\+Sub\+Mesh}}
+\index{Get\+Sub\+Mesh@{Get\+Sub\+Mesh}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Sub\+Mesh()}{GetSubMesh()}}
+{\footnotesize\ttfamily const \hyperlink{struct_m_n_l_1_1_mn_sub_mesh}{Mn\+Sub\+Mesh} \& Mn\+Mesh\+::\+Get\+Sub\+Mesh (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 46 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a6e1178196c41f872f432a65a02a786e5}\label{class_m_n_l_1_1_mn_mesh_a6e1178196c41f872f432a65a02a786e5}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Transform@{Get\+Transform}}
+\index{Get\+Transform@{Get\+Transform}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Transform()}{GetTransform()}}
+{\footnotesize\ttfamily const Direct\+X\+::\+Simple\+Math\+::\+Matrix \& Mn\+Mesh\+::\+Get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 38 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a3c8f3380c7ea8a5927a61e667400e9a8}\label{class_m_n_l_1_1_mn_mesh_a3c8f3380c7ea8a5927a61e667400e9a8}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Vertex\+Buffer@{Get\+Vertex\+Buffer}}
+\index{Get\+Vertex\+Buffer@{Get\+Vertex\+Buffer}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Vertex\+Buffer()}{GetVertexBuffer()}}
+{\footnotesize\ttfamily const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} Mn\+Mesh\+::\+Get\+Vertex\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 50 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_aa8706a7d5ca39d4666867c24d5a3be5a}\label{class_m_n_l_1_1_mn_mesh_aa8706a7d5ca39d4666867c24d5a3be5a}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Get\+Vertex\+Buffer\+Stride@{Get\+Vertex\+Buffer\+Stride}}
+\index{Get\+Vertex\+Buffer\+Stride@{Get\+Vertex\+Buffer\+Stride}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Vertex\+Buffer\+Stride()}{GetVertexBufferStride()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Mesh\+::\+Get\+Vertex\+Buffer\+Stride (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Mesh.\+cpp 파일의 54 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a694b6dfe0ae3ed0f97bcf055525b8659}\label{class_m_n_l_1_1_mn_mesh_a694b6dfe0ae3ed0f97bcf055525b8659}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Init@{Init}}
+\index{Init@{Init}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Mesh\+::\+Init (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$}]{sp\+Mesh\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{class_m_n_l_1_1_mn_skinned_mesh_ad212179142cda2c4a722b58ab19a739e}{M\+N\+L\+::\+Mn\+Skinned\+Mesh}, \hyperlink{class_m_n_l_1_1_mn_static_mesh_a0593293ce8d641b9573239828b8dc31b}{M\+N\+L\+::\+Mn\+Static\+Mesh}에서 재구현되었습니다.
+
+
+
+Mn\+Mesh.\+cpp 파일의 17 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a05cb7889b4f8ce6ed32334082ea9ac4c}\label{class_m_n_l_1_1_mn_mesh_a05cb7889b4f8ce6ed32334082ea9ac4c}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Set\+Parent@{Set\+Parent}}
+\index{Set\+Parent@{Set\+Parent}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Set\+Parent()}{SetParent()}}
+{\footnotesize\ttfamily void Mn\+Mesh\+::\+Set\+Parent (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh}{Mn\+Mesh} $>$ \&}]{sp\+Mesh }\end{DoxyParamCaption})}
+
+
+
+Mn\+Mesh.\+cpp 파일의 26 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a47ce5880e4d73b11887c83921824f43d}\label{class_m_n_l_1_1_mn_mesh_a47ce5880e4d73b11887c83921824f43d}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!Set\+Transform@{Set\+Transform}}
+\index{Set\+Transform@{Set\+Transform}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{Set\+Transform()}{SetTransform()}}
+{\footnotesize\ttfamily void Mn\+Mesh\+::\+Set\+Transform (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+Simple\+Math\+::\+Matrix \&}]{mat\+Transform }\end{DoxyParamCaption})}
+
+
+
+Mn\+Mesh.\+cpp 파일의 34 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a3617de4ff06fb44e929375c976749e39}\label{class_m_n_l_1_1_mn_mesh_a3617de4ff06fb44e929375c976749e39}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!m\+\_\+mat\+Transform@{m\+\_\+mat\+Transform}}
+\index{m\+\_\+mat\+Transform@{m\+\_\+mat\+Transform}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{m\+\_\+mat\+Transform}{m\_matTransform}}
+{\footnotesize\ttfamily Direct\+X\+::\+Simple\+Math\+::\+Matrix M\+N\+L\+::\+Mn\+Mesh\+::m\+\_\+mat\+Transform\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Mesh.\+h 파일의 41 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a571897045eb370a1f780cf13e9c34113}\label{class_m_n_l_1_1_mn_mesh_a571897045eb370a1f780cf13e9c34113}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!m\+\_\+name@{m\+\_\+name}}
+\index{m\+\_\+name@{m\+\_\+name}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{m\+\_\+name}{m\_name}}
+{\footnotesize\ttfamily std\+::string M\+N\+L\+::\+Mn\+Mesh\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Mesh.\+h 파일의 42 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a03f3e7ccea4728ab9f6846eca2794dd8}\label{class_m_n_l_1_1_mn_mesh_a03f3e7ccea4728ab9f6846eca2794dd8}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!m\+\_\+sp\+Index\+Buffer@{m\+\_\+sp\+Index\+Buffer}}
+\index{m\+\_\+sp\+Index\+Buffer@{m\+\_\+sp\+Index\+Buffer}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{m\+\_\+sp\+Index\+Buffer}{m\_spIndexBuffer}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{class_m_n_l_1_1_mn_index_buffer}{Mn\+Index\+Buffer}$>$ M\+N\+L\+::\+Mn\+Mesh\+::m\+\_\+sp\+Index\+Buffer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Mesh.\+h 파일의 47 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a5fcd00e08db33a48849fb837a4ac971f}\label{class_m_n_l_1_1_mn_mesh_a5fcd00e08db33a48849fb837a4ac971f}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!m\+\_\+sp\+Parent@{m\+\_\+sp\+Parent}}
+\index{m\+\_\+sp\+Parent@{m\+\_\+sp\+Parent}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{m\+\_\+sp\+Parent}{m\_spParent}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{class_m_n_l_1_1_mn_mesh}{Mn\+Mesh}$>$ M\+N\+L\+::\+Mn\+Mesh\+::m\+\_\+sp\+Parent\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Mesh.\+h 파일의 43 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_aff6e55968332581a0848069303689fa4}\label{class_m_n_l_1_1_mn_mesh_aff6e55968332581a0848069303689fa4}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!m\+\_\+sp\+Vertex\+Buffer@{m\+\_\+sp\+Vertex\+Buffer}}
+\index{m\+\_\+sp\+Vertex\+Buffer@{m\+\_\+sp\+Vertex\+Buffer}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{m\+\_\+sp\+Vertex\+Buffer}{m\_spVertexBuffer}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{class_m_n_l_1_1_mn_vertex_buffer}{Mn\+Vertex\+Buffer}$>$ M\+N\+L\+::\+Mn\+Mesh\+::m\+\_\+sp\+Vertex\+Buffer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Mesh.\+h 파일의 46 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_mesh_a1319f6800c28153c09fba2eb1843a41d}\label{class_m_n_l_1_1_mn_mesh_a1319f6800c28153c09fba2eb1843a41d}} 
+\index{M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}!m\+\_\+sub\+Meshes@{m\+\_\+sub\+Meshes}}
+\index{m\+\_\+sub\+Meshes@{m\+\_\+sub\+Meshes}!M\+N\+L\+::\+Mn\+Mesh@{M\+N\+L\+::\+Mn\+Mesh}}
+\subsubsection{\texorpdfstring{m\+\_\+sub\+Meshes}{m\_subMeshes}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{struct_m_n_l_1_1_mn_sub_mesh}{Mn\+Sub\+Mesh}$>$ M\+N\+L\+::\+Mn\+Mesh\+::m\+\_\+sub\+Meshes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Mesh.\+h 파일의 44 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Render/\hyperlink{_mn_mesh_8h}{Mn\+Mesh.\+h}\item 
+Render/\hyperlink{_mn_mesh_8cpp}{Mn\+Mesh.\+cpp}\end{DoxyCompactItemize}

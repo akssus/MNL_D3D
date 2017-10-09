@@ -3,7 +3,9 @@
 
 using namespace MNL;
 
-MnConstantBuffer::MnConstantBuffer():m_index(0),m_belong(Mn_CONSTANT_BUFFER_BELONG_NONE)
+MnConstantBuffer::MnConstantBuffer():
+	m_slotIndex(0),
+	m_belong(MN_CONSTANT_BUFFER_BELONG_NONE)
 {
 }
 
@@ -13,9 +15,9 @@ MnConstantBuffer::~MnConstantBuffer()
 }
 
 
-HRESULT MnConstantBuffer::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnConstantBufferType>& constantBufferType, UINT index, const MN_CONSTANT_BUFFER_BELONG& constantBufferBelong)
+HRESULT MnConstantBuffer::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnConstantBufferType>& constantBufferType, UINT slotIndex, const MN_CONSTANT_BUFFER_BELONG& constantBufferBelong)
 {
-	m_index = index;
+	m_slotIndex = slotIndex;
 	m_belong = constantBufferBelong;
 
 	D3D11_BUFFER_DESC bufferDesc;
@@ -50,9 +52,9 @@ UINT MnConstantBuffer::GetBufferByteSize() const
 	return m_buffer.GetBufferByteSize();
 }
 
-UINT MnConstantBuffer::GetIndex() const
+UINT MnConstantBuffer::GetSlotIndex() const
 {
-	return m_index;
+	return m_slotIndex;
 }
 
 MN_CONSTANT_BUFFER_BELONG MnConstantBuffer::GetBelong() const

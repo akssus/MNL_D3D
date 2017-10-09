@@ -1,0 +1,5 @@
+<map id="MNL::MnRenderAPI::SetIndexBuffer" name="MNL::MnRenderAPI::SetIndexBuffer">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_index_buffer.html#a5e0fe52326b487d0edfb30bb03b8b502" title="MNL::MnIndexBuffer\l::GetBuffer" alt="" coords="249,5,388,47"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_index_buffer.html#a65d7b963b3e376a0ab5fe6eb0cf946bd" title="MNL::MnIndexBuffer\l::GetFormat" alt="" coords="249,71,388,112"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_gpu_buffer.html#ae929d387721832436c24e3faf6cd375d" title="MNL::MnGpuBuffer::GetBuffer" alt="" coords="436,13,631,39"/>
+</map>

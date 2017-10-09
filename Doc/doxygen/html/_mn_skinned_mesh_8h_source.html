@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MNL_D3D: Render/MnSkinnedMesh.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MNL_D3D
+   </div>
+   <div id="projectbrief">MNL for DirectX11</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_mn_skinned_mesh_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MnSkinnedMesh.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mn_skinned_mesh_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;d3d11.h&gt;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_typedefs_8h.html">Core\MnTypedefs.h</a>&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_vertex_buffer_8h.html">Core\MnVertexBuffer.h</a>&quot;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_index_buffer_8h.html">Core\MnIndexBuffer.h</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_custom_vertex_type_8h.html">Core\MnCustomVertexType.h</a>&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_mesh_vertex_type_8h.html">MnMeshVertexType.h</a>&quot;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_mesh_data_8h.html">MnMeshData.h</a>&quot;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_mesh_8h.html">MnMesh.h</a>&quot;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_skeleton_8h.html">MnSkeleton.h</a>&quot;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_bone_animation_8h.html">MnBoneAnimation.h</a>&quot;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_m_n_l.html">MNL</a></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">/*</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    MnSkinnedMesh is static mesh instance with no bones</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    */</span></div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_skinned_mesh.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_m_n_l_1_1_mn_skinned_mesh.html">MnSkinnedMesh</a> : <span class="keyword">public</span> <a class="code" href="class_m_n_l_1_1_mn_mesh.html">MnMesh</a></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_skinned_mesh.html#a4fa48c8717084c6b531904b03218a53a">MnSkinnedMesh</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_skinned_mesh.html#a02d5a7d9417239ca70275166acba5756">~MnSkinnedMesh</a>();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        HRESULT <a class="code" href="class_m_n_l_1_1_mn_skinned_mesh.html#ad212179142cda2c4a722b58ab19a739e">Init</a>(<span class="keyword">const</span> <a class="code" href="namespace_m_n_l.html#a1eec210db8f309a4a9ac0d9658784c31">CPD3DDevice</a>&amp; cpDevice, <span class="keyword">const</span> std::shared_ptr&lt;MnMeshData&gt; spMeshData);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">const</span> std::shared_ptr&lt;MnSkeleton&gt; <a class="code" href="class_m_n_l_1_1_mn_skinned_mesh.html#af1a7817424b8bed1d381fdf82b06a312">GetSkeleton</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_skinned_mesh.html#a38fb5a56e78aafdb535dfd3115857527">   31</a></span>&#160;        std::shared_ptr&lt;MnSkeleton&gt; <a class="code" href="class_m_n_l_1_1_mn_skinned_mesh.html#a38fb5a56e78aafdb535dfd3115857527">m_spSkeleton</a>;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    };</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="_mn_bone_animation_8h_html"><div class="ttname"><a href="_mn_bone_animation_8h.html">MnBoneAnimation.h</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html"><div class="ttname"><a href="namespace_m_n_l.html">MNL</a></div><div class="ttdef"><b>Definition:</b> <a href="_basic_shader_path_8h_source.html#l00007">BasicShaderPath.h:7</a></div></div>
+<div class="ttc" id="_mn_mesh_8h_html"><div class="ttname"><a href="_mn_mesh_8h.html">MnMesh.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skinned_mesh_html_a4fa48c8717084c6b531904b03218a53a"><div class="ttname"><a href="class_m_n_l_1_1_mn_skinned_mesh.html#a4fa48c8717084c6b531904b03218a53a">MNL::MnSkinnedMesh::MnSkinnedMesh</a></div><div class="ttdeci">MnSkinnedMesh()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skinned_mesh_8cpp_source.html#l00006">MnSkinnedMesh.cpp:6</a></div></div>
+<div class="ttc" id="_mn_custom_vertex_type_8h_html"><div class="ttname"><a href="_mn_custom_vertex_type_8h.html">MnCustomVertexType.h</a></div></div>
+<div class="ttc" id="_mn_index_buffer_8h_html"><div class="ttname"><a href="_mn_index_buffer_8h.html">MnIndexBuffer.h</a></div></div>
+<div class="ttc" id="_mn_mesh_vertex_type_8h_html"><div class="ttname"><a href="_mn_mesh_vertex_type_8h.html">MnMeshVertexType.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_mesh_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_mesh.html">MNL::MnMesh</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_mesh_8h_source.html#l00017">MnMesh.h:17</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skinned_mesh_html_af1a7817424b8bed1d381fdf82b06a312"><div class="ttname"><a href="class_m_n_l_1_1_mn_skinned_mesh.html#af1a7817424b8bed1d381fdf82b06a312">MNL::MnSkinnedMesh::GetSkeleton</a></div><div class="ttdeci">const std::shared_ptr&lt; MnSkeleton &gt; GetSkeleton() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skinned_mesh_8cpp_source.html#l00035">MnSkinnedMesh.cpp:35</a></div></div>
+<div class="ttc" id="_mn_mesh_data_8h_html"><div class="ttname"><a href="_mn_mesh_data_8h.html">MnMeshData.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skinned_mesh_html_a02d5a7d9417239ca70275166acba5756"><div class="ttname"><a href="class_m_n_l_1_1_mn_skinned_mesh.html#a02d5a7d9417239ca70275166acba5756">MNL::MnSkinnedMesh::~MnSkinnedMesh</a></div><div class="ttdeci">~MnSkinnedMesh()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skinned_mesh_8cpp_source.html#l00010">MnSkinnedMesh.cpp:10</a></div></div>
+<div class="ttc" id="_mn_skeleton_8h_html"><div class="ttname"><a href="_mn_skeleton_8h.html">MnSkeleton.h</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html_a1eec210db8f309a4a9ac0d9658784c31"><div class="ttname"><a href="namespace_m_n_l.html#a1eec210db8f309a4a9ac0d9658784c31">MNL::CPD3DDevice</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; ID3D11Device &gt; CPD3DDevice</div><div class="ttdef"><b>Definition:</b> <a href="_mn_typedefs_8h_source.html#l00006">MnTypedefs.h:6</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skinned_mesh_html_ad212179142cda2c4a722b58ab19a739e"><div class="ttname"><a href="class_m_n_l_1_1_mn_skinned_mesh.html#ad212179142cda2c4a722b58ab19a739e">MNL::MnSkinnedMesh::Init</a></div><div class="ttdeci">HRESULT Init(const CPD3DDevice &amp;cpDevice, const std::shared_ptr&lt; MnMeshData &gt; spMeshData)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skinned_mesh_8cpp_source.html#l00014">MnSkinnedMesh.cpp:14</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skinned_mesh_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_skinned_mesh.html">MNL::MnSkinnedMesh</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_skinned_mesh_8h_source.html#l00020">MnSkinnedMesh.h:20</a></div></div>
+<div class="ttc" id="_mn_vertex_buffer_8h_html"><div class="ttname"><a href="_mn_vertex_buffer_8h.html">MnVertexBuffer.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skinned_mesh_html_a38fb5a56e78aafdb535dfd3115857527"><div class="ttname"><a href="class_m_n_l_1_1_mn_skinned_mesh.html#a38fb5a56e78aafdb535dfd3115857527">MNL::MnSkinnedMesh::m_spSkeleton</a></div><div class="ttdeci">std::shared_ptr&lt; MnSkeleton &gt; m_spSkeleton</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skinned_mesh_8h_source.html#l00031">MnSkinnedMesh.h:31</a></div></div>
+<div class="ttc" id="_mn_typedefs_8h_html"><div class="ttname"><a href="_mn_typedefs_8h.html">MnTypedefs.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_3d93a40d3a63baa1169d25b6af232e01.html">Render</a></li><li class="navelem"><a class="el" href="_mn_skinned_mesh_8h.html">MnSkinnedMesh.h</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

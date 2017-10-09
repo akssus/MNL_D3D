@@ -1,0 +1,6 @@
+<map id="MNL::MnRenderer::ApplyShaderPaths" name="MNL::MnRenderer::ApplyShaderPaths">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_render_a_p_i.html#a14436db58cba8d81570cb77f46f6e240" title="MNL::MnRenderAPI::SetVertex\lShader" alt="" coords="268,5,471,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_render_a_p_i.html#a96382bb557949573afd9a1c10eb3e11c" title="MNL::MnRenderAPI::SetPixel\lShader" alt="" coords="272,71,467,112"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_render_a_p_i.html#a1c279cbdd724db75c9b46a235a4eefc3" title="MNL::MnRenderAPI::SetInput\lLayout" alt="" coords="273,136,466,177"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_render_a_p_i.html#a3d3c68e7fe4912e974d89ceeb357793e" title="MNL::MnRenderAPI::SetSampler\lState" alt="" coords="263,201,476,243"/>
+</map>

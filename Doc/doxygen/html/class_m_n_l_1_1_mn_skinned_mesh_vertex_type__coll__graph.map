@@ -1,0 +1,3 @@
+<map id="MNL::MnSkinnedMeshVertexType" name="MNL::MnSkinnedMeshVertexType">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_custom_vertex_type.html" title="{MNL::MnCustomVertexType\n|&#45; m_inputElements\l&#45; m_totalByteSize\l&#45; m_flags\l|+ MnCustomVertexType()\l+ ~MnCustomVertexType()\l+ AddInputElement()\l+ AddInputElement()\l+ GetElement()\l+ TotalByteSize()\l+ NumElements()\l+ GetFlags()\l&#45; _SetFlag()\l&#45; _SetOptionalFlags()\l&#45; _SortInputElements()\l}" alt="" coords="22,5,209,259"/>
+</map>

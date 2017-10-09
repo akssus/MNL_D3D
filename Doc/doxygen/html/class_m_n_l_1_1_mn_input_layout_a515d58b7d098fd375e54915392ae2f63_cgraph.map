@@ -1,0 +1,5 @@
+<map id="MNL::MnInputLayout::_CreateInputElementDesc" name="MNL::MnInputLayout::_CreateInputElementDesc">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_input_element.html#a6aa08fd62581e1eddc7e632de0bd9564" title="MNL::MnInputElement\l::GetSemanticName" alt="" coords="235,5,385,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_input_element.html#ac9856490638cc98b23e533782107e4a6" title="MNL::MnInputElement\l::GetDXGIFormat" alt="" coords="235,71,385,112"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_input_element.html#a314bdce70c4781632737c247c040f014" title="MNL::MnInputElement\l::GetIndex" alt="" coords="235,136,385,177"/>
+</map>

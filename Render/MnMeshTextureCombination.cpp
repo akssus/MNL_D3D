@@ -27,3 +27,8 @@ const std::vector<CPD3DShaderResourceView>& MnMeshTextureCombination::GetShaderR
 {
 	return m_shaderResourceViews;
 }
+
+UINT MnMeshTextureCombination::GetNumTextures() const
+{
+	return m_meshTextures.size();
+}

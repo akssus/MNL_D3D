@@ -1,0 +1,229 @@
+\hypertarget{class_m_n_l_1_1_mn_skeleton}{}\section{M\+NL\+:\+:Mn\+Skeleton 클래스 참조}
+\label{class_m_n_l_1_1_mn_skeleton}\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+
+
+{\ttfamily \#include $<$Mn\+Skeleton.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Skeleton에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{class_m_n_l_1_1_mn_skeleton__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_skeleton_adf1be48a501ebca36f4994a3c50c8084}{Mn\+Skeleton} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_skeleton_a955aa6f82d0c872c3b62c01d1921dbc0}{$\sim$\+Mn\+Skeleton} ()
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_skeleton_a21b331c44d2cc80bcc1401fa87cce13f}{Add\+Bone} (const \hyperlink{class_m_n_l_1_1_mn_bone}{Mn\+Bone} \&bone)
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_skeleton_a3aa0541c8b6ea0c1cd4a3fe68580e5c6}{Get\+Num\+Bones} () const
+\item 
+std\+::string \hyperlink{class_m_n_l_1_1_mn_skeleton_a1536e0bb8da6bdb03b6ce117fa995869}{Get\+Bone\+Name} (U\+I\+NT index) const
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_skeleton_a3e82493cbe23cb9194e0386f63062a42}{Set\+Root\+Bone\+Name} (const std\+::string \&root\+Bone\+Name)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_skeleton_a7c3019ae3e241b3c6569fb4639b511b8}{Update\+Bone} (const std\+::string \&bone\+Name, const Direct\+X\+::\+Simple\+Math\+::\+Vector3 \&position, const Direct\+X\+::\+Simple\+Math\+::\+Quaternion \&rotation, const Direct\+X\+::\+Simple\+Math\+::\+Vector3 \&scale)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_skeleton_a58eeefaad4481a12c647ffcf8f8b6540}{Repose\+Bones} ()
+\item 
+D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA \hyperlink{class_m_n_l_1_1_mn_skeleton_ab1402fc56312ac3412ff7fc8093e9f2b}{Get\+Bone\+Palette} ()
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_m_n_l_1_1_mn_skeleton_acb6babb0a6d0c5fd190db635df196b30}{\+\_\+\+Get\+Bone\+Index} (const std\+::string \&bone\+Name)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_skeleton_a75808800a6739088b729a9f9112e3521}{\+\_\+\+Repose\+Bone} (const std\+::string \&bone\+Name, const Direct\+X\+::\+Simple\+Math\+::\+Matrix \&base\+Matrix)
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_m_n_l_1_1_mn_skeleton_a06064d27da5eb5ce0074f9f08abd54f6}{m\+\_\+root\+Bone\+Name}
+\item 
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \hyperlink{class_m_n_l_1_1_mn_skeleton_a18c08256f1a9ba2ade021bee10b1b960}{m\+\_\+bone\+Tree}
+\item 
+std\+::vector$<$ \hyperlink{class_m_n_l_1_1_mn_bone}{Mn\+Bone} $>$ \hyperlink{class_m_n_l_1_1_mn_skeleton_a80c3e9789e584313e6fbae03f4184a12}{m\+\_\+lst\+Bones}
+\item 
+std\+::vector$<$ Direct\+X\+::\+Simple\+Math\+::\+Matrix $>$ \hyperlink{class_m_n_l_1_1_mn_skeleton_aff568cb8840e6f4c5d72ab9b639a665d}{m\+\_\+lst\+Bone\+Matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Skeleton.\+h 파일의 12 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_adf1be48a501ebca36f4994a3c50c8084}\label{class_m_n_l_1_1_mn_skeleton_adf1be48a501ebca36f4994a3c50c8084}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Mn\+Skeleton@{Mn\+Skeleton}}
+\index{Mn\+Skeleton@{Mn\+Skeleton}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Mn\+Skeleton()}{MnSkeleton()}}
+{\footnotesize\ttfamily Mn\+Skeleton\+::\+Mn\+Skeleton (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 7 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a955aa6f82d0c872c3b62c01d1921dbc0}\label{class_m_n_l_1_1_mn_skeleton_a955aa6f82d0c872c3b62c01d1921dbc0}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!````~Mn\+Skeleton@{$\sim$\+Mn\+Skeleton}}
+\index{````~Mn\+Skeleton@{$\sim$\+Mn\+Skeleton}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Skeleton()}{~MnSkeleton()}}
+{\footnotesize\ttfamily Mn\+Skeleton\+::$\sim$\+Mn\+Skeleton (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 13 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_acb6babb0a6d0c5fd190db635df196b30}\label{class_m_n_l_1_1_mn_skeleton_acb6babb0a6d0c5fd190db635df196b30}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!\+\_\+\+Get\+Bone\+Index@{\+\_\+\+Get\+Bone\+Index}}
+\index{\+\_\+\+Get\+Bone\+Index@{\+\_\+\+Get\+Bone\+Index}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{\+\_\+\+Get\+Bone\+Index()}{\_GetBoneIndex()}}
+{\footnotesize\ttfamily int Mn\+Skeleton\+::\+\_\+\+Get\+Bone\+Index (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{bone\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyReturn}{반환값}
+-\/1 if bone is not exist 
+\end{DoxyReturn}
+
+
+Mn\+Skeleton.\+cpp 파일의 82 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a75808800a6739088b729a9f9112e3521}\label{class_m_n_l_1_1_mn_skeleton_a75808800a6739088b729a9f9112e3521}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!\+\_\+\+Repose\+Bone@{\+\_\+\+Repose\+Bone}}
+\index{\+\_\+\+Repose\+Bone@{\+\_\+\+Repose\+Bone}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{\+\_\+\+Repose\+Bone()}{\_ReposeBone()}}
+{\footnotesize\ttfamily void Mn\+Skeleton\+::\+\_\+\+Repose\+Bone (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{bone\+Name,  }\item[{const Direct\+X\+::\+Simple\+Math\+::\+Matrix \&}]{base\+Matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 53 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a21b331c44d2cc80bcc1401fa87cce13f}\label{class_m_n_l_1_1_mn_skeleton_a21b331c44d2cc80bcc1401fa87cce13f}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Add\+Bone@{Add\+Bone}}
+\index{Add\+Bone@{Add\+Bone}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Add\+Bone()}{AddBone()}}
+{\footnotesize\ttfamily void Mn\+Skeleton\+::\+Add\+Bone (\begin{DoxyParamCaption}\item[{const \hyperlink{class_m_n_l_1_1_mn_bone}{Mn\+Bone} \&}]{bone }\end{DoxyParamCaption})}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 17 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a1536e0bb8da6bdb03b6ce117fa995869}\label{class_m_n_l_1_1_mn_skeleton_a1536e0bb8da6bdb03b6ce117fa995869}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Get\+Bone\+Name@{Get\+Bone\+Name}}
+\index{Get\+Bone\+Name@{Get\+Bone\+Name}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Get\+Bone\+Name()}{GetBoneName()}}
+{\footnotesize\ttfamily std\+::string Mn\+Skeleton\+::\+Get\+Bone\+Name (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 29 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_ab1402fc56312ac3412ff7fc8093e9f2b}\label{class_m_n_l_1_1_mn_skeleton_ab1402fc56312ac3412ff7fc8093e9f2b}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Get\+Bone\+Palette@{Get\+Bone\+Palette}}
+\index{Get\+Bone\+Palette@{Get\+Bone\+Palette}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Get\+Bone\+Palette()}{GetBonePalette()}}
+{\footnotesize\ttfamily D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA Mn\+Skeleton\+::\+Get\+Bone\+Palette (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 73 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a3aa0541c8b6ea0c1cd4a3fe68580e5c6}\label{class_m_n_l_1_1_mn_skeleton_a3aa0541c8b6ea0c1cd4a3fe68580e5c6}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Get\+Num\+Bones@{Get\+Num\+Bones}}
+\index{Get\+Num\+Bones@{Get\+Num\+Bones}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Get\+Num\+Bones()}{GetNumBones()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Skeleton\+::\+Get\+Num\+Bones (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 24 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a58eeefaad4481a12c647ffcf8f8b6540}\label{class_m_n_l_1_1_mn_skeleton_a58eeefaad4481a12c647ffcf8f8b6540}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Repose\+Bones@{Repose\+Bones}}
+\index{Repose\+Bones@{Repose\+Bones}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Repose\+Bones()}{ReposeBones()}}
+{\footnotesize\ttfamily void Mn\+Skeleton\+::\+Repose\+Bones (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 49 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a3e82493cbe23cb9194e0386f63062a42}\label{class_m_n_l_1_1_mn_skeleton_a3e82493cbe23cb9194e0386f63062a42}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Set\+Root\+Bone\+Name@{Set\+Root\+Bone\+Name}}
+\index{Set\+Root\+Bone\+Name@{Set\+Root\+Bone\+Name}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Set\+Root\+Bone\+Name()}{SetRootBoneName()}}
+{\footnotesize\ttfamily void Mn\+Skeleton\+::\+Set\+Root\+Bone\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{root\+Bone\+Name }\end{DoxyParamCaption})}
+
+
+
+Mn\+Skeleton.\+cpp 파일의 33 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a7c3019ae3e241b3c6569fb4639b511b8}\label{class_m_n_l_1_1_mn_skeleton_a7c3019ae3e241b3c6569fb4639b511b8}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!Update\+Bone@{Update\+Bone}}
+\index{Update\+Bone@{Update\+Bone}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{Update\+Bone()}{UpdateBone()}}
+{\footnotesize\ttfamily void Mn\+Skeleton\+::\+Update\+Bone (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{bone\+Name,  }\item[{const Direct\+X\+::\+Simple\+Math\+::\+Vector3 \&}]{position,  }\item[{const Direct\+X\+::\+Simple\+Math\+::\+Quaternion \&}]{rotation,  }\item[{const Direct\+X\+::\+Simple\+Math\+::\+Vector3 \&}]{scale }\end{DoxyParamCaption})}
+
+Update bone\textquotesingle{}s local transformation. if bone name does not exist, do nothing 
+
+Mn\+Skeleton.\+cpp 파일의 37 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a18c08256f1a9ba2ade021bee10b1b960}\label{class_m_n_l_1_1_mn_skeleton_a18c08256f1a9ba2ade021bee10b1b960}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!m\+\_\+bone\+Tree@{m\+\_\+bone\+Tree}}
+\index{m\+\_\+bone\+Tree@{m\+\_\+bone\+Tree}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{m\+\_\+bone\+Tree}{m\_boneTree}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::vector$<$std\+::string$>$ $>$ M\+N\+L\+::\+Mn\+Skeleton\+::m\+\_\+bone\+Tree\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Skeleton.\+h 파일의 47 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_aff568cb8840e6f4c5d72ab9b639a665d}\label{class_m_n_l_1_1_mn_skeleton_aff568cb8840e6f4c5d72ab9b639a665d}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!m\+\_\+lst\+Bone\+Matrix@{m\+\_\+lst\+Bone\+Matrix}}
+\index{m\+\_\+lst\+Bone\+Matrix@{m\+\_\+lst\+Bone\+Matrix}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{m\+\_\+lst\+Bone\+Matrix}{m\_lstBoneMatrix}}
+{\footnotesize\ttfamily std\+::vector$<$Direct\+X\+::\+Simple\+Math\+::\+Matrix$>$ M\+N\+L\+::\+Mn\+Skeleton\+::m\+\_\+lst\+Bone\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Skeleton.\+h 파일의 49 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a80c3e9789e584313e6fbae03f4184a12}\label{class_m_n_l_1_1_mn_skeleton_a80c3e9789e584313e6fbae03f4184a12}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!m\+\_\+lst\+Bones@{m\+\_\+lst\+Bones}}
+\index{m\+\_\+lst\+Bones@{m\+\_\+lst\+Bones}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{m\+\_\+lst\+Bones}{m\_lstBones}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_m_n_l_1_1_mn_bone}{Mn\+Bone}$>$ M\+N\+L\+::\+Mn\+Skeleton\+::m\+\_\+lst\+Bones\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Skeleton.\+h 파일의 48 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_skeleton_a06064d27da5eb5ce0074f9f08abd54f6}\label{class_m_n_l_1_1_mn_skeleton_a06064d27da5eb5ce0074f9f08abd54f6}} 
+\index{M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}!m\+\_\+root\+Bone\+Name@{m\+\_\+root\+Bone\+Name}}
+\index{m\+\_\+root\+Bone\+Name@{m\+\_\+root\+Bone\+Name}!M\+N\+L\+::\+Mn\+Skeleton@{M\+N\+L\+::\+Mn\+Skeleton}}
+\subsubsection{\texorpdfstring{m\+\_\+root\+Bone\+Name}{m\_rootBoneName}}
+{\footnotesize\ttfamily std\+::string M\+N\+L\+::\+Mn\+Skeleton\+::m\+\_\+root\+Bone\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Skeleton.\+h 파일의 46 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Render/\hyperlink{_mn_skeleton_8h}{Mn\+Skeleton.\+h}\item 
+Render/\hyperlink{_mn_skeleton_8cpp}{Mn\+Skeleton.\+cpp}\end{DoxyCompactItemize}

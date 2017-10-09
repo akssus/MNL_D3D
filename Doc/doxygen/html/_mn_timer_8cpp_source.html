@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MNL_D3D: Utility/MnTimer.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MNL_D3D
+   </div>
+   <div id="projectbrief">MNL for DirectX11</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_mn_timer_8cpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MnTimer.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mn_timer_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_timer_8h.html">MnTimer.h</a>&quot;</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespace_m_n_l.html">MNL</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_time.html#abe93779fd018a3655cc7f37065a8c373">    6</a></span>&#160;<a class="code" href="class_m_n_l_1_1_mn_time.html#abe93779fd018a3655cc7f37065a8c373">MnTime::MnTime</a>():m_time(0.0),m_timeScale(1.0)</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_time.html#ac3a57cc8d4e6c4259458911b1059c45f">   10</a></span>&#160;<a class="code" href="class_m_n_l_1_1_mn_time.html#ac3a57cc8d4e6c4259458911b1059c45f">MnTime::~MnTime</a>()</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">The time that passed in game world. It could be slower or faster</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*/</span></div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_time.html#a4466cc9011a917fe9b74c649eacc4399">   17</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="class_m_n_l_1_1_mn_time.html#a4466cc9011a917fe9b74c649eacc4399">MnTime::ScaledTime</a>()<span class="keyword"> const</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword"></span>{</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_m_n_l_1_1_mn_time.html#a35099377f11a843b6a7d33c9f5a97b09">m_time</a>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_time.html#a9ac81002c4fb2a297e2b132c80c5ee29">   22</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="class_m_n_l_1_1_mn_time.html#a9ac81002c4fb2a297e2b132c80c5ee29">MnTime::GenuineTime</a>()<span class="keyword"> const</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword"></span>{</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_m_n_l_1_1_mn_time.html#a35099377f11a843b6a7d33c9f5a97b09">m_time</a> * <a class="code" href="class_m_n_l_1_1_mn_time.html#a4ffb78e819ad4cb968f56824cba7b41c">m_timeScale</a>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/***************************************************************************************************/</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_timer.html#aee4e048c674d82feeaadfad258ed0a5b">   31</a></span>&#160;<a class="code" href="class_m_n_l_1_1_mn_timer.html#aee4e048c674d82feeaadfad258ed0a5b">MnTimer::MnTimer</a>():m_isPlaying(false),</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="class_m_n_l_1_1_mn_time.html#a4ffb78e819ad4cb968f56824cba7b41c">m_timeScale</a>(1.0f),</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;m_lastTick(std::chrono::high_resolution_clock::now())</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_timer.html#a97457692c75d5d249d2ad2bc28f2ecc4">   38</a></span>&#160;<a class="code" href="class_m_n_l_1_1_mn_timer.html#a97457692c75d5d249d2ad2bc28f2ecc4">MnTimer::~MnTimer</a>()</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_timer.html#af6f75413128d2a40e00e1a07567cf0d6">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_timer.html#af6f75413128d2a40e00e1a07567cf0d6">MnTimer::SetTimeScale</a>(<span class="keywordtype">float</span> timeScale)</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_m_n_l_1_1_mn_timer.html#aaaa9922dcae0495a530c73683d8b7adf">m_timeScale</a> = timeScale;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div><div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_timer.html#af165e63d407713a60f43f198ce3e93a8">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_timer.html#af165e63d407713a60f43f198ce3e93a8">MnTimer::Start</a>()</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_m_n_l_1_1_mn_timer.html#a297ca44e41691a6fa7b83d8d98e6b463">m_isPlaying</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_m_n_l_1_1_mn_timer.html#a7158458bc690aec6a795242f6251ad40">m_lastTick</a> = std::chrono::high_resolution_clock::now();</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div><div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_timer.html#ab57c58684ae10509a8ac744683f799e4">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_timer.html#ab57c58684ae10509a8ac744683f799e4">MnTimer::Pause</a>()</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_m_n_l_1_1_mn_timer.html#a297ca44e41691a6fa7b83d8d98e6b463">m_isPlaying</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_timer.html#ab12fb3c3a420e0d9751326c9bcb7d220">   56</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_m_n_l_1_1_mn_timer.html#ab12fb3c3a420e0d9751326c9bcb7d220">MnTimer::IsPlaying</a>()<span class="keyword"> const</span></div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword"></span>{</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_m_n_l_1_1_mn_timer.html#a297ca44e41691a6fa7b83d8d98e6b463">m_isPlaying</a>;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_timer.html#a49d983d8b3dd30a5755b0d83e9d9deff">   61</a></span>&#160;<a class="code" href="class_m_n_l_1_1_mn_time.html">MnTime</a> <a class="code" href="class_m_n_l_1_1_mn_timer.html#a49d983d8b3dd30a5755b0d83e9d9deff">MnTimer::GetElapsedTime</a>()</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="class_m_n_l_1_1_mn_time.html">MnTime</a> elapsedTime;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_m_n_l_1_1_mn_timer.html#a297ca44e41691a6fa7b83d8d98e6b463">m_isPlaying</a>)</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">auto</span> currentTick = std::chrono::high_resolution_clock::now();</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">auto</span> timeDelta = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(currentTick - <a class="code" href="class_m_n_l_1_1_mn_timer.html#a7158458bc690aec6a795242f6251ad40">m_lastTick</a>);</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_timer.html#a7158458bc690aec6a795242f6251ad40">m_lastTick</a> = currentTick;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        elapsedTime.<a class="code" href="class_m_n_l_1_1_mn_time.html#a35099377f11a843b6a7d33c9f5a97b09">m_time</a> = timeDelta.count();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        elapsedTime.<a class="code" href="class_m_n_l_1_1_mn_time.html#a4ffb78e819ad4cb968f56824cba7b41c">m_timeScale</a> = <a class="code" href="class_m_n_l_1_1_mn_timer.html#aaaa9922dcae0495a530c73683d8b7adf">m_timeScale</a>;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> elapsedTime;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="ttc" id="class_m_n_l_1_1_mn_time_html_ac3a57cc8d4e6c4259458911b1059c45f"><div class="ttname"><a href="class_m_n_l_1_1_mn_time.html#ac3a57cc8d4e6c4259458911b1059c45f">MNL::MnTime::~MnTime</a></div><div class="ttdeci">~MnTime()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00010">MnTimer.cpp:10</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_a7158458bc690aec6a795242f6251ad40"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#a7158458bc690aec6a795242f6251ad40">MNL::MnTimer::m_lastTick</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::high_resolution_clock &gt; m_lastTick</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8h_source.html#l00049">MnTimer.h:49</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_aaaa9922dcae0495a530c73683d8b7adf"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#aaaa9922dcae0495a530c73683d8b7adf">MNL::MnTimer::m_timeScale</a></div><div class="ttdeci">float m_timeScale</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8h_source.html#l00048">MnTimer.h:48</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_a49d983d8b3dd30a5755b0d83e9d9deff"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#a49d983d8b3dd30a5755b0d83e9d9deff">MNL::MnTimer::GetElapsedTime</a></div><div class="ttdeci">MnTime GetElapsedTime()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00061">MnTimer.cpp:61</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_af6f75413128d2a40e00e1a07567cf0d6"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#af6f75413128d2a40e00e1a07567cf0d6">MNL::MnTimer::SetTimeScale</a></div><div class="ttdeci">void SetTimeScale(float timeScale)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00042">MnTimer.cpp:42</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html"><div class="ttname"><a href="namespace_m_n_l.html">MNL</a></div><div class="ttdef"><b>Definition:</b> <a href="_basic_shader_path_8h_source.html#l00007">BasicShaderPath.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_time_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_time.html">MNL::MnTime</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8h_source.html#l00010">MnTimer.h:10</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_a297ca44e41691a6fa7b83d8d98e6b463"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#a297ca44e41691a6fa7b83d8d98e6b463">MNL::MnTimer::m_isPlaying</a></div><div class="ttdeci">bool m_isPlaying</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8h_source.html#l00047">MnTimer.h:47</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_time_html_a4ffb78e819ad4cb968f56824cba7b41c"><div class="ttname"><a href="class_m_n_l_1_1_mn_time.html#a4ffb78e819ad4cb968f56824cba7b41c">MNL::MnTime::m_timeScale</a></div><div class="ttdeci">double m_timeScale</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8h_source.html#l00029">MnTimer.h:29</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_a97457692c75d5d249d2ad2bc28f2ecc4"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#a97457692c75d5d249d2ad2bc28f2ecc4">MNL::MnTimer::~MnTimer</a></div><div class="ttdeci">~MnTimer()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00038">MnTimer.cpp:38</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_ab12fb3c3a420e0d9751326c9bcb7d220"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#ab12fb3c3a420e0d9751326c9bcb7d220">MNL::MnTimer::IsPlaying</a></div><div class="ttdeci">bool IsPlaying() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00056">MnTimer.cpp:56</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_time_html_a35099377f11a843b6a7d33c9f5a97b09"><div class="ttname"><a href="class_m_n_l_1_1_mn_time.html#a35099377f11a843b6a7d33c9f5a97b09">MNL::MnTime::m_time</a></div><div class="ttdeci">double m_time</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8h_source.html#l00028">MnTimer.h:28</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_aee4e048c674d82feeaadfad258ed0a5b"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#aee4e048c674d82feeaadfad258ed0a5b">MNL::MnTimer::MnTimer</a></div><div class="ttdeci">MnTimer()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00031">MnTimer.cpp:31</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_time_html_a9ac81002c4fb2a297e2b132c80c5ee29"><div class="ttname"><a href="class_m_n_l_1_1_mn_time.html#a9ac81002c4fb2a297e2b132c80c5ee29">MNL::MnTime::GenuineTime</a></div><div class="ttdeci">double GenuineTime() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00022">MnTimer.cpp:22</a></div></div>
+<div class="ttc" id="_mn_timer_8h_html"><div class="ttname"><a href="_mn_timer_8h.html">MnTimer.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_time_html_abe93779fd018a3655cc7f37065a8c373"><div class="ttname"><a href="class_m_n_l_1_1_mn_time.html#abe93779fd018a3655cc7f37065a8c373">MNL::MnTime::MnTime</a></div><div class="ttdeci">MnTime()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00006">MnTimer.cpp:6</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_af165e63d407713a60f43f198ce3e93a8"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#af165e63d407713a60f43f198ce3e93a8">MNL::MnTimer::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00046">MnTimer.cpp:46</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_time_html_a4466cc9011a917fe9b74c649eacc4399"><div class="ttname"><a href="class_m_n_l_1_1_mn_time.html#a4466cc9011a917fe9b74c649eacc4399">MNL::MnTime::ScaledTime</a></div><div class="ttdeci">double ScaledTime() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00017">MnTimer.cpp:17</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_timer_html_ab57c58684ae10509a8ac744683f799e4"><div class="ttname"><a href="class_m_n_l_1_1_mn_timer.html#ab57c58684ae10509a8ac744683f799e4">MNL::MnTimer::Pause</a></div><div class="ttdeci">void Pause()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_timer_8cpp_source.html#l00051">MnTimer.cpp:51</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_45512b4d464edf1241bf27d9b61f7c89.html">Utility</a></li><li class="navelem"><a class="el" href="_mn_timer_8cpp.html">MnTimer.cpp</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

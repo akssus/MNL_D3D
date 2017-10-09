@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MNL_D3D: MNL::MnRenderer 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MNL_D3D
+   </div>
+   <div id="projectbrief">MNL for DirectX11</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_m_n_l_1_1_mn_renderer.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pro-methods">Protected 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
+<a href="class_m_n_l_1_1_mn_renderer-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle">
+<div class="title">MNL::MnRenderer 클래스 참조</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a>&gt;</code></p>
+<div class="dynheader">
+MNL::MnRenderer에 대한 상속 다이어그램 : </div>
+<div class="dyncontent">
+<div class="center"><img src="class_m_n_l_1_1_mn_renderer__inherit__graph.png" border="0" usemap="#_m_n_l_1_1_mn_renderer_inherit__map" alt="Inheritance graph"/></div>
+<map name="_m_n_l_1_1_mn_renderer_inherit__map" id="_m_n_l_1_1_mn_renderer_inherit__map">
+<area shape="rect" id="node2" href="class_m_n_l_1_1_mn_mesh_renderer.html" title="{MNL::MnMeshRenderer\n||+ MnMeshRenderer()\l+ ~MnMeshRenderer()\l+ Init()\l+ SetWorldBuffer()\l+ SetViewProjectionBuffer()\l+ SetLightBuffer()\l+ SetLightBuffer()\l+ SetMaterial()\l+ SetMaterial()\l&#45; _InitConstantBuffers()\l&#45; _InitWolrdBuffer()\l&#45; _InitViewProjectionBuffer()\l&#45; _InitLightBuffer()\l&#45; _InitMaterialBuffer()\l}" alt="" coords="5,417,187,685"/>
+<area shape="rect" id="node3" href="class_m_n_l_1_1_mn_skinned_mesh_renderer.html" title="{MNL::MnSkinnedMeshRenderer\n||+ MnSkinnedMeshRenderer()\l+ ~MnSkinnedMeshRenderer()\l+ Init()\l+ SetWorldBuffer()\l+ SetViewProjectionBuffer()\l+ SetLightBuffer()\l+ SetLightBuffer()\l+ SetMaterial()\l+ SetMaterial()\l+ SetBonePalette()\l+ SetBonePalette()\l&#45; _InitConstantBuffers()\l&#45; _InitWolrdBuffer()\l&#45; _InitViewProjectionBuffer()\l&#45; _InitLightBuffer()\l&#45; _InitMaterialBuffer()\l&#45; _InitBonePaletteBuffer()\l}" alt="" coords="211,395,418,707"/>
+</map>
+</div>
+<div class="dynheader">
+MNL::MnRenderer에 대한 협력 다이어그램:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_m_n_l_1_1_mn_renderer__coll__graph.png" border="0" usemap="#_m_n_l_1_1_mn_renderer_coll__map" alt="Collaboration graph"/></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:ae1e6f84fd929f28f088dc75925d3652f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#ae1e6f84fd929f28f088dc75925d3652f">MnRenderer</a> ()</td></tr>
+<tr class="separator:ae1e6f84fd929f28f088dc75925d3652f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae15a007ddf6e9e4da79e5507c23d2b9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#ae15a007ddf6e9e4da79e5507c23d2b9e">~MnRenderer</a> ()</td></tr>
+<tr class="separator:ae15a007ddf6e9e4da79e5507c23d2b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10074dbdae9aad1b7ef6f576638a35a9"><td class="memItemLeft" align="right" valign="top">HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a10074dbdae9aad1b7ef6f576638a35a9">RenderMesh</a> (<a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;renderAPI, const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_mesh.html">MnMesh</a> &gt; model)</td></tr>
+<tr class="separator:a10074dbdae9aad1b7ef6f576638a35a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160d4cfc3c3155c6a2ec83d63916f7c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a160d4cfc3c3155c6a2ec83d63916f7c0">AddShaderPathInstance</a> (const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_shader_path_instance.html">MnShaderPathInstance</a> &gt; shaderPathInstance)</td></tr>
+<tr class="separator:a160d4cfc3c3155c6a2ec83d63916f7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a595c562da7e6319c981aee79122bf568"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a595c562da7e6319c981aee79122bf568">ApplyShaderPaths</a> (<a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;renderAPI)</td></tr>
+<tr class="separator:a595c562da7e6319c981aee79122bf568"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae855b8a2e919d2d105f9f5b9a95f5bc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#ae855b8a2e919d2d105f9f5b9a95f5bc6">ApplyConstantBuffers</a> (<a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;renderAPI)</td></tr>
+<tr class="separator:ae855b8a2e919d2d105f9f5b9a95f5bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e1428dc0d2835c69077c3391841c68"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a64e1428dc0d2835c69077c3391841c68">GetNumConstantBuffers</a> () const</td></tr>
+<tr class="separator:a64e1428dc0d2835c69077c3391841c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2acf082128e501b64645c3cb19fbe32"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_constant_buffer.html">MnConstantBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#af2acf082128e501b64645c3cb19fbe32">GetConstantBuffer</a> (UINT index) const</td></tr>
+<tr class="separator:af2acf082128e501b64645c3cb19fbe32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04dcf13f6f822d2c9c68469a2a0c9ad7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a04dcf13f6f822d2c9c68469a2a0c9ad7">UpdateConstantBuffer</a> (<a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;renderAPI, UINT index, const D3D11_SUBRESOURCE_DATA &amp;data)</td></tr>
+<tr class="separator:a04dcf13f6f822d2c9c68469a2a0c9ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8b45346fcd79ac0f881444ee3b526d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#ae8b45346fcd79ac0f881444ee3b526d6">SetTextureCombination</a> (const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_mesh_texture_combination.html">MnMeshTextureCombination</a> &gt; &amp;spMeshTextureCombination)</td></tr>
+<tr class="separator:ae8b45346fcd79ac0f881444ee3b526d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1dbdc2abb81d46c786bde59305455b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a8a1dbdc2abb81d46c786bde59305455b">ApplyTextures</a> (<a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;renderAPI)</td></tr>
+<tr class="separator:a8a1dbdc2abb81d46c786bde59305455b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 멤버 함수</h2></td></tr>
+<tr class="memitem:aad18a23f94013284e50162b21950b437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#aad18a23f94013284e50162b21950b437">_AddConstantBuffer</a> (const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_constant_buffer.html">MnConstantBuffer</a> &gt; spConstantBuffer)</td></tr>
+<tr class="separator:aad18a23f94013284e50162b21950b437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e99adeded808fdde2e0b79d2719c03e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a4e99adeded808fdde2e0b79d2719c03e">_BindConstantBuffers</a> (<a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;renderAPI)</td></tr>
+<tr class="separator:a4e99adeded808fdde2e0b79d2719c03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5306058d3813bdf14af2a42b0df96eef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a5306058d3813bdf14af2a42b0df96eef">_ClearConstantBuffers</a> ()</td></tr>
+<tr class="separator:a5306058d3813bdf14af2a42b0df96eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:ab2782a8dee330b39de532974dcf50929"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_shader_path_instance.html">MnShaderPathInstance</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#ab2782a8dee330b39de532974dcf50929">m_shaderPaths</a></td></tr>
+<tr class="separator:ab2782a8dee330b39de532974dcf50929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4ca55924319da2153714ed6a1f59d9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_constant_buffer.html">MnConstantBuffer</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a3d4ca55924319da2153714ed6a1f59d9">m_constantBuffers</a></td></tr>
+<tr class="separator:a3d4ca55924319da2153714ed6a1f59d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a477f74d577f3ed816965d62f8c5d3f1d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_mesh_texture_combination.html">MnMeshTextureCombination</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a477f74d577f3ed816965d62f8c5d3f1d">m_spTextureCombination</a></td></tr>
+<tr class="separator:a477f74d577f3ed816965d62f8c5d3f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4ccdbf5591d5012c7aec46cf4b9ee7"><td class="memItemLeft" align="right" valign="top">std::map&lt; UINT, UINT &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a3d4ccdbf5591d5012c7aec46cf4b9ee7">m_mapIndexToSlot</a></td></tr>
+<tr class="separator:a3d4ccdbf5591d5012c7aec46cf4b9ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a167618f49362aa7abf93b413ebc82536"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a167618f49362aa7abf93b413ebc82536">m_numVsConstantBuffers</a></td></tr>
+<tr class="separator:a167618f49362aa7abf93b413ebc82536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9715af5cd993d8b9a458663c9f2e1a40"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_n_l_1_1_mn_renderer.html#a9715af5cd993d8b9a458663c9f2e1a40">m_numPsConstantBuffers</a></td></tr>
+<tr class="separator:a9715af5cd993d8b9a458663c9f2e1a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock">
+<p class="definition"><a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a> 파일의 <a class="el" href="_mn_renderer_8h_source.html#l00017">17</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
+<a id="ae1e6f84fd929f28f088dc75925d3652f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e6f84fd929f28f088dc75925d3652f">&#9670;&nbsp;</a></span>MnRenderer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MnRenderer::MnRenderer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00005">5</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="ae15a007ddf6e9e4da79e5507c23d2b9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae15a007ddf6e9e4da79e5507c23d2b9e">&#9670;&nbsp;</a></span>~MnRenderer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MnRenderer::~MnRenderer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="aad18a23f94013284e50162b21950b437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad18a23f94013284e50162b21950b437">&#9670;&nbsp;</a></span>_AddConstantBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::_AddConstantBuffer </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_constant_buffer.html">MnConstantBuffer</a> &gt;&#160;</td>
+          <td class="paramname"><em>spConstantBuffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00046">46</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a4e99adeded808fdde2e0b79d2719c03e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e99adeded808fdde2e0b79d2719c03e">&#9670;&nbsp;</a></span>_BindConstantBuffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::_BindConstantBuffers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;&#160;</td>
+          <td class="paramname"><em>renderAPI</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a5306058d3813bdf14af2a42b0df96eef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5306058d3813bdf14af2a42b0df96eef">&#9670;&nbsp;</a></span>_ClearConstantBuffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::_ClearConstantBuffers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a160d4cfc3c3155c6a2ec83d63916f7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a160d4cfc3c3155c6a2ec83d63916f7c0">&#9670;&nbsp;</a></span>AddShaderPathInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::AddShaderPathInstance </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_shader_path_instance.html">MnShaderPathInstance</a> &gt;&#160;</td>
+          <td class="paramname"><em>shaderPathInstance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="ae855b8a2e919d2d105f9f5b9a95f5bc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae855b8a2e919d2d105f9f5b9a95f5bc6">&#9670;&nbsp;</a></span>ApplyConstantBuffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::ApplyConstantBuffers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;&#160;</td>
+          <td class="paramname"><em>renderAPI</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a595c562da7e6319c981aee79122bf568"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a595c562da7e6319c981aee79122bf568">&#9670;&nbsp;</a></span>ApplyShaderPaths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::ApplyShaderPaths </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;&#160;</td>
+          <td class="paramname"><em>renderAPI</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a8a1dbdc2abb81d46c786bde59305455b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1dbdc2abb81d46c786bde59305455b">&#9670;&nbsp;</a></span>ApplyTextures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::ApplyTextures </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;&#160;</td>
+          <td class="paramname"><em>renderAPI</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="af2acf082128e501b64645c3cb19fbe32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2acf082128e501b64645c3cb19fbe32">&#9670;&nbsp;</a></span>GetConstantBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_constant_buffer.html">MnConstantBuffer</a> &gt; MnRenderer::GetConstantBuffer </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a64e1428dc0d2835c69077c3391841c68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64e1428dc0d2835c69077c3391841c68">&#9670;&nbsp;</a></span>GetNumConstantBuffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT MnRenderer::GetNumConstantBuffers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a10074dbdae9aad1b7ef6f576638a35a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10074dbdae9aad1b7ef6f576638a35a9">&#9670;&nbsp;</a></span>RenderMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HRESULT MnRenderer::RenderMesh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;&#160;</td>
+          <td class="paramname"><em>renderAPI</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_mesh.html">MnMesh</a> &gt;&#160;</td>
+          <td class="paramname"><em>model</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="ae8b45346fcd79ac0f881444ee3b526d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8b45346fcd79ac0f881444ee3b526d6">&#9670;&nbsp;</a></span>SetTextureCombination()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::SetTextureCombination </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="class_m_n_l_1_1_mn_mesh_texture_combination.html">MnMeshTextureCombination</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>spMeshTextureCombination</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a04dcf13f6f822d2c9c68469a2a0c9ad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04dcf13f6f822d2c9c68469a2a0c9ad7">&#9670;&nbsp;</a></span>UpdateConstantBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MnRenderer::UpdateConstantBuffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_n_l_1_1_mn_render_a_p_i.html">MnRenderAPI</a> &amp;&#160;</td>
+          <td class="paramname"><em>renderAPI</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3D11_SUBRESOURCE_DATA &amp;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a> 파일의 <a class="el" href="_mn_renderer_8cpp_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a3d4ca55924319da2153714ed6a1f59d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d4ca55924319da2153714ed6a1f59d9">&#9670;&nbsp;</a></span>m_constantBuffers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_m_n_l_1_1_mn_constant_buffer.html">MnConstantBuffer</a>&gt; &gt; MNL::MnRenderer::m_constantBuffers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a> 파일의 <a class="el" href="_mn_renderer_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a3d4ccdbf5591d5012c7aec46cf4b9ee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d4ccdbf5591d5012c7aec46cf4b9ee7">&#9670;&nbsp;</a></span>m_mapIndexToSlot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;UINT, UINT&gt; MNL::MnRenderer::m_mapIndexToSlot</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a> 파일의 <a class="el" href="_mn_renderer_8h_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a9715af5cd993d8b9a458663c9f2e1a40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9715af5cd993d8b9a458663c9f2e1a40">&#9670;&nbsp;</a></span>m_numPsConstantBuffers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT MNL::MnRenderer::m_numPsConstantBuffers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a> 파일의 <a class="el" href="_mn_renderer_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a167618f49362aa7abf93b413ebc82536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a167618f49362aa7abf93b413ebc82536">&#9670;&nbsp;</a></span>m_numVsConstantBuffers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT MNL::MnRenderer::m_numVsConstantBuffers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a> 파일의 <a class="el" href="_mn_renderer_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="ab2782a8dee330b39de532974dcf50929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2782a8dee330b39de532974dcf50929">&#9670;&nbsp;</a></span>m_shaderPaths</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_m_n_l_1_1_mn_shader_path_instance.html">MnShaderPathInstance</a>&gt; &gt; MNL::MnRenderer::m_shaderPaths</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a> 파일의 <a class="el" href="_mn_renderer_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a477f74d577f3ed816965d62f8c5d3f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a477f74d577f3ed816965d62f8c5d3f1d">&#9670;&nbsp;</a></span>m_spTextureCombination</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_m_n_l_1_1_mn_mesh_texture_combination.html">MnMeshTextureCombination</a>&gt; MNL::MnRenderer::m_spTextureCombination</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a> 파일의 <a class="el" href="_mn_renderer_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Render/<a class="el" href="_mn_renderer_8h_source.html">MnRenderer.h</a></li>
+<li>Render/<a class="el" href="_mn_renderer_8cpp_source.html">MnRenderer.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_m_n_l.html">MNL</a></li><li class="navelem"><a class="el" href="class_m_n_l_1_1_mn_renderer.html">MnRenderer</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

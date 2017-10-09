@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MNL_D3D: Core/MnRasterizerState.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MNL_D3D
+   </div>
+   <div id="projectbrief">MNL for DirectX11</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_mn_rasterizer_state_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MnRasterizerState.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mn_rasterizer_state_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;d3d11.h&gt;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_typedefs_8h.html">MnTypedefs.h</a>&quot;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_m_n_l.html">MNL</a></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_rasterizer_state.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_m_n_l_1_1_mn_rasterizer_state.html">MnRasterizerState</a></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_rasterizer_state.html#ac6a6dde00f1bba11b762c0ff21b9598c">MnRasterizerState</a>();</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_rasterizer_state.html#a414bc5cdc7de69287821dd0ddd08ae52">~MnRasterizerState</a>();</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        HRESULT <a class="code" href="class_m_n_l_1_1_mn_rasterizer_state.html#a543c1ca2173258a0af7bbf0cd0e16922">Init</a>(<a class="code" href="namespace_m_n_l.html#a1eec210db8f309a4a9ac0d9658784c31">CPD3DDevice</a> cpDevice, D3D11_FILL_MODE fillMode, <span class="keywordtype">bool</span> isCCW);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">const</span> <a class="code" href="namespace_m_n_l.html#aa6c2682c64c5b58c458c36bb424f1e56">CPD3DRasterizerState</a> <a class="code" href="class_m_n_l_1_1_mn_rasterizer_state.html#a91cc6f6e2f11441d31ae75f2c9d65807">GetState</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_rasterizer_state.html#a2eeef6c6d928646b13b441999a874ef5">   16</a></span>&#160;        D3D11_RASTERIZER_DESC <a class="code" href="class_m_n_l_1_1_mn_rasterizer_state.html#a2eeef6c6d928646b13b441999a874ef5">m_rasterizerDesc</a>;</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_rasterizer_state.html#a185dd087f95f0e05f6c0cc03cf79b791">   17</a></span>&#160;        <a class="code" href="namespace_m_n_l.html#aa6c2682c64c5b58c458c36bb424f1e56">CPD3DRasterizerState</a> <a class="code" href="class_m_n_l_1_1_mn_rasterizer_state.html#a185dd087f95f0e05f6c0cc03cf79b791">m_cpRasterizerState</a>;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    };</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div><div class="ttc" id="class_m_n_l_1_1_mn_rasterizer_state_html_a543c1ca2173258a0af7bbf0cd0e16922"><div class="ttname"><a href="class_m_n_l_1_1_mn_rasterizer_state.html#a543c1ca2173258a0af7bbf0cd0e16922">MNL::MnRasterizerState::Init</a></div><div class="ttdeci">HRESULT Init(CPD3DDevice cpDevice, D3D11_FILL_MODE fillMode, bool isCCW)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_rasterizer_state_8cpp_source.html#l00016">MnRasterizerState.cpp:16</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_rasterizer_state_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_rasterizer_state.html">MNL::MnRasterizerState</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_rasterizer_state_8h_source.html#l00007">MnRasterizerState.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_rasterizer_state_html_a91cc6f6e2f11441d31ae75f2c9d65807"><div class="ttname"><a href="class_m_n_l_1_1_mn_rasterizer_state.html#a91cc6f6e2f11441d31ae75f2c9d65807">MNL::MnRasterizerState::GetState</a></div><div class="ttdeci">const CPD3DRasterizerState GetState() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_rasterizer_state_8cpp_source.html#l00040">MnRasterizerState.cpp:40</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html"><div class="ttname"><a href="namespace_m_n_l.html">MNL</a></div><div class="ttdef"><b>Definition:</b> <a href="_basic_shader_path_8h_source.html#l00007">BasicShaderPath.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_rasterizer_state_html_ac6a6dde00f1bba11b762c0ff21b9598c"><div class="ttname"><a href="class_m_n_l_1_1_mn_rasterizer_state.html#ac6a6dde00f1bba11b762c0ff21b9598c">MNL::MnRasterizerState::MnRasterizerState</a></div><div class="ttdeci">MnRasterizerState()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_rasterizer_state_8cpp_source.html#l00006">MnRasterizerState.cpp:6</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html_aa6c2682c64c5b58c458c36bb424f1e56"><div class="ttname"><a href="namespace_m_n_l.html#aa6c2682c64c5b58c458c36bb424f1e56">MNL::CPD3DRasterizerState</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; ID3D11RasterizerState &gt; CPD3DRasterizerState</div><div class="ttdef"><b>Definition:</b> <a href="_mn_typedefs_8h_source.html#l00010">MnTypedefs.h:10</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_rasterizer_state_html_a185dd087f95f0e05f6c0cc03cf79b791"><div class="ttname"><a href="class_m_n_l_1_1_mn_rasterizer_state.html#a185dd087f95f0e05f6c0cc03cf79b791">MNL::MnRasterizerState::m_cpRasterizerState</a></div><div class="ttdeci">CPD3DRasterizerState m_cpRasterizerState</div><div class="ttdef"><b>Definition:</b> <a href="_mn_rasterizer_state_8h_source.html#l00017">MnRasterizerState.h:17</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html_a1eec210db8f309a4a9ac0d9658784c31"><div class="ttname"><a href="namespace_m_n_l.html#a1eec210db8f309a4a9ac0d9658784c31">MNL::CPD3DDevice</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; ID3D11Device &gt; CPD3DDevice</div><div class="ttdef"><b>Definition:</b> <a href="_mn_typedefs_8h_source.html#l00006">MnTypedefs.h:6</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_rasterizer_state_html_a414bc5cdc7de69287821dd0ddd08ae52"><div class="ttname"><a href="class_m_n_l_1_1_mn_rasterizer_state.html#a414bc5cdc7de69287821dd0ddd08ae52">MNL::MnRasterizerState::~MnRasterizerState</a></div><div class="ttdeci">~MnRasterizerState()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_rasterizer_state_8cpp_source.html#l00012">MnRasterizerState.cpp:12</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_rasterizer_state_html_a2eeef6c6d928646b13b441999a874ef5"><div class="ttname"><a href="class_m_n_l_1_1_mn_rasterizer_state.html#a2eeef6c6d928646b13b441999a874ef5">MNL::MnRasterizerState::m_rasterizerDesc</a></div><div class="ttdeci">D3D11_RASTERIZER_DESC m_rasterizerDesc</div><div class="ttdef"><b>Definition:</b> <a href="_mn_rasterizer_state_8h_source.html#l00016">MnRasterizerState.h:16</a></div></div>
+<div class="ttc" id="_mn_typedefs_8h_html"><div class="ttname"><a href="_mn_typedefs_8h.html">MnTypedefs.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><a class="el" href="_mn_rasterizer_state_8h.html">MnRasterizerState.h</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

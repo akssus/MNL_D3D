@@ -1,0 +1,8 @@
+<map id="MNL::MnResourcePool::_ReadAnimations" name="MNL::MnResourcePool::_ReadAnimations">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_bone_animation.html#a9761262aa92163949e863423b4124cec" title="MNL::MnBoneAnimation\l::SetName" alt="" coords="233,5,396,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_bone_animation.html#a05eb549b3556fa7e355d36c0314cf024" title="MNL::MnBoneAnimation\l::SetTotalDuration" alt="" coords="233,71,396,112"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_bone_animation_element.html#a9e9864a75d577193b3e39ce56838c43c" title="MNL::MnBoneAnimationElement\l::SetAffectingBoneName" alt="" coords="209,136,420,177"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_bone_animation_element.html#a2f9f402279191cf7009e8b47bf3f3311" title="MNL::MnBoneAnimationElement\l::SetDuration" alt="" coords="209,201,420,243"/>
+<area shape="rect" id="node6" href="$class_m_n_l_1_1_mn_bone_animation_element.html#a3c4b8bf56a5c5ebf5d6045ae93e5b808" title="MNL::MnBoneAnimationElement\l::AddKeyFrame" alt="" coords="209,267,420,308"/>
+<area shape="rect" id="node7" href="$class_m_n_l_1_1_mn_bone_animation.html#a77c33ae5a73412609e51eb681863e2a5" title="MNL::MnBoneAnimation\l::AddElement" alt="" coords="233,332,396,373"/>
+</map>

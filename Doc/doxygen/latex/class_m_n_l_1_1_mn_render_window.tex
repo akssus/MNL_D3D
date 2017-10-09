@@ -1,0 +1,226 @@
+\hypertarget{class_m_n_l_1_1_mn_render_window}{}\section{M\+NL\+:\+:Mn\+Render\+Window 클래스 참조}
+\label{class_m_n_l_1_1_mn_render_window}\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+
+
+{\ttfamily \#include $<$Mn\+Render\+Window.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Render\+Window에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_m_n_l_1_1_mn_render_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_render_window_a5b222688f3b92b62e4fabe88a26c97e8}{Mn\+Render\+Window} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_render_window_aaba5f879d167535f6f6d3ff5d2260beb}{$\sim$\+Mn\+Render\+Window} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_render_window_a91ef2588fcdcaf3619206a4ca766cef9}{Init} (H\+I\+N\+S\+T\+A\+N\+CE h\+Instance, int n\+Cmd\+Show, std\+::wstring window\+Name, std\+::wstring class\+Name, float x, float y, float width, float height, W\+N\+D\+P\+R\+OC \hyperlink{main_8cpp_ac996a0edf7f6d6736f7f2920665a453d}{Wnd\+Proc}, const \hyperlink{class_m_n_l_1_1_mn_hardware}{Mn\+Hardware} \&hardware\+Info, bool use\+Default\+Device, U\+I\+NT numerator, U\+I\+NT denominator, bool is\+Vsync, bool is\+Windowed, U\+I\+NT num\+Buffers, const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} cp\+D3\+D\+Device, const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} cp\+D3\+D\+Device\+Context)
+\item 
+const H\+W\+ND \hyperlink{class_m_n_l_1_1_mn_render_window_a07cfd8b1e6bce5dca9ce08622e8f12b4}{Get\+Window\+Handle} () const
+\item 
+const \hyperlink{namespace_m_n_l_aa08a7c0b5ac9d877dacb57b9306b7b8c}{C\+P\+D3\+D\+Render\+Target\+View} \& \hyperlink{class_m_n_l_1_1_mn_render_window_a19d44672e636e718eaa8a801a2dfacbf}{Get\+Back\+Buffer\+View} () const
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_render_window_a795840e10508a5c98aff467314cac40f}{Resize} (U\+I\+NT width, U\+I\+NT height)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_render_window_a432b906d6590d0acd0a47941da10c62d}{Set\+Fullscreen} ()
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_render_window_ab7fc225a7460c3bfbe5dd6cdc837e7c8}{Set\+Windowed} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_render_window_a7fee685ae92188dee4a23f56a9df1092}{Swap\+Buffers} ()
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_render_window_afb3f077d0738f9db3efe605597f88da8}{\+\_\+\+Init\+Window} (H\+I\+N\+S\+T\+A\+N\+CE h\+Instance, int n\+Cmd\+Show, std\+::wstring window\+Name, std\+::wstring class\+Name, float x, float y, float width, float height, W\+N\+D\+P\+R\+OC \hyperlink{main_8cpp_ac996a0edf7f6d6736f7f2920665a453d}{Wnd\+Proc})
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_render_window_afbcafa43f1186347d52d332353f8e430}{\+\_\+\+Init\+Swap\+Chain} (const \hyperlink{class_m_n_l_1_1_mn_hardware}{Mn\+Hardware} \&hardware\+Info, bool use\+Default\+Device, float width, float height, U\+I\+NT numerator, U\+I\+NT denominator, bool is\+Vsync, bool is\+Windowed, U\+I\+NT num\+Buffers, const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} cp\+D3\+D\+Device, const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} cp\+D3\+D\+Device\+Context)
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_window}{Mn\+Window} \hyperlink{class_m_n_l_1_1_mn_render_window_a15bf07a3fc82d20ef185cf140b7c216e}{m\+\_\+window}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_swap_chain}{Mn\+Swap\+Chain} \hyperlink{class_m_n_l_1_1_mn_render_window_a8092fe6c4b1069ddf24c07b440be73ca}{m\+\_\+swap\+Chain}
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_render_window_ad85d3339acf8e0b118b421754eb1266b}{m\+\_\+is\+Windowed}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_render_target_view}{Mn\+Render\+Target\+View} \hyperlink{class_m_n_l_1_1_mn_render_window_a64924f5c12a756fd4be2991f812673a5}{m\+\_\+back\+Buffer\+View}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Render\+Window.\+h 파일의 17 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a5b222688f3b92b62e4fabe88a26c97e8}\label{class_m_n_l_1_1_mn_render_window_a5b222688f3b92b62e4fabe88a26c97e8}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Mn\+Render\+Window@{Mn\+Render\+Window}}
+\index{Mn\+Render\+Window@{Mn\+Render\+Window}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Mn\+Render\+Window()}{MnRenderWindow()}}
+{\footnotesize\ttfamily Mn\+Render\+Window\+::\+Mn\+Render\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 6 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_aaba5f879d167535f6f6d3ff5d2260beb}\label{class_m_n_l_1_1_mn_render_window_aaba5f879d167535f6f6d3ff5d2260beb}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!````~Mn\+Render\+Window@{$\sim$\+Mn\+Render\+Window}}
+\index{````~Mn\+Render\+Window@{$\sim$\+Mn\+Render\+Window}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Render\+Window()}{~MnRenderWindow()}}
+{\footnotesize\ttfamily Mn\+Render\+Window\+::$\sim$\+Mn\+Render\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 11 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_afbcafa43f1186347d52d332353f8e430}\label{class_m_n_l_1_1_mn_render_window_afbcafa43f1186347d52d332353f8e430}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!\+\_\+\+Init\+Swap\+Chain@{\+\_\+\+Init\+Swap\+Chain}}
+\index{\+\_\+\+Init\+Swap\+Chain@{\+\_\+\+Init\+Swap\+Chain}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{\+\_\+\+Init\+Swap\+Chain()}{\_InitSwapChain()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Render\+Window\+::\+\_\+\+Init\+Swap\+Chain (\begin{DoxyParamCaption}\item[{const \hyperlink{class_m_n_l_1_1_mn_hardware}{Mn\+Hardware} \&}]{hardware\+Info,  }\item[{bool}]{use\+Default\+Device,  }\item[{float}]{width,  }\item[{float}]{height,  }\item[{U\+I\+NT}]{numerator,  }\item[{U\+I\+NT}]{denominator,  }\item[{bool}]{is\+Vsync,  }\item[{bool}]{is\+Windowed,  }\item[{U\+I\+NT}]{num\+Buffers,  }\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device}}]{cp\+D3\+D\+Device,  }\item[{const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context}}]{cp\+D3\+D\+Device\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 75 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_afb3f077d0738f9db3efe605597f88da8}\label{class_m_n_l_1_1_mn_render_window_afb3f077d0738f9db3efe605597f88da8}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!\+\_\+\+Init\+Window@{\+\_\+\+Init\+Window}}
+\index{\+\_\+\+Init\+Window@{\+\_\+\+Init\+Window}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{\+\_\+\+Init\+Window()}{\_InitWindow()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Render\+Window\+::\+\_\+\+Init\+Window (\begin{DoxyParamCaption}\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{h\+Instance,  }\item[{int}]{n\+Cmd\+Show,  }\item[{std\+::wstring}]{window\+Name,  }\item[{std\+::wstring}]{class\+Name,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{width,  }\item[{float}]{height,  }\item[{W\+N\+D\+P\+R\+OC}]{Wnd\+Proc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 59 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a19d44672e636e718eaa8a801a2dfacbf}\label{class_m_n_l_1_1_mn_render_window_a19d44672e636e718eaa8a801a2dfacbf}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Get\+Back\+Buffer\+View@{Get\+Back\+Buffer\+View}}
+\index{Get\+Back\+Buffer\+View@{Get\+Back\+Buffer\+View}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Get\+Back\+Buffer\+View()}{GetBackBufferView()}}
+{\footnotesize\ttfamily const \hyperlink{namespace_m_n_l_aa08a7c0b5ac9d877dacb57b9306b7b8c}{C\+P\+D3\+D\+Render\+Target\+View} \& Mn\+Render\+Window\+::\+Get\+Back\+Buffer\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 108 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a07cfd8b1e6bce5dca9ce08622e8f12b4}\label{class_m_n_l_1_1_mn_render_window_a07cfd8b1e6bce5dca9ce08622e8f12b4}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Get\+Window\+Handle@{Get\+Window\+Handle}}
+\index{Get\+Window\+Handle@{Get\+Window\+Handle}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Get\+Window\+Handle()}{GetWindowHandle()}}
+{\footnotesize\ttfamily const H\+W\+ND Mn\+Render\+Window\+::\+Get\+Window\+Handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 104 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a91ef2588fcdcaf3619206a4ca766cef9}\label{class_m_n_l_1_1_mn_render_window_a91ef2588fcdcaf3619206a4ca766cef9}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Init@{Init}}
+\index{Init@{Init}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Render\+Window\+::\+Init (\begin{DoxyParamCaption}\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{h\+Instance,  }\item[{int}]{n\+Cmd\+Show,  }\item[{std\+::wstring}]{window\+Name,  }\item[{std\+::wstring}]{class\+Name,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{width,  }\item[{float}]{height,  }\item[{W\+N\+D\+P\+R\+OC}]{Wnd\+Proc,  }\item[{const \hyperlink{class_m_n_l_1_1_mn_hardware}{Mn\+Hardware} \&}]{hardware\+Info,  }\item[{bool}]{use\+Default\+Device,  }\item[{U\+I\+NT}]{numerator,  }\item[{U\+I\+NT}]{denominator,  }\item[{bool}]{is\+Vsync,  }\item[{bool}]{is\+Windowed,  }\item[{U\+I\+NT}]{num\+Buffers,  }\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device}}]{cp\+D3\+D\+Device,  }\item[{const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context}}]{cp\+D3\+D\+Device\+Context }\end{DoxyParamCaption})}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 15 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a795840e10508a5c98aff467314cac40f}\label{class_m_n_l_1_1_mn_render_window_a795840e10508a5c98aff467314cac40f}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Resize@{Resize}}
+\index{Resize@{Resize}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily void Mn\+Render\+Window\+::\+Resize (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{width,  }\item[{U\+I\+NT}]{height }\end{DoxyParamCaption})}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 113 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a432b906d6590d0acd0a47941da10c62d}\label{class_m_n_l_1_1_mn_render_window_a432b906d6590d0acd0a47941da10c62d}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Set\+Fullscreen@{Set\+Fullscreen}}
+\index{Set\+Fullscreen@{Set\+Fullscreen}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Set\+Fullscreen()}{SetFullscreen()}}
+{\footnotesize\ttfamily void Mn\+Render\+Window\+::\+Set\+Fullscreen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 121 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_ab7fc225a7460c3bfbe5dd6cdc837e7c8}\label{class_m_n_l_1_1_mn_render_window_ab7fc225a7460c3bfbe5dd6cdc837e7c8}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Set\+Windowed@{Set\+Windowed}}
+\index{Set\+Windowed@{Set\+Windowed}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Set\+Windowed()}{SetWindowed()}}
+{\footnotesize\ttfamily void Mn\+Render\+Window\+::\+Set\+Windowed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 125 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a7fee685ae92188dee4a23f56a9df1092}\label{class_m_n_l_1_1_mn_render_window_a7fee685ae92188dee4a23f56a9df1092}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!Swap\+Buffers@{Swap\+Buffers}}
+\index{Swap\+Buffers@{Swap\+Buffers}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{Swap\+Buffers()}{SwapBuffers()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Render\+Window\+::\+Swap\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Render\+Window.\+cpp 파일의 130 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a64924f5c12a756fd4be2991f812673a5}\label{class_m_n_l_1_1_mn_render_window_a64924f5c12a756fd4be2991f812673a5}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!m\+\_\+back\+Buffer\+View@{m\+\_\+back\+Buffer\+View}}
+\index{m\+\_\+back\+Buffer\+View@{m\+\_\+back\+Buffer\+View}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{m\+\_\+back\+Buffer\+View}{m\_backBufferView}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_render_target_view}{Mn\+Render\+Target\+View} M\+N\+L\+::\+Mn\+Render\+Window\+::m\+\_\+back\+Buffer\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Render\+Window.\+h 파일의 83 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_ad85d3339acf8e0b118b421754eb1266b}\label{class_m_n_l_1_1_mn_render_window_ad85d3339acf8e0b118b421754eb1266b}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!m\+\_\+is\+Windowed@{m\+\_\+is\+Windowed}}
+\index{m\+\_\+is\+Windowed@{m\+\_\+is\+Windowed}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Windowed}{m\_isWindowed}}
+{\footnotesize\ttfamily bool M\+N\+L\+::\+Mn\+Render\+Window\+::m\+\_\+is\+Windowed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Render\+Window.\+h 파일의 81 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a8092fe6c4b1069ddf24c07b440be73ca}\label{class_m_n_l_1_1_mn_render_window_a8092fe6c4b1069ddf24c07b440be73ca}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!m\+\_\+swap\+Chain@{m\+\_\+swap\+Chain}}
+\index{m\+\_\+swap\+Chain@{m\+\_\+swap\+Chain}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{m\+\_\+swap\+Chain}{m\_swapChain}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_swap_chain}{Mn\+Swap\+Chain} M\+N\+L\+::\+Mn\+Render\+Window\+::m\+\_\+swap\+Chain\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Render\+Window.\+h 파일의 80 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_render_window_a15bf07a3fc82d20ef185cf140b7c216e}\label{class_m_n_l_1_1_mn_render_window_a15bf07a3fc82d20ef185cf140b7c216e}} 
+\index{M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}!m\+\_\+window@{m\+\_\+window}}
+\index{m\+\_\+window@{m\+\_\+window}!M\+N\+L\+::\+Mn\+Render\+Window@{M\+N\+L\+::\+Mn\+Render\+Window}}
+\subsubsection{\texorpdfstring{m\+\_\+window}{m\_window}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_window}{Mn\+Window} M\+N\+L\+::\+Mn\+Render\+Window\+::m\+\_\+window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Render\+Window.\+h 파일의 79 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Render/\hyperlink{_mn_render_window_8h}{Mn\+Render\+Window.\+h}\item 
+Render/\hyperlink{_mn_render_window_8cpp}{Mn\+Render\+Window.\+cpp}\end{DoxyCompactItemize}

@@ -2,14 +2,14 @@
 #include <d3d11.h>
 #include <vector>
 #include <memory>
-#include "../Core\MnGpuBuffer.h"
-#include "../Core\MnVertexShader.h"
-#include "../Core\MnPixelShader.h"
-#include "../Core\MnInputLayout.h"
-#include "../Core\MnCustomVertexType.h"
-#include "../Core\MnConstantBufferType.h"
-#include "../Core\MnConstantBuffer.h"
-#include "../Core/MnSamplerState.h"
+#include "Core\MnGpuBuffer.h"
+#include "Core\MnVertexShader.h"
+#include "Core\MnPixelShader.h"
+#include "Core\MnInputLayout.h"
+#include "Core\MnCustomVertexType.h"
+#include "Core\MnConstantBufferType.h"
+#include "Core\MnConstantBuffer.h"
+#include "Core/MnSamplerState.h"
 
 namespace MNL
 {

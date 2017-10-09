@@ -1,0 +1,226 @@
+\hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker}{}\section{M\+NL\+:\+:Mn\+Bone\+Animation\+Tracker 클래스 참조}
+\label{class_m_n_l_1_1_mn_bone_animation_tracker}\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+
+
+{\ttfamily \#include $<$Mn\+Bone\+Animation\+Tracker.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Bone\+Animation\+Tracker에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{class_m_n_l_1_1_mn_bone_animation_tracker__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_a54ca35d4c15067230ebcf72064abc319}{Mn\+Bone\+Animation\+Tracker} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_a90ea134da8fbc89ed8f5d4b5b9e562fb}{$\sim$\+Mn\+Bone\+Animation\+Tracker} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_abe68ff29930c52db601b6158e5f03bf7}{Init} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_skeleton}{Mn\+Skeleton} $>$ \&sp\+Skeleton, const \hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} \&animation)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_a7e3a689e2850bc4cffec74444efd6129}{Set\+F\+PS} (double fps)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_a0bbded38ae7eb717880b49ed00b25f1f}{Set\+Animating\+Speed} (float speed)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_aa411090b4490d4c0422865ab8b563ddf}{Update\+Animation} (double time\+Delta)
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_abb7e0010c3717fe7b6f54a6665b31bbc}{\+\_\+\+Update\+Bones} (float time\+Factor)
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_skeleton}{Mn\+Skeleton} $>$ \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_aefec935ed7824231963b657b8ddb914b}{m\+\_\+sp\+Current\+Skeleton}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_a8ce5bc87cbbfd5fbb8d442cceb7df2f5}{m\+\_\+current\+Animation}
+\item 
+double \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_acf1032e7352339dbccc640681bb3895a}{m\+\_\+current\+Time}
+\item 
+double \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_aecccf5c8a3fde50062469a35ea083d59}{m\+\_\+duration\+Per\+Seconds}
+\item 
+float \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_aefbe185491262dba571d1201677ef7e1}{m\+\_\+animating\+Speed}
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_af52c92c8b507e21c94457ac47a5641bb}{m\+\_\+is\+Loop}
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_ac5dad518bde253882bda51dd30240d14}{m\+\_\+is\+Playing}
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_bone_animation_tracker_a8ed61397e39110735e5a400b78a42986}{m\+\_\+is\+Paused}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 7 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_a54ca35d4c15067230ebcf72064abc319}\label{class_m_n_l_1_1_mn_bone_animation_tracker_a54ca35d4c15067230ebcf72064abc319}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!Mn\+Bone\+Animation\+Tracker@{Mn\+Bone\+Animation\+Tracker}}
+\index{Mn\+Bone\+Animation\+Tracker@{Mn\+Bone\+Animation\+Tracker}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{Mn\+Bone\+Animation\+Tracker()}{MnBoneAnimationTracker()}}
+{\footnotesize\ttfamily Mn\+Bone\+Animation\+Tracker\+::\+Mn\+Bone\+Animation\+Tracker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+cpp 파일의 6 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_a90ea134da8fbc89ed8f5d4b5b9e562fb}\label{class_m_n_l_1_1_mn_bone_animation_tracker_a90ea134da8fbc89ed8f5d4b5b9e562fb}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!````~Mn\+Bone\+Animation\+Tracker@{$\sim$\+Mn\+Bone\+Animation\+Tracker}}
+\index{````~Mn\+Bone\+Animation\+Tracker@{$\sim$\+Mn\+Bone\+Animation\+Tracker}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Bone\+Animation\+Tracker()}{~MnBoneAnimationTracker()}}
+{\footnotesize\ttfamily Mn\+Bone\+Animation\+Tracker\+::$\sim$\+Mn\+Bone\+Animation\+Tracker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+cpp 파일의 16 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_abb7e0010c3717fe7b6f54a6665b31bbc}\label{class_m_n_l_1_1_mn_bone_animation_tracker_abb7e0010c3717fe7b6f54a6665b31bbc}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!\+\_\+\+Update\+Bones@{\+\_\+\+Update\+Bones}}
+\index{\+\_\+\+Update\+Bones@{\+\_\+\+Update\+Bones}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{\+\_\+\+Update\+Bones()}{\_UpdateBones()}}
+{\footnotesize\ttfamily void Mn\+Bone\+Animation\+Tracker\+::\+\_\+\+Update\+Bones (\begin{DoxyParamCaption}\item[{float}]{time\+Factor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+cpp 파일의 51 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_abe68ff29930c52db601b6158e5f03bf7}\label{class_m_n_l_1_1_mn_bone_animation_tracker_abe68ff29930c52db601b6158e5f03bf7}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!Init@{Init}}
+\index{Init@{Init}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Bone\+Animation\+Tracker\+::\+Init (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_skeleton}{Mn\+Skeleton} $>$ \&}]{sp\+Skeleton,  }\item[{const \hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} \&}]{animation }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+cpp 파일의 20 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_a0bbded38ae7eb717880b49ed00b25f1f}\label{class_m_n_l_1_1_mn_bone_animation_tracker_a0bbded38ae7eb717880b49ed00b25f1f}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!Set\+Animating\+Speed@{Set\+Animating\+Speed}}
+\index{Set\+Animating\+Speed@{Set\+Animating\+Speed}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{Set\+Animating\+Speed()}{SetAnimatingSpeed()}}
+{\footnotesize\ttfamily void Mn\+Bone\+Animation\+Tracker\+::\+Set\+Animating\+Speed (\begin{DoxyParamCaption}\item[{float}]{speed }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+cpp 파일의 31 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_a7e3a689e2850bc4cffec74444efd6129}\label{class_m_n_l_1_1_mn_bone_animation_tracker_a7e3a689e2850bc4cffec74444efd6129}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!Set\+F\+PS@{Set\+F\+PS}}
+\index{Set\+F\+PS@{Set\+F\+PS}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{Set\+F\+P\+S()}{SetFPS()}}
+{\footnotesize\ttfamily void Mn\+Bone\+Animation\+Tracker\+::\+Set\+F\+PS (\begin{DoxyParamCaption}\item[{double}]{fps }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+cpp 파일의 27 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_aa411090b4490d4c0422865ab8b563ddf}\label{class_m_n_l_1_1_mn_bone_animation_tracker_aa411090b4490d4c0422865ab8b563ddf}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!Update\+Animation@{Update\+Animation}}
+\index{Update\+Animation@{Update\+Animation}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{Update\+Animation()}{UpdateAnimation()}}
+{\footnotesize\ttfamily void Mn\+Bone\+Animation\+Tracker\+::\+Update\+Animation (\begin{DoxyParamCaption}\item[{double}]{time\+Delta }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+cpp 파일의 38 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_aefbe185491262dba571d1201677ef7e1}\label{class_m_n_l_1_1_mn_bone_animation_tracker_aefbe185491262dba571d1201677ef7e1}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+animating\+Speed@{m\+\_\+animating\+Speed}}
+\index{m\+\_\+animating\+Speed@{m\+\_\+animating\+Speed}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+animating\+Speed}{m\_animatingSpeed}}
+{\footnotesize\ttfamily float M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+animating\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 40 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_a8ce5bc87cbbfd5fbb8d442cceb7df2f5}\label{class_m_n_l_1_1_mn_bone_animation_tracker_a8ce5bc87cbbfd5fbb8d442cceb7df2f5}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+current\+Animation@{m\+\_\+current\+Animation}}
+\index{m\+\_\+current\+Animation@{m\+\_\+current\+Animation}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+current\+Animation}{m\_currentAnimation}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+current\+Animation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 31 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_acf1032e7352339dbccc640681bb3895a}\label{class_m_n_l_1_1_mn_bone_animation_tracker_acf1032e7352339dbccc640681bb3895a}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+current\+Time@{m\+\_\+current\+Time}}
+\index{m\+\_\+current\+Time@{m\+\_\+current\+Time}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+current\+Time}{m\_currentTime}}
+{\footnotesize\ttfamily double M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+current\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 32 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_aecccf5c8a3fde50062469a35ea083d59}\label{class_m_n_l_1_1_mn_bone_animation_tracker_aecccf5c8a3fde50062469a35ea083d59}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+duration\+Per\+Seconds@{m\+\_\+duration\+Per\+Seconds}}
+\index{m\+\_\+duration\+Per\+Seconds@{m\+\_\+duration\+Per\+Seconds}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+duration\+Per\+Seconds}{m\_durationPerSeconds}}
+{\footnotesize\ttfamily double M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+duration\+Per\+Seconds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 36 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_af52c92c8b507e21c94457ac47a5641bb}\label{class_m_n_l_1_1_mn_bone_animation_tracker_af52c92c8b507e21c94457ac47a5641bb}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+is\+Loop@{m\+\_\+is\+Loop}}
+\index{m\+\_\+is\+Loop@{m\+\_\+is\+Loop}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Loop}{m\_isLoop}}
+{\footnotesize\ttfamily bool M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+is\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 42 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_a8ed61397e39110735e5a400b78a42986}\label{class_m_n_l_1_1_mn_bone_animation_tracker_a8ed61397e39110735e5a400b78a42986}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+is\+Paused@{m\+\_\+is\+Paused}}
+\index{m\+\_\+is\+Paused@{m\+\_\+is\+Paused}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Paused}{m\_isPaused}}
+{\footnotesize\ttfamily bool M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+is\+Paused\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 44 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_ac5dad518bde253882bda51dd30240d14}\label{class_m_n_l_1_1_mn_bone_animation_tracker_ac5dad518bde253882bda51dd30240d14}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+is\+Playing@{m\+\_\+is\+Playing}}
+\index{m\+\_\+is\+Playing@{m\+\_\+is\+Playing}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Playing}{m\_isPlaying}}
+{\footnotesize\ttfamily bool M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+is\+Playing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 43 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_tracker_aefec935ed7824231963b657b8ddb914b}\label{class_m_n_l_1_1_mn_bone_animation_tracker_aefec935ed7824231963b657b8ddb914b}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}!m\+\_\+sp\+Current\+Skeleton@{m\+\_\+sp\+Current\+Skeleton}}
+\index{m\+\_\+sp\+Current\+Skeleton@{m\+\_\+sp\+Current\+Skeleton}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker}}
+\subsubsection{\texorpdfstring{m\+\_\+sp\+Current\+Skeleton}{m\_spCurrentSkeleton}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{class_m_n_l_1_1_mn_skeleton}{Mn\+Skeleton}$>$ M\+N\+L\+::\+Mn\+Bone\+Animation\+Tracker\+::m\+\_\+sp\+Current\+Skeleton\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Tracker.\+h 파일의 30 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Render/\hyperlink{_mn_bone_animation_tracker_8h}{Mn\+Bone\+Animation\+Tracker.\+h}\item 
+Render/\hyperlink{_mn_bone_animation_tracker_8cpp}{Mn\+Bone\+Animation\+Tracker.\+cpp}\end{DoxyCompactItemize}

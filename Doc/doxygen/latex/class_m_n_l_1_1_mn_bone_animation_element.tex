@@ -1,0 +1,270 @@
+\hypertarget{class_m_n_l_1_1_mn_bone_animation_element}{}\section{M\+NL\+:\+:Mn\+Bone\+Animation\+Element 클래스 참조}
+\label{class_m_n_l_1_1_mn_bone_animation_element}\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+
+
+{\ttfamily \#include $<$Mn\+Bone\+Animation\+Element.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Bone\+Animation\+Element에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{class_m_n_l_1_1_mn_bone_animation_element__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a17a71367d88886a9a1a06ce72cc3ae3f}{Mn\+Bone\+Animation\+Element} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a485d435a1d1a7ba730721c06ebfa0df5}{$\sim$\+Mn\+Bone\+Animation\+Element} ()
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a3c4b8bf56a5c5ebf5d6045ae93e5b808}{Add\+Key\+Frame} (const \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \&key)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a9e9864a75d577193b3e39ce56838c43c}{Set\+Affecting\+Bone\+Name} (const std\+::string \&affecting\+Bone\+Name)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a2f9f402279191cf7009e8b47bf3f3311}{Set\+Duration} (double duration)
+\item 
+double \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_ad489dc7c72dea26d157a205d6af4fadb}{Get\+Duration} () const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_ac92bc52d44e187e00af032d5faa5c735}{Get\+Num\+Key\+Frames} () const
+\item 
+std\+::string \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a7461a3a8bf2078d394db3a86c3a5eda6}{Get\+Affecting\+Bone\+Name} () const
+\item 
+\hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_ab689fa5a0df4c1d6a601baa13759d10d}{Mn\+Bone\+Animation\+Element\+::\+Get\+Lerped\+Key\+Frame\+At\+Time} (float time\+Factor)
+\item 
+\hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a8cd10f7f60f232471e6ce603cdbf76ea}{Get\+Key\+Frame} (U\+I\+NT index) const
+\item 
+\hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a58874b3fe81886f1c13ca6f77b4a171c}{Get\+Key\+Frame\+At\+Time} (float time\+Factor) const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_ad22dfccb49a16ee30ab83c2ca0ca3185}{Get\+Key\+Frame\+Index\+At\+Time} (float time\+Factor) const
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_ae0385d67d5f8663fd2a7e398e8e2f91e}{\+\_\+\+Get\+Next\+Key\+Frame\+Index\+Of} (U\+I\+NT current\+Index) const
+\item 
+\hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_a3e789fbdea899e545eb5ff7a3aa41961}{\+\_\+\+Lerp\+Key\+Frame} (const \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \&key\+Frame\+\_\+from, const \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \&key\+Frame\+\_\+to, float factor)
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_af8bc9d470a35c8d41283660baa36ecaf}{m\+\_\+affecting\+Bone\+Name}
+\item 
+double \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_ad6427e5172eb3a5754f133dbda4fa43c}{m\+\_\+duration}
+\item 
+std\+::vector$<$ \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} $>$ \hyperlink{class_m_n_l_1_1_mn_bone_animation_element_adb31ea7e47450a243d3b87ceadab86d0}{m\+\_\+lst\+Key\+Frames}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Bone\+Animation\+Element.\+h 파일의 21 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a17a71367d88886a9a1a06ce72cc3ae3f}\label{class_m_n_l_1_1_mn_bone_animation_element_a17a71367d88886a9a1a06ce72cc3ae3f}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Mn\+Bone\+Animation\+Element@{Mn\+Bone\+Animation\+Element}}
+\index{Mn\+Bone\+Animation\+Element@{Mn\+Bone\+Animation\+Element}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Mn\+Bone\+Animation\+Element()}{MnBoneAnimationElement()}}
+{\footnotesize\ttfamily Mn\+Bone\+Animation\+Element\+::\+Mn\+Bone\+Animation\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 6 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a485d435a1d1a7ba730721c06ebfa0df5}\label{class_m_n_l_1_1_mn_bone_animation_element_a485d435a1d1a7ba730721c06ebfa0df5}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!````~Mn\+Bone\+Animation\+Element@{$\sim$\+Mn\+Bone\+Animation\+Element}}
+\index{````~Mn\+Bone\+Animation\+Element@{$\sim$\+Mn\+Bone\+Animation\+Element}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Bone\+Animation\+Element()}{~MnBoneAnimationElement()}}
+{\footnotesize\ttfamily Mn\+Bone\+Animation\+Element\+::$\sim$\+Mn\+Bone\+Animation\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 10 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_ae0385d67d5f8663fd2a7e398e8e2f91e}\label{class_m_n_l_1_1_mn_bone_animation_element_ae0385d67d5f8663fd2a7e398e8e2f91e}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!\+\_\+\+Get\+Next\+Key\+Frame\+Index\+Of@{\+\_\+\+Get\+Next\+Key\+Frame\+Index\+Of}}
+\index{\+\_\+\+Get\+Next\+Key\+Frame\+Index\+Of@{\+\_\+\+Get\+Next\+Key\+Frame\+Index\+Of}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{\+\_\+\+Get\+Next\+Key\+Frame\+Index\+Of()}{\_GetNextKeyFrameIndexOf()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Bone\+Animation\+Element\+::\+\_\+\+Get\+Next\+Key\+Frame\+Index\+Of (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{current\+Index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 94 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a3e789fbdea899e545eb5ff7a3aa41961}\label{class_m_n_l_1_1_mn_bone_animation_element_a3e789fbdea899e545eb5ff7a3aa41961}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!\+\_\+\+Lerp\+Key\+Frame@{\+\_\+\+Lerp\+Key\+Frame}}
+\index{\+\_\+\+Lerp\+Key\+Frame@{\+\_\+\+Lerp\+Key\+Frame}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{\+\_\+\+Lerp\+Key\+Frame()}{\_LerpKeyFrame()}}
+{\footnotesize\ttfamily \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} Mn\+Bone\+Animation\+Element\+::\+\_\+\+Lerp\+Key\+Frame (\begin{DoxyParamCaption}\item[{const \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \&}]{key\+Frame\+\_\+from,  }\item[{const \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \&}]{key\+Frame\+\_\+to,  }\item[{float}]{factor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 104 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a3c4b8bf56a5c5ebf5d6045ae93e5b808}\label{class_m_n_l_1_1_mn_bone_animation_element_a3c4b8bf56a5c5ebf5d6045ae93e5b808}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Add\+Key\+Frame@{Add\+Key\+Frame}}
+\index{Add\+Key\+Frame@{Add\+Key\+Frame}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Add\+Key\+Frame()}{AddKeyFrame()}}
+{\footnotesize\ttfamily void Mn\+Bone\+Animation\+Element\+::\+Add\+Key\+Frame (\begin{DoxyParamCaption}\item[{const \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 14 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a7461a3a8bf2078d394db3a86c3a5eda6}\label{class_m_n_l_1_1_mn_bone_animation_element_a7461a3a8bf2078d394db3a86c3a5eda6}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Get\+Affecting\+Bone\+Name@{Get\+Affecting\+Bone\+Name}}
+\index{Get\+Affecting\+Bone\+Name@{Get\+Affecting\+Bone\+Name}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Get\+Affecting\+Bone\+Name()}{GetAffectingBoneName()}}
+{\footnotesize\ttfamily std\+::string Mn\+Bone\+Animation\+Element\+::\+Get\+Affecting\+Bone\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 39 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_ad489dc7c72dea26d157a205d6af4fadb}\label{class_m_n_l_1_1_mn_bone_animation_element_ad489dc7c72dea26d157a205d6af4fadb}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Get\+Duration@{Get\+Duration}}
+\index{Get\+Duration@{Get\+Duration}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Get\+Duration()}{GetDuration()}}
+{\footnotesize\ttfamily double Mn\+Bone\+Animation\+Element\+::\+Get\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 31 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a8cd10f7f60f232471e6ce603cdbf76ea}\label{class_m_n_l_1_1_mn_bone_animation_element_a8cd10f7f60f232471e6ce603cdbf76ea}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Get\+Key\+Frame@{Get\+Key\+Frame}}
+\index{Get\+Key\+Frame@{Get\+Key\+Frame}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Get\+Key\+Frame()}{GetKeyFrame()}}
+{\footnotesize\ttfamily \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} Mn\+Bone\+Animation\+Element\+::\+Get\+Key\+Frame (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{index }\end{DoxyParamCaption}) const}
+
+Get key frame at the index 
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 22 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a58874b3fe81886f1c13ca6f77b4a171c}\label{class_m_n_l_1_1_mn_bone_animation_element_a58874b3fe81886f1c13ca6f77b4a171c}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Get\+Key\+Frame\+At\+Time@{Get\+Key\+Frame\+At\+Time}}
+\index{Get\+Key\+Frame\+At\+Time@{Get\+Key\+Frame\+At\+Time}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Get\+Key\+Frame\+At\+Time()}{GetKeyFrameAtTime()}}
+{\footnotesize\ttfamily \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} Mn\+Bone\+Animation\+Element\+::\+Get\+Key\+Frame\+At\+Time (\begin{DoxyParamCaption}\item[{float}]{time\+Factor }\end{DoxyParamCaption}) const}
+
+Get key frame at the specific time. 
+\begin{DoxyParams}{매개변수}
+{\em time\+Factor} & must be 0.\+0 $\sim$ 1.\+0. Calculated by (target\+Tick)/(total\+Tick) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+empty key frame if it has no key frames 
+\end{DoxyReturn}
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 65 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_ad22dfccb49a16ee30ab83c2ca0ca3185}\label{class_m_n_l_1_1_mn_bone_animation_element_ad22dfccb49a16ee30ab83c2ca0ca3185}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Get\+Key\+Frame\+Index\+At\+Time@{Get\+Key\+Frame\+Index\+At\+Time}}
+\index{Get\+Key\+Frame\+Index\+At\+Time@{Get\+Key\+Frame\+Index\+At\+Time}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Get\+Key\+Frame\+Index\+At\+Time()}{GetKeyFrameIndexAtTime()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Bone\+Animation\+Element\+::\+Get\+Key\+Frame\+Index\+At\+Time (\begin{DoxyParamCaption}\item[{float}]{time\+Factor }\end{DoxyParamCaption}) const}
+
+Get key frame\textquotesingle{}s index at the specific time. 
+\begin{DoxyParams}{매개변수}
+{\em time\+Factor} & must be 0.\+0 $\sim$ 1.\+0. Calculated by (target\+Tick)/(total\+Tick) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+empty key frame if it has no key frames 
+\end{DoxyReturn}
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 74 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_ac92bc52d44e187e00af032d5faa5c735}\label{class_m_n_l_1_1_mn_bone_animation_element_ac92bc52d44e187e00af032d5faa5c735}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Get\+Num\+Key\+Frames@{Get\+Num\+Key\+Frames}}
+\index{Get\+Num\+Key\+Frames@{Get\+Num\+Key\+Frames}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Get\+Num\+Key\+Frames()}{GetNumKeyFrames()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Bone\+Animation\+Element\+::\+Get\+Num\+Key\+Frames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 35 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_ab689fa5a0df4c1d6a601baa13759d10d}\label{class_m_n_l_1_1_mn_bone_animation_element_ab689fa5a0df4c1d6a601baa13759d10d}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Mn\+Bone\+Animation\+Element\+::\+Get\+Lerped\+Key\+Frame\+At\+Time@{Mn\+Bone\+Animation\+Element\+::\+Get\+Lerped\+Key\+Frame\+At\+Time}}
+\index{Mn\+Bone\+Animation\+Element\+::\+Get\+Lerped\+Key\+Frame\+At\+Time@{Mn\+Bone\+Animation\+Element\+::\+Get\+Lerped\+Key\+Frame\+At\+Time}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Mn\+Bone\+Animation\+Element\+::\+Get\+Lerped\+Key\+Frame\+At\+Time()}{MnBoneAnimationElement::GetLerpedKeyFrameAtTime()}}
+{\footnotesize\ttfamily \hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame} M\+N\+L\+::\+Mn\+Bone\+Animation\+Element\+::\+Mn\+Bone\+Animation\+Element\+::\+Get\+Lerped\+Key\+Frame\+At\+Time (\begin{DoxyParamCaption}\item[{float}]{time\+Factor }\end{DoxyParamCaption})}
+
+Get automatically lerped key frame at the specific time. 
+\begin{DoxyParams}{매개변수}
+{\em time\+Factor} & must be 0.\+0 $\sim$ 1.\+0. Calculated by (target\+Tick)/(total\+Tick) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+empty key frame if it has no key frames 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a9e9864a75d577193b3e39ce56838c43c}\label{class_m_n_l_1_1_mn_bone_animation_element_a9e9864a75d577193b3e39ce56838c43c}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Set\+Affecting\+Bone\+Name@{Set\+Affecting\+Bone\+Name}}
+\index{Set\+Affecting\+Bone\+Name@{Set\+Affecting\+Bone\+Name}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Set\+Affecting\+Bone\+Name()}{SetAffectingBoneName()}}
+{\footnotesize\ttfamily void Mn\+Bone\+Animation\+Element\+::\+Set\+Affecting\+Bone\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{affecting\+Bone\+Name }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 18 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_a2f9f402279191cf7009e8b47bf3f3311}\label{class_m_n_l_1_1_mn_bone_animation_element_a2f9f402279191cf7009e8b47bf3f3311}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!Set\+Duration@{Set\+Duration}}
+\index{Set\+Duration@{Set\+Duration}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{Set\+Duration()}{SetDuration()}}
+{\footnotesize\ttfamily void Mn\+Bone\+Animation\+Element\+::\+Set\+Duration (\begin{DoxyParamCaption}\item[{double}]{duration }\end{DoxyParamCaption})}
+
+
+
+Mn\+Bone\+Animation\+Element.\+cpp 파일의 26 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_af8bc9d470a35c8d41283660baa36ecaf}\label{class_m_n_l_1_1_mn_bone_animation_element_af8bc9d470a35c8d41283660baa36ecaf}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!m\+\_\+affecting\+Bone\+Name@{m\+\_\+affecting\+Bone\+Name}}
+\index{m\+\_\+affecting\+Bone\+Name@{m\+\_\+affecting\+Bone\+Name}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{m\+\_\+affecting\+Bone\+Name}{m\_affectingBoneName}}
+{\footnotesize\ttfamily std\+::string M\+N\+L\+::\+Mn\+Bone\+Animation\+Element\+::m\+\_\+affecting\+Bone\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Element.\+h 파일의 64 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_ad6427e5172eb3a5754f133dbda4fa43c}\label{class_m_n_l_1_1_mn_bone_animation_element_ad6427e5172eb3a5754f133dbda4fa43c}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!m\+\_\+duration@{m\+\_\+duration}}
+\index{m\+\_\+duration@{m\+\_\+duration}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{m\+\_\+duration}{m\_duration}}
+{\footnotesize\ttfamily double M\+N\+L\+::\+Mn\+Bone\+Animation\+Element\+::m\+\_\+duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Element.\+h 파일의 65 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_bone_animation_element_adb31ea7e47450a243d3b87ceadab86d0}\label{class_m_n_l_1_1_mn_bone_animation_element_adb31ea7e47450a243d3b87ceadab86d0}} 
+\index{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}!m\+\_\+lst\+Key\+Frames@{m\+\_\+lst\+Key\+Frames}}
+\index{m\+\_\+lst\+Key\+Frames@{m\+\_\+lst\+Key\+Frames}!M\+N\+L\+::\+Mn\+Bone\+Animation\+Element@{M\+N\+L\+::\+Mn\+Bone\+Animation\+Element}}
+\subsubsection{\texorpdfstring{m\+\_\+lst\+Key\+Frames}{m\_lstKeyFrames}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{struct_m_n_l_1_1_mn_bone_animation_key_frame}{Mn\+Bone\+Animation\+Key\+Frame}$>$ M\+N\+L\+::\+Mn\+Bone\+Animation\+Element\+::m\+\_\+lst\+Key\+Frames\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Bone\+Animation\+Element.\+h 파일의 66 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Render/\hyperlink{_mn_bone_animation_element_8h}{Mn\+Bone\+Animation\+Element.\+h}\item 
+Render/\hyperlink{_mn_bone_animation_element_8cpp}{Mn\+Bone\+Animation\+Element.\+cpp}\end{DoxyCompactItemize}

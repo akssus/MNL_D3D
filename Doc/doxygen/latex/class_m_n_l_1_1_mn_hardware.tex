@@ -1,0 +1,183 @@
+\hypertarget{class_m_n_l_1_1_mn_hardware}{}\section{M\+NL\+:\+:Mn\+Hardware 클래스 참조}
+\label{class_m_n_l_1_1_mn_hardware}\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+
+
+비디오 어댑터 및 디스플레이 장치 관리.  
+
+
+
+
+{\ttfamily \#include $<$Mn\+Hardware.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Hardware에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{class_m_n_l_1_1_mn_hardware__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_hardware_ad9270be0bcce91bf3a21b6cac432e713}{Mn\+Hardware} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_hardware_a875d63cd3b81d293a3f38026816abb7e}{$\sim$\+Mn\+Hardware} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_hardware_a440da8664ff9470a3f5ef7f349a6d7f4}{Init} ()
+\begin{DoxyCompactList}\small\item\em 장치 정보를 얻어와 초기화 한다. \end{DoxyCompactList}\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_hardware_a4b614d4e29b4bd48f0d952f3ec707d12}{Get\+Num\+Video\+Adapters} () const
+\begin{DoxyCompactList}\small\item\em 비디오 어댑터의 개수를 얻어온다. \end{DoxyCompactList}\item 
+const \hyperlink{class_m_n_l_1_1_mn_video_adapter}{Mn\+Video\+Adapter} \hyperlink{class_m_n_l_1_1_mn_hardware_a84b1095acf9196e1bb0fe6a1f996b697}{Get\+Video\+Adapter} (U\+I\+NT index) const
+\begin{DoxyCompactList}\small\item\em 컨테이너 내의 Mn\+Video\+Adapter를 얻어온다. \end{DoxyCompactList}\item 
+D3\+D\+\_\+\+F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+E\+V\+EL \hyperlink{class_m_n_l_1_1_mn_hardware_a8912748dc6e28ac992efb0282ee03ce5}{Get\+Max\+Supported\+Featrue\+Level} (U\+I\+NT adapter\+Index) const
+\begin{DoxyCompactList}\small\item\em G\+P\+U가 지원하는 최대 피쳐 레벨을 얻는다. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_m_n_l_1_1_mn_video_adapter}{Mn\+Video\+Adapter} $>$ \hyperlink{class_m_n_l_1_1_mn_hardware_a34ada79c31e979efd31bc7cee9c6e6e1}{m\+\_\+video\+Adapters}
+\begin{DoxyCompactList}\small\item\em 초기화된 비디오 어댑터 장치가 저장되는 컨테이너 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+비디오 어댑터 및 디스플레이 장치 관리. 
+
+\begin{DoxyAuthor}{작성자}
+Akssus 
+\end{DoxyAuthor}
+\hypertarget{class_m_n_l_1_1_mn_video_adapter_개요}{}\subsection{개요}\label{class_m_n_l_1_1_mn_video_adapter_개요}
+Mn\+Hardware는 Mn\+D3\+D\+Device를 생성하기 전 컴퓨터의 비디오 하드웨어 정보를 얻어오기 위한 객체이다.~\newline
+~\newline
+Mn\+Hardware는 Mn\+Video\+Adapter와 Mn\+Display\+Device를 통해 비디오 출력 관련 장치(비디오카드 및 모니터)의 정보를 저장, 관리한다.~\newline
+~\newline
+Mn\+Hardware는 Mn\+Display\+Device를 직접적으로 멤버로 가지지 않으며~\newline
+~\newline
+\hyperlink{class_m_n_l_1_1_mn_hardware}{Mn\+Hardware} -\/ \hyperlink{class_m_n_l_1_1_mn_video_adapter}{Mn\+Video\+Adapter} -\/ \hyperlink{class_m_n_l_1_1_mn_display_device}{Mn\+Display\+Device} ~\newline
+1......n 1.....n ~\newline
+~\newline
+의 관계를 가진다.~\newline
+이렇게 구조화된 이유는 한 대의 컴퓨터에서 여러개의 비디오카드를 가질 수 있고 (통상 한개지만) 각 비디오카드는 여러대의 모니터에 출력할 수 있기 때문이다.~\newline
+특히 요즘은 듀얼 모니터 이상이 많아서 이에 대한 관리는 불가피한 듯 하다. 
+
+Mn\+Hardware.\+h 파일의 27 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_hardware_ad9270be0bcce91bf3a21b6cac432e713}\label{class_m_n_l_1_1_mn_hardware_ad9270be0bcce91bf3a21b6cac432e713}} 
+\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}!Mn\+Hardware@{Mn\+Hardware}}
+\index{Mn\+Hardware@{Mn\+Hardware}!M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+\subsubsection{\texorpdfstring{Mn\+Hardware()}{MnHardware()}}
+{\footnotesize\ttfamily Mn\+Hardware\+::\+Mn\+Hardware (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Hardware.\+cpp 파일의 7 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_hardware_a875d63cd3b81d293a3f38026816abb7e}\label{class_m_n_l_1_1_mn_hardware_a875d63cd3b81d293a3f38026816abb7e}} 
+\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}!````~Mn\+Hardware@{$\sim$\+Mn\+Hardware}}
+\index{````~Mn\+Hardware@{$\sim$\+Mn\+Hardware}!M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Hardware()}{~MnHardware()}}
+{\footnotesize\ttfamily Mn\+Hardware\+::$\sim$\+Mn\+Hardware (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Hardware.\+cpp 파일의 12 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_hardware_a8912748dc6e28ac992efb0282ee03ce5}\label{class_m_n_l_1_1_mn_hardware_a8912748dc6e28ac992efb0282ee03ce5}} 
+\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}!Get\+Max\+Supported\+Featrue\+Level@{Get\+Max\+Supported\+Featrue\+Level}}
+\index{Get\+Max\+Supported\+Featrue\+Level@{Get\+Max\+Supported\+Featrue\+Level}!M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+\subsubsection{\texorpdfstring{Get\+Max\+Supported\+Featrue\+Level()}{GetMaxSupportedFeatrueLevel()}}
+{\footnotesize\ttfamily D3\+D\+\_\+\+F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+E\+V\+EL Mn\+Hardware\+::\+Get\+Max\+Supported\+Featrue\+Level (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{adapter\+Index }\end{DoxyParamCaption}) const}
+
+
+
+G\+P\+U가 지원하는 최대 피쳐 레벨을 얻는다. 
+
+\begin{DoxyReturn}{반환값}
+최소 D3\+D\+\_\+\+F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+E\+V\+E\+L\+\_\+9\+\_\+1가 반환된다. 
+\end{DoxyReturn}
+
+
+Mn\+Hardware.\+cpp 파일의 62 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_hardware_a4b614d4e29b4bd48f0d952f3ec707d12}\label{class_m_n_l_1_1_mn_hardware_a4b614d4e29b4bd48f0d952f3ec707d12}} 
+\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}!Get\+Num\+Video\+Adapters@{Get\+Num\+Video\+Adapters}}
+\index{Get\+Num\+Video\+Adapters@{Get\+Num\+Video\+Adapters}!M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+\subsubsection{\texorpdfstring{Get\+Num\+Video\+Adapters()}{GetNumVideoAdapters()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Hardware\+::\+Get\+Num\+Video\+Adapters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+비디오 어댑터의 개수를 얻어온다. 
+
+
+
+Mn\+Hardware.\+cpp 파일의 53 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_hardware_a84b1095acf9196e1bb0fe6a1f996b697}\label{class_m_n_l_1_1_mn_hardware_a84b1095acf9196e1bb0fe6a1f996b697}} 
+\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}!Get\+Video\+Adapter@{Get\+Video\+Adapter}}
+\index{Get\+Video\+Adapter@{Get\+Video\+Adapter}!M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+\subsubsection{\texorpdfstring{Get\+Video\+Adapter()}{GetVideoAdapter()}}
+{\footnotesize\ttfamily const \hyperlink{class_m_n_l_1_1_mn_video_adapter}{Mn\+Video\+Adapter} Mn\+Hardware\+::\+Get\+Video\+Adapter (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{index }\end{DoxyParamCaption}) const}
+
+
+
+컨테이너 내의 Mn\+Video\+Adapter를 얻어온다. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em index} & 비디오 어댑터의 인덱스 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{경고}
+Out of index 동작시 크래시 발생 
+\end{DoxyWarning}
+
+
+Mn\+Hardware.\+cpp 파일의 57 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_hardware_a440da8664ff9470a3f5ef7f349a6d7f4}\label{class_m_n_l_1_1_mn_hardware_a440da8664ff9470a3f5ef7f349a6d7f4}} 
+\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}!Init@{Init}}
+\index{Init@{Init}!M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Hardware\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+장치 정보를 얻어와 초기화 한다. 
+
+\begin{DoxyReturn}{반환값}
+초기화 성공 여부. 
+\end{DoxyReturn}
+
+
+Mn\+Hardware.\+cpp 파일의 15 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_hardware_a34ada79c31e979efd31bc7cee9c6e6e1}\label{class_m_n_l_1_1_mn_hardware_a34ada79c31e979efd31bc7cee9c6e6e1}} 
+\index{M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}!m\+\_\+video\+Adapters@{m\+\_\+video\+Adapters}}
+\index{m\+\_\+video\+Adapters@{m\+\_\+video\+Adapters}!M\+N\+L\+::\+Mn\+Hardware@{M\+N\+L\+::\+Mn\+Hardware}}
+\subsubsection{\texorpdfstring{m\+\_\+video\+Adapters}{m\_videoAdapters}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_m_n_l_1_1_mn_video_adapter}{Mn\+Video\+Adapter}$>$ M\+N\+L\+::\+Mn\+Hardware\+::m\+\_\+video\+Adapters\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+초기화된 비디오 어댑터 장치가 저장되는 컨테이너 
+
+
+
+Mn\+Hardware.\+h 파일의 58 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Core/\hyperlink{_mn_hardware_8h}{Mn\+Hardware.\+h}\item 
+Core/\hyperlink{_mn_hardware_8cpp}{Mn\+Hardware.\+cpp}\end{DoxyCompactItemize}

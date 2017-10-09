@@ -1,0 +1,4 @@
+<map id="MNL::MnSwapChain::ToggleFullscreen" name="MNL::MnSwapChain::ToggleFullscreen">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_render_window.html#a432b906d6590d0acd0a47941da10c62d" title="MNL::MnRenderWindow\l::SetFullscreen" alt="" coords="240,5,403,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_render_window.html#ab7fc225a7460c3bfbe5dd6cdc837e7c8" title="MNL::MnRenderWindow\l::SetWindowed" alt="" coords="240,71,403,112"/>
+</map>

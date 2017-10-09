@@ -1,0 +1,163 @@
+\hypertarget{class_m_n_l_1_1_mn_timer}{}\section{M\+NL\+:\+:Mn\+Timer 클래스 참조}
+\label{class_m_n_l_1_1_mn_timer}\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+
+
+{\ttfamily \#include $<$Mn\+Timer.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Timer에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_m_n_l_1_1_mn_timer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_timer_aee4e048c674d82feeaadfad258ed0a5b}{Mn\+Timer} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_timer_a97457692c75d5d249d2ad2bc28f2ecc4}{$\sim$\+Mn\+Timer} ()
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_timer_af6f75413128d2a40e00e1a07567cf0d6}{Set\+Time\+Scale} (float time\+Scale)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_timer_af165e63d407713a60f43f198ce3e93a8}{Start} ()
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_timer_ab57c58684ae10509a8ac744683f799e4}{Pause} ()
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_timer_ab12fb3c3a420e0d9751326c9bcb7d220}{Is\+Playing} () const
+\item 
+\hyperlink{class_m_n_l_1_1_mn_time}{Mn\+Time} \hyperlink{class_m_n_l_1_1_mn_timer_a49d983d8b3dd30a5755b0d83e9d9deff}{Get\+Elapsed\+Time} ()
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_timer_a297ca44e41691a6fa7b83d8d98e6b463}{m\+\_\+is\+Playing}
+\item 
+float \hyperlink{class_m_n_l_1_1_mn_timer_aaaa9922dcae0495a530c73683d8b7adf}{m\+\_\+time\+Scale}
+\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::high\+\_\+resolution\+\_\+clock $>$ \hyperlink{class_m_n_l_1_1_mn_timer_a7158458bc690aec6a795242f6251ad40}{m\+\_\+last\+Tick}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Timer.\+h 파일의 32 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_aee4e048c674d82feeaadfad258ed0a5b}\label{class_m_n_l_1_1_mn_timer_aee4e048c674d82feeaadfad258ed0a5b}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!Mn\+Timer@{Mn\+Timer}}
+\index{Mn\+Timer@{Mn\+Timer}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{Mn\+Timer()}{MnTimer()}}
+{\footnotesize\ttfamily Mn\+Timer\+::\+Mn\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Timer.\+cpp 파일의 31 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_a97457692c75d5d249d2ad2bc28f2ecc4}\label{class_m_n_l_1_1_mn_timer_a97457692c75d5d249d2ad2bc28f2ecc4}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!````~Mn\+Timer@{$\sim$\+Mn\+Timer}}
+\index{````~Mn\+Timer@{$\sim$\+Mn\+Timer}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Timer()}{~MnTimer()}}
+{\footnotesize\ttfamily Mn\+Timer\+::$\sim$\+Mn\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Timer.\+cpp 파일의 38 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_a49d983d8b3dd30a5755b0d83e9d9deff}\label{class_m_n_l_1_1_mn_timer_a49d983d8b3dd30a5755b0d83e9d9deff}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!Get\+Elapsed\+Time@{Get\+Elapsed\+Time}}
+\index{Get\+Elapsed\+Time@{Get\+Elapsed\+Time}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{Get\+Elapsed\+Time()}{GetElapsedTime()}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_time}{Mn\+Time} Mn\+Timer\+::\+Get\+Elapsed\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Timer.\+cpp 파일의 61 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_ab12fb3c3a420e0d9751326c9bcb7d220}\label{class_m_n_l_1_1_mn_timer_ab12fb3c3a420e0d9751326c9bcb7d220}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!Is\+Playing@{Is\+Playing}}
+\index{Is\+Playing@{Is\+Playing}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{Is\+Playing()}{IsPlaying()}}
+{\footnotesize\ttfamily bool Mn\+Timer\+::\+Is\+Playing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Timer.\+cpp 파일의 56 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_ab57c58684ae10509a8ac744683f799e4}\label{class_m_n_l_1_1_mn_timer_ab57c58684ae10509a8ac744683f799e4}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!Pause@{Pause}}
+\index{Pause@{Pause}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily void Mn\+Timer\+::\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Timer.\+cpp 파일의 51 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_af6f75413128d2a40e00e1a07567cf0d6}\label{class_m_n_l_1_1_mn_timer_af6f75413128d2a40e00e1a07567cf0d6}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!Set\+Time\+Scale@{Set\+Time\+Scale}}
+\index{Set\+Time\+Scale@{Set\+Time\+Scale}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{Set\+Time\+Scale()}{SetTimeScale()}}
+{\footnotesize\ttfamily void Mn\+Timer\+::\+Set\+Time\+Scale (\begin{DoxyParamCaption}\item[{float}]{time\+Scale }\end{DoxyParamCaption})}
+
+
+
+Mn\+Timer.\+cpp 파일의 42 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_af165e63d407713a60f43f198ce3e93a8}\label{class_m_n_l_1_1_mn_timer_af165e63d407713a60f43f198ce3e93a8}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!Start@{Start}}
+\index{Start@{Start}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Mn\+Timer\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Timer.\+cpp 파일의 46 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_a297ca44e41691a6fa7b83d8d98e6b463}\label{class_m_n_l_1_1_mn_timer_a297ca44e41691a6fa7b83d8d98e6b463}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!m\+\_\+is\+Playing@{m\+\_\+is\+Playing}}
+\index{m\+\_\+is\+Playing@{m\+\_\+is\+Playing}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Playing}{m\_isPlaying}}
+{\footnotesize\ttfamily bool M\+N\+L\+::\+Mn\+Timer\+::m\+\_\+is\+Playing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Timer.\+h 파일의 47 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_a7158458bc690aec6a795242f6251ad40}\label{class_m_n_l_1_1_mn_timer_a7158458bc690aec6a795242f6251ad40}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!m\+\_\+last\+Tick@{m\+\_\+last\+Tick}}
+\index{m\+\_\+last\+Tick@{m\+\_\+last\+Tick}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{m\+\_\+last\+Tick}{m\_lastTick}}
+{\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::high\+\_\+resolution\+\_\+clock$>$ M\+N\+L\+::\+Mn\+Timer\+::m\+\_\+last\+Tick\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Timer.\+h 파일의 49 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_timer_aaaa9922dcae0495a530c73683d8b7adf}\label{class_m_n_l_1_1_mn_timer_aaaa9922dcae0495a530c73683d8b7adf}} 
+\index{M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}!m\+\_\+time\+Scale@{m\+\_\+time\+Scale}}
+\index{m\+\_\+time\+Scale@{m\+\_\+time\+Scale}!M\+N\+L\+::\+Mn\+Timer@{M\+N\+L\+::\+Mn\+Timer}}
+\subsubsection{\texorpdfstring{m\+\_\+time\+Scale}{m\_timeScale}}
+{\footnotesize\ttfamily float M\+N\+L\+::\+Mn\+Timer\+::m\+\_\+time\+Scale\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Timer.\+h 파일의 48 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Utility/\hyperlink{_mn_timer_8h}{Mn\+Timer.\+h}\item 
+Utility/\hyperlink{_mn_timer_8cpp}{Mn\+Timer.\+cpp}\end{DoxyCompactItemize}

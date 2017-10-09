@@ -1,0 +1,207 @@
+\hypertarget{class_m_n_l_1_1_mn_gpu_buffer}{}\section{M\+NL\+:\+:Mn\+Gpu\+Buffer 클래스 참조}
+\label{class_m_n_l_1_1_mn_gpu_buffer}\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+
+
+{\ttfamily \#include $<$Mn\+Gpu\+Buffer.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Gpu\+Buffer에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{class_m_n_l_1_1_mn_gpu_buffer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a7384edf2315dcacd76e090bd80cf3c72}{Mn\+Gpu\+Buffer} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a6628bd8e65df697f2fd95cdb6e841a04}{$\sim$\+Mn\+Gpu\+Buffer} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a00bd28801336391d28e6d91e99a8bef3}{Init} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, const D3\+D11\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+D\+E\+SC \&buffer\+Desc, const D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$initial\+Data)
+\item 
+D3\+D11\+\_\+\+M\+A\+P\+P\+E\+D\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+CE \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_aa28d7626be0829bb89db594cf253c62d}{Mn\+Gpu\+Buffer\+::\+Map} (const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} \&cp\+Device\+Context, U\+I\+NT subresource\+Index)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a152eb5876d380e888a065328da057330}{Unmap} (const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} \&cp\+Device\+Context, U\+I\+NT subresource\+Index)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a77c025ff683cce5025b58e87d28d7549}{Update\+Buffer} (\hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} cp\+Device\+Context, const D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA \&data)
+\item 
+const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_ae929d387721832436c24e3faf6cd375d}{Get\+Buffer} () const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_aa6a6a785b1df73b80d33b8f3d828c618}{Get\+Buffer\+Byte\+Size} () const
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a617ce607255f345962df39eec00e9593}{Is\+Dynamic} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected 속성}
+\begin{DoxyCompactItemize}
+\item 
+D3\+D11\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+D\+E\+SC \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_ac37d75136ddee08ebf61d2d188dd4b01}{m\+\_\+buffer\+Desc}
+\item 
+\hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_ac5394da182d4d9955e743b040103fba6}{m\+\_\+cp\+Buffer}
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a440a564ce0bf811c835516627079d1a5}{m\+\_\+num\+Buffers}
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_a275688eb205f74155a813a1ba65e149f}{m\+\_\+buffer\+Size}
+\item 
+bool \hyperlink{class_m_n_l_1_1_mn_gpu_buffer_af93d67fac012bafe36e2a052096f63ce}{m\+\_\+is\+Dynamic}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Gpu\+Buffer.\+h 파일의 10 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a7384edf2315dcacd76e090bd80cf3c72}\label{class_m_n_l_1_1_mn_gpu_buffer_a7384edf2315dcacd76e090bd80cf3c72}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Mn\+Gpu\+Buffer@{Mn\+Gpu\+Buffer}}
+\index{Mn\+Gpu\+Buffer@{Mn\+Gpu\+Buffer}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Mn\+Gpu\+Buffer()}{MnGpuBuffer()}}
+{\footnotesize\ttfamily Mn\+Gpu\+Buffer\+::\+Mn\+Gpu\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 6 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a6628bd8e65df697f2fd95cdb6e841a04}\label{class_m_n_l_1_1_mn_gpu_buffer_a6628bd8e65df697f2fd95cdb6e841a04}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!````~Mn\+Gpu\+Buffer@{$\sim$\+Mn\+Gpu\+Buffer}}
+\index{````~Mn\+Gpu\+Buffer@{$\sim$\+Mn\+Gpu\+Buffer}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Gpu\+Buffer()}{~MnGpuBuffer()}}
+{\footnotesize\ttfamily Mn\+Gpu\+Buffer\+::$\sim$\+Mn\+Gpu\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 12 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_ae929d387721832436c24e3faf6cd375d}\label{class_m_n_l_1_1_mn_gpu_buffer_ae929d387721832436c24e3faf6cd375d}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Get\+Buffer@{Get\+Buffer}}
+\index{Get\+Buffer@{Get\+Buffer}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Get\+Buffer()}{GetBuffer()}}
+{\footnotesize\ttfamily const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} Mn\+Gpu\+Buffer\+::\+Get\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 53 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_aa6a6a785b1df73b80d33b8f3d828c618}\label{class_m_n_l_1_1_mn_gpu_buffer_aa6a6a785b1df73b80d33b8f3d828c618}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Get\+Buffer\+Byte\+Size@{Get\+Buffer\+Byte\+Size}}
+\index{Get\+Buffer\+Byte\+Size@{Get\+Buffer\+Byte\+Size}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Get\+Buffer\+Byte\+Size()}{GetBufferByteSize()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Gpu\+Buffer\+::\+Get\+Buffer\+Byte\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 48 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a00bd28801336391d28e6d91e99a8bef3}\label{class_m_n_l_1_1_mn_gpu_buffer_a00bd28801336391d28e6d91e99a8bef3}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Init@{Init}}
+\index{Init@{Init}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Gpu\+Buffer\+::\+Init (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{const D3\+D11\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+D\+E\+SC \&}]{buffer\+Desc,  }\item[{const D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$}]{initial\+Data }\end{DoxyParamCaption})}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 16 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a617ce607255f345962df39eec00e9593}\label{class_m_n_l_1_1_mn_gpu_buffer_a617ce607255f345962df39eec00e9593}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Is\+Dynamic@{Is\+Dynamic}}
+\index{Is\+Dynamic@{Is\+Dynamic}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Is\+Dynamic()}{IsDynamic()}}
+{\footnotesize\ttfamily bool Mn\+Gpu\+Buffer\+::\+Is\+Dynamic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 57 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_aa28d7626be0829bb89db594cf253c62d}\label{class_m_n_l_1_1_mn_gpu_buffer_aa28d7626be0829bb89db594cf253c62d}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Mn\+Gpu\+Buffer\+::\+Map@{Mn\+Gpu\+Buffer\+::\+Map}}
+\index{Mn\+Gpu\+Buffer\+::\+Map@{Mn\+Gpu\+Buffer\+::\+Map}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Mn\+Gpu\+Buffer\+::\+Map()}{MnGpuBuffer::Map()}}
+{\footnotesize\ttfamily D3\+D11\+\_\+\+M\+A\+P\+P\+E\+D\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+CE M\+N\+L\+::\+Mn\+Gpu\+Buffer\+::\+Mn\+Gpu\+Buffer\+::\+Map (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} \&}]{cp\+Device\+Context,  }\item[{U\+I\+NT}]{subresource\+Index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a152eb5876d380e888a065328da057330}\label{class_m_n_l_1_1_mn_gpu_buffer_a152eb5876d380e888a065328da057330}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Unmap@{Unmap}}
+\index{Unmap@{Unmap}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Unmap()}{Unmap()}}
+{\footnotesize\ttfamily void Mn\+Gpu\+Buffer\+::\+Unmap (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} \&}]{cp\+Device\+Context,  }\item[{U\+I\+NT}]{subresource\+Index }\end{DoxyParamCaption})}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 40 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a77c025ff683cce5025b58e87d28d7549}\label{class_m_n_l_1_1_mn_gpu_buffer_a77c025ff683cce5025b58e87d28d7549}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!Update\+Buffer@{Update\+Buffer}}
+\index{Update\+Buffer@{Update\+Buffer}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{Update\+Buffer()}{UpdateBuffer()}}
+{\footnotesize\ttfamily void Mn\+Gpu\+Buffer\+::\+Update\+Buffer (\begin{DoxyParamCaption}\item[{\hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context}}]{cp\+Device\+Context,  }\item[{const D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Mn\+Gpu\+Buffer.\+cpp 파일의 44 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_ac37d75136ddee08ebf61d2d188dd4b01}\label{class_m_n_l_1_1_mn_gpu_buffer_ac37d75136ddee08ebf61d2d188dd4b01}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!m\+\_\+buffer\+Desc@{m\+\_\+buffer\+Desc}}
+\index{m\+\_\+buffer\+Desc@{m\+\_\+buffer\+Desc}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+buffer\+Desc}{m\_bufferDesc}}
+{\footnotesize\ttfamily D3\+D11\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+D\+E\+SC M\+N\+L\+::\+Mn\+Gpu\+Buffer\+::m\+\_\+buffer\+Desc\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Gpu\+Buffer.\+h 파일의 26 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a275688eb205f74155a813a1ba65e149f}\label{class_m_n_l_1_1_mn_gpu_buffer_a275688eb205f74155a813a1ba65e149f}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!m\+\_\+buffer\+Size@{m\+\_\+buffer\+Size}}
+\index{m\+\_\+buffer\+Size@{m\+\_\+buffer\+Size}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+buffer\+Size}{m\_bufferSize}}
+{\footnotesize\ttfamily U\+I\+NT M\+N\+L\+::\+Mn\+Gpu\+Buffer\+::m\+\_\+buffer\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Gpu\+Buffer.\+h 파일의 29 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_ac5394da182d4d9955e743b040103fba6}\label{class_m_n_l_1_1_mn_gpu_buffer_ac5394da182d4d9955e743b040103fba6}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!m\+\_\+cp\+Buffer@{m\+\_\+cp\+Buffer}}
+\index{m\+\_\+cp\+Buffer@{m\+\_\+cp\+Buffer}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+cp\+Buffer}{m\_cpBuffer}}
+{\footnotesize\ttfamily \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} M\+N\+L\+::\+Mn\+Gpu\+Buffer\+::m\+\_\+cp\+Buffer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Gpu\+Buffer.\+h 파일의 27 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_af93d67fac012bafe36e2a052096f63ce}\label{class_m_n_l_1_1_mn_gpu_buffer_af93d67fac012bafe36e2a052096f63ce}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!m\+\_\+is\+Dynamic@{m\+\_\+is\+Dynamic}}
+\index{m\+\_\+is\+Dynamic@{m\+\_\+is\+Dynamic}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Dynamic}{m\_isDynamic}}
+{\footnotesize\ttfamily bool M\+N\+L\+::\+Mn\+Gpu\+Buffer\+::m\+\_\+is\+Dynamic\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Gpu\+Buffer.\+h 파일의 30 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_gpu_buffer_a440a564ce0bf811c835516627079d1a5}\label{class_m_n_l_1_1_mn_gpu_buffer_a440a564ce0bf811c835516627079d1a5}} 
+\index{M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}!m\+\_\+num\+Buffers@{m\+\_\+num\+Buffers}}
+\index{m\+\_\+num\+Buffers@{m\+\_\+num\+Buffers}!M\+N\+L\+::\+Mn\+Gpu\+Buffer@{M\+N\+L\+::\+Mn\+Gpu\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+num\+Buffers}{m\_numBuffers}}
+{\footnotesize\ttfamily U\+I\+NT M\+N\+L\+::\+Mn\+Gpu\+Buffer\+::m\+\_\+num\+Buffers\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Mn\+Gpu\+Buffer.\+h 파일의 28 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Core/\hyperlink{_mn_gpu_buffer_8h}{Mn\+Gpu\+Buffer.\+h}\item 
+Core/\hyperlink{_mn_gpu_buffer_8cpp}{Mn\+Gpu\+Buffer.\+cpp}\end{DoxyCompactItemize}

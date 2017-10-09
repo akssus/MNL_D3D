@@ -1,0 +1,332 @@
+\hypertarget{class_m_n_l_1_1_mn_video_adapter}{}\section{M\+NL\+:\+:Mn\+Video\+Adapter 클래스 참조}
+\label{class_m_n_l_1_1_mn_video_adapter}\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+
+
+비디오 어댑터의 정보와 디스플레이 장치들을 저장한다.  
+
+
+
+
+{\ttfamily \#include $<$Mn\+Video\+Adapter.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Video\+Adapter에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{class_m_n_l_1_1_mn_video_adapter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_video_adapter_ac70ef4ef6b81876705d05ce05818b6da}{Mn\+Video\+Adapter} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_video_adapter_a4248956c1f9981df00d983f55956930a}{$\sim$\+Mn\+Video\+Adapter} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_video_adapter_a32cf49f2fc53369e5ac7db8861a5dd53}{Init} (\hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter} cp\+Adapter)
+\begin{DoxyCompactList}\small\item\em C\+P\+D\+X\+G\+I\+Adapter 인터페이스를 통해 디스플레이 장치들의 정보를 열거하여 초기화 한다. \end{DoxyCompactList}\item 
+std\+::wstring \hyperlink{class_m_n_l_1_1_mn_video_adapter_a7c6440afa08007a034c42fd69af97bc0}{Get\+Name} () const
+\begin{DoxyCompactList}\small\item\em 비디오 어댑터의 이름을 반환한다 \end{DoxyCompactList}\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_video_adapter_ab808ef75e5741aafa34e295df44fa734}{Get\+Memory\+Size} () const
+\begin{DoxyCompactList}\small\item\em 비디오 어댑터의 비디오 메모리 크기를 반환한다. \end{DoxyCompactList}\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_video_adapter_a89622e2450c14827f83cdd0a783da999}{Get\+Num\+Displays} ()
+\begin{DoxyCompactList}\small\item\em 디스플레이 장치의 개수를 반환한다. \end{DoxyCompactList}\item 
+const \hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter} \hyperlink{class_m_n_l_1_1_mn_video_adapter_a00045e64751e6804e2901ed6bdf49e40}{Get\+Interface} () const
+\begin{DoxyCompactList}\small\item\em 비디오 어댑터의 인터페이스를 반환한다. \end{DoxyCompactList}\item 
+const \hyperlink{class_m_n_l_1_1_mn_display_device}{Mn\+Display\+Device} \hyperlink{class_m_n_l_1_1_mn_video_adapter_a43a6fc9c2bafd81b77718b0ea8bf6885}{Get\+Display\+Device} (int index) const
+\begin{DoxyCompactList}\small\item\em 컨테이너 내의 디스플레이 장치를 반환한다. \end{DoxyCompactList}\item 
+D3\+D\+\_\+\+F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+E\+V\+EL \hyperlink{class_m_n_l_1_1_mn_video_adapter_a1aa867ebf8d8d7a5ac856c4bf390841c}{Get\+Max\+Supported\+Feature\+Level} () const
+\begin{DoxyCompactList}\small\item\em G\+P\+U가 지원하는 최대 피쳐 레벨을 반환한다. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_video_adapter_a1b7d80620cd499d72a737b11619ec8e1}{\+\_\+\+Init\+Max\+Supported\+Feature\+Level} (\hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter} cp\+Adapter)
+\begin{DoxyCompactList}\small\item\em D\+X\+G\+I\+Adapter 인터페이스로부터 최대 지원 피쳐레벨을 구한다. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+std\+::wstring \hyperlink{class_m_n_l_1_1_mn_video_adapter_a9c2e2e0b3a53a9fe378aa56b7017c2f5}{m\+\_\+adapter\+Name}
+\begin{DoxyCompactList}\small\item\em 비디오 어댑터의 이름 \end{DoxyCompactList}\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_video_adapter_a3b36c9861c046a731ca8ad1f90c8620b}{m\+\_\+video\+Memory\+Size}
+\begin{DoxyCompactList}\small\item\em 비디오 어댑터의 비디오 메모리 크기 \end{DoxyCompactList}\item 
+\hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter} \hyperlink{class_m_n_l_1_1_mn_video_adapter_ae743c79f46ca0fc26eaef14efe19a0b9}{m\+\_\+cp\+D\+X\+G\+I\+Adapter}
+\begin{DoxyCompactList}\small\item\em Mn\+Video\+Adapter가 참조하는 D\+X\+GI 인터페이스 \end{DoxyCompactList}\item 
+D\+X\+G\+I\+\_\+\+A\+D\+A\+P\+T\+E\+R\+\_\+\+D\+E\+SC \hyperlink{class_m_n_l_1_1_mn_video_adapter_a4417d4ff3cc18acd724176def494b056}{m\+\_\+desc}
+\begin{DoxyCompactList}\small\item\em D\+X\+G\+I\+Adapter 인터페이스의 명세 \end{DoxyCompactList}\item 
+D3\+D\+\_\+\+F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+E\+V\+EL \hyperlink{class_m_n_l_1_1_mn_video_adapter_abcbb7aa451a1759d3543ef6d55660f09}{m\+\_\+max\+Feature\+Level}
+\begin{DoxyCompactList}\small\item\em 현재 비디오 어댑터의 최대 지원 피쳐 레벨 \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_m_n_l_1_1_mn_display_device}{Mn\+Display\+Device} $>$ \hyperlink{class_m_n_l_1_1_mn_video_adapter_a22f14cd6301e97c7a7919f6b65b8978b}{m\+\_\+display\+Devices}
+\begin{DoxyCompactList}\small\item\em 초기화된 디스플레이 장치가 저장되는 컨테이너 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+비디오 어댑터의 정보와 디스플레이 장치들을 저장한다. 
+
+\begin{DoxyAuthor}{작성자}
+Akssus 
+\end{DoxyAuthor}
+\hypertarget{class_m_n_l_1_1_mn_video_adapter_개요}{}\subsection{개요}\label{class_m_n_l_1_1_mn_video_adapter_개요}
+하나의 Mn\+Video\+Adapter는 하나의 비디오카드 정보를 담고 있다.~\newline
+비디오 카드의 이름, 비디오 카드 메모리, G\+P\+U의 최대 지원 Feature Level 의 정보를 제공한다.~\newline
+
+
+Mn\+Video\+Adapter.\+h 파일의 21 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_ac70ef4ef6b81876705d05ce05818b6da}\label{class_m_n_l_1_1_mn_video_adapter_ac70ef4ef6b81876705d05ce05818b6da}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Mn\+Video\+Adapter@{Mn\+Video\+Adapter}}
+\index{Mn\+Video\+Adapter@{Mn\+Video\+Adapter}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Mn\+Video\+Adapter()}{MnVideoAdapter()}}
+{\footnotesize\ttfamily Mn\+Video\+Adapter\+::\+Mn\+Video\+Adapter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 6 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a4248956c1f9981df00d983f55956930a}\label{class_m_n_l_1_1_mn_video_adapter_a4248956c1f9981df00d983f55956930a}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!````~Mn\+Video\+Adapter@{$\sim$\+Mn\+Video\+Adapter}}
+\index{````~Mn\+Video\+Adapter@{$\sim$\+Mn\+Video\+Adapter}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Video\+Adapter()}{~MnVideoAdapter()}}
+{\footnotesize\ttfamily Mn\+Video\+Adapter\+::$\sim$\+Mn\+Video\+Adapter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 12 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a1b7d80620cd499d72a737b11619ec8e1}\label{class_m_n_l_1_1_mn_video_adapter_a1b7d80620cd499d72a737b11619ec8e1}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!\+\_\+\+Init\+Max\+Supported\+Feature\+Level@{\+\_\+\+Init\+Max\+Supported\+Feature\+Level}}
+\index{\+\_\+\+Init\+Max\+Supported\+Feature\+Level@{\+\_\+\+Init\+Max\+Supported\+Feature\+Level}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{\+\_\+\+Init\+Max\+Supported\+Feature\+Level()}{\_InitMaxSupportedFeatureLevel()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Video\+Adapter\+::\+\_\+\+Init\+Max\+Supported\+Feature\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter}}]{cp\+Adapter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+D\+X\+G\+I\+Adapter 인터페이스로부터 최대 지원 피쳐레벨을 구한다. 
+
+\begin{DoxyReturn}{반환값}
+정상적 동작시 S\+\_\+\+OK 반환 
+\end{DoxyReturn}
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 70 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a43a6fc9c2bafd81b77718b0ea8bf6885}\label{class_m_n_l_1_1_mn_video_adapter_a43a6fc9c2bafd81b77718b0ea8bf6885}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Get\+Display\+Device@{Get\+Display\+Device}}
+\index{Get\+Display\+Device@{Get\+Display\+Device}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Get\+Display\+Device()}{GetDisplayDevice()}}
+{\footnotesize\ttfamily const \hyperlink{class_m_n_l_1_1_mn_display_device}{Mn\+Display\+Device} Mn\+Video\+Adapter\+::\+Get\+Display\+Device (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+컨테이너 내의 디스플레이 장치를 반환한다. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em 디스플레이} & 장치의 인덱스 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{경고}
+Out of index 동작시 크래시 발생. 
+\end{DoxyWarning}
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 107 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a00045e64751e6804e2901ed6bdf49e40}\label{class_m_n_l_1_1_mn_video_adapter_a00045e64751e6804e2901ed6bdf49e40}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Get\+Interface@{Get\+Interface}}
+\index{Get\+Interface@{Get\+Interface}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Get\+Interface()}{GetInterface()}}
+{\footnotesize\ttfamily const \hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter} Mn\+Video\+Adapter\+::\+Get\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+비디오 어댑터의 인터페이스를 반환한다. 
+
+\begin{DoxyReturn}{반환값}
+C\+P\+D\+X\+G\+I\+Adapter 인터페이스 
+\end{DoxyReturn}
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 103 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a1aa867ebf8d8d7a5ac856c4bf390841c}\label{class_m_n_l_1_1_mn_video_adapter_a1aa867ebf8d8d7a5ac856c4bf390841c}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Get\+Max\+Supported\+Feature\+Level@{Get\+Max\+Supported\+Feature\+Level}}
+\index{Get\+Max\+Supported\+Feature\+Level@{Get\+Max\+Supported\+Feature\+Level}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Get\+Max\+Supported\+Feature\+Level()}{GetMaxSupportedFeatureLevel()}}
+{\footnotesize\ttfamily D3\+D\+\_\+\+F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+E\+V\+EL Mn\+Video\+Adapter\+::\+Get\+Max\+Supported\+Feature\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+G\+P\+U가 지원하는 최대 피쳐 레벨을 반환한다. 
+
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 112 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_ab808ef75e5741aafa34e295df44fa734}\label{class_m_n_l_1_1_mn_video_adapter_ab808ef75e5741aafa34e295df44fa734}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Get\+Memory\+Size@{Get\+Memory\+Size}}
+\index{Get\+Memory\+Size@{Get\+Memory\+Size}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Get\+Memory\+Size()}{GetMemorySize()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Video\+Adapter\+::\+Get\+Memory\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+비디오 어댑터의 비디오 메모리 크기를 반환한다. 
+
+\begin{DoxyReturn}{반환값}
+MB 단위의 메모리 크기. 
+\end{DoxyReturn}
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 95 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a7c6440afa08007a034c42fd69af97bc0}\label{class_m_n_l_1_1_mn_video_adapter_a7c6440afa08007a034c42fd69af97bc0}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Get\+Name@{Get\+Name}}
+\index{Get\+Name@{Get\+Name}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Get\+Name()}{GetName()}}
+{\footnotesize\ttfamily std\+::wstring Mn\+Video\+Adapter\+::\+Get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+비디오 어댑터의 이름을 반환한다 
+
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 91 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a89622e2450c14827f83cdd0a783da999}\label{class_m_n_l_1_1_mn_video_adapter_a89622e2450c14827f83cdd0a783da999}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Get\+Num\+Displays@{Get\+Num\+Displays}}
+\index{Get\+Num\+Displays@{Get\+Num\+Displays}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Get\+Num\+Displays()}{GetNumDisplays()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Video\+Adapter\+::\+Get\+Num\+Displays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+디스플레이 장치의 개수를 반환한다. 
+
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 99 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a32cf49f2fc53369e5ac7db8861a5dd53}\label{class_m_n_l_1_1_mn_video_adapter_a32cf49f2fc53369e5ac7db8861a5dd53}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!Init@{Init}}
+\index{Init@{Init}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Video\+Adapter\+::\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter}}]{cp\+Adapter }\end{DoxyParamCaption})}
+
+
+
+C\+P\+D\+X\+G\+I\+Adapter 인터페이스를 통해 디스플레이 장치들의 정보를 열거하여 초기화 한다. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em cp\+Adapter} & I\+D\+X\+G\+I\+Factory를 통해 생성된 I\+D\+X\+G\+I\+Adapter 인터페이스. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+초기화 성공 여부. 
+\end{DoxyReturn}
+
+
+Mn\+Video\+Adapter.\+cpp 파일의 17 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a9c2e2e0b3a53a9fe378aa56b7017c2f5}\label{class_m_n_l_1_1_mn_video_adapter_a9c2e2e0b3a53a9fe378aa56b7017c2f5}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!m\+\_\+adapter\+Name@{m\+\_\+adapter\+Name}}
+\index{m\+\_\+adapter\+Name@{m\+\_\+adapter\+Name}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{m\+\_\+adapter\+Name}{m\_adapterName}}
+{\footnotesize\ttfamily std\+::wstring M\+N\+L\+::\+Mn\+Video\+Adapter\+::m\+\_\+adapter\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+비디오 어댑터의 이름 
+
+
+
+Mn\+Video\+Adapter.\+h 파일의 76 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_ae743c79f46ca0fc26eaef14efe19a0b9}\label{class_m_n_l_1_1_mn_video_adapter_ae743c79f46ca0fc26eaef14efe19a0b9}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!m\+\_\+cp\+D\+X\+G\+I\+Adapter@{m\+\_\+cp\+D\+X\+G\+I\+Adapter}}
+\index{m\+\_\+cp\+D\+X\+G\+I\+Adapter@{m\+\_\+cp\+D\+X\+G\+I\+Adapter}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{m\+\_\+cp\+D\+X\+G\+I\+Adapter}{m\_cpDXGIAdapter}}
+{\footnotesize\ttfamily \hyperlink{namespace_m_n_l_ab0e24805043a50c45364c389f8929f33}{C\+P\+D\+X\+G\+I\+Adapter} M\+N\+L\+::\+Mn\+Video\+Adapter\+::m\+\_\+cp\+D\+X\+G\+I\+Adapter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Video\+Adapter가 참조하는 D\+X\+GI 인터페이스 
+
+
+
+Mn\+Video\+Adapter.\+h 파일의 78 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a4417d4ff3cc18acd724176def494b056}\label{class_m_n_l_1_1_mn_video_adapter_a4417d4ff3cc18acd724176def494b056}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!m\+\_\+desc@{m\+\_\+desc}}
+\index{m\+\_\+desc@{m\+\_\+desc}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{m\+\_\+desc}{m\_desc}}
+{\footnotesize\ttfamily D\+X\+G\+I\+\_\+\+A\+D\+A\+P\+T\+E\+R\+\_\+\+D\+E\+SC M\+N\+L\+::\+Mn\+Video\+Adapter\+::m\+\_\+desc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+D\+X\+G\+I\+Adapter 인터페이스의 명세 
+
+
+
+Mn\+Video\+Adapter.\+h 파일의 79 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a22f14cd6301e97c7a7919f6b65b8978b}\label{class_m_n_l_1_1_mn_video_adapter_a22f14cd6301e97c7a7919f6b65b8978b}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!m\+\_\+display\+Devices@{m\+\_\+display\+Devices}}
+\index{m\+\_\+display\+Devices@{m\+\_\+display\+Devices}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{m\+\_\+display\+Devices}{m\_displayDevices}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_m_n_l_1_1_mn_display_device}{Mn\+Display\+Device}$>$ M\+N\+L\+::\+Mn\+Video\+Adapter\+::m\+\_\+display\+Devices\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+초기화된 디스플레이 장치가 저장되는 컨테이너 
+
+
+
+Mn\+Video\+Adapter.\+h 파일의 81 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_abcbb7aa451a1759d3543ef6d55660f09}\label{class_m_n_l_1_1_mn_video_adapter_abcbb7aa451a1759d3543ef6d55660f09}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!m\+\_\+max\+Feature\+Level@{m\+\_\+max\+Feature\+Level}}
+\index{m\+\_\+max\+Feature\+Level@{m\+\_\+max\+Feature\+Level}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{m\+\_\+max\+Feature\+Level}{m\_maxFeatureLevel}}
+{\footnotesize\ttfamily D3\+D\+\_\+\+F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+E\+V\+EL M\+N\+L\+::\+Mn\+Video\+Adapter\+::m\+\_\+max\+Feature\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+현재 비디오 어댑터의 최대 지원 피쳐 레벨 
+
+
+
+Mn\+Video\+Adapter.\+h 파일의 80 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_video_adapter_a3b36c9861c046a731ca8ad1f90c8620b}\label{class_m_n_l_1_1_mn_video_adapter_a3b36c9861c046a731ca8ad1f90c8620b}} 
+\index{M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}!m\+\_\+video\+Memory\+Size@{m\+\_\+video\+Memory\+Size}}
+\index{m\+\_\+video\+Memory\+Size@{m\+\_\+video\+Memory\+Size}!M\+N\+L\+::\+Mn\+Video\+Adapter@{M\+N\+L\+::\+Mn\+Video\+Adapter}}
+\subsubsection{\texorpdfstring{m\+\_\+video\+Memory\+Size}{m\_videoMemorySize}}
+{\footnotesize\ttfamily U\+I\+NT M\+N\+L\+::\+Mn\+Video\+Adapter\+::m\+\_\+video\+Memory\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+비디오 어댑터의 비디오 메모리 크기 
+
+
+
+Mn\+Video\+Adapter.\+h 파일의 77 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Core/\hyperlink{_mn_video_adapter_8h}{Mn\+Video\+Adapter.\+h}\item 
+Core/\hyperlink{_mn_video_adapter_8cpp}{Mn\+Video\+Adapter.\+cpp}\end{DoxyCompactItemize}

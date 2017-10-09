@@ -50,7 +50,14 @@ HRESULT MnRenderWindow::Init(
 	result = m_backBufferView.Init(cpDevice, cpBackBuffer, nullptr);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(m_backBufferView));
+		MnLog::MB_InitFailed(MN_VAR_INFO(MnRenderWindow::m_backBufferView));
+		return E_FAIL;
+	}
+
+	result = m_depthStencilBuffer.Init(cpDevice, width, height);
+	if (FAILED(result))
+	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(MnRenderWindow::m_depthStencilBuffer));
 		return E_FAIL;
 	}
 
@@ -105,9 +112,29 @@ const HWND MnRenderWindow::GetWindowHandle() const
 {
 	return m_window.GetWindowHandle();
 }
-const CPD3DRenderTargetView& MnRenderWindow::GetBackBufferView() const
+
+void MnRenderWindow::ClearBackBuffer(MnRenderAPI& renderAPI, DirectX::SimpleMath::Color color)
+{
+	renderAPI.ClearRenderTargets(m_backBufferView.GetRenderTargetView(), m_depthStencilBuffer.GetDepthStencilView(), color);
+}
+
+CPD3DRenderTargetView MnRenderWindow::GetBackBufferRenderTargetView() const
 {
 	return m_backBufferView.GetRenderTargetView();
+}
+CPD3DDepthStencilView MnRenderWindow::GetBackBufferDepthStencilView() const
+{
+	return m_depthStencilBuffer.GetDepthStencilView();
+}
+
+D3D11_VIEWPORT MnRenderWindow::GetWindowViewport() const
+{
+	MnViewport viewport;
+	auto wndRect = m_window.GetWindowRect();
+	float width = wndRect.right - wndRect.left;
+	float height = wndRect.bottom - wndRect.top;
+	viewport.Init(0.0f, 0.0f, width, height);
+	return viewport.GetViewport();
 }
 
 void MnRenderWindow::Resize(UINT width, UINT height)

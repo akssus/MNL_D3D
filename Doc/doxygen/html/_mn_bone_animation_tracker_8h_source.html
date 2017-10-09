@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MNL_D3D: Render/MnBoneAnimationTracker.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MNL_D3D
+   </div>
+   <div id="projectbrief">MNL for DirectX11</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_mn_bone_animation_tracker_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MnBoneAnimationTracker.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mn_bone_animation_tracker_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_skeleton_8h.html">MnSkeleton.h</a>&quot;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_bone_animation_8h.html">MnBoneAnimation.h</a>&quot;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_m_n_l.html">MNL</a></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html">MnBoneAnimationTracker</a></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a54ca35d4c15067230ebcf72064abc319">MnBoneAnimationTracker</a>();</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a90ea134da8fbc89ed8f5d4b5b9e562fb">~MnBoneAnimationTracker</a>();</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        HRESULT <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#abe68ff29930c52db601b6158e5f03bf7">Init</a>(<span class="keyword">const</span> std::shared_ptr&lt;MnSkeleton&gt;&amp; spSkeleton, <span class="keyword">const</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation.html">MnBoneAnimation</a>&amp; animation);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="comment">/*</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">        Set how many frames per seconds</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">        */</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a7e3a689e2850bc4cffec74444efd6129">SetFPS</a>(<span class="keywordtype">double</span> fps);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">/*</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">        Set how fast the animations moves.</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">        @param speed 1.0f as normal speed</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">        */</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a0bbded38ae7eb717880b49ed00b25f1f">SetAnimatingSpeed</a>(<span class="keywordtype">float</span> speed);</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aa411090b4490d4c0422865ab8b563ddf">UpdateAnimation</a>(<span class="keywordtype">double</span> timeDelta);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#abb7e0010c3717fe7b6f54a6665b31bbc">_UpdateBones</a>(<span class="keywordtype">float</span> timeFactor);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aefec935ed7824231963b657b8ddb914b">   30</a></span>&#160;        std::shared_ptr&lt;MnSkeleton&gt; <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aefec935ed7824231963b657b8ddb914b">m_spCurrentSkeleton</a>;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a8ce5bc87cbbfd5fbb8d442cceb7df2f5">   31</a></span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_bone_animation.html">MnBoneAnimation</a> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a8ce5bc87cbbfd5fbb8d442cceb7df2f5">m_currentAnimation</a>;</div><div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#acf1032e7352339dbccc640681bb3895a">   32</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#acf1032e7352339dbccc640681bb3895a">m_currentTime</a>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">/*</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">        In a single second, how long the duration is.</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">        */</span></div><div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aecccf5c8a3fde50062469a35ea083d59">   36</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aecccf5c8a3fde50062469a35ea083d59">m_durationPerSeconds</a>;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">/*</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">        Animation timing speed. 1.0f is normal</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">        */</span></div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aefbe185491262dba571d1201677ef7e1">   40</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aefbe185491262dba571d1201677ef7e1">m_animatingSpeed</a>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#af52c92c8b507e21c94457ac47a5641bb">   42</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#af52c92c8b507e21c94457ac47a5641bb">m_isLoop</a>;</div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#ac5dad518bde253882bda51dd30240d14">   43</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#ac5dad518bde253882bda51dd30240d14">m_isPlaying</a>;</div><div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a8ed61397e39110735e5a400b78a42986">   44</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a8ed61397e39110735e5a400b78a42986">m_isPaused</a>;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div><div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_ac5dad518bde253882bda51dd30240d14"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#ac5dad518bde253882bda51dd30240d14">MNL::MnBoneAnimationTracker::m_isPlaying</a></div><div class="ttdeci">bool m_isPlaying</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00043">MnBoneAnimationTracker.h:43</a></div></div>
+<div class="ttc" id="_mn_bone_animation_8h_html"><div class="ttname"><a href="_mn_bone_animation_8h.html">MnBoneAnimation.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_af52c92c8b507e21c94457ac47a5641bb"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#af52c92c8b507e21c94457ac47a5641bb">MNL::MnBoneAnimationTracker::m_isLoop</a></div><div class="ttdeci">bool m_isLoop</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00042">MnBoneAnimationTracker.h:42</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_a90ea134da8fbc89ed8f5d4b5b9e562fb"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a90ea134da8fbc89ed8f5d4b5b9e562fb">MNL::MnBoneAnimationTracker::~MnBoneAnimationTracker</a></div><div class="ttdeci">~MnBoneAnimationTracker()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8cpp_source.html#l00016">MnBoneAnimationTracker.cpp:16</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_acf1032e7352339dbccc640681bb3895a"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#acf1032e7352339dbccc640681bb3895a">MNL::MnBoneAnimationTracker::m_currentTime</a></div><div class="ttdeci">double m_currentTime</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00032">MnBoneAnimationTracker.h:32</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html"><div class="ttname"><a href="namespace_m_n_l.html">MNL</a></div><div class="ttdef"><b>Definition:</b> <a href="_basic_shader_path_8h_source.html#l00007">BasicShaderPath.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_aefbe185491262dba571d1201677ef7e1"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aefbe185491262dba571d1201677ef7e1">MNL::MnBoneAnimationTracker::m_animatingSpeed</a></div><div class="ttdeci">float m_animatingSpeed</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00040">MnBoneAnimationTracker.h:40</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_a7e3a689e2850bc4cffec74444efd6129"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a7e3a689e2850bc4cffec74444efd6129">MNL::MnBoneAnimationTracker::SetFPS</a></div><div class="ttdeci">void SetFPS(double fps)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8cpp_source.html#l00027">MnBoneAnimationTracker.cpp:27</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html">MNL::MnBoneAnimationTracker</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00007">MnBoneAnimationTracker.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_abb7e0010c3717fe7b6f54a6665b31bbc"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#abb7e0010c3717fe7b6f54a6665b31bbc">MNL::MnBoneAnimationTracker::_UpdateBones</a></div><div class="ttdeci">void _UpdateBones(float timeFactor)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8cpp_source.html#l00051">MnBoneAnimationTracker.cpp:51</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_aa411090b4490d4c0422865ab8b563ddf"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aa411090b4490d4c0422865ab8b563ddf">MNL::MnBoneAnimationTracker::UpdateAnimation</a></div><div class="ttdeci">void UpdateAnimation(double timeDelta)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8cpp_source.html#l00038">MnBoneAnimationTracker.cpp:38</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_a8ed61397e39110735e5a400b78a42986"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a8ed61397e39110735e5a400b78a42986">MNL::MnBoneAnimationTracker::m_isPaused</a></div><div class="ttdeci">bool m_isPaused</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00044">MnBoneAnimationTracker.h:44</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation.html">MNL::MnBoneAnimation</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_8h_source.html#l00009">MnBoneAnimation.h:9</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_abe68ff29930c52db601b6158e5f03bf7"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#abe68ff29930c52db601b6158e5f03bf7">MNL::MnBoneAnimationTracker::Init</a></div><div class="ttdeci">HRESULT Init(const std::shared_ptr&lt; MnSkeleton &gt; &amp;spSkeleton, const MnBoneAnimation &amp;animation)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8cpp_source.html#l00020">MnBoneAnimationTracker.cpp:20</a></div></div>
+<div class="ttc" id="_mn_skeleton_8h_html"><div class="ttname"><a href="_mn_skeleton_8h.html">MnSkeleton.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_a54ca35d4c15067230ebcf72064abc319"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a54ca35d4c15067230ebcf72064abc319">MNL::MnBoneAnimationTracker::MnBoneAnimationTracker</a></div><div class="ttdeci">MnBoneAnimationTracker()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8cpp_source.html#l00006">MnBoneAnimationTracker.cpp:6</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_a0bbded38ae7eb717880b49ed00b25f1f"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a0bbded38ae7eb717880b49ed00b25f1f">MNL::MnBoneAnimationTracker::SetAnimatingSpeed</a></div><div class="ttdeci">void SetAnimatingSpeed(float speed)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8cpp_source.html#l00031">MnBoneAnimationTracker.cpp:31</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_aefec935ed7824231963b657b8ddb914b"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aefec935ed7824231963b657b8ddb914b">MNL::MnBoneAnimationTracker::m_spCurrentSkeleton</a></div><div class="ttdeci">std::shared_ptr&lt; MnSkeleton &gt; m_spCurrentSkeleton</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00030">MnBoneAnimationTracker.h:30</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_a8ce5bc87cbbfd5fbb8d442cceb7df2f5"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#a8ce5bc87cbbfd5fbb8d442cceb7df2f5">MNL::MnBoneAnimationTracker::m_currentAnimation</a></div><div class="ttdeci">MnBoneAnimation m_currentAnimation</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00031">MnBoneAnimationTracker.h:31</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_animation_tracker_html_aecccf5c8a3fde50062469a35ea083d59"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone_animation_tracker.html#aecccf5c8a3fde50062469a35ea083d59">MNL::MnBoneAnimationTracker::m_durationPerSeconds</a></div><div class="ttdeci">double m_durationPerSeconds</div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_animation_tracker_8h_source.html#l00036">MnBoneAnimationTracker.h:36</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_3d93a40d3a63baa1169d25b6af232e01.html">Render</a></li><li class="navelem"><a class="el" href="_mn_bone_animation_tracker_8h.html">MnBoneAnimationTracker.h</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

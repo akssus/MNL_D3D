@@ -18,6 +18,8 @@ namespace MNL
 
 		const std::vector<CPD3DShaderResourceView>& GetShaderResourceViews() const;
 
+		UINT GetNumTextures() const;
+
 	private:
 		std::vector<std::shared_ptr<MnMeshTexture>> m_meshTextures;
 		std::vector<CPD3DShaderResourceView> m_shaderResourceViews;

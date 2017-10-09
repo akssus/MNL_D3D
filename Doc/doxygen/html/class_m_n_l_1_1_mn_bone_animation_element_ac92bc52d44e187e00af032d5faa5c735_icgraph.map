@@ -1,0 +1,6 @@
+<map id="MNL::MnBoneAnimationElement::GetNumKeyFrames" name="MNL::MnBoneAnimationElement::GetNumKeyFrames">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_bone_animation_element.html#a58874b3fe81886f1c13ca6f77b4a171c" title="MNL::MnBoneAnimationElement\l::GetKeyFrameAtTime" alt="" coords="523,5,733,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_bone_animation_element.html#ad22dfccb49a16ee30ab83c2ca0ca3185" title="MNL::MnBoneAnimationElement\l::GetKeyFrameIndexAtTime" alt="" coords="264,35,475,76"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_bone_animation_element.html#ae0385d67d5f8663fd2a7e398e8e2f91e" title="MNL::MnBoneAnimationElement\l::_GetNextKeyFrameIndexOf" alt="" coords="264,100,475,141"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_bone_animation_element.html#a7461a3a8bf2078d394db3a86c3a5eda6" title="MNL::MnBoneAnimationElement\l::GetAffectingBoneName" alt="" coords="523,85,733,127"/>
+</map>

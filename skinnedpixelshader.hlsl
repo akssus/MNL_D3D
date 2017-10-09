@@ -1,14 +1,14 @@
 Texture2D Textures[1];
 SamplerState Sampler;
 
-cbuffer LightBuffer : register(b0)
+cbuffer LightBuffer : register(b2)
 {
 	float3 lightPos;
 	float3 lightDir;
 	uint lightType;
 };
 
-cbuffer MaterialBuffer : register(b1)
+cbuffer MaterialBuffer : register(b3)
 {
 	float4 diffuse;
 	float4 ambient;

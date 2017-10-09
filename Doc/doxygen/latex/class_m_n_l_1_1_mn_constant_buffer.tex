@@ -1,0 +1,175 @@
+\hypertarget{class_m_n_l_1_1_mn_constant_buffer}{}\section{M\+NL\+:\+:Mn\+Constant\+Buffer 클래스 참조}
+\label{class_m_n_l_1_1_mn_constant_buffer}\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+
+
+{\ttfamily \#include $<$Mn\+Constant\+Buffer.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Constant\+Buffer에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{class_m_n_l_1_1_mn_constant_buffer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_constant_buffer_a1ee7c81dedfacf937bef2831f5f296d2}{Mn\+Constant\+Buffer} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_constant_buffer_a03796084c5f1842880022fb1024162ae}{$\sim$\+Mn\+Constant\+Buffer} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_constant_buffer_a16b6059a895eb7da76323aaffe61e915}{Init} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_constant_buffer_type}{Mn\+Constant\+Buffer\+Type} $>$ \&constant\+Buffer\+Type, U\+I\+NT index, const \hyperlink{namespace_m_n_l_a3f526411258a17023ecac1a36e666d42}{M\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+B\+E\+L\+O\+NG} \&constant\+Buffer\+Belong)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_constant_buffer_a35ca3bffb4e5a497fe2303b1fa3abae4}{Update\+Buffer} (\hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context} cp\+Device\+Context, const D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA \&data)
+\item 
+const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} \hyperlink{class_m_n_l_1_1_mn_constant_buffer_a313d7555609f87dc0f104b2a19ce3c87}{Get\+Buffer} () const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_constant_buffer_ac5cec5ad72abe2c7659d4ee29d6b6cf9}{Get\+Buffer\+Byte\+Size} () const
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_constant_buffer_a7b39b7ae15b314a6d12de1181d5ff180}{Get\+Index} () const
+\item 
+\hyperlink{namespace_m_n_l_a3f526411258a17023ecac1a36e666d42}{M\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+B\+E\+L\+O\+NG} \hyperlink{class_m_n_l_1_1_mn_constant_buffer_aadb464e8b09a7c1602681842b583b6f8}{Get\+Belong} () const
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_gpu_buffer}{Mn\+Gpu\+Buffer} \hyperlink{class_m_n_l_1_1_mn_constant_buffer_a1a9d69098ff55f524716d8415fe76e20}{m\+\_\+buffer}
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_constant_buffer_a2ae6082ec83ef177993de6235b0030a1}{m\+\_\+index}
+\item 
+\hyperlink{namespace_m_n_l_a3f526411258a17023ecac1a36e666d42}{M\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+B\+E\+L\+O\+NG} \hyperlink{class_m_n_l_1_1_mn_constant_buffer_aaab10bc1257803aba45c924acab04c35}{m\+\_\+belong}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Constant\+Buffer.\+h 파일의 19 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a1ee7c81dedfacf937bef2831f5f296d2}\label{class_m_n_l_1_1_mn_constant_buffer_a1ee7c81dedfacf937bef2831f5f296d2}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!Mn\+Constant\+Buffer@{Mn\+Constant\+Buffer}}
+\index{Mn\+Constant\+Buffer@{Mn\+Constant\+Buffer}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{Mn\+Constant\+Buffer()}{MnConstantBuffer()}}
+{\footnotesize\ttfamily Mn\+Constant\+Buffer\+::\+Mn\+Constant\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Constant\+Buffer.\+cpp 파일의 6 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a03796084c5f1842880022fb1024162ae}\label{class_m_n_l_1_1_mn_constant_buffer_a03796084c5f1842880022fb1024162ae}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!````~Mn\+Constant\+Buffer@{$\sim$\+Mn\+Constant\+Buffer}}
+\index{````~Mn\+Constant\+Buffer@{$\sim$\+Mn\+Constant\+Buffer}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Constant\+Buffer()}{~MnConstantBuffer()}}
+{\footnotesize\ttfamily Mn\+Constant\+Buffer\+::$\sim$\+Mn\+Constant\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Constant\+Buffer.\+cpp 파일의 11 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_aadb464e8b09a7c1602681842b583b6f8}\label{class_m_n_l_1_1_mn_constant_buffer_aadb464e8b09a7c1602681842b583b6f8}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!Get\+Belong@{Get\+Belong}}
+\index{Get\+Belong@{Get\+Belong}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{Get\+Belong()}{GetBelong()}}
+{\footnotesize\ttfamily \hyperlink{namespace_m_n_l_a3f526411258a17023ecac1a36e666d42}{M\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+B\+E\+L\+O\+NG} Mn\+Constant\+Buffer\+::\+Get\+Belong (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Constant\+Buffer.\+cpp 파일의 58 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a313d7555609f87dc0f104b2a19ce3c87}\label{class_m_n_l_1_1_mn_constant_buffer_a313d7555609f87dc0f104b2a19ce3c87}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!Get\+Buffer@{Get\+Buffer}}
+\index{Get\+Buffer@{Get\+Buffer}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{Get\+Buffer()}{GetBuffer()}}
+{\footnotesize\ttfamily const \hyperlink{namespace_m_n_l_aab9c90a8c27ac6410a9cc7cd89efeef1}{C\+P\+D3\+D\+Buffer} Mn\+Constant\+Buffer\+::\+Get\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Constant\+Buffer.\+cpp 파일의 44 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_ac5cec5ad72abe2c7659d4ee29d6b6cf9}\label{class_m_n_l_1_1_mn_constant_buffer_ac5cec5ad72abe2c7659d4ee29d6b6cf9}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!Get\+Buffer\+Byte\+Size@{Get\+Buffer\+Byte\+Size}}
+\index{Get\+Buffer\+Byte\+Size@{Get\+Buffer\+Byte\+Size}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{Get\+Buffer\+Byte\+Size()}{GetBufferByteSize()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Constant\+Buffer\+::\+Get\+Buffer\+Byte\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Constant\+Buffer.\+cpp 파일의 48 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a7b39b7ae15b314a6d12de1181d5ff180}\label{class_m_n_l_1_1_mn_constant_buffer_a7b39b7ae15b314a6d12de1181d5ff180}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!Get\+Index@{Get\+Index}}
+\index{Get\+Index@{Get\+Index}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{Get\+Index()}{GetIndex()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Constant\+Buffer\+::\+Get\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Constant\+Buffer.\+cpp 파일의 53 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a16b6059a895eb7da76323aaffe61e915}\label{class_m_n_l_1_1_mn_constant_buffer_a16b6059a895eb7da76323aaffe61e915}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!Init@{Init}}
+\index{Init@{Init}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Constant\+Buffer\+::\+Init (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_constant_buffer_type}{Mn\+Constant\+Buffer\+Type} $>$ \&}]{constant\+Buffer\+Type,  }\item[{U\+I\+NT}]{index,  }\item[{const \hyperlink{namespace_m_n_l_a3f526411258a17023ecac1a36e666d42}{M\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+B\+E\+L\+O\+NG} \&}]{constant\+Buffer\+Belong }\end{DoxyParamCaption})}
+
+
+
+Mn\+Constant\+Buffer.\+cpp 파일의 16 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a35ca3bffb4e5a497fe2303b1fa3abae4}\label{class_m_n_l_1_1_mn_constant_buffer_a35ca3bffb4e5a497fe2303b1fa3abae4}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!Update\+Buffer@{Update\+Buffer}}
+\index{Update\+Buffer@{Update\+Buffer}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{Update\+Buffer()}{UpdateBuffer()}}
+{\footnotesize\ttfamily void Mn\+Constant\+Buffer\+::\+Update\+Buffer (\begin{DoxyParamCaption}\item[{\hyperlink{namespace_m_n_l_aab3aabb6c9360e44ddc8b0bb563c2107}{C\+P\+D3\+D\+Device\+Context}}]{cp\+Device\+Context,  }\item[{const D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA \&}]{data }\end{DoxyParamCaption})}
+
+Create D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA, set p\+Sys\+Mem link to the user created own structrue(must be same byte size as constant buffer type), then transfer as parameter. 
+
+Mn\+Constant\+Buffer.\+cpp 파일의 39 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_aaab10bc1257803aba45c924acab04c35}\label{class_m_n_l_1_1_mn_constant_buffer_aaab10bc1257803aba45c924acab04c35}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!m\+\_\+belong@{m\+\_\+belong}}
+\index{m\+\_\+belong@{m\+\_\+belong}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+belong}{m\_belong}}
+{\footnotesize\ttfamily \hyperlink{namespace_m_n_l_a3f526411258a17023ecac1a36e666d42}{M\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+B\+E\+L\+O\+NG} M\+N\+L\+::\+Mn\+Constant\+Buffer\+::m\+\_\+belong\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Constant\+Buffer.\+h 파일의 42 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a1a9d69098ff55f524716d8415fe76e20}\label{class_m_n_l_1_1_mn_constant_buffer_a1a9d69098ff55f524716d8415fe76e20}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!m\+\_\+buffer@{m\+\_\+buffer}}
+\index{m\+\_\+buffer@{m\+\_\+buffer}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+buffer}{m\_buffer}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_gpu_buffer}{Mn\+Gpu\+Buffer} M\+N\+L\+::\+Mn\+Constant\+Buffer\+::m\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Constant\+Buffer.\+h 파일의 40 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_constant_buffer_a2ae6082ec83ef177993de6235b0030a1}\label{class_m_n_l_1_1_mn_constant_buffer_a2ae6082ec83ef177993de6235b0030a1}} 
+\index{M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}!m\+\_\+index@{m\+\_\+index}}
+\index{m\+\_\+index@{m\+\_\+index}!M\+N\+L\+::\+Mn\+Constant\+Buffer@{M\+N\+L\+::\+Mn\+Constant\+Buffer}}
+\subsubsection{\texorpdfstring{m\+\_\+index}{m\_index}}
+{\footnotesize\ttfamily U\+I\+NT M\+N\+L\+::\+Mn\+Constant\+Buffer\+::m\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Constant\+Buffer.\+h 파일의 41 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Core/\hyperlink{_mn_constant_buffer_8h}{Mn\+Constant\+Buffer.\+h}\item 
+Core/\hyperlink{_mn_constant_buffer_8cpp}{Mn\+Constant\+Buffer.\+cpp}\end{DoxyCompactItemize}

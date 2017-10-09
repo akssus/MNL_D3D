@@ -1,0 +1,3 @@
+<map id="MNL::MnVertexBuffer" name="MNL::MnVertexBuffer">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_gpu_buffer.html" title="{MNL::MnGpuBuffer\n|# m_bufferDesc\l# m_cpBuffer\l# m_numBuffers\l# m_bufferSize\l# m_isDynamic\l|+ MnGpuBuffer()\l+ ~MnGpuBuffer()\l+ Init()\l+ MnGpuBuffer::Map()\l+ Unmap()\l+ UpdateBuffer()\l+ GetBuffer()\l+ GetBufferByteSize()\l+ IsDynamic()\l}" alt="" coords="5,5,156,259"/>
+</map>

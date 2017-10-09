@@ -11,7 +11,7 @@ MnConstantElement::MnConstantElement():m_byteSize(0),m_type(MN_CONSTANT_ELEMENT_
 MnConstantElement::~MnConstantElement()
 {
 }
-MnConstantElement::MnConstantElement(const MnConstantElementType& constantElementType) :m_byteSize(0), m_type(MN_CONSTANT_ELEMENT_TYPE_NONE)
+MnConstantElement::MnConstantElement(const MN_CONSTANT_ELEMENT_TYPE& constantElementType) :m_byteSize(0), m_type(MN_CONSTANT_ELEMENT_TYPE_NONE)
 {
 	HRESULT result = _Init(constantElementType);
 	if (FAILED(result))
@@ -19,7 +19,7 @@ MnConstantElement::MnConstantElement(const MnConstantElementType& constantElemen
 		MnLog::MB_InitFailed(MN_VAR_INFO(MnConstantElement));
 	}
 }
-MnConstantElementType MnConstantElement::GetType() const
+MN_CONSTANT_ELEMENT_TYPE MnConstantElement::GetType() const
 {
 	return m_type;
 }
@@ -28,7 +28,7 @@ UINT MnConstantElement::GetByteSize() const
 	return m_byteSize;
 }
 	
-HRESULT MnConstantElement::_Init(const MnConstantElementType& constantElementType)
+HRESULT MnConstantElement::_Init(const MN_CONSTANT_ELEMENT_TYPE& constantElementType)
 {
 	if (constantElementType == MN_CONSTANT_ELEMENT_TYPE_NONE)
 	{
@@ -41,7 +41,7 @@ HRESULT MnConstantElement::_Init(const MnConstantElementType& constantElementTyp
 
 	return S_OK;
 }
-UINT MnConstantElement::_GetByteSizeOf(const MnConstantElementType& constantElementType)
+UINT MnConstantElement::_GetByteSizeOf(const MN_CONSTANT_ELEMENT_TYPE& constantElementType)
 {
 	UINT byteSize = 0;
 	switch (constantElementType)

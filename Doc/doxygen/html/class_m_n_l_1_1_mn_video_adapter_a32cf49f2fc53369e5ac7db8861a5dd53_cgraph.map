@@ -1,0 +1,5 @@
+<map id="MNL::MnVideoAdapter::Init" name="MNL::MnVideoAdapter::Init">
+<area shape="rect" id="node2" href="$namespace_m_n_l_1_1_mn_log.html#aef654e043a712a8b54ab59049d43881c" title="MNL::MnLog::MB_InitFailed" alt="" coords="437,33,620,60"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_display_device.html#a59739c090a5a2a6b704d93622a22f6ef" title="DXGIOutput 인터페이스를 통해 모든 디스플레이 모드들을 얻어와 초기화 한다. " alt="" coords="220,26,376,67"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_video_adapter.html#a1b7d80620cd499d72a737b11619ec8e1" title="DXGIAdapter 인터페이스로부터 최대 지원 피쳐레벨을 구한다. " alt="" coords="207,92,389,148"/>
+</map>

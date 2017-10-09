@@ -47,16 +47,6 @@ void MnRenderer::_AddConstantBuffer(const std::shared_ptr< MnConstantBuffer> spC
 {
 	assert(spConstantBuffer != nullptr);
 	m_constantBuffers.push_back(spConstantBuffer);
-	if (spConstantBuffer->GetBelong() == MN_CONSTANT_BUFFER_BELONG_VS)
-	{
-		m_mapIndexToSlot[spConstantBuffer->GetIndex()] = m_numVsConstantBuffers;
-		m_numVsConstantBuffers++;
-	}
-	else if (spConstantBuffer->GetBelong() == MN_CONSTANT_BUFFER_BELONG_PS)
-	{
-		m_mapIndexToSlot[spConstantBuffer->GetIndex()] = m_numPsConstantBuffers;
-		m_numPsConstantBuffers++;
-	}
 }
 void MnRenderer::ApplyConstantBuffers(MnRenderAPI& renderAPI)
 {
@@ -95,13 +85,18 @@ void MnRenderer::_BindConstantBuffers(MnRenderAPI& renderAPI)
 	{
 		auto constantBuffer = m_constantBuffers[i];
 		auto belong = constantBuffer->GetBelong();
-		UINT slotIndex = m_mapIndexToSlot[constantBuffer->GetIndex()];
+		UINT slotIndex = constantBuffer->GetSlotIndex();
 		if (belong == MN_CONSTANT_BUFFER_BELONG_PS)
 		{
 			renderAPI.SetConstantBufferPS(constantBuffer->GetBuffer(), slotIndex);
 		}
 		else if (belong == MN_CONSTANT_BUFFER_BELONG_VS)
 		{
+			renderAPI.SetConstantBufferVS(constantBuffer->GetBuffer(), slotIndex);
+		}
+		else if (belong == MN_CONSTANT_BUFFER_BELONG_BOTH)
+		{
+			renderAPI.SetConstantBufferPS(constantBuffer->GetBuffer(), slotIndex);
 			renderAPI.SetConstantBufferVS(constantBuffer->GetBuffer(), slotIndex);
 		}
 	}

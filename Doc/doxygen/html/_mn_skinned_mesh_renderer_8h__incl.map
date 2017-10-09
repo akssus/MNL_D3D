@@ -1,0 +1,35 @@
+<map id="Render/MnSkinnedMeshRenderer.h" name="Render/MnSkinnedMeshRenderer.h">
+<area shape="rect" id="node3" href="$_mn_renderer_8h.html" title="MnRenderer.h" alt="" coords="3450,80,3553,107"/>
+<area shape="rect" id="node32" href="$_mn_material_8h.html" title="MnMaterial.h" alt="" coords="4311,304,4409,331"/>
+<area shape="rect" id="node33" href="$_mn_skeleton_8h.html" title="MnSkeleton.h" alt="" coords="3962,304,4065,331"/>
+<area shape="rect" id="node42" href="$_mn_light_source_8h.html" title="MnLightSource.h" alt="" coords="4545,461,4665,487"/>
+<area shape="rect" id="node6" href="$_mn_render_a_p_i_8h.html" title="../Core\\MnRenderAPI.h" alt="" coords="734,155,890,181"/>
+<area shape="rect" id="node24" href="$_mn_shader_path_instance_8h.html" title="MnShaderPathInstance.h" alt="" coords="3356,155,3524,181"/>
+<area shape="rect" id="node30" href="$_mn_mesh_8h.html" title="MnMesh.h" alt="" coords="2016,155,2099,181"/>
+<area shape="rect" id="node38" href="$_mn_mesh_texture_combination_8h.html" title="MnMeshTextureCombination.h" alt="" coords="3274,304,3473,331"/>
+<area shape="rect" id="node8" href="$_mn_typedefs_8h.html" title="MnTypedefs.h" alt="" coords="905,543,1007,569"/>
+<area shape="rect" id="node10" href="$_mn_vertex_buffer_8h.html" title="MnVertexBuffer.h" alt="" coords="1260,304,1383,331"/>
+<area shape="rect" id="node16" href="$_mn_index_buffer_8h.html" title="MnIndexBuffer.h" alt="" coords="696,304,811,331"/>
+<area shape="rect" id="node17" href="$_mn_input_layout_8h.html" title="MnInputLayout.h" alt="" coords="1058,304,1177,331"/>
+<area shape="rect" id="node18" href="$_mn_vertex_shader_8h.html" title="MnVertexShader.h" alt="" coords="899,379,1029,405"/>
+<area shape="rect" id="node19" href="$_mn_pixel_shader_8h.html" title="MnPixelShader.h" alt="" coords="550,461,671,487"/>
+<area shape="rect" id="node20" href="$_mn_hardware_8h.html" title="MnHardware.h" alt="" coords="503,304,609,331"/>
+<area shape="rect" id="node23" href="$_mn_d3_d_device_8h.html" title="MnD3DDevice.h" alt="" coords="325,229,440,256"/>
+<area shape="rect" id="node12" href="$_mn_gpu_buffer_8h.html" title="MnGpuBuffer.h" alt="" coords="950,461,1058,487"/>
+<area shape="rect" id="node13" href="$_mn_custom_vertex_type_8h.html" title="MnCustomVertexType.h" alt="" coords="1712,379,1875,405"/>
+<area shape="rect" id="node15" href="$_mn_input_element_8h.html" title="MnInputElement.h" alt="" coords="1585,461,1711,487"/>
+<area shape="rect" id="node21" href="$_mn_video_adapter_8h.html" title="MnVideoAdapter.h" alt="" coords="491,379,621,405"/>
+<area shape="rect" id="node22" href="$_mn_display_device_8h.html" title="MnDisplayDevice.h" alt="" coords="1735,461,1867,487"/>
+<area shape="rect" id="node25" href="$_mn_shader_path_8h.html" title="MnShaderPath.h" alt="" coords="1895,229,2014,256"/>
+<area shape="rect" id="node26" href="$_mn_constant_buffer_type_8h.html" title="../Core\\MnConstantBuffer\lType.h" alt="" coords="3537,453,3705,495"/>
+<area shape="rect" id="node28" href="$_mn_constant_buffer_8h.html" title="../Core\\MnConstantBuffer.h" alt="" coords="2423,379,2601,405"/>
+<area shape="rect" id="node29" href="$_mn_sampler_state_8h.html" title="../Core/MnSamplerState.h" alt="" coords="1387,461,1560,487"/>
+<area shape="rect" id="node27" href="$_mn_constant_element_8h.html" title="MnConstantElement.h" alt="" coords="3166,543,3317,569"/>
+<area shape="rect" id="node31" href="$_mn_mesh_data_8h.html" title="MnMeshData.h" alt="" coords="2887,229,2998,256"/>
+<area shape="rect" id="node36" href="$_mn_bone_animation_8h.html" title="MnBoneAnimation.h" alt="" coords="2260,379,2399,405"/>
+<area shape="rect" id="node34" href="$_mn_bone_8h.html" title="MnBone.h" alt="" coords="3983,461,4065,487"/>
+<area shape="rect" id="node35" href="$_mn_matrix_palette_8h.html" title="MnMatrixPalette.h" alt="" coords="3823,379,3951,405"/>
+<area shape="rect" id="node37" href="$_mn_bone_animation_element_8h.html" title="MnBoneAnimationElement.h" alt="" coords="2399,461,2585,487"/>
+<area shape="rect" id="node39" href="$_mn_mesh_texture_8h.html" title="MnMeshTexture.h" alt="" coords="3285,379,3411,405"/>
+<area shape="rect" id="node41" href="$_mn_texture2_d_8h.html" title="../Core/MnTexture2D.h" alt="" coords="3058,461,3211,487"/>
+</map>

@@ -21,91 +21,46 @@ HRESULT MnSkinnedMeshRenderer::Init(const CPD3DDevice& cpDevice, const std::shar
 	return S_OK;
 }
 
-void MnSkinnedMeshRenderer::SetWorldBuffer(MnRenderAPI& renderAPI,
+void MnSkinnedMeshRenderer::SetWorldBuffer(const CPD3DDeviceContext& cpDeviceContext,
 	const DirectX::SimpleMath::Matrix& matWorld)
 {
-	//row major to column major
-	_WorldBufferType bufferType;
-	bufferType.matWorld = matWorld.Transpose();
-
-	D3D11_SUBRESOURCE_DATA data;
-	data.pSysMem = &bufferType;
-	data.SysMemPitch = 0;
-	data.SysMemSlicePitch = 0;
-
-	UpdateConstantBuffer(renderAPI, _CONST_BUF_WORLD, data);
+	m_spWorldBuffer->SetWorldTransform(cpDeviceContext, matWorld);
 }
-
-void MnSkinnedMeshRenderer::SetViewProjectionBuffer(MnRenderAPI& renderAPI,
+void MnSkinnedMeshRenderer::SetViewProjectionBuffer(const CPD3DDeviceContext& cpDeviceContext,
 	const DirectX::SimpleMath::Matrix& matView,
 	const DirectX::SimpleMath::Matrix& matProjection)
 {
-	//row major to column major
-	_ViewProjectionBufferType bufferType;
-	bufferType.matView = matView.Transpose();
-	bufferType.matProjection = matProjection.Transpose();
-
-	D3D11_SUBRESOURCE_DATA data;
-	data.pSysMem = &bufferType;
-	data.SysMemPitch = 0;
-	data.SysMemSlicePitch = 0;
-
-	UpdateConstantBuffer(renderAPI, _CONST_BUF_VIEWPROJECTION, data);
+	m_spViewProjectionBuffer->SetViewProjectionTransform(cpDeviceContext, matView, matProjection);
 }
-void MnSkinnedMeshRenderer::SetLightBuffer(MnRenderAPI& renderAPI, const DirectX::SimpleMath::Vector3& lightPos, const DirectX::SimpleMath::Vector3& lightDir, MN_LIGHT_TYPE lightType)
+void MnSkinnedMeshRenderer::SetLightBuffer(const CPD3DDeviceContext& cpDeviceContext, const DirectX::SimpleMath::Vector3& lightPos, const DirectX::SimpleMath::Vector3& lightDir, MN_LIGHT_TYPE lightType)
 {
-	_LightBufferType bufferType;
-	bufferType.lightPos = Vector4(lightPos);
-	bufferType.lightDir = Vector4(lightDir);
-	bufferType.lightType = lightType;
-	bufferType.padding = Vector3(0.0f, 0.0f, 0.0f);
-
-	D3D11_SUBRESOURCE_DATA data;
-	data.pSysMem = &bufferType;
-	data.SysMemPitch = 0;
-	data.SysMemSlicePitch = 0;
-
-	UpdateConstantBuffer(renderAPI, _CONST_BUF_LIGHT_VS, data);
-	UpdateConstantBuffer(renderAPI, _CONST_BUF_LIGHT_PS, data);
+	m_spLightBuffer->SetLight(cpDeviceContext, lightPos, lightDir, lightType);
 }
-void MnSkinnedMeshRenderer::SetLightBuffer(MnRenderAPI& renderAPI, const std::shared_ptr<MnLightSource> spLight)
+void MnSkinnedMeshRenderer::SetLightBuffer(const CPD3DDeviceContext& cpDeviceContext, const std::shared_ptr<MnLightSource> spLight)
 {
-	SetLightBuffer(renderAPI, spLight->GetPosition(), spLight->GetDirection(), spLight->GetLightType());
+	m_spLightBuffer->SetLight(cpDeviceContext, spLight->GetPosition(), spLight->GetDirection(), spLight->GetLightType());
 }
 
-void MnSkinnedMeshRenderer::SetMaterial(MnRenderAPI& renderAPI,
+void MnSkinnedMeshRenderer::SetMaterial(const CPD3DDeviceContext& cpDeviceContext,
 	const DirectX::SimpleMath::Vector4& diffuse,
 	const DirectX::SimpleMath::Vector4& ambient,
 	const DirectX::SimpleMath::Vector4& emissive,
 	const DirectX::SimpleMath::Vector4& specular,
 	float specularPower)
 {
-	_MaterialBufferType bufferType;
-	ZeroMemory(&bufferType, sizeof(_MaterialBufferType));
-	bufferType.diffuse = diffuse;
-	bufferType.ambient = ambient;
-	bufferType.emissive = emissive;
-	bufferType.specular = specular;
-	bufferType.specularPower = specularPower;
-
-	D3D11_SUBRESOURCE_DATA data;
-	data.pSysMem = &bufferType;
-	data.SysMemPitch = 0;
-	data.SysMemSlicePitch = 0;
-
-	UpdateConstantBuffer(renderAPI, _CONST_BUF_MATERIAL, data);
+	m_spMaterialBuffer->SetMaterial(cpDeviceContext, diffuse, ambient, emissive, specular, specularPower);
 }
-void MnSkinnedMeshRenderer::SetMaterial(MnRenderAPI& renderAPI, const std::shared_ptr<MnMaterial> spMaterial)
+void MnSkinnedMeshRenderer::SetMaterial(const CPD3DDeviceContext& cpDeviceContext, const std::shared_ptr<MnMaterial> spMaterial)
 {
-	SetMaterial(renderAPI, spMaterial->diffuse, spMaterial->ambient, spMaterial->emissive, spMaterial->specular, spMaterial->specularPower);
+	m_spMaterialBuffer->SetMaterial(cpDeviceContext, spMaterial->diffuse, spMaterial->ambient, spMaterial->emissive, spMaterial->specular, spMaterial->specularPower);
 }
-void MnSkinnedMeshRenderer::SetBonePalette(MnRenderAPI& renderAPI, const std::shared_ptr<MnSkeleton> spSkeleton)
+void MnSkinnedMeshRenderer::SetBonePalette(const CPD3DDeviceContext& cpDeviceContext, const std::shared_ptr<MnSkeleton> spSkeleton)
 {
-	SetBonePalette(renderAPI, spSkeleton->GetBonePalette());
+	m_spBonePaletteBuffer->SetBonePalette(cpDeviceContext, spSkeleton->GetBonePalette());
 }
-void MnSkinnedMeshRenderer::SetBonePalette(MnRenderAPI& renderAPI, const D3D11_SUBRESOURCE_DATA bonePalette)
+void MnSkinnedMeshRenderer::SetBonePalette(const CPD3DDeviceContext& cpDeviceContext, const D3D11_SUBRESOURCE_DATA bonePalette)
 {
-	UpdateConstantBuffer(renderAPI, _CONST_BUF_BONE_PALETTE, bonePalette);
+	m_spBonePaletteBuffer->SetBonePalette(cpDeviceContext, bonePalette);
 }
 
 HRESULT MnSkinnedMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)
@@ -153,127 +108,68 @@ HRESULT MnSkinnedMeshRenderer::_InitConstantBuffers(const CPD3DDevice& cpDevice)
 
 HRESULT MnSkinnedMeshRenderer::_InitWolrdBuffer(const CPD3DDevice& cpDevice)
 {
-	auto worldBufferType = std::make_shared<MnConstantBufferType>();
-	assert(worldBufferType != nullptr);
-	worldBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_MATRIX));
-
-	auto worldBuffer = std::make_shared<MnConstantBuffer>();
-	assert(worldBuffer != nullptr);
-
-	//world buffer is index 0 of vertex shader
-	HRESULT result = worldBuffer->Init(cpDevice, worldBufferType, _CONST_BUF_WORLD, MN_CONSTANT_BUFFER_BELONG_VS);
+	m_spWorldBuffer = std::make_shared<MnWorldTransformBuffer>();
+	assert(m_spWorldBuffer != nullptr);
+	HRESULT result = m_spWorldBuffer->Init(cpDevice, _CONST_BUF_WORLD, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
-		//error log
 		return result;
 	}
-	_AddConstantBuffer(worldBuffer);
+	_AddConstantBuffer(m_spWorldBuffer);
 
 	return S_OK;
 }
 HRESULT MnSkinnedMeshRenderer::_InitViewProjectionBuffer(const CPD3DDevice& cpDevice)
 {
-	auto viewProjectionBufferType = std::make_shared<MnConstantBufferType>();
-	assert(viewProjectionBufferType != nullptr);
-	viewProjectionBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_MATRIX));
-	viewProjectionBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_MATRIX));
-
-	auto viewProjectionBuffer = std::make_shared<MnConstantBuffer>();
-	assert(viewProjectionBuffer != nullptr);
-
-	HRESULT result = viewProjectionBuffer->Init(cpDevice, viewProjectionBufferType, _CONST_BUF_VIEWPROJECTION, MN_CONSTANT_BUFFER_BELONG_VS);
+	m_spViewProjectionBuffer = std::make_shared<MnViewProjectionTransformBuffer>();
+	assert(m_spViewProjectionBuffer != nullptr);
+	HRESULT result = m_spViewProjectionBuffer->Init(cpDevice, _CONST_BUF_VIEWPROJECTION, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
-		//error log
 		return result;
 	}
-	_AddConstantBuffer(viewProjectionBuffer);
+	_AddConstantBuffer(m_spViewProjectionBuffer);
 
 	return S_OK;
 }
 HRESULT MnSkinnedMeshRenderer::_InitLightBuffer(const CPD3DDevice& cpDevice)
 {
-	auto lightBufferType = std::make_shared<MnConstantBufferType>();
-	assert(lightBufferType != nullptr);
-	lightBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT4));
-	lightBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT4));
-	lightBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_UINT));
-	lightBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT3));//padding
-
-	auto lightBufferVS = std::make_shared<MnConstantBuffer>();
-	assert(lightBufferVS != nullptr);
-
-	HRESULT result = lightBufferVS->Init(cpDevice, lightBufferType, _CONST_BUF_LIGHT_VS, MN_CONSTANT_BUFFER_BELONG_VS);
+	m_spLightBuffer = std::make_shared<MnLightBuffer>();
+	assert(m_spLightBuffer != nullptr);
+	HRESULT result = m_spLightBuffer->Init(cpDevice, _CONST_BUF_LIGHT, MN_CONSTANT_BUFFER_BELONG_BOTH);
 	if (FAILED(result))
 	{
-		//error log
 		return result;
 	}
 	//light buffer uses in both VS and PS
-	_AddConstantBuffer(lightBufferVS);
-
-	auto lightBufferPS = std::make_shared<MnConstantBuffer>();
-	assert(lightBufferPS != nullptr);
-
-	result = lightBufferPS->Init(cpDevice, lightBufferType, _CONST_BUF_LIGHT_PS, MN_CONSTANT_BUFFER_BELONG_PS);
-	if (FAILED(result))
-	{
-		//error log
-		return result;
-	}
-	//light buffer uses in both VS and PS
-	_AddConstantBuffer(lightBufferPS);
+	_AddConstantBuffer(m_spLightBuffer);
 
 	return S_OK;
 }
 HRESULT MnSkinnedMeshRenderer::_InitMaterialBuffer(const CPD3DDevice& cpDevice)
 {
-	auto materialBufferType = std::make_shared<MnConstantBufferType>();
-	assert(materialBufferType != nullptr);
-	materialBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT4));
-	materialBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT4));
-	materialBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT4));
-	materialBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT4));
-	materialBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT1));
-	materialBufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_FLOAT3)); //padding
-
-	auto materialBuffer = std::make_shared<MnConstantBuffer>();
-	assert(materialBuffer != nullptr);
-
-	//world buffer is index 0 of vertex shader
-	HRESULT result = materialBuffer->Init(cpDevice, materialBufferType, _CONST_BUF_MATERIAL, MN_CONSTANT_BUFFER_BELONG_PS);
+	m_spMaterialBuffer = std::make_shared<MnMaterialBuffer>();
+	HRESULT result = m_spMaterialBuffer->Init(cpDevice, _CONST_BUF_MATERIAL, MN_CONSTANT_BUFFER_BELONG_PS);
 	if (FAILED(result))
 	{
 		//error log
 		return result;
 	}
-	_AddConstantBuffer(materialBuffer);
+	_AddConstantBuffer(m_spMaterialBuffer);
 
 	return S_OK;
 }
 
 HRESULT MnSkinnedMeshRenderer::_InitBonePaletteBuffer(const CPD3DDevice& cpDevice)
 {
-	auto bufferType = std::make_shared<MnConstantBufferType>();
-	assert(bufferType != nullptr);
-
-	//this is bullshit, please find other way later
-	for (UINT i = 0; i < 96; ++i)
-	{
-		bufferType->AddConstantElement(MnConstantElement(MN_CONSTANT_ELEMENT_TYPE_MATRIX));
-	}
-
-	auto constBuffer = std::make_shared<MnConstantBuffer>();
-	assert(constBuffer != nullptr);
-
-	//world buffer is index 0 of vertex shader
-	HRESULT result = constBuffer->Init(cpDevice, bufferType, _CONST_BUF_BONE_PALETTE, MN_CONSTANT_BUFFER_BELONG_VS);
+	m_spBonePaletteBuffer = std::make_shared<MnBonePaletteBuffer>();
+	HRESULT result = m_spBonePaletteBuffer->Init(cpDevice, _CONST_BUF_BONE_PALETTE, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
 		//error log
 		return result;
 	}
-	_AddConstantBuffer(constBuffer);
+	_AddConstantBuffer(m_spBonePaletteBuffer);
 
 	return S_OK;
 }

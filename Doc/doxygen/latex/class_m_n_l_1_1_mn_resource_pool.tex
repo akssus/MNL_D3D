@@ -1,0 +1,322 @@
+\hypertarget{class_m_n_l_1_1_mn_resource_pool}{}\section{M\+NL\+:\+:Mn\+Resource\+Pool 클래스 참조}
+\label{class_m_n_l_1_1_mn_resource_pool}\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+
+
+{\ttfamily \#include $<$Mn\+Resource\+Pool.\+h$>$}
+
+
+
+M\+NL\+:\+:Mn\+Resource\+Pool에 대한 협력 다이어그램\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{class_m_n_l_1_1_mn_resource_pool__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{클래스}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___bone_data}{\+\_\+\+Bone\+Data}
+\item 
+struct \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___memory_chunk}{\+\_\+\+Memory\+Chunk}
+\item 
+struct \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___model_package}{\+\_\+\+Model\+Package}
+\end{DoxyCompactItemize}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_n_l_1_1_mn_resource_pool_a3e3bfb192960b20c20d598b87190093a}{Mn\+Resource\+Pool} ()
+\item 
+\hyperlink{class_m_n_l_1_1_mn_resource_pool_a22ebe684736fca1eca2632728c957816}{$\sim$\+Mn\+Resource\+Pool} ()
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_resource_pool_ac41948326baafb260a2c198ee1baf387}{Load\+Model\+From\+File} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, const std\+::string \&file\+Name, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&vertex\+Type)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a3ed53e3938460f16c420f9968a6022a0}{Load\+Model\+From\+File} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, const std\+::string \&file\+Name, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&vertex\+Type, const std\+::string \&mesh\+Name)
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ \hyperlink{class_m_n_l_1_1_mn_resource_pool_aec880e1f2103fe954fd08312256af4dd}{Get\+Mesh\+Data} (const std\+::string \&model\+Package\+Name, const std\+::string \&mesh\+Name) const
+\item 
+\hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} \hyperlink{class_m_n_l_1_1_mn_resource_pool_a2def364302f9dc1a8c45f6d55885eef6}{Get\+Bone\+Animation} (const std\+::string \&model\+Package\+Name, const std\+::string \&animation\+Name) const
+\item 
+\hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} \hyperlink{class_m_n_l_1_1_mn_resource_pool_a6fd196dd10a03c7cefa28500a5244999}{Get\+Bone\+Animation} (const std\+::string \&model\+Package\+Name, U\+I\+NT index) const
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a6ceea12d9897374afb3bccf7194e1702}{\+\_\+\+Load\+Model\+From\+Memory} (const \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___memory_chunk}{\+\_\+\+Memory\+Chunk} \&memory\+Chunk, std\+::string model\+Package\+Name)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a455ca59fa1823515c934b62812ef7166}{\+\_\+\+Read\+From\+Assimp\+Scene} (const ai\+Scene $\ast$scene)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a69b5a13be982eeca8212d83d9dd7731c}{\+\_\+\+Read\+Meshes} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, const ai\+Scene $\ast$scene, const ai\+Node $\ast$node, U\+I\+NT parent\+Index, \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___model_package}{\+\_\+\+Model\+Package} \&model\+Package, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&vertex\+Type)
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ \hyperlink{class_m_n_l_1_1_mn_resource_pool_a5e09efdbde37ec94da31e1d5bc1f8c5b}{\+\_\+\+Read\+Single\+Mesh} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, const ai\+Scene $\ast$scene, const ai\+Node $\ast$node, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&vertex\+Type)
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a3e4f54d9329c3b64189490661bb5e9ab}{\+\_\+\+Get\+Nodes\+Total\+Vertex\+Count} (const ai\+Scene $\ast$scene, const ai\+Node $\ast$node)
+\item 
+U\+I\+NT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a1bd1147f1e190da5526b2de97befca99}{\+\_\+\+Get\+Nodes\+Total\+Index\+Count} (const ai\+Scene $\ast$scene, const ai\+Node $\ast$node)
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_skeleton}{Mn\+Skeleton} $>$ \hyperlink{class_m_n_l_1_1_mn_resource_pool_a8975b99366a685237e6d49d3c7bf0f51}{\+\_\+\+Create\+Skeleton} (const ai\+Scene $\ast$scene, const ai\+Node $\ast$node)
+\item 
+const ai\+Node $\ast$ \hyperlink{class_m_n_l_1_1_mn_resource_pool_a6a7c7480baadf0f51a31eeb63cdee5cb}{\+\_\+\+Find\+Root\+Bone\+Node} (const ai\+Scene $\ast$scene, const ai\+Node $\ast$current\+Mesh\+Node, const ai\+Bone $\ast$bone)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_resource_pool_ad6968623dc167446598475230b369515}{\+\_\+\+Read\+Bone\+Data} (const ai\+Scene $\ast$scene, const ai\+Node $\ast$node, std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ vertex\+Type, U\+I\+NT num\+Vertices, std\+::vector$<$ \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___bone_data}{\+\_\+\+Bone\+Data} $>$ \&bone\+Data)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_resource_pool_a27987643db1cb3f0af6f912fb5d67404}{\+\_\+\+Read\+Mesh\+Vertices} (const ai\+Scene $\ast$scene, const ai\+Node $\ast$node, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&vertex\+Type, U\+I\+NT num\+Vertices, std\+::vector$<$ float $>$ \&vertex\+Array, const std\+::vector$<$ \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___bone_data}{\+\_\+\+Bone\+Data} $>$ \&bone\+Data)
+\item 
+void \hyperlink{class_m_n_l_1_1_mn_resource_pool_ace158d455ad6830d0aaf82994237dbda}{\+\_\+\+Read\+Mesh\+Indices} (const ai\+Scene $\ast$scene, const ai\+Node $\ast$node, std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ \&mesh\+Data, U\+I\+NT num\+Indices, std\+::vector$<$ U\+I\+NT $>$ \&index\+Array)
+\item 
+\hyperlink{struct_m_n_l_1_1_mn_sub_mesh}{Mn\+Sub\+Mesh} \hyperlink{class_m_n_l_1_1_mn_resource_pool_a79fe0a932e8037c18e000541359fa1e6}{\+\_\+\+Create\+Sub\+Mesh} (const ai\+Mesh $\ast$mesh, U\+I\+NT index\+Base)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a375d2b45a3a97f32df930f88a7afe170}{\+\_\+\+Init\+Buffers} (const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&cp\+Device, std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ mesh\+Data, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&vertex\+Type, const std\+::vector$<$ float $>$ \&vertex\+Array, U\+I\+NT vertex\+Count, const std\+::vector$<$ U\+I\+NT $>$ \&index\+Array, U\+I\+NT index\+Count)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{class_m_n_l_1_1_mn_resource_pool_a730bf312676520ba6b57f6d4a6dfdd6f}{\+\_\+\+Read\+Animations} (const ai\+Scene $\ast$scene, \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___model_package}{\+\_\+\+Model\+Package} \&model\+Package)
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___model_package}{\+\_\+\+Model\+Package} $>$ \hyperlink{class_m_n_l_1_1_mn_resource_pool_a69859b0db46a6965a6d76b3598b33c73}{m\+\_\+model\+Packages}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Mn\+Resource\+Pool.\+h 파일의 18 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a3e3bfb192960b20c20d598b87190093a}\label{class_m_n_l_1_1_mn_resource_pool_a3e3bfb192960b20c20d598b87190093a}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!Mn\+Resource\+Pool@{Mn\+Resource\+Pool}}
+\index{Mn\+Resource\+Pool@{Mn\+Resource\+Pool}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{Mn\+Resource\+Pool()}{MnResourcePool()}}
+{\footnotesize\ttfamily Mn\+Resource\+Pool\+::\+Mn\+Resource\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 10 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a22ebe684736fca1eca2632728c957816}\label{class_m_n_l_1_1_mn_resource_pool_a22ebe684736fca1eca2632728c957816}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!````~Mn\+Resource\+Pool@{$\sim$\+Mn\+Resource\+Pool}}
+\index{````~Mn\+Resource\+Pool@{$\sim$\+Mn\+Resource\+Pool}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{$\sim$\+Mn\+Resource\+Pool()}{~MnResourcePool()}}
+{\footnotesize\ttfamily Mn\+Resource\+Pool\+::$\sim$\+Mn\+Resource\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 15 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a8975b99366a685237e6d49d3c7bf0f51}\label{class_m_n_l_1_1_mn_resource_pool_a8975b99366a685237e6d49d3c7bf0f51}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Create\+Skeleton@{\+\_\+\+Create\+Skeleton}}
+\index{\+\_\+\+Create\+Skeleton@{\+\_\+\+Create\+Skeleton}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Create\+Skeleton()}{\_CreateSkeleton()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_skeleton}{Mn\+Skeleton} $>$ Mn\+Resource\+Pool\+::\+\_\+\+Create\+Skeleton (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 179 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a79fe0a932e8037c18e000541359fa1e6}\label{class_m_n_l_1_1_mn_resource_pool_a79fe0a932e8037c18e000541359fa1e6}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Create\+Sub\+Mesh@{\+\_\+\+Create\+Sub\+Mesh}}
+\index{\+\_\+\+Create\+Sub\+Mesh@{\+\_\+\+Create\+Sub\+Mesh}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Create\+Sub\+Mesh()}{\_CreateSubMesh()}}
+{\footnotesize\ttfamily \hyperlink{struct_m_n_l_1_1_mn_sub_mesh}{Mn\+Sub\+Mesh} Mn\+Resource\+Pool\+::\+\_\+\+Create\+Sub\+Mesh (\begin{DoxyParamCaption}\item[{const ai\+Mesh $\ast$}]{mesh,  }\item[{U\+I\+NT}]{index\+Base }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 402 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a6a7c7480baadf0f51a31eeb63cdee5cb}\label{class_m_n_l_1_1_mn_resource_pool_a6a7c7480baadf0f51a31eeb63cdee5cb}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Find\+Root\+Bone\+Node@{\+\_\+\+Find\+Root\+Bone\+Node}}
+\index{\+\_\+\+Find\+Root\+Bone\+Node@{\+\_\+\+Find\+Root\+Bone\+Node}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Find\+Root\+Bone\+Node()}{\_FindRootBoneNode()}}
+{\footnotesize\ttfamily const ai\+Node $\ast$ Mn\+Resource\+Pool\+::\+\_\+\+Find\+Root\+Bone\+Node (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{current\+Mesh\+Node,  }\item[{const ai\+Bone $\ast$}]{bone }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 226 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a1bd1147f1e190da5526b2de97befca99}\label{class_m_n_l_1_1_mn_resource_pool_a1bd1147f1e190da5526b2de97befca99}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Get\+Nodes\+Total\+Index\+Count@{\+\_\+\+Get\+Nodes\+Total\+Index\+Count}}
+\index{\+\_\+\+Get\+Nodes\+Total\+Index\+Count@{\+\_\+\+Get\+Nodes\+Total\+Index\+Count}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Get\+Nodes\+Total\+Index\+Count()}{\_GetNodesTotalIndexCount()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Resource\+Pool\+::\+\_\+\+Get\+Nodes\+Total\+Index\+Count (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 167 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a3e4f54d9329c3b64189490661bb5e9ab}\label{class_m_n_l_1_1_mn_resource_pool_a3e4f54d9329c3b64189490661bb5e9ab}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Get\+Nodes\+Total\+Vertex\+Count@{\+\_\+\+Get\+Nodes\+Total\+Vertex\+Count}}
+\index{\+\_\+\+Get\+Nodes\+Total\+Vertex\+Count@{\+\_\+\+Get\+Nodes\+Total\+Vertex\+Count}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Get\+Nodes\+Total\+Vertex\+Count()}{\_GetNodesTotalVertexCount()}}
+{\footnotesize\ttfamily U\+I\+NT Mn\+Resource\+Pool\+::\+\_\+\+Get\+Nodes\+Total\+Vertex\+Count (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 156 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a375d2b45a3a97f32df930f88a7afe170}\label{class_m_n_l_1_1_mn_resource_pool_a375d2b45a3a97f32df930f88a7afe170}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Init\+Buffers@{\+\_\+\+Init\+Buffers}}
+\index{\+\_\+\+Init\+Buffers@{\+\_\+\+Init\+Buffers}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Init\+Buffers()}{\_InitBuffers()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Resource\+Pool\+::\+\_\+\+Init\+Buffers (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$}]{mesh\+Data,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&}]{vertex\+Type,  }\item[{const std\+::vector$<$ float $>$ \&}]{vertex\+Array,  }\item[{U\+I\+NT}]{vertex\+Count,  }\item[{const std\+::vector$<$ U\+I\+NT $>$ \&}]{index\+Array,  }\item[{U\+I\+NT}]{index\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 414 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a6ceea12d9897374afb3bccf7194e1702}\label{class_m_n_l_1_1_mn_resource_pool_a6ceea12d9897374afb3bccf7194e1702}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Load\+Model\+From\+Memory@{\+\_\+\+Load\+Model\+From\+Memory}}
+\index{\+\_\+\+Load\+Model\+From\+Memory@{\+\_\+\+Load\+Model\+From\+Memory}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Load\+Model\+From\+Memory()}{\_LoadModelFromMemory()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Resource\+Pool\+::\+\_\+\+Load\+Model\+From\+Memory (\begin{DoxyParamCaption}\item[{const \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___memory_chunk}{\+\_\+\+Memory\+Chunk} \&}]{memory\+Chunk,  }\item[{std\+::string}]{model\+Package\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 78 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a730bf312676520ba6b57f6d4a6dfdd6f}\label{class_m_n_l_1_1_mn_resource_pool_a730bf312676520ba6b57f6d4a6dfdd6f}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Read\+Animations@{\+\_\+\+Read\+Animations}}
+\index{\+\_\+\+Read\+Animations@{\+\_\+\+Read\+Animations}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Read\+Animations()}{\_ReadAnimations()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Resource\+Pool\+::\+\_\+\+Read\+Animations (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{\hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___model_package}{\+\_\+\+Model\+Package} \&}]{model\+Package }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 444 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_ad6968623dc167446598475230b369515}\label{class_m_n_l_1_1_mn_resource_pool_ad6968623dc167446598475230b369515}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Read\+Bone\+Data@{\+\_\+\+Read\+Bone\+Data}}
+\index{\+\_\+\+Read\+Bone\+Data@{\+\_\+\+Read\+Bone\+Data}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Read\+Bone\+Data()}{\_ReadBoneData()}}
+{\footnotesize\ttfamily void Mn\+Resource\+Pool\+::\+\_\+\+Read\+Bone\+Data (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$}]{vertex\+Type,  }\item[{U\+I\+NT}]{num\+Vertices,  }\item[{std\+::vector$<$ \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___bone_data}{\+\_\+\+Bone\+Data} $>$ \&}]{bone\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 236 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a455ca59fa1823515c934b62812ef7166}\label{class_m_n_l_1_1_mn_resource_pool_a455ca59fa1823515c934b62812ef7166}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Read\+From\+Assimp\+Scene@{\+\_\+\+Read\+From\+Assimp\+Scene}}
+\index{\+\_\+\+Read\+From\+Assimp\+Scene@{\+\_\+\+Read\+From\+Assimp\+Scene}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Read\+From\+Assimp\+Scene()}{\_ReadFromAssimpScene()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Resource\+Pool\+::\+\_\+\+Read\+From\+Assimp\+Scene (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 82 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a69b5a13be982eeca8212d83d9dd7731c}\label{class_m_n_l_1_1_mn_resource_pool_a69b5a13be982eeca8212d83d9dd7731c}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Read\+Meshes@{\+\_\+\+Read\+Meshes}}
+\index{\+\_\+\+Read\+Meshes@{\+\_\+\+Read\+Meshes}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Read\+Meshes()}{\_ReadMeshes()}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Resource\+Pool\+::\+\_\+\+Read\+Meshes (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node,  }\item[{U\+I\+NT}]{parent\+Index,  }\item[{\hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___model_package}{\+\_\+\+Model\+Package} \&}]{model\+Package,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&}]{vertex\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Every sub mesh\textquotesingle{}s vertices are serialized in unified lists in a \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data}. Each sub meshes has index offset so that a sub mesh is conceptually allocated in a partial space in the serialized list of \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} 
+
+Mn\+Resource\+Pool.\+cpp 파일의 87 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_ace158d455ad6830d0aaf82994237dbda}\label{class_m_n_l_1_1_mn_resource_pool_ace158d455ad6830d0aaf82994237dbda}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Read\+Mesh\+Indices@{\+\_\+\+Read\+Mesh\+Indices}}
+\index{\+\_\+\+Read\+Mesh\+Indices@{\+\_\+\+Read\+Mesh\+Indices}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Read\+Mesh\+Indices()}{\_ReadMeshIndices()}}
+{\footnotesize\ttfamily void Mn\+Resource\+Pool\+::\+\_\+\+Read\+Mesh\+Indices (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ \&}]{mesh\+Data,  }\item[{U\+I\+NT}]{num\+Indices,  }\item[{std\+::vector$<$ U\+I\+NT $>$ \&}]{index\+Array }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 373 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a27987643db1cb3f0af6f912fb5d67404}\label{class_m_n_l_1_1_mn_resource_pool_a27987643db1cb3f0af6f912fb5d67404}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Read\+Mesh\+Vertices@{\+\_\+\+Read\+Mesh\+Vertices}}
+\index{\+\_\+\+Read\+Mesh\+Vertices@{\+\_\+\+Read\+Mesh\+Vertices}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Read\+Mesh\+Vertices()}{\_ReadMeshVertices()}}
+{\footnotesize\ttfamily void Mn\+Resource\+Pool\+::\+\_\+\+Read\+Mesh\+Vertices (\begin{DoxyParamCaption}\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&}]{vertex\+Type,  }\item[{U\+I\+NT}]{num\+Vertices,  }\item[{std\+::vector$<$ float $>$ \&}]{vertex\+Array,  }\item[{const std\+::vector$<$ \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___bone_data}{\+\_\+\+Bone\+Data} $>$ \&}]{bone\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 268 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a5e09efdbde37ec94da31e1d5bc1f8c5b}\label{class_m_n_l_1_1_mn_resource_pool_a5e09efdbde37ec94da31e1d5bc1f8c5b}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!\+\_\+\+Read\+Single\+Mesh@{\+\_\+\+Read\+Single\+Mesh}}
+\index{\+\_\+\+Read\+Single\+Mesh@{\+\_\+\+Read\+Single\+Mesh}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{\+\_\+\+Read\+Single\+Mesh()}{\_ReadSingleMesh()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ Mn\+Resource\+Pool\+::\+\_\+\+Read\+Single\+Mesh (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{const ai\+Scene $\ast$}]{scene,  }\item[{const ai\+Node $\ast$}]{node,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&}]{vertex\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 124 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a2def364302f9dc1a8c45f6d55885eef6}\label{class_m_n_l_1_1_mn_resource_pool_a2def364302f9dc1a8c45f6d55885eef6}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!Get\+Bone\+Animation@{Get\+Bone\+Animation}}
+\index{Get\+Bone\+Animation@{Get\+Bone\+Animation}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{Get\+Bone\+Animation()}{GetBoneAnimation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} Mn\+Resource\+Pool\+::\+Get\+Bone\+Animation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{model\+Package\+Name,  }\item[{const std\+::string \&}]{animation\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 509 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a6fd196dd10a03c7cefa28500a5244999}\label{class_m_n_l_1_1_mn_resource_pool_a6fd196dd10a03c7cefa28500a5244999}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!Get\+Bone\+Animation@{Get\+Bone\+Animation}}
+\index{Get\+Bone\+Animation@{Get\+Bone\+Animation}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{Get\+Bone\+Animation()}{GetBoneAnimation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{class_m_n_l_1_1_mn_bone_animation}{Mn\+Bone\+Animation} Mn\+Resource\+Pool\+::\+Get\+Bone\+Animation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{model\+Package\+Name,  }\item[{U\+I\+NT}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 530 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_aec880e1f2103fe954fd08312256af4dd}\label{class_m_n_l_1_1_mn_resource_pool_aec880e1f2103fe954fd08312256af4dd}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!Get\+Mesh\+Data@{Get\+Mesh\+Data}}
+\index{Get\+Mesh\+Data@{Get\+Mesh\+Data}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{Get\+Mesh\+Data()}{GetMeshData()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_mesh_data}{Mn\+Mesh\+Data} $>$ Mn\+Resource\+Pool\+::\+Get\+Mesh\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{model\+Package\+Name,  }\item[{const std\+::string \&}]{mesh\+Name }\end{DoxyParamCaption}) const}
+
+Find mesh in the model package. \begin{DoxyReturn}{반환값}
+nullptr if model\+Package unfound or mesh\+Name unfound 
+\end{DoxyReturn}
+
+
+Mn\+Resource\+Pool.\+cpp 파일의 486 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_ac41948326baafb260a2c198ee1baf387}\label{class_m_n_l_1_1_mn_resource_pool_ac41948326baafb260a2c198ee1baf387}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!Load\+Model\+From\+File@{Load\+Model\+From\+File}}
+\index{Load\+Model\+From\+File@{Load\+Model\+From\+File}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{Load\+Model\+From\+File()}{LoadModelFromFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Resource\+Pool\+::\+Load\+Model\+From\+File (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{const std\+::string \&}]{file\+Name,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&}]{vertex\+Type }\end{DoxyParamCaption})}
+
+Load meshes from file into the model package 
+
+Mn\+Resource\+Pool.\+cpp 파일의 19 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a3ed53e3938460f16c420f9968a6022a0}\label{class_m_n_l_1_1_mn_resource_pool_a3ed53e3938460f16c420f9968a6022a0}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!Load\+Model\+From\+File@{Load\+Model\+From\+File}}
+\index{Load\+Model\+From\+File@{Load\+Model\+From\+File}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{Load\+Model\+From\+File()}{LoadModelFromFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily H\+R\+E\+S\+U\+LT Mn\+Resource\+Pool\+::\+Load\+Model\+From\+File (\begin{DoxyParamCaption}\item[{const \hyperlink{namespace_m_n_l_a1eec210db8f309a4a9ac0d9658784c31}{C\+P\+D3\+D\+Device} \&}]{cp\+Device,  }\item[{const std\+::string \&}]{file\+Name,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_m_n_l_1_1_mn_custom_vertex_type}{Mn\+Custom\+Vertex\+Type} $>$ \&}]{vertex\+Type,  }\item[{const std\+::string \&}]{mesh\+Name }\end{DoxyParamCaption})}
+
+Load only a specific mesh in the file 
+
+Mn\+Resource\+Pool.\+cpp 파일의 52 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_m_n_l_1_1_mn_resource_pool_a69859b0db46a6965a6d76b3598b33c73}\label{class_m_n_l_1_1_mn_resource_pool_a69859b0db46a6965a6d76b3598b33c73}} 
+\index{M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}!m\+\_\+model\+Packages@{m\+\_\+model\+Packages}}
+\index{m\+\_\+model\+Packages@{m\+\_\+model\+Packages}!M\+N\+L\+::\+Mn\+Resource\+Pool@{M\+N\+L\+::\+Mn\+Resource\+Pool}}
+\subsubsection{\texorpdfstring{m\+\_\+model\+Packages}{m\_modelPackages}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \hyperlink{struct_m_n_l_1_1_mn_resource_pool_1_1___model_package}{\+\_\+\+Model\+Package}$>$ M\+N\+L\+::\+Mn\+Resource\+Pool\+::m\+\_\+model\+Packages\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mn\+Resource\+Pool.\+h 파일의 86 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Utility/\hyperlink{_mn_resource_pool_8h}{Mn\+Resource\+Pool.\+h}\item 
+Utility/\hyperlink{_mn_resource_pool_8cpp}{Mn\+Resource\+Pool.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MNL_D3D: Core/MnGpuBuffer.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MNL_D3D
+   </div>
+   <div id="projectbrief">MNL for DirectX11</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_mn_gpu_buffer_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MnGpuBuffer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mn_gpu_buffer_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;d3d11.h&gt;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_typedefs_8h.html">MnTypedefs.h</a>&quot;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_m_n_l.html">MNL</a></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="comment">/*</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * MnGpuBuffer allocates video ram memory</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    */</span></div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_gpu_buffer.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html">MnGpuBuffer</a></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a7384edf2315dcacd76e090bd80cf3c72">MnGpuBuffer</a>();</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a6628bd8e65df697f2fd95cdb6e841a04">~MnGpuBuffer</a>();</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        HRESULT <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a00bd28801336391d28e6d91e99a8bef3">Init</a>(<span class="keyword">const</span> <a class="code" href="namespace_m_n_l.html#a1eec210db8f309a4a9ac0d9658784c31">CPD3DDevice</a>&amp; cpDevice, <span class="keyword">const</span> D3D11_BUFFER_DESC&amp; bufferDesc, <span class="keyword">const</span> D3D11_SUBRESOURCE_DATA* initialData);</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        D3D11_MAPPED_SUBRESOURCE <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#aa28d7626be0829bb89db594cf253c62d">MnGpuBuffer::Map</a>(<span class="keyword">const</span> <a class="code" href="namespace_m_n_l.html#aab3aabb6c9360e44ddc8b0bb563c2107">CPD3DDeviceContext</a>&amp; cpDeviceContext, UINT subresourceIndex);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a152eb5876d380e888a065328da057330">Unmap</a>(<span class="keyword">const</span> <a class="code" href="namespace_m_n_l.html#aab3aabb6c9360e44ddc8b0bb563c2107">CPD3DDeviceContext</a>&amp; cpDeviceContext, UINT subresourceIndex);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a77c025ff683cce5025b58e87d28d7549">UpdateBuffer</a>(<a class="code" href="namespace_m_n_l.html#aab3aabb6c9360e44ddc8b0bb563c2107">CPD3DDeviceContext</a> cpDeviceContext, <span class="keyword">const</span> D3D11_SUBRESOURCE_DATA&amp; data);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">const</span> <a class="code" href="namespace_m_n_l.html#aab9c90a8c27ac6410a9cc7cd89efeef1">CPD3DBuffer</a> <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#ae929d387721832436c24e3faf6cd375d">GetBuffer</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        UINT <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#aa6a6a785b1df73b80d33b8f3d828c618">GetBufferByteSize</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a617ce607255f345962df39eec00e9593">IsDynamic</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">protected</span>:</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_gpu_buffer.html#ac37d75136ddee08ebf61d2d188dd4b01">   26</a></span>&#160;        D3D11_BUFFER_DESC   <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#ac37d75136ddee08ebf61d2d188dd4b01">m_bufferDesc</a>;</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_gpu_buffer.html#ac5394da182d4d9955e743b040103fba6">   27</a></span>&#160;        <a class="code" href="namespace_m_n_l.html#aab9c90a8c27ac6410a9cc7cd89efeef1">CPD3DBuffer</a>         <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#ac5394da182d4d9955e743b040103fba6">m_cpBuffer</a>;</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_gpu_buffer.html#a440a564ce0bf811c835516627079d1a5">   28</a></span>&#160;        UINT                <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a440a564ce0bf811c835516627079d1a5">m_numBuffers</a>;</div><div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_gpu_buffer.html#a275688eb205f74155a813a1ba65e149f">   29</a></span>&#160;        UINT                <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#a275688eb205f74155a813a1ba65e149f">m_bufferSize</a>;</div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_gpu_buffer.html#af93d67fac012bafe36e2a052096f63ce">   30</a></span>&#160;        <span class="keywordtype">bool</span>                <a class="code" href="class_m_n_l_1_1_mn_gpu_buffer.html#af93d67fac012bafe36e2a052096f63ce">m_isDynamic</a>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_ac37d75136ddee08ebf61d2d188dd4b01"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#ac37d75136ddee08ebf61d2d188dd4b01">MNL::MnGpuBuffer::m_bufferDesc</a></div><div class="ttdeci">D3D11_BUFFER_DESC m_bufferDesc</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8h_source.html#l00026">MnGpuBuffer.h:26</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_aa6a6a785b1df73b80d33b8f3d828c618"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#aa6a6a785b1df73b80d33b8f3d828c618">MNL::MnGpuBuffer::GetBufferByteSize</a></div><div class="ttdeci">UINT GetBufferByteSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00048">MnGpuBuffer.cpp:48</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html_aab3aabb6c9360e44ddc8b0bb563c2107"><div class="ttname"><a href="namespace_m_n_l.html#aab3aabb6c9360e44ddc8b0bb563c2107">MNL::CPD3DDeviceContext</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; ID3D11DeviceContext &gt; CPD3DDeviceContext</div><div class="ttdef"><b>Definition:</b> <a href="_mn_typedefs_8h_source.html#l00007">MnTypedefs.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_af93d67fac012bafe36e2a052096f63ce"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#af93d67fac012bafe36e2a052096f63ce">MNL::MnGpuBuffer::m_isDynamic</a></div><div class="ttdeci">bool m_isDynamic</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8h_source.html#l00030">MnGpuBuffer.h:30</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_ac5394da182d4d9955e743b040103fba6"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#ac5394da182d4d9955e743b040103fba6">MNL::MnGpuBuffer::m_cpBuffer</a></div><div class="ttdeci">CPD3DBuffer m_cpBuffer</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8h_source.html#l00027">MnGpuBuffer.h:27</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html"><div class="ttname"><a href="namespace_m_n_l.html">MNL</a></div><div class="ttdef"><b>Definition:</b> <a href="_basic_shader_path_8h_source.html#l00007">BasicShaderPath.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a77c025ff683cce5025b58e87d28d7549"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a77c025ff683cce5025b58e87d28d7549">MNL::MnGpuBuffer::UpdateBuffer</a></div><div class="ttdeci">void UpdateBuffer(CPD3DDeviceContext cpDeviceContext, const D3D11_SUBRESOURCE_DATA &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00044">MnGpuBuffer.cpp:44</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a00bd28801336391d28e6d91e99a8bef3"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a00bd28801336391d28e6d91e99a8bef3">MNL::MnGpuBuffer::Init</a></div><div class="ttdeci">HRESULT Init(const CPD3DDevice &amp;cpDevice, const D3D11_BUFFER_DESC &amp;bufferDesc, const D3D11_SUBRESOURCE_DATA *initialData)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00016">MnGpuBuffer.cpp:16</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a275688eb205f74155a813a1ba65e149f"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a275688eb205f74155a813a1ba65e149f">MNL::MnGpuBuffer::m_bufferSize</a></div><div class="ttdeci">UINT m_bufferSize</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8h_source.html#l00029">MnGpuBuffer.h:29</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_aa28d7626be0829bb89db594cf253c62d"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#aa28d7626be0829bb89db594cf253c62d">MNL::MnGpuBuffer::Map</a></div><div class="ttdeci">D3D11_MAPPED_SUBRESOURCE MnGpuBuffer::Map(const CPD3DDeviceContext &amp;cpDeviceContext, UINT subresourceIndex)</div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a440a564ce0bf811c835516627079d1a5"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a440a564ce0bf811c835516627079d1a5">MNL::MnGpuBuffer::m_numBuffers</a></div><div class="ttdeci">UINT m_numBuffers</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8h_source.html#l00028">MnGpuBuffer.h:28</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_ae929d387721832436c24e3faf6cd375d"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#ae929d387721832436c24e3faf6cd375d">MNL::MnGpuBuffer::GetBuffer</a></div><div class="ttdeci">const CPD3DBuffer GetBuffer() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00053">MnGpuBuffer.cpp:53</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a7384edf2315dcacd76e090bd80cf3c72"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a7384edf2315dcacd76e090bd80cf3c72">MNL::MnGpuBuffer::MnGpuBuffer</a></div><div class="ttdeci">MnGpuBuffer()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00006">MnGpuBuffer.cpp:6</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html_a1eec210db8f309a4a9ac0d9658784c31"><div class="ttname"><a href="namespace_m_n_l.html#a1eec210db8f309a4a9ac0d9658784c31">MNL::CPD3DDevice</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; ID3D11Device &gt; CPD3DDevice</div><div class="ttdef"><b>Definition:</b> <a href="_mn_typedefs_8h_source.html#l00006">MnTypedefs.h:6</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a152eb5876d380e888a065328da057330"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a152eb5876d380e888a065328da057330">MNL::MnGpuBuffer::Unmap</a></div><div class="ttdeci">void Unmap(const CPD3DDeviceContext &amp;cpDeviceContext, UINT subresourceIndex)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00040">MnGpuBuffer.cpp:40</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html_aab9c90a8c27ac6410a9cc7cd89efeef1"><div class="ttname"><a href="namespace_m_n_l.html#aab9c90a8c27ac6410a9cc7cd89efeef1">MNL::CPD3DBuffer</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; ID3D11Buffer &gt; CPD3DBuffer</div><div class="ttdef"><b>Definition:</b> <a href="_mn_typedefs_8h_source.html#l00017">MnTypedefs.h:17</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html">MNL::MnGpuBuffer</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8h_source.html#l00010">MnGpuBuffer.h:10</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a6628bd8e65df697f2fd95cdb6e841a04"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a6628bd8e65df697f2fd95cdb6e841a04">MNL::MnGpuBuffer::~MnGpuBuffer</a></div><div class="ttdeci">~MnGpuBuffer()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00012">MnGpuBuffer.cpp:12</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_gpu_buffer_html_a617ce607255f345962df39eec00e9593"><div class="ttname"><a href="class_m_n_l_1_1_mn_gpu_buffer.html#a617ce607255f345962df39eec00e9593">MNL::MnGpuBuffer::IsDynamic</a></div><div class="ttdeci">bool IsDynamic() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_gpu_buffer_8cpp_source.html#l00057">MnGpuBuffer.cpp:57</a></div></div>
+<div class="ttc" id="_mn_typedefs_8h_html"><div class="ttname"><a href="_mn_typedefs_8h.html">MnTypedefs.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><a class="el" href="_mn_gpu_buffer_8h.html">MnGpuBuffer.h</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

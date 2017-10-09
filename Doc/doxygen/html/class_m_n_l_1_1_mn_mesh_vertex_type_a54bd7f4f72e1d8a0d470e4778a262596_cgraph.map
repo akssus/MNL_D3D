@@ -1,0 +1,8 @@
+<map id="MNL::MnMeshVertexType::MnMeshVertexType" name="MNL::MnMeshVertexType::MnMeshVertexType">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_custom_vertex_type.html#add19b1562c7ce78121b1e7ef79f8a614" title="MNL::MnCustomVertexType\l::AddInputElement" alt="" coords="227,123,413,164"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_input_element.html#a1bdc917e5920941e913048e6a39eaa48" title="MNL::MnInputElement\l::GetByteSize" alt="" coords="479,5,630,47"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_input_element.html#a314bdce70c4781632737c247c040f014" title="MNL::MnInputElement\l::GetIndex" alt="" coords="696,108,847,149"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_custom_vertex_type.html#a946914659f5fa5fcb9c880842d562a8f" title="MNL::MnCustomVertexType\l::_SetFlag" alt="" coords="461,123,648,164"/>
+<area shape="rect" id="node6" href="$class_m_n_l_1_1_mn_input_element.html#a6aa08fd62581e1eddc7e632de0bd9564" title="MNL::MnInputElement\l::GetSemanticName" alt="" coords="696,217,847,259"/>
+<area shape="rect" id="node7" href="$class_m_n_l_1_1_mn_custom_vertex_type.html#af969b32418900badbe331bf4190af1ee" title="MNL::MnCustomVertexType\l::_SortInputElements" alt="" coords="461,188,648,229"/>
+</map>

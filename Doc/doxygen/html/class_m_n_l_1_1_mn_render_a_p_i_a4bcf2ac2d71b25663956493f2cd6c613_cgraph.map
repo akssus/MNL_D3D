@@ -1,0 +1,5 @@
+<map id="MNL::MnRenderAPI::SetVertexBuffer" name="MNL::MnRenderAPI::SetVertexBuffer">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_vertex_buffer.html#a6c3b80a53b7a47c960b8008aba45a6ed" title="MNL::MnVertexBuffer\l::GetStride" alt="" coords="256,5,403,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_vertex_buffer.html#ac18e530b026a8a625b211ad97ec78c45" title="MNL::MnVertexBuffer\l::GetBuffer" alt="" coords="256,71,403,112"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_gpu_buffer.html#ae929d387721832436c24e3faf6cd375d" title="MNL::MnGpuBuffer::GetBuffer" alt="" coords="451,78,645,105"/>
+</map>

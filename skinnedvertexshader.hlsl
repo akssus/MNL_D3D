@@ -16,7 +16,7 @@ cbuffer LightBuffer : register(b2)
 	uint lightType;
 };
 
-cbuffer BonePaletteBuffer : register(b3)
+cbuffer BonePaletteBuffer : register(b4)
 {
 	matrix bonePalette[96];
 };

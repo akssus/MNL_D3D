@@ -1,3 +1,12 @@
+/**
+@class MnConstantBufferType
+@brief 상수버퍼 내 데이터타입의 컨테이너 역할을 하는 클래스.
+@author Akssus
+@section 개요
+MnConstantElement 객체 리스트를 가지고 상수버퍼의 struct 역할을 한다.
+
+*/
+
 #pragma once
 #include <d3d11.h>
 #include <vector>
@@ -5,10 +14,6 @@
 
 namespace MNL
 {
-	/*
-	@function store MnConstantElement and desribe a cbuffer, get total byte size and number of elements
-	@include series of constant elements, total byte size
-	*/
 	class MnConstantBufferType
 	{
 	public:
@@ -29,10 +34,11 @@ namespace MNL
 		*/
 		UINT TotalByteSize() const;
 
-		/*
+		/**
 		@return byte size with multiple of 16
 		*/
 		UINT PaddedByteSize() const;
+		
 		/**
 		@return count of input elements
 		*/
@@ -40,6 +46,6 @@ namespace MNL
 
 	private:
 		std::vector<MnConstantElement> m_constantElements;
-		UINT							m_totalByteSize;
+		UINT m_totalByteSize;
 	};
 }

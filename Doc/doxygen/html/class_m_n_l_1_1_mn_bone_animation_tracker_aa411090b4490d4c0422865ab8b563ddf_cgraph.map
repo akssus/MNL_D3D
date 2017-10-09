@@ -1,0 +1,6 @@
+<map id="MNL::MnBoneAnimationTracker::UpdateAnimation" name="MNL::MnBoneAnimationTracker::UpdateAnimation">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_bone_animation.html#a40f42c23266fe578394b127d34eb8208" title="MNL::MnBoneAnimation\l::GetTotalDuration" alt="" coords="282,5,445,47"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_bone_animation_tracker.html#abb7e0010c3717fe7b6f54a6665b31bbc" title="MNL::MnBoneAnimationTracker\l::_UpdateBones" alt="" coords="260,71,467,112"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_bone_animation.html#a4ab001675acbda970c1a9b41b886d76f" title="MNL::MnBoneAnimation\l::GetNumElements" alt="" coords="515,37,677,79"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_bone_animation.html#a8a40906cb4103fe6c926b439ad847e74" title="MNL::MnBoneAnimation\l::GetElement" alt="" coords="515,103,677,144"/>
+</map>

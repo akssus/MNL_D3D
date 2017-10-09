@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MNL_D3D: Render/MnSkeleton.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MNL_D3D
+   </div>
+   <div id="projectbrief">MNL for DirectX11</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_mn_skeleton_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MnSkeleton.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mn_skeleton_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;d3d11.h&gt;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;DXTK\SimpleMath.h&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_typedefs_8h.html">Core\MnTypedefs.h</a>&quot;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_bone_8h.html">MnBone.h</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mn_matrix_palette_8h.html">MnMatrixPalette.h</a>&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_m_n_l.html">MNL</a></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_skeleton.html">   12</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_m_n_l_1_1_mn_skeleton.html">MnSkeleton</a></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#adf1be48a501ebca36f4994a3c50c8084">MnSkeleton</a>();</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a955aa6f82d0c872c3b62c01d1921dbc0">~MnSkeleton</a>();</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a21b331c44d2cc80bcc1401fa87cce13f">AddBone</a>(<span class="keyword">const</span> <a class="code" href="class_m_n_l_1_1_mn_bone.html">MnBone</a>&amp; bone);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        UINT <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a3aa0541c8b6ea0c1cd4a3fe68580e5c6">GetNumBones</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::string <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a1536e0bb8da6bdb03b6ce117fa995869">GetBoneName</a>(UINT index) <span class="keyword">const</span>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a3e82493cbe23cb9194e0386f63062a42">SetRootBoneName</a>(<span class="keyword">const</span> std::string&amp; rootBoneName);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a7c3019ae3e241b3c6569fb4639b511b8">UpdateBone</a>(<span class="keyword">const</span> std::string&amp; boneName, <span class="keyword">const</span> DirectX::SimpleMath::Vector3&amp; position, <span class="keyword">const</span> DirectX::SimpleMath::Quaternion&amp; rotation, <span class="keyword">const</span> DirectX::SimpleMath::Vector3&amp; scale);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">/*</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">        Repose all the bones according to its parent&#39;s transformation</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">        */</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a58eeefaad4481a12c647ffcf8f8b6540">ReposeBones</a>();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">/*</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">        Number of matrix is 96. This is fixed specification</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">        */</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        D3D11_SUBRESOURCE_DATA <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#ab1402fc56312ac3412ff7fc8093e9f2b">GetBonePalette</a>();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#acb6babb0a6d0c5fd190db635df196b30">_GetBoneIndex</a>(<span class="keyword">const</span> std::string&amp; boneName);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a75808800a6739088b729a9f9112e3521">_ReposeBone</a>(<span class="keyword">const</span> std::string&amp; boneName, <span class="keyword">const</span> DirectX::SimpleMath::Matrix&amp; baseMatrix);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_skeleton.html#a06064d27da5eb5ce0074f9f08abd54f6">   46</a></span>&#160;        std::string <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a06064d27da5eb5ce0074f9f08abd54f6">m_rootBoneName</a>;</div><div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_skeleton.html#a18c08256f1a9ba2ade021bee10b1b960">   47</a></span>&#160;        std::map&lt;std::string, std::vector&lt;std::string&gt;&gt; <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a18c08256f1a9ba2ade021bee10b1b960">m_boneTree</a>;</div><div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_skeleton.html#a80c3e9789e584313e6fbae03f4184a12">   48</a></span>&#160;        std::vector&lt;MnBone&gt; <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#a80c3e9789e584313e6fbae03f4184a12">m_lstBones</a>;</div><div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_m_n_l_1_1_mn_skeleton.html#aff568cb8840e6f4c5d72ab9b639a665d">   49</a></span>&#160;        std::vector&lt;DirectX::SimpleMath::Matrix&gt; <a class="code" href="class_m_n_l_1_1_mn_skeleton.html#aff568cb8840e6f4c5d72ab9b639a665d">m_lstBoneMatrix</a>;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    };</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div><div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a955aa6f82d0c872c3b62c01d1921dbc0"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a955aa6f82d0c872c3b62c01d1921dbc0">MNL::MnSkeleton::~MnSkeleton</a></div><div class="ttdeci">~MnSkeleton()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00013">MnSkeleton.cpp:13</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_bone_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_bone.html">MNL::MnBone</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_bone_8h_source.html#l00013">MnBone.h:13</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_ab1402fc56312ac3412ff7fc8093e9f2b"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#ab1402fc56312ac3412ff7fc8093e9f2b">MNL::MnSkeleton::GetBonePalette</a></div><div class="ttdeci">D3D11_SUBRESOURCE_DATA GetBonePalette()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00073">MnSkeleton.cpp:73</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a06064d27da5eb5ce0074f9f08abd54f6"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a06064d27da5eb5ce0074f9f08abd54f6">MNL::MnSkeleton::m_rootBoneName</a></div><div class="ttdeci">std::string m_rootBoneName</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8h_source.html#l00046">MnSkeleton.h:46</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a75808800a6739088b729a9f9112e3521"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a75808800a6739088b729a9f9112e3521">MNL::MnSkeleton::_ReposeBone</a></div><div class="ttdeci">void _ReposeBone(const std::string &amp;boneName, const DirectX::SimpleMath::Matrix &amp;baseMatrix)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00053">MnSkeleton.cpp:53</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a3e82493cbe23cb9194e0386f63062a42"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a3e82493cbe23cb9194e0386f63062a42">MNL::MnSkeleton::SetRootBoneName</a></div><div class="ttdeci">void SetRootBoneName(const std::string &amp;rootBoneName)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00033">MnSkeleton.cpp:33</a></div></div>
+<div class="ttc" id="namespace_m_n_l_html"><div class="ttname"><a href="namespace_m_n_l.html">MNL</a></div><div class="ttdef"><b>Definition:</b> <a href="_basic_shader_path_8h_source.html#l00007">BasicShaderPath.h:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a3aa0541c8b6ea0c1cd4a3fe68580e5c6"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a3aa0541c8b6ea0c1cd4a3fe68580e5c6">MNL::MnSkeleton::GetNumBones</a></div><div class="ttdeci">UINT GetNumBones() const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00024">MnSkeleton.cpp:24</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a18c08256f1a9ba2ade021bee10b1b960"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a18c08256f1a9ba2ade021bee10b1b960">MNL::MnSkeleton::m_boneTree</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; m_boneTree</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8h_source.html#l00047">MnSkeleton.h:47</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_adf1be48a501ebca36f4994a3c50c8084"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#adf1be48a501ebca36f4994a3c50c8084">MNL::MnSkeleton::MnSkeleton</a></div><div class="ttdeci">MnSkeleton()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00007">MnSkeleton.cpp:7</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html">MNL::MnSkeleton</a></div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8h_source.html#l00012">MnSkeleton.h:12</a></div></div>
+<div class="ttc" id="_mn_matrix_palette_8h_html"><div class="ttname"><a href="_mn_matrix_palette_8h.html">MnMatrixPalette.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a21b331c44d2cc80bcc1401fa87cce13f"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a21b331c44d2cc80bcc1401fa87cce13f">MNL::MnSkeleton::AddBone</a></div><div class="ttdeci">void AddBone(const MnBone &amp;bone)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00017">MnSkeleton.cpp:17</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a1536e0bb8da6bdb03b6ce117fa995869"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a1536e0bb8da6bdb03b6ce117fa995869">MNL::MnSkeleton::GetBoneName</a></div><div class="ttdeci">std::string GetBoneName(UINT index) const</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00029">MnSkeleton.cpp:29</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a80c3e9789e584313e6fbae03f4184a12"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a80c3e9789e584313e6fbae03f4184a12">MNL::MnSkeleton::m_lstBones</a></div><div class="ttdeci">std::vector&lt; MnBone &gt; m_lstBones</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8h_source.html#l00048">MnSkeleton.h:48</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_acb6babb0a6d0c5fd190db635df196b30"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#acb6babb0a6d0c5fd190db635df196b30">MNL::MnSkeleton::_GetBoneIndex</a></div><div class="ttdeci">int _GetBoneIndex(const std::string &amp;boneName)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00082">MnSkeleton.cpp:82</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a7c3019ae3e241b3c6569fb4639b511b8"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a7c3019ae3e241b3c6569fb4639b511b8">MNL::MnSkeleton::UpdateBone</a></div><div class="ttdeci">void UpdateBone(const std::string &amp;boneName, const DirectX::SimpleMath::Vector3 &amp;position, const DirectX::SimpleMath::Quaternion &amp;rotation, const DirectX::SimpleMath::Vector3 &amp;scale)</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00037">MnSkeleton.cpp:37</a></div></div>
+<div class="ttc" id="_mn_typedefs_8h_html"><div class="ttname"><a href="_mn_typedefs_8h.html">MnTypedefs.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_aff568cb8840e6f4c5d72ab9b639a665d"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#aff568cb8840e6f4c5d72ab9b639a665d">MNL::MnSkeleton::m_lstBoneMatrix</a></div><div class="ttdeci">std::vector&lt; DirectX::SimpleMath::Matrix &gt; m_lstBoneMatrix</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8h_source.html#l00049">MnSkeleton.h:49</a></div></div>
+<div class="ttc" id="_mn_bone_8h_html"><div class="ttname"><a href="_mn_bone_8h.html">MnBone.h</a></div></div>
+<div class="ttc" id="class_m_n_l_1_1_mn_skeleton_html_a58eeefaad4481a12c647ffcf8f8b6540"><div class="ttname"><a href="class_m_n_l_1_1_mn_skeleton.html#a58eeefaad4481a12c647ffcf8f8b6540">MNL::MnSkeleton::ReposeBones</a></div><div class="ttdeci">void ReposeBones()</div><div class="ttdef"><b>Definition:</b> <a href="_mn_skeleton_8cpp_source.html#l00049">MnSkeleton.cpp:49</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_3d93a40d3a63baa1169d25b6af232e01.html">Render</a></li><li class="navelem"><a class="el" href="_mn_skeleton_8h.html">MnSkeleton.h</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

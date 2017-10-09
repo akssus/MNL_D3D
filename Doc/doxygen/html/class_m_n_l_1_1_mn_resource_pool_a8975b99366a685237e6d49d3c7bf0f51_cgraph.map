@@ -1,0 +1,6 @@
+<map id="MNL::MnResourcePool::_CreateSkeleton" name="MNL::MnResourcePool::_CreateSkeleton">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_bone.html#a36b9b60148969ce31bc74a4bbd4c56cf" title="MNL::MnBone::SetName" alt="" coords="229,5,395,32"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_bone.html#a23ab583dd181a53935357ec51e376d9a" title="MNL::MnBone::SetTransform" alt="" coords="217,56,407,83"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_bone.html#a523fe1078ba5b534b316d38748cb2625" title="MNL::MnBone::SetOffsetMatrix" alt="" coords="211,107,413,133"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_bone.html#a7be990cbdf3f123a6649b8de9968ac0f" title="MNL::MnBone::SetParentName" alt="" coords="209,157,415,184"/>
+</map>

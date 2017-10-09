@@ -1,0 +1,6 @@
+<map id="MNL::MnSkeleton::AddBone" name="MNL::MnSkeleton::AddBone">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_bone.html#a30963b69412919ada3ca5f166faf846f" title="MNL::MnBone::GetOffsetTransform" alt="" coords="240,5,465,32"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_bone.html#a404d1fc423d63715cd0a8bbe3afdaac7" title="MNL::MnBone::GetTransform" alt="" coords="257,56,448,83"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_bone.html#a476cfd8bcfebded34cbcbfd08d6a44b2" title="MNL::MnBone::GetParentName" alt="" coords="249,107,456,133"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_bone.html#a7780138cc897c4358c276cbe04c2868c" title="MNL::MnBone::GetName" alt="" coords="269,157,437,184"/>
+</map>

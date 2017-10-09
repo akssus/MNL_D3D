@@ -1,0 +1,9 @@
+<map id="MNL::MnInputElement::GetSemanticName" name="MNL::MnInputElement::GetSemanticName">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_custom_vertex_type.html#add19b1562c7ce78121b1e7ef79f8a614" title="MNL::MnCustomVertexType\l::AddInputElement" alt="" coords="204,71,391,112"/>
+<area shape="rect" id="node5" href="$class_m_n_l_1_1_mn_custom_vertex_type.html#af969b32418900badbe331bf4190af1ee" title="MNL::MnCustomVertexType\l::_SortInputElements" alt="" coords="204,136,391,177"/>
+<area shape="rect" id="node7" href="$class_m_n_l_1_1_mn_input_layout.html#a515d58b7d098fd375e54915392ae2f63" title="MNL::MnInputLayout\l::_CreateInputElementDesc" alt="" coords="207,201,388,243"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_mesh_vertex_type.html#a54bd7f4f72e1d8a0d470e4778a262596" title="MNL::MnMeshVertexType\l::MnMeshVertexType" alt="" coords="463,5,636,47"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_skinned_mesh_vertex_type.html#abe942c6fd7df3e6897c1412d0bb85d59" title="MNL::MnSkinnedMeshVertex\lType::MnSkinnedMeshVertexType" alt="" coords="439,71,660,112"/>
+<area shape="rect" id="node6" href="$class_m_n_l_1_1_mn_custom_vertex_type.html#af8dca54222b2c1e264ea7c1ec9ae8a18" title="MNL::MnCustomVertexType\l::AddInputElement" alt="" coords="456,136,643,177"/>
+<area shape="rect" id="node8" href="$class_m_n_l_1_1_mn_input_layout.html#a7f97321379e253c8ae1c43c15a02f356" title="MNL::MnInputLayout\l::Init" alt="" coords="478,201,621,243"/>
+</map>

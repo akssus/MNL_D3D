@@ -54,7 +54,6 @@ namespace MNL
 		std::vector<std::shared_ptr<MnShaderPathInstance>> m_shaderPaths;
 		std::vector<std::shared_ptr<MnConstantBuffer>> m_constantBuffers;
 		std::shared_ptr<MnMeshTextureCombination> m_spTextureCombination;
-		std::map<UINT, UINT> m_mapIndexToSlot;
 		UINT m_numVsConstantBuffers;
 		UINT m_numPsConstantBuffers;
 	};

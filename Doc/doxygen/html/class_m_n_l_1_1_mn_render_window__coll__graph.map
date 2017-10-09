@@ -1,0 +1,5 @@
+<map id="MNL::MnRenderWindow" name="MNL::MnRenderWindow">
+<area shape="rect" id="node2" href="$class_m_n_l_1_1_mn_render_target_view.html" title="{MNL::MnRenderTargetView\n|&#45; m_cpRenderTargetView\l|+ MnRenderTargetView()\l+ ~MnRenderTargetView()\l+ Init()\l+ GetRenderTargetView()\l}" alt="" coords="5,79,185,200"/>
+<area shape="rect" id="node3" href="$class_m_n_l_1_1_mn_window.html" title="{MNL::MnWindow\n|&#45; m_hWnd\l&#45; m_wndClass\l&#45; m_hInstance\l&#45; m_cmdShow\l|+ MnWindow()\l+ ~MnWindow()\l+ Create()\l+ Shutdown()\l+ GetWindowHandle()\l+ GetWindowRect()\l}" alt="" coords="210,42,359,237"/>
+<area shape="rect" id="node4" href="$class_m_n_l_1_1_mn_swap_chain.html" title="{MNL::MnSwapChain\n|&#45; m_outputWindow\l&#45; m_isVsync\l&#45; m_numBuffers\l&#45; m_swapChainDesc\l&#45; m_cpSwapChain\l&#45; m_backBuffer\l|+ MnSwapChain()\l+ ~MnSwapChain()\l+ Init()\l+ ToggleFullscreen()\l+ Resize()\l+ IsVsync()\l+ GetBackBuffer()\l+ GetSwapChain()\l&#45; _InitSwapChain()\l}" alt="" coords="383,5,525,273"/>
+</map>
