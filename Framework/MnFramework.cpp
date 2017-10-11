@@ -29,44 +29,44 @@ HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wnd
 	}
 
 	//렌더API 초기화
-	result = m_renderAPI.Init(m_hardware, true);
+	result = renderAPI.Init(m_hardware, true);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::m_renderAPI));
+		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::renderAPI));
 		return result;
 	}
 
 	//렌더 윈도우 초기화
 	result = m_renderWindow.Init(hInstance, SW_NORMAL, windowTitle, L"MNL", wndX, wndY, wndWidth, wndHeight, messageHandler,
-		m_hardware, true, 1, 60, true, true, 1, m_renderAPI.GetD3DDevice(), m_renderAPI.GetD3DDeviceContext());
+		m_hardware, true, 1, 60, true, true, 1, renderAPI.GetD3DDevice(), renderAPI.GetD3DDeviceContext());
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::m_renderWindow));
 		return result;
 	}
 	//렌더타겟 바인딩
-	m_renderAPI.SetRenderTarget(m_renderWindow.GetBackBufferRenderTargetView(), m_renderWindow.GetBackBufferDepthStencilView());
+	renderAPI.SetRenderTarget(m_renderWindow.GetBackBufferRenderTargetView(), m_renderWindow.GetBackBufferDepthStencilView());
 
 	//뎁스 스텐실 스테이트 초기화
-	result = m_depthStencilState.Init(m_renderAPI.GetD3DDevice(), true, true);
+	result = m_depthStencilState.Init(renderAPI.GetD3DDevice(), true, true);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::m_depthStencilState));
 		return result;
 	}
-	m_renderAPI.SetDepthStencilState(m_depthStencilState.GetState());
+	renderAPI.SetDepthStencilState(m_depthStencilState.GetState());
 
 	//래스터라이저 스테이트 초기화
-	result = m_rasterizerState.Init(m_renderAPI.GetD3DDevice(), D3D11_FILL_SOLID, true);
+	result = m_rasterizerState.Init(renderAPI.GetD3DDevice(), D3D11_FILL_SOLID, true);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::m_rasterizerState));
 		return result;
 	}
-	m_renderAPI.SetRasterizerState(m_rasterizerState.GetState());
+	renderAPI.SetRasterizerState(m_rasterizerState.GetState());
 
 	//뷰포트 초기화
-	m_renderAPI.SetViewport(m_renderWindow.GetWindowViewport());
+	renderAPI.SetViewport(m_renderWindow.GetWindowViewport());
 
 	result = OnInit();
 	if (FAILED(result))
@@ -110,19 +110,9 @@ bool MnFramework::OnUpdate()
 	return false;
 }
 
-
-CPD3DDevice MnFramework::GetD3DDevice() const
-{
-	return m_renderAPI.GetD3DDevice();
-}
-CPD3DDeviceContext MnFramework::GetD3DDeviceContext() const
-{
-	return m_renderAPI.GetD3DDeviceContext();
-}
-
 void MnFramework::ClearBackBuffer(DirectX::SimpleMath::Color color)
 {
-	m_renderWindow.ClearBackBuffer(m_renderAPI, color);
+	m_renderWindow.ClearBackBuffer(renderAPI, color);
 }
 void MnFramework::SwapBuffers()
 {
@@ -131,13 +121,14 @@ void MnFramework::SwapBuffers()
 
 void MnFramework::SetRenderer(const std::shared_ptr<MnRenderer>& spRenderer)
 {
-	spRenderer->ApplyShaderPaths(m_renderAPI);
-	spRenderer->ApplyConstantBuffers(m_renderAPI);
-	spRenderer->ApplyTextures(m_renderAPI);
+	spRenderer->ApplyShaderPaths(renderAPI);
+	spRenderer->ApplyConstantBuffers(renderAPI);
+	spRenderer->ApplyTextures(renderAPI);
 }
+
 HRESULT MnFramework::RenderMesh(const std::shared_ptr<MnRenderer>& spRenderer, const std::shared_ptr<MnMesh>& mesh)
 {
-	return spRenderer->RenderMesh(m_renderAPI, mesh);
+	return spRenderer->RenderMesh(renderAPI, mesh);
 }
 void MnFramework::SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView)
 {

@@ -27,6 +27,7 @@ HRESULT MnSkinnedMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<M
 	m_subMeshes.assign(spMeshData->GetSubMeshes().begin(), spMeshData->GetSubMeshes().end());
 
 	m_spSkeleton = std::make_shared<MnSkeleton>(); 
+	//스켈레톤은 공유 불가하므로 복사해 받는다.
 	*m_spSkeleton = *(spMeshData->GetSkeleton());
 
 	return S_OK;

@@ -5,7 +5,10 @@
 @section 개요
 MNL 클래스들의 실제 인스턴싱과 초기화 과정을 처리한다. \n
 또한 게임 루프를 가상함수로 제공하며 MnFramework 를 상속하여 실질적인 구현이 가능하다. \n
-MNL 코어 객체들은 private으로 숨겨져 있으며, 프레임워크를 구체화 하는 사용자는 프레임워크가 제공하는 인터페이스만 사용 가능하다.
+MNL 코어 객체들은 private으로 숨겨져 있으며, 프레임워크를 구체화 하는 사용자는 프레임워크가 제공하는 인터페이스만 사용 가능하다.\n
+\n
+Framework 수준의 객체들은 MnFramework에 상당히 의존적이며, MnFramework는 초기화 이후 게임 흐름에 관한 대부분의 기능을 제공한다. \n
+또한 초기화가 되었다는 전제 하에 D3D 장치와 MnRenderAPI 에 대한 정적 참조를 제공한다.
 */
 
 #pragma once
@@ -54,9 +57,6 @@ namespace MNL
 		virtual bool OnUpdate();
 
 	protected:
-		CPD3DDevice GetD3DDevice() const;
-		CPD3DDeviceContext GetD3DDeviceContext() const;
-
 		/**
 		@brief 백버퍼를 초기화한다.
 		@param color 백버퍼의 초기화 될 색상
@@ -102,17 +102,21 @@ namespace MNL
 		UINT GetScreenWidth() const;
 		UINT GetScreenHeight() const;
 
+	public:
+		/**
+		@brief D3D장치에 대한 접근 및 파이프라인 설정에 관한 API를 제공하는 객체로서 static으로 선언해 렌더 API에 대한 전역참조를 허용한다.
+		*/
+		static MnRenderAPI renderAPI;
 
 	protected:
-		UINT m_screenWidth;
-		UINT m_screenHeight;
+		UINT m_screenWidth; ///< 윈도우의 넓이
+		UINT m_screenHeight; ///< 윈도우의 높이
 
 	private:
-		MnHardware m_hardware;
-		MnRenderAPI m_renderAPI;
-		MnRenderWindow m_renderWindow;
-		MnDepthStencilState m_depthStencilState;
-		MnRasterizerState m_rasterizerState;
-		MnViewport m_viewport;
+		MnHardware m_hardware; ///< VGA 및 모니터에 대한 정보를 담은 객체
+		MnRenderWindow m_renderWindow; ///< 백버퍼 정보와 렌더링 될 윈도우의 정보를 지닌 객체
+		MnDepthStencilState m_depthStencilState; ///< 뎁스 스텐실 상태 정보를 담은 객체
+		MnRasterizerState m_rasterizerState; ///< 래스터라이저 상태 정보를 담은 객체
+		MnViewport m_viewport; //임시
 	};
 }

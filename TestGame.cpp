@@ -20,7 +20,7 @@ HRESULT TestGame::OnInit()
 
 	//렌더러 초기화
 	m_spSkinnedMeshRenderer = std::make_shared<MnSkinnedMeshRenderer>();
-	HRESULT result = m_spSkinnedMeshRenderer->Init(GetD3DDevice(), vertexType);
+	HRESULT result = m_spSkinnedMeshRenderer->Init(renderAPI.GetD3DDevice(), vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(TestGame::m_spSkinnedMeshRenderer));
@@ -29,7 +29,7 @@ HRESULT TestGame::OnInit()
 
 	//셰이더패스 초기화
 	auto shaderPath = std::make_shared<SkinnedMeshShaderPath>();
-	result = shaderPath->Init(GetD3DDevice(), vertexType);
+	result = shaderPath->Init(renderAPI.GetD3DDevice(), vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(shaderPath));
@@ -40,7 +40,7 @@ HRESULT TestGame::OnInit()
 	//텍스쳐 로딩 및 초기화
 	auto textureComb = std::make_shared<MnMeshTextureCombination>();
 	auto texture = std::make_shared<MnMeshTexture>();
-	result = texture->LoadFromFile(GetD3DDevice(), L"rico_uv.png");
+	result = texture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
 	if (FAILED(result))
 	{
 		MnLog::MB_Failed(MN_VAR_INFO(texture->LoadFromFile));
@@ -62,7 +62,7 @@ HRESULT TestGame::OnInit()
 	m_camera.LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	//메시를 리로스풀로 로딩
-	result = m_resourcePool.LoadModelFromFile(GetD3DDevice(), "rico_anim2.fbx", vertexType);
+	result = m_resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim2.fbx", vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_Failed(MN_VAR_INFO(TestGame::m_resourcePool.LoadModelFromFile));
@@ -77,7 +77,7 @@ HRESULT TestGame::OnInit()
 		MnLog::MB_IsNull(MN_VAR_INFO(meshData));
 		return E_FAIL;
 	}
-	result = mesh->Init(GetD3DDevice(), meshData);
+	result = mesh->Init(renderAPI.GetD3DDevice(), meshData);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(mesh));
@@ -132,12 +132,12 @@ bool TestGame::OnUpdate()
 	matWorld = matWorld * Matrix::CreateRotationY(rad);
 	matWorld = matWorld * Matrix::CreateTranslation(0.0f, -200.0f, 0.0f);
 
-	m_spSkinnedMeshRenderer->SetViewProjectionBuffer(GetD3DDeviceContext(), m_camera.GetViewMatrix(), m_camera.GetProjectionMatrix());
+	m_spSkinnedMeshRenderer->SetViewProjectionBuffer(renderAPI.GetD3DDeviceContext(), m_camera.GetViewMatrix(), m_camera.GetProjectionMatrix());
 	//아래 인수들은 전부 메시를 가진 오브젝트 클래스가 가지고 있어야 함.
-	m_spSkinnedMeshRenderer->SetWorldBuffer(GetD3DDeviceContext(), matWorld);
-	m_spSkinnedMeshRenderer->SetLightBuffer(GetD3DDeviceContext(), m_lstLights[0]);
-	m_spSkinnedMeshRenderer->SetMaterial(GetD3DDeviceContext(), m_lstMaterials[0]);
-	m_spSkinnedMeshRenderer->SetBonePalette(GetD3DDeviceContext(), dynamic_cast<MnSkinnedMesh*>(m_lstMeshes[0].get())->GetSkeleton());
+	m_spSkinnedMeshRenderer->SetWorldBuffer(renderAPI.GetD3DDeviceContext(), matWorld);
+	m_spSkinnedMeshRenderer->SetLightBuffer(renderAPI.GetD3DDeviceContext(), m_lstLights[0]);
+	m_spSkinnedMeshRenderer->SetMaterial(renderAPI.GetD3DDeviceContext(), m_lstMaterials[0]);
+	m_spSkinnedMeshRenderer->SetBonePalette(renderAPI.GetD3DDeviceContext(), dynamic_cast<MnSkinnedMesh*>(m_lstMeshes[0].get())->GetSkeleton());
 
 	RenderMesh(m_spSkinnedMeshRenderer, m_lstMeshes[0]);
 

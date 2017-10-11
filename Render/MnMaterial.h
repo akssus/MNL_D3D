@@ -7,12 +7,8 @@ namespace MNL
 	/*
 	Materials are not producted by model files. Just make some fixed material datas with factory then use them.
 	*/
-	class MnMaterial
+	struct MnMaterial
 	{
-	public:
-		MnMaterial();
-		~MnMaterial();
-
 		DirectX::SimpleMath::Vector4 diffuse;
 		DirectX::SimpleMath::Vector4 ambient;
 		DirectX::SimpleMath::Vector4 emissive;
