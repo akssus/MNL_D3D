@@ -11,6 +11,7 @@ Update 메소드를 통해 독립적인 로직 모듈을 가지며 게임 루프 내에서 로직을 수행한�
 #pragma once
 #include <d3d11.h>
 #include <memory>
+#include <string>
 #include <vector>
 #include <map>
 #include <string>
@@ -36,7 +37,22 @@ namespace MNL
 		template <class T>
 		std::shared_ptr<T> GetComponent();
 
+		/**
+		@brief 분류용 다용도 태그 설정
+		*/
+		void SetTag(const std::string& tag);
+		std::string GetTag() const;
+
+		/**
+		@brief 게임오브젝트의 고유 식별 ID를 설정한다.
+		*/
+		void SetID(UINT id);
+		UINT GetID() const;
+		
+
 	private:
 		std::map<std::string, std::shared_ptr<MnGameObjectComponent>> m_tblComponents;
+		std::string m_tag; ///< 인스턴스 다용도 태그
+		UINT m_id;
 	};
 }

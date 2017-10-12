@@ -3,7 +3,7 @@
 
 using namespace MNL;
 
-MnGameObject::MnGameObject()
+MnGameObject::MnGameObject() : m_id(0)
 {
 }
 
@@ -30,4 +30,22 @@ std::shared_ptr<T> MnGameObject::GetComponent()
 	}
 	//다운캐스팅 실패시 자동으로 nullptr 반환
 	return std::dynamic_pointer_cast<T>(m_tblComponenets[key]);
+}
+
+void MnGameObject::SetTag(const std::string& tag)
+{
+	m_tag = tag;
+}
+std::string MnGameObject::GetTag() const
+{
+	return m_tag;
+}
+
+void MnGameObject::SetID(UINT id)
+{
+	m_id = id;
+}
+UINT MnGameObject::GetID() const
+{
+	return m_id;
 }
