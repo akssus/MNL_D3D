@@ -17,7 +17,7 @@ namespace MNL
 		Initialize input layout
 		@return false if failed to initialize
 		*/
-		HRESULT Init(CPD3DDevice cpD3DDevice, const std::shared_ptr<MnCustomVertexType> pCustomVertexType, const std::shared_ptr<MnVertexShader> pVertexShader);
+		HRESULT Init(CPD3DDevice cpD3DDevice, const std::shared_ptr<MnCustomVertexType> pCustomVertexType, const std::shared_ptr<MnVertexShader> vertexShader);
 		CPD3DInputLayout GetInputLayout() const;
 
 	private:

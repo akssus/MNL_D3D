@@ -31,7 +31,7 @@ HRESULT MnCustomRenderTarget::Init(const CPD3DDevice& cpDevice, float textureWid
 	HRESULT result = m_renderedTexture.Init(cpDevice, texDesc);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnCustomRenderTarget::m_renderedTexture));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_renderedTexture));
 		return result;
 	}
 
@@ -45,7 +45,15 @@ HRESULT MnCustomRenderTarget::Init(const CPD3DDevice& cpDevice, float textureWid
 	result = m_renderTargetView.Init(cpDevice, m_renderedTexture.GetTexture(), renderTargetViewDesc);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnCustomRenderTarget::m_renderTargetView));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_renderTargetView));
+		return result;
+	}
+
+	//嘉捞歹 府家胶 轰 积己
+	result = m_shaderResourceView.Init(cpDevice, m_renderedTexture.GetTexture());
+	if (FAILED(result))
+	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_shaderResourceView));
 		return result;
 	}
 
@@ -53,7 +61,7 @@ HRESULT MnCustomRenderTarget::Init(const CPD3DDevice& cpDevice, float textureWid
 	result = m_depthStencilBuffer.Init(cpDevice, textureWidth, textureHeight);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnCustomRenderTarget::m_depthStencilBuffer));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilBuffer));
 		return result;
 	}
 
@@ -73,4 +81,8 @@ CPD3DRenderTargetView MnCustomRenderTarget::GetRenderTargetView() const
 CPD3DDepthStencilView MnCustomRenderTarget::GetDepthStencilView() const
 {
 	return m_depthStencilBuffer.GetDepthStencilView();
+}
+CPD3DShaderResourceView MnCustomRenderTarget::GetShaderResourceView() const
+{
+	return m_shaderResourceView.GetShaderResourceView();
 }

@@ -1,5 +1,6 @@
 #include "TestGame.h"
 #include "SkinnedMeshShaderPath.h"
+#include "Core/MnLog.h"
 
 using namespace MNL;
 using namespace DirectX::SimpleMath;

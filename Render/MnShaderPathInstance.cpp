@@ -12,6 +12,29 @@ MnShaderPathInstance::~MnShaderPathInstance()
 {
 }
 
+HRESULT MnShaderPathInstance::Init(const CPD3DDevice& cpDevice, const std::wstring& vsFileName, const std::wstring& psFileName, const std::shared_ptr<MnCustomVertexType>& spVertexType)
+{
+	HRESULT result = _InitShaders(cpDevice, vsFileName, psFileName);
+	if (FAILED(result))
+	{
+		return result;
+	}
+
+	result = _InitInputLayout(cpDevice, GetMnVertexShader(), spVertexType);
+	if (FAILED(result))
+	{
+		return result;
+	}
+
+	result = _InitSamplerState(cpDevice);
+	if (FAILED(result))
+	{
+		return result;
+	}
+
+	return S_OK;
+}
+
 HRESULT MnShaderPathInstance::_InitShaders(const CPD3DDevice& cpDevice, const std::wstring& vsFileName, const std::wstring& psFileName)
 {
 	auto vertexShader = std::make_shared<MnVertexShader>();

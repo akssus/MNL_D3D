@@ -76,7 +76,7 @@ HRESULT MnSwapChain::_InitSwapChain(HWND hWnd, bool isWindowed, UINT numBuffers,
 	HRESULT result = cpDXGIFactory->CreateSwapChain(cpDevice.Get(), &swapChainDesc, m_cpSwapChain.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateSwapChain));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpSwapChain));
 		return result;
 	}
 	//set swap chain description
@@ -86,7 +86,7 @@ HRESULT MnSwapChain::_InitSwapChain(HWND hWnd, bool isWindowed, UINT numBuffers,
 	result = m_cpSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)m_backBuffer.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(GetBuffer));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_backBuffer));
 		return result;
 	}
 	return S_OK;

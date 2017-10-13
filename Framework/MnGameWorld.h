@@ -1,8 +1,17 @@
+/**
+@class MnGameWorld
+@brief 게임 장면 렌더링 및 업데이트를 담당하는 객체
+@author Akssus
+@section 개요
+게임 장면을 구현하며, 카메라, 라이트, 게임 오브젝트, 셰이더를 멤버로 가지고 이를 토대로 장면을 렌더한다.
+*/
+
+
 #pragma once
 #include <map>
 #include <memory>
 #include "DXTK/SimpleMath.h"
-#include "Shader.h"
+#include "ShaderList.h"
 #include "Light.h"
 #include "Camera.h"
 #include "Renderer.h"
@@ -31,14 +40,7 @@ namespace MNL
 		@return 컴포넌트가 존재하지 않을 경우 nullptr 반환
 		*/
 		template <class T>
-		std::shared_ptr<T>& GetComponent(int index);
-		
-		/**
-		@brief 해당 컴포넌트의 개수를 얻어온다.
-		@return 존재하지 않을 경우 0 반환
-		*/
-		template <class T>
-		UINT GetNumComponents();
+		std::shared_ptr<T>& GetComponent();
 
 		/**
 		@brief 게임 오브젝트의 고유 식별 ID를 할당한다.
@@ -83,14 +85,7 @@ namespace MNL
 		void _Init();
 
 	private:
-		std::vector<std::shared_ptr<Shader>> m_lstShaders;
-		std::vector<std::shared_ptr<Camera>> m_lstCameras;
-		std::shared_ptr<Camera> m_mainCamera;
-		std::vector<std::shared_ptr<Light>> m_lstLights;
-		Renderer m_renderer;
-
-
-		std::map<std::string, std::vector<std::shared_ptr<MnWorldComponent>>> m_tblComponents;
+		std::map<std::string, std::shared_ptr<MnWorldComponent>> m_tblComponents;
 		std::map<int, std::shared_ptr<MnGameObject>> m_lstGameObjects; ///< id를 키로 오브젝트를 추가한다.
 		MnIDAllocator m_idAllocator;
 		float m_screenWidth;

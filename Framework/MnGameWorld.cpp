@@ -32,30 +32,20 @@ void MnGameWorld::AddComponent(const std::shared_ptr<MnWorldComponent>& spCompon
 	assert(spComponent != nullptr);
 	std::string key = spComponent->GetComponentName();
 	spComponent->_SetAttatchedWorld(this);
-	m_tblComponents[key].push_back(spComponent);
+	m_tblComponents[key] = spComponent;
 }
 
 template <class T>
-std::shared_ptr<T>& MnGameWorld::GetComponent(int index)
+std::shared_ptr<T>& MnGameWorld::GetComponent()
 {
 	std::string key = typeid(T).name();
 	if (m_tblComponents.count(key) == 0)
 	{
 		return nullptr;
 	}
-	return std::dynamic_pointer_cast<T>(m_tblComponents[key][index]);
+	return std::dynamic_pointer_cast<T>(m_tblComponents[key]);
 }
 
-template <class T>
-UINT MnGameWorld::GetNumComponents()
-{
-	std::string key = typeid(T).name();
-	if (m_tblComponents.count(key) == 0)
-	{
-		return 0;
-	}
-	return m_tblComponents[key].size();
-}
 
 int MnGameWorld::AllocateGameObjectID()
 {

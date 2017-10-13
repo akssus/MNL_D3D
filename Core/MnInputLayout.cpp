@@ -36,7 +36,7 @@ HRESULT MnInputLayout::Init(CPD3DDevice cpD3DDevice, const std::shared_ptr<MnCus
 		cpInputLayout.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateInputLayout));
+		MnLog::MB_InitFailed(MN_VAR_INFO(cpInputLayout));
 		return result;
 	}
 	m_inputLayout = cpInputLayout;

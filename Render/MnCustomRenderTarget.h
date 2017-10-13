@@ -14,7 +14,8 @@ Render-To-Texture ¿ë ·»´õÅ¸°ÙÀ» Á¦°øÇÑ´Ù.
 #include "Core/MnLog.h"
 #include "Core/MnTexture2D.h"
 #include "Core/MnRenderTargetView.h"
-#include "Core/MnDepthStencilBuffer.h"
+#include "Core/MnDepthStencilBuffer.h""
+#include "Core/MnShaderResourceView.h"
 
 
 namespace MNL
@@ -37,10 +38,12 @@ namespace MNL
 
 		CPD3DRenderTargetView GetRenderTargetView() const;
 		CPD3DDepthStencilView GetDepthStencilView() const;
+		CPD3DShaderResourceView GetShaderResourceView() const;
 
 	private:
 		MnTexture2D m_renderedTexture; ///< ·»´õÅ¸°Ù¿ë ¹öÆÛ
 		MnRenderTargetView m_renderTargetView; ///< ·»´õÅ¸°Ù¿ë ¹öÆÛ¿¡ ´ëÇÑ ·»´õÅ¸°Ùºä
+		MnShaderResourceView m_shaderResourceView; ///< ÅØ½ºÃÄ·Î ³Ñ±â±â À§ÇÑ ¼ÎÀÌ´õ ¸®¼Ò½º ºä
 		MnDepthStencilBuffer m_depthStencilBuffer; ///< ·»´õÅ¸°Ù¿ë µª½º ½ºÅÙ½Ç ¹öÆÛ
 
 	};

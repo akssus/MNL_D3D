@@ -19,7 +19,7 @@ HRESULT MnTexture2D::Init(const CPD3DDevice device, const D3D11_TEXTURE2D_DESC& 
 	HRESULT result = device->CreateTexture2D(&textureDesc, nullptr, m_cpTexture2D.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateTexture2D));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpTexture2D));
 		return result;
 	}
 	return S_OK;

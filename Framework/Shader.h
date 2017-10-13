@@ -9,30 +9,36 @@
 마지막으로 최종 렌더링 결과를 텍스쳐로서 제공하여 다음 셰이더 혹은 렌더러에서 이펙트를 적용할 수 있다. \n
 여러개의 셰이더는 월드 내에서 렌더링 우선순위가 존재한다. 예) 디퍼드셰이딩 -> 워터셰이딩 -> 블러셰이딩 -> 2D셰이딩 \n
 전 렌더링의 결과 위에 적용하기 위해 전 단계에 실행된 렌더타겟뷰는 다음 셰이더에게 넘겨진다. 이를 사용할지 안할지는 다음 셰이더의 책임. \n
+셰이더를 상속하여 구체화 할 때 최종 렌더 결과를 m_renderedScene 에 출력해줘야 한다. (필수)
 */
 #pragma once
 #include <memory>
 #include <list>
 #include "Core/MnTypedefs.h"
+#include "Render/MnMesh.h"
 #include "Render/MnCustomRenderTarget.h"
-#include "MnWorldComponent.h"
 #include "MnGameObject.h"
+
 
 namespace MNL
 {
-	class Shader : MnWorldComponent
+	class MnGameWorld;
+	class ShaderList;
+
+	class Shader
 	{
+		friend ShaderList;
 	public:
 		Shader();
 		virtual ~Shader();
-
+		
 		void AddObjectsToQueue(const std::shared_ptr<MnGameObject>& spObject);
 		
 		/**
-		@brief 렌더 완료 후의 결과를 반환한다.
-		@return 렌더가 실패했거나 아직 렌더링이 실행되지 않았을 경우 nullptr 를 반환한다.
+		@brief 최종 렌더 타겟을 반환한다.
+		@return 렌더가 실패했거나 아직 렌더되지 않았을 경우 nullptr을 반환한다.
 		*/
-		CPD3DShaderResourceView GetRenderedScene() const;
+		std::shared_ptr<MnCustomRenderTarget> GetFinalRenderTarget() const;
 
 		/**
 		@brief 큐에 있는 오브젝트들을 해당 셰이더로 렌더한다. 렌더 후 큐는 비워져야 한다.
@@ -40,14 +46,29 @@ namespace MNL
 		*/
 		virtual void Render(const CPD3DShaderResourceView& prevRenderedScene) = 0;
 
+		void SetID(int id);
+		int GetID() const;
+
 	protected:
 		void _ClearQueue();
+		MnGameWorld* _GameWorld() const;
+
+		/**
+		@brief MnMesh 를 드로우콜 하는 헬퍼 메소드
+		*/
+		void _RenderMesh(const std::shared_ptr<MnMesh> mesh);
 
 	private:
-		void _Init();
+		virtual void _Init(MnGameWorld* pWorld);
+		void _SetGameWorld(MnGameWorld* pWorld);
 
-	private:
+	protected:
 		std::list<const std::shared_ptr<MnGameObject>> m_renderQueue;
-		MnCustomRenderTarget m_renderedScene;
+
+	private:
+		MnGameWorld* m_pWorld;
+		int m_id;
+
+		std::shared_ptr<MnCustomRenderTarget> m_spFinalRenderTarget;
 	};
 }

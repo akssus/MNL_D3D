@@ -21,7 +21,7 @@ HRESULT MnGpuBuffer::Init(const CPD3DDevice& cpDevice, const D3D11_BUFFER_DESC& 
 	HRESULT result = cpDevice->CreateBuffer(&bufferDesc, initialData, m_cpBuffer.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateBuffer));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpBuffer));
 		return result;
 	}
 	return S_OK;

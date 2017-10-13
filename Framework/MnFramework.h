@@ -55,6 +55,7 @@ namespace MNL
 		@return 종료시 false 반환
 		*/
 		virtual bool OnUpdate();
+		
 
 	protected:
 		/**

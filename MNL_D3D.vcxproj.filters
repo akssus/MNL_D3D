@@ -12,20 +12,23 @@
     <Filter Include="Core">
       <UniqueIdentifier>{4749cb1b-2944-448a-8d8f-bbad1e2303a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{24eb3e4c-eb67-4307-8e12-592872f84899}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render">
       <UniqueIdentifier>{ed716029-c0d0-471a-96b4-6b911f1b34f4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utility">
       <UniqueIdentifier>{1f2aeb1a-da46-4c66-9813-10a8c7fddb13}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render\ConstantBuffers">
-      <UniqueIdentifier>{64cf65fa-1f0b-43d5-9a92-1592bd0091c6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework">
       <UniqueIdentifier>{dced1124-4b62-459f-8323-343a08f90069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Shaders">
+      <UniqueIdentifier>{9af973b2-689c-4735-a4d2-db08a3bc4c14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\ConstantBuffers">
+      <UniqueIdentifier>{64cf65fa-1f0b-43d5-9a92-1592bd0091c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL">
+      <UniqueIdentifier>{24eb3e4c-eb67-4307-8e12-592872f84899}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,21 +37,6 @@
     </ClCompile>
     <ClCompile Include="BasicShaderPath.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\MnWorldTransformBuffer.cpp">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\MnBonePaletteBuffer.cpp">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\MnLightBuffer.cpp">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\MnMaterialBuffer.cpp">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\MnViewProjectionTransformBuffer.cpp">
-      <Filter>Render\ConstantBuffers</Filter>
     </ClCompile>
     <ClCompile Include="Core\MnConstantBuffer.cpp">
       <Filter>Core</Filter>
@@ -158,9 +146,6 @@
     <ClCompile Include="Render\MnMeshData.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="Render\MnMeshRenderer.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="Render\MnMeshTexture.cpp">
       <Filter>Render</Filter>
     </ClCompile>
@@ -186,9 +171,6 @@
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="Render\MnSkinnedMesh.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\MnSkinnedMeshRenderer.cpp">
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp">
@@ -224,9 +206,6 @@
     <ClCompile Include="Framework\Renderer.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\SkinnedMeshRenderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="SkinnedMeshShaderPath.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
@@ -234,15 +213,6 @@
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Mesh.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Shader.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Camera.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="MnWorldComponent.cpp">
@@ -254,10 +224,43 @@
     <ClCompile Include="Framework\Texture.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Shader.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
     <ClCompile Include="Framework\Material.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ShaderList.cpp">
+      <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="Utility\MnIDAllocator.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MnBonePaletteBuffer.cpp">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MnLightBuffer.cpp">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MnMaterialBuffer.cpp">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MnViewProjectionTransformBuffer.cpp">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MnWorldTransformBuffer.cpp">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ForwardShader.cpp">
+      <Filter>Framework\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="LightList.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\CameraList.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\MnShaderResourceView.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -267,21 +270,6 @@
     </ClInclude>
     <ClInclude Include="Utility\MNL_Utility.h">
       <Filter>Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\MnWorldTransformBuffer.h">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\MnBonePaletteBuffer.h">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\MnLightBuffer.h">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\MnMaterialBuffer.h">
-      <Filter>Render\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\MnViewProjectionTransformBuffer.h">
-      <Filter>Render\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="Core\MnConstantBuffer.h">
       <Filter>Core</Filter>
@@ -403,9 +391,6 @@
     <ClInclude Include="Render\MnMeshData.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="Render\MnMeshRenderer.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="Render\MnMeshTexture.h">
       <Filter>Render</Filter>
     </ClInclude>
@@ -431,9 +416,6 @@
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="Render\MnSkinnedMesh.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\MnSkinnedMeshRenderer.h">
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="Render\MnSkinnedMeshVertexType.h">
@@ -469,9 +451,6 @@
     <ClInclude Include="Framework\Renderer.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\SkinnedMeshRenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="SkinnedMeshShaderPath.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -479,15 +458,6 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Mesh.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Camera.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Light.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Shader.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Framework\MnWorldComponent.h">
@@ -499,25 +469,58 @@
     <ClInclude Include="Framework\Texture.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Shader.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
     <ClInclude Include="Framework\Material.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ShaderList.h">
+      <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Utility\MnIDAllocator.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\MnBonePaletteBuffer.h">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\MnLightBuffer.h">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\MnMaterialBuffer.h">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\MnViewProjectionTransformBuffer.h">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\MnWorldTransformBuffer.h">
+      <Filter>Framework\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ForwardShader.h">
+      <Filter>Framework\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\LightList.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\CameraList.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MnShaderResourceView.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelshader.hlsl">
-      <Filter>Shader</Filter>
+      <Filter>HLSL</Filter>
     </FxCompile>
     <FxCompile Include="vertexshader.hlsl">
-      <Filter>Shader</Filter>
+      <Filter>HLSL</Filter>
     </FxCompile>
     <FxCompile Include="skinnedpixelshader.hlsl">
-      <Filter>Shader</Filter>
+      <Filter>HLSL</Filter>
     </FxCompile>
     <FxCompile Include="skinnedvertexshader.hlsl">
-      <Filter>Shader</Filter>
+      <Filter>HLSL</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
