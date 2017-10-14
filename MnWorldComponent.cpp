@@ -26,7 +26,7 @@ std::shared_ptr<T> MnWorldComponent::GetComponent()
 	return m_pAttatchedWorld->GetComponent<T>();
 }
 
-const MnGameWorld* MnWorldComponent::GameWorld() const
+MnGameWorld* MnWorldComponent::GameWorld() const
 {
 	return m_pAttatchedWorld;
 }

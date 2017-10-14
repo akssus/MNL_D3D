@@ -27,7 +27,7 @@ HRESULT MnVertexShader::Init(CPD3DDevice cpDevice, std::wstring shaderFileName,s
 	HRESULT result = _CreateShader(cpDevice,cpByteCode);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(_CreateShader));
+		MnLog::MB_Failed(MN_FUNC_INFO(_CreateShader));
 		return result;
 	}
 
@@ -61,7 +61,7 @@ HRESULT MnVertexShader::_CreateShader(const CPD3DDevice cpDevice, const CPD3DBlo
 	HRESULT result = cpDevice->CreateVertexShader(cpByteCode.Get()->GetBufferPointer(), cpByteCode.Get()->GetBufferSize(), nullptr, m_cpShader.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateVertexShader));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpShader));
 		return result;
 	}
 	return S_OK;

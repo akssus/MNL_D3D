@@ -36,7 +36,7 @@ void MnGameWorld::AddComponent(const std::shared_ptr<MnWorldComponent>& spCompon
 }
 
 template <class T>
-std::shared_ptr<T>& MnGameWorld::GetComponent()
+std::shared_ptr<T>& MnGameWorld::GetComponent() const
 {
 	std::string key = typeid(T).name();
 	if (m_tblComponents.count(key) == 0)
@@ -97,6 +97,17 @@ std::vector<std::shared_ptr<MnGameObject>> MnGameWorld::GetGameObjectsByTag(cons
 		}
 	}
 	return retLst;
+}
+
+void MnGameWorld::SetMainCamera(const std::shared_ptr<MnCamera>& spCamera)
+{
+	assert(spCamera != nullptr);
+	m_spMainCamera = spCamera;
+}
+
+const std::shared_ptr<MnCamera>& MnGameWorld::GetMainCamera() const
+{
+	return m_spMainCamera;
 }
 
 

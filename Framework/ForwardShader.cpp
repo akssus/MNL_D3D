@@ -6,6 +6,7 @@
 #include "Mesh.h"
 #include "Texture.h"
 #include "Material.h"
+#include "LightList.h"
 
 using namespace MNL;
 
@@ -54,7 +55,7 @@ HRESULT ForwardShader::_InitConstantBuffers()
 
 	m_spViewProjectionBuffer = std::make_shared<MnViewProjectionTransformBuffer>();
 	assert(m_spViewProjectionBuffer != nullptr);
-	HRESULT result = m_spViewProjectionBuffer->Init(cpDevice, _CONST_BUF_VIEWPROJECTION, MN_CONSTANT_BUFFER_BELONG_VS);
+	result = m_spViewProjectionBuffer->Init(cpDevice, _CONST_BUF_VIEWPROJECTION, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_spViewProjectionBuffer));
@@ -63,7 +64,7 @@ HRESULT ForwardShader::_InitConstantBuffers()
 
 	m_spLightBuffer = std::make_shared<MnLightBuffer>();
 	assert(m_spLightBuffer != nullptr);
-	HRESULT result = m_spLightBuffer->Init(cpDevice, _CONST_BUF_LIGHT, MN_CONSTANT_BUFFER_BELONG_BOTH);
+	result = m_spLightBuffer->Init(cpDevice, _CONST_BUF_LIGHT, MN_CONSTANT_BUFFER_BELONG_BOTH);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_spLightBuffer));
@@ -73,7 +74,7 @@ HRESULT ForwardShader::_InitConstantBuffers()
 
 	m_spMaterialBuffer = std::make_shared<MnMaterialBuffer>();
 	assert(m_spMaterialBuffer != nullptr);
-	HRESULT result = m_spMaterialBuffer->Init(cpDevice, _CONST_BUF_MATERIAL, MN_CONSTANT_BUFFER_BELONG_PS);
+	result = m_spMaterialBuffer->Init(cpDevice, _CONST_BUF_MATERIAL, MN_CONSTANT_BUFFER_BELONG_PS);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_spMaterialBuffer));
@@ -82,7 +83,7 @@ HRESULT ForwardShader::_InitConstantBuffers()
 
 	m_spBonePaletteBuffer = std::make_shared<MnBonePaletteBuffer>();
 	assert(m_spBonePaletteBuffer != nullptr);
-	HRESULT result = m_spBonePaletteBuffer->Init(cpDevice, _CONST_BUF_BONE_PALETTE, MN_CONSTANT_BUFFER_BELONG_VS);
+	result = m_spBonePaletteBuffer->Init(cpDevice, _CONST_BUF_BONE_PALETTE, MN_CONSTANT_BUFFER_BELONG_VS);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_spBonePaletteBuffer));
@@ -122,18 +123,18 @@ void ForwardShader::Render(const CPD3DShaderResourceView& prevRenderedScene)
 	MnFramework::renderAPI.SetRenderTarget(finalRenderTarget->GetRenderTargetView(), finalRenderTarget->GetDepthStencilView());
 
 	/*****************라이팅 적용************************/
-	auto compLight = _GameWorld()->GetComponent<Light>();
+	auto compLightList = _GameWorld()->GetComponent<LightList>();
 	//빛이 없으면 아무것도 안보이는법
-	if (compLight == nullptr) return;
+	if (compLightList == nullptr) return;
 
-	auto& lstLight = compLight->GetLights();
+	auto& lstLight = compLightList->GetLights();
 	//테스트용. 나중엔 모든 라이트를 한번에 적용
 	auto testLight = lstLight[0];
 	m_spLightBuffer->SetLight(cpDeviceContext, testLight);
 
 
 	/************카메라 적용*****************************/
-	std::shared_ptr<MnCamera> camera = _GameWorld()->GetMainCamera();
+	auto& camera = _GameWorld()->GetMainCamera();
 	//카메라가 없으면 보이는게 없다
 	if (camera == nullptr) return;
 	
@@ -167,20 +168,23 @@ void ForwardShader::Render(const CPD3DShaderResourceView& prevRenderedScene)
 			m_spMaterialBuffer->SetMaterial(cpDeviceContext,compMaterial->GetMaterial());
 
 		/*****************텍스쳐 적용************************/
+		std::shared_ptr<MnMeshTexture> diffuseTexture = nullptr;
+
 		auto compTexture = obj->GetComponent<Texture>();
 		if (compTexture == nullptr)
 		{
 			//디폴트 텍스쳐 (흰면) 사용
 		}
-		auto textureComb = compTexture->GetTextureCombination();
-		if (textureComb != nullptr)
+
+		if (compTexture != nullptr)
 		{
-			auto& shaderResourceViews = textureComb->GetShaderResoureViews();
-			for (UINT i = 0; i < shaderResourceViews.size(); ++i)
+			auto diffuseTexture = compTexture->GetTexture(MN_TEXTURE_DIFFUSE);
+			if (diffuseTexture == nullptr)
 			{
-				renderAPI.SetShaderResoureView(shaderResourceViews[i], i);
+				//디폴트 텍스쳐 사용...
 			}
 		}
+		renderAPI.SetShaderResoureView(diffuseTexture->GetShaderResourceView(), 0);
 
 		//드로우콜
 		auto mesh = compMesh->GetMesh();

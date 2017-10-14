@@ -32,7 +32,7 @@ HRESULT MnVideoAdapter::Init(CPDXGIAdapter cpAdapter)
 		}
 		else if (FAILED(enumResult))
 		{
-			MnLog::MB_InitFailed(MN_VAR_INFO(EnumOutputs));
+			MnLog::MB_InitFailed(MN_VAR_INFO(cpAdapter->EnumOutputs));
 			return enumResult;
 		}
 		//create display instance
@@ -40,7 +40,7 @@ HRESULT MnVideoAdapter::Init(CPDXGIAdapter cpAdapter)
 		result = displayDevice.Init(cpDisplay);
 		if (FAILED(result))
 		{
-			MnLog::MB_InitFailed(MN_VAR_INFO(MnDisplayDevice));
+			MnLog::MB_InitFailed(MN_VAR_INFO(displayDevice));
 			return result;
 		}
 		//add to display list

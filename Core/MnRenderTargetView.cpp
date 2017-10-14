@@ -17,7 +17,7 @@ HRESULT MnRenderTargetView::Init(const CPD3DDevice cpDevice, const CPD3DTexture2
 	HRESULT result = cpDevice->CreateRenderTargetView(renderSurface.Get(), pRenderTargetViewDesc.get(), m_cpRenderTargetView.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateRenderTargetView));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpRenderTargetView));
 		return result;
 	}
 

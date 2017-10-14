@@ -27,7 +27,6 @@ HRESULT MnPixelShader::Init(CPD3DDevice cpDevice, std::wstring shaderFileName, s
 	HRESULT result = _CreateShader(cpDevice, cpByteCode);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(_CreateShader));
 		return E_FAIL;
 	}
 
@@ -61,7 +60,7 @@ HRESULT MnPixelShader::_CreateShader(const CPD3DDevice cpDevice, const CPD3DBlob
 	HRESULT result = cpDevice->CreatePixelShader(cpByteCode.Get()->GetBufferPointer(), cpByteCode.Get()->GetBufferSize(), nullptr, m_cpShader.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreatePixelShader));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpShader));
 		return result;
 	}
 	return S_OK;

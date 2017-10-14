@@ -30,7 +30,7 @@ HRESULT	 MnHardware::Init()
 		}
 		else if (FAILED(enumResult))
 		{
-			MnLog::MB_InitFailed(MN_VAR_INFO(EnumAdapters));
+			MnLog::MB_InitFailed(MN_VAR_INFO(cpAdapter));
 			return enumResult;
 		}
 		//create video adapter instance

@@ -28,14 +28,14 @@ HRESULT MnSwapChain::Init(
 	HRESULT result = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)cpDXGIFactory.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateDXGIFactory));
+		MnLog::MB_InitFailed(MN_FUNC_INFO(CreateDXGIFactory));
 		return result;
 	}
 	
 	result = _InitSwapChain(hWnd, isWindowed, numBuffers, isVsync, displayMode, cpDevice, cpDXGIFactory);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(_InitSwapChain));
+		MnLog::MB_InitFailed(MN_FUNC_INFO(_InitSwapChain));
 		return result;
 	}
 	return S_OK;

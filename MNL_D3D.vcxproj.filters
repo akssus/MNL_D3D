@@ -221,9 +221,6 @@
     <ClCompile Include="Framework\MnGameWorld.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Texture.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Shader.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
@@ -262,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="Core\MnShaderResourceView.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Texture.cpp">
+      <Filter>Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -466,9 +466,6 @@
     <ClInclude Include="Framework\MnGameWorld.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Texture.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Shader.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -507,6 +504,9 @@
     </ClInclude>
     <ClInclude Include="Core\MnShaderResourceView.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Texture.h">
+      <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

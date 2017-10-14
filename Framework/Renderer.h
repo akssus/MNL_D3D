@@ -21,6 +21,7 @@
 #include "Render/MnLightSource.h"
 #include "Render/MnMaterial.h"
 #include "Render/MnSkeleton.h"
+#include "Render/MnCustomRenderTarget.h"
 
 namespace MNL
 {

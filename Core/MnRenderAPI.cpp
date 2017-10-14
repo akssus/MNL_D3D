@@ -20,7 +20,7 @@ HRESULT MnRenderAPI::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 	HRESULT result = m_D3DDevice.Init(hardwareInfo, useDefaultAdapter);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(m_pD3DDevice));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_D3DDevice));
 		return result;
 	}
 	return S_OK;

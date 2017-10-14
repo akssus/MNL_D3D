@@ -117,6 +117,7 @@ namespace MNL
 		MnHardware m_hardware; ///< VGA 및 모니터에 대한 정보를 담은 객체
 		MnRenderWindow m_renderWindow; ///< 백버퍼 정보와 렌더링 될 윈도우의 정보를 지닌 객체
 		MnDepthStencilState m_depthStencilState; ///< 뎁스 스텐실 상태 정보를 담은 객체
+		MnSamplerState m_samplerState; ///< 텍스쳐 샘플링 정보를 담은 객체
 		MnRasterizerState m_rasterizerState; ///< 래스터라이저 상태 정보를 담은 객체
 		MnViewport m_viewport; //임시
 	};

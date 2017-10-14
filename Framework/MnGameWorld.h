@@ -10,13 +10,13 @@
 #pragma once
 #include <map>
 #include <memory>
+#include <d3d11.h>
 #include "DXTK/SimpleMath.h"
-#include "ShaderList.h"
-#include "Light.h"
-#include "Camera.h"
+#include "MnWorldComponent.h"
+#include "Render/MnCamera.h"
+#include "Utility\MnIDAllocator.h"
 #include "Renderer.h"
 #include "MnGameObject.h"
-#include "Utility\MnIDAllocator.h"
 
 namespace MNL
 {
@@ -40,7 +40,7 @@ namespace MNL
 		@return 컴포넌트가 존재하지 않을 경우 nullptr 반환
 		*/
 		template <class T>
-		std::shared_ptr<T>& GetComponent();
+		std::shared_ptr<T>& GetComponent() const;
 
 		/**
 		@brief 게임 오브젝트의 고유 식별 ID를 할당한다.
@@ -77,6 +77,17 @@ namespace MNL
 		*/
 		std::vector<std::shared_ptr<MnGameObject>> GetGameObjectsByTag(const std::string& tag) const;
 		
+
+		/**
+		@brief 월드의 메인 카메라를 설정한다. 렌더링은 메인카메라를 기준으로 실행된다.
+		*/
+		void SetMainCamera(const std::shared_ptr<MnCamera>& spCamera);
+		/**
+		@brief 월드의 메인 카메라를 반환한다.
+		@return 메인카메라가 존재하지 않을 경우 nullptr 반환
+		*/
+		const std::shared_ptr<MnCamera>& GetMainCamera() const;
+
 		void SetScreenSize(float width, float height);
 		void SetScreenSize(const DirectX::SimpleMath::Vector2& size);
 		DirectX::SimpleMath::Vector2 GetScreenSize() const;
@@ -88,6 +99,8 @@ namespace MNL
 		std::map<std::string, std::shared_ptr<MnWorldComponent>> m_tblComponents;
 		std::map<int, std::shared_ptr<MnGameObject>> m_lstGameObjects; ///< id를 키로 오브젝트를 추가한다.
 		MnIDAllocator m_idAllocator;
+
+		std::shared_ptr<MnCamera> m_spMainCamera; ///< 최종 렌더링은 메인 카메라를 기준으로 렌더링된다.
 		float m_screenWidth;
 		float m_screenHeight;
 	};

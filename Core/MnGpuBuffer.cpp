@@ -33,7 +33,7 @@ D3D11_MAPPED_SUBRESOURCE MnGpuBuffer::Map(const CPD3DDeviceContext& cpDeviceCont
 	HRESULT result = cpDeviceContext->Map(m_cpBuffer.Get(), subresourceIndex, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(Map));
+		MnLog::MB_Failed(MN_FUNC_INFO(MnGpuBuffer::Map));
 	}
 	return mappedSubresource;
 }

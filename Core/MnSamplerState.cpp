@@ -31,7 +31,7 @@ HRESULT MnSamplerState::Init(const CPD3DDevice& cpDevice)
 	HRESULT result = cpDevice->CreateSamplerState(&samplerDesc, m_cpSamplerState.ReleaseAndGetAddressOf());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateSamplerState));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpSamplerState));
 		return result;
 	}
 	return S_OK;

@@ -1,5 +1,4 @@
 #pragma once
-#include "MnGameWorld.h"
 #include <string>
 #include <memory>
 
@@ -29,7 +28,7 @@ namespace MNL
 		@brief 현재 참조된 게임 월드의 포인터를 반환한다.
 		@return 참조된 월드가 없을 시 nullptr 반환
 		*/
-		const MnGameWorld* GameWorld() const;
+		MnGameWorld* GameWorld() const;
 
 	private:
 		/**

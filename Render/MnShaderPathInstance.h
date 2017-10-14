@@ -14,7 +14,7 @@ namespace MNL
 
 		HRESULT Init(const CPD3DDevice& cpDevice, const std::wstring& vsFileName, const std::wstring& psFileName, const std::shared_ptr<MnCustomVertexType>& spVertexType);
 
-	private:
+	protected:
 		/*
 		Shader entry point must be VS_MAIN and PS_MAIN, version 5_0
 		*/

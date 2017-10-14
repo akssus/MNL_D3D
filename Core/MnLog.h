@@ -4,6 +4,7 @@
 
 //Macro that shows variable info about file name, called line and function, variable name as string
 #define MN_VAR_INFO(varName) (std::string(__FILE__) + "(" + std::to_string(__LINE__) + ")\n@" +std::string(__FUNCTION__) + ": " + typeid(varName).name())
+#define MN_FUNC_INFO(funcName) (std::string(__FILE__) + "(" + std::to_string(__LINE__) + ")\n@" +std::string(__FUNCTION__) + ": " + std::string(#funcName))
 
 namespace MNL
 {

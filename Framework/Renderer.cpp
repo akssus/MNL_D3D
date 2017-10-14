@@ -1,6 +1,8 @@
 #include "Renderer.h"
 #include "MnFramework.h"
 #include "Core/MnLog.h"
+#include "ShaderList.h"
+#include "MnGameWorld.h"
 
 using namespace MNL;
 using namespace DirectX::SimpleMath;
@@ -68,12 +70,41 @@ void Renderer::Render(const MnRenderWindow& renderWindow)
 {
 	auto& renderAPI = MnFramework::renderAPI;
 	
-	//todo 10.15
-	//셰이더 리스트 얻어오기
-	//셰이더 우선순위에 따라 각각 렌더링 실행
-	//셰이딩 후 텍스쳐에 이펙트 효과 추가 //옵셔널
-	//최종 렌더링 된 렌더타겟으로 _RenderToBackBuffer 실행
-	//_RenderToBackBuffer();
+	auto shaderList = GameWorld()->GetComponent<ShaderList>();
+	if (shaderList != nullptr)
+	{
+		//셰이더가 없으면 렌더링을 중지한다
+		return;
+	}
+
+	auto& renderOrder = shaderList->GetRenderOrder();
+	
+	std::shared_ptr<MnCustomRenderTarget> spRenderedScene = nullptr;
+
+	for (int id : renderOrder)
+	{
+		auto shader = shaderList->GetShader(id);
+		if (shader != nullptr)
+		{
+			CPD3DShaderResourceView prevRenderedSceneResourceView = nullptr;
+			if (spRenderedScene != nullptr)
+			{
+				prevRenderedSceneResourceView = spRenderedScene->GetShaderResourceView();
+			}
+			shader->Render(prevRenderedSceneResourceView);
+			spRenderedScene = shader->GetFinalRenderTarget();
+		}
+	}
+	if (spRenderedScene == nullptr)
+	{
+		//그려진 씬이 널이면 렌더링을 중지한다
+		return;
+	}
+
+	//spRenderedScene에 추가 화면 효과를 넣는다.. 미구현
+
+	//마지막으로 백버퍼에 그린다
+	_RenderToBackBuffer(spRenderedScene, renderWindow);
 
 }
 

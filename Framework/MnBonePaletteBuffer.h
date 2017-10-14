@@ -3,7 +3,7 @@
 #include "DXTK\SimpleMath.h"
 #include "Core/MnLog.h"
 #include "Core/MnConstantBuffer.h"
-#include "MnSkeleton.h"
+#include "Render/MnSkeleton.h"
 
 namespace MNL
 {

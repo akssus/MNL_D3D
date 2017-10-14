@@ -24,7 +24,7 @@ HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wnd
 	HRESULT result = m_hardware.Init();
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::m_hardware));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_hardware));
 		return result;
 	}
 
@@ -32,7 +32,7 @@ HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wnd
 	result = renderAPI.Init(m_hardware, true);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::renderAPI));
+		MnLog::MB_InitFailed(MN_VAR_INFO(renderAPI));
 		return result;
 	}
 
@@ -41,20 +41,29 @@ HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wnd
 		m_hardware, true, 1, 60, true, true, 1, renderAPI.GetD3DDevice(), renderAPI.GetD3DDeviceContext());
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::m_renderWindow));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_renderWindow));
 		return result;
 	}
-	//렌더타겟 바인딩
+	//렌더타겟 백버퍼로 바인딩
 	renderAPI.SetRenderTarget(m_renderWindow.GetBackBufferRenderTargetView(), m_renderWindow.GetBackBufferDepthStencilView());
 
 	//뎁스 스텐실 스테이트 초기화
 	result = m_depthStencilState.Init(renderAPI.GetD3DDevice(), true, true);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(MnFramework::m_depthStencilState));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilState));
 		return result;
 	}
 	renderAPI.SetDepthStencilState(m_depthStencilState.GetState());
+
+	//샘플러 스테이트 초기화
+	result = m_samplerState.Init(renderAPI.GetD3DDevice());
+	if (FAILED(result))
+	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_samplerState));
+		return result;
+	}
+	renderAPI.SetSamplerState(m_samplerState.GetSamplerState());
 
 	//래스터라이저 스테이트 초기화
 	result = m_rasterizerState.Init(renderAPI.GetD3DDevice(), D3D11_FILL_SOLID, true);

@@ -18,7 +18,7 @@ HRESULT MnMeshTexture::LoadFromFile(const CPD3DDevice& cpDevice, const std::wstr
 	HRESULT result = DirectX::CreateWICTextureFromFile(cpDevice.Get(),textureFileName.c_str(), nullptr, m_cpShaderResourceView.ReleaseAndGetAddressOf(), 4096);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(CreateWICTextureFromFile));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_cpShaderResourceView));
 		return result;
 	}
 	return S_OK;

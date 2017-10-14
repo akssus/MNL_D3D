@@ -22,7 +22,7 @@ HRESULT MnResourcePool::LoadModelFromFile(const CPD3DDevice& cpDevice, const std
 	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_LimitBoneWeights);
 	if (!scene)
 	{
-		MnLog::MB_Failed(MN_VAR_INFO(importer.ReadFile));
+		MnLog::MB_Failed(MN_FUNC_INFO(importer.ReadFile));
 		return E_FAIL;
 	}
 	_ModelPackage package;
@@ -33,14 +33,14 @@ HRESULT MnResourcePool::LoadModelFromFile(const CPD3DDevice& cpDevice, const std
 	HRESULT result = _ReadMeshes(cpDevice, scene, currentNode, 0, package, vertexType);
 	if (FAILED(result))
 	{
-		MnLog::MB_Failed(MN_VAR_INFO(_ReadMeshes));
+		MnLog::MB_Failed(MN_FUNC_INFO(_ReadMeshes));
 		return result;
 	}
 
 	result = _ReadAnimations(scene, package);
 	if (FAILED(result))
 	{
-		MnLog::MB_Failed(MN_VAR_INFO(_ReadAnimations));
+		MnLog::MB_Failed(MN_FUNC_INFO(_ReadAnimations));
 		return result;
 	}
 
