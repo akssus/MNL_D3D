@@ -31,7 +31,7 @@ HRESULT TestGame::OnInit()
 	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
 
 	//메시를 리로스풀로 로딩
-	result = m_resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim2.fbx", vertexType);
+	result = m_resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim3.fbx", vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_Failed(MN_FUNC_INFO(m_resourcePool.LoadModelFromFile));
@@ -40,7 +40,7 @@ HRESULT TestGame::OnInit()
 
 	//메시 데이터를 얻어와 인스턴스화
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = m_resourcePool.GetMeshData("rico_anim2.fbx", "Rico");
+	auto meshData = m_resourcePool.GetMeshData("rico_anim3.fbx", "Rico");
 	if (meshData == nullptr)
 	{
 		MnLog::MB_IsNull(MN_VAR_INFO(meshData));
@@ -71,7 +71,7 @@ HRESULT TestGame::OnInit()
 	gameObject->GetComponent<Material>()->SetMaterial(testMaterial);
 	
 	//테스트용 애니메이션
-	auto testAnim = m_resourcePool.GetBoneAnimation("rico_anim2.fbx", 0);
+	auto testAnim = m_resourcePool.GetBoneAnimation("rico_anim3.fbx", 0);
 	gameObject->GetComponent<MeshAnimationController>()->AddAnimation("walk", testAnim);
 	gameObject->GetComponent<MeshAnimationController>()->SetAnimation("walk");
 
@@ -95,7 +95,7 @@ HRESULT TestGame::OnInit()
 	camera->SetFarDistance(10000.0f);
 	camera->SetAspectRatio(1024.0f / 768.0f);
 	//camera.SetPosition(Vector3(0, 0, -1000.0f));
-	camera->SetPosition(Vector3(0, 0, 1000.0f));
+	camera->SetPosition(Vector3(1000.0f, 0, 0.0f));
 	camera->LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	m_gameWorld.GetComponent<CameraList>()->AddCamera(camera);

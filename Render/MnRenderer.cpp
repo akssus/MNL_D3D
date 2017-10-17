@@ -15,7 +15,7 @@ HRESULT MnRenderer::RenderMesh(MnRenderAPI& renderAPI, const std::shared_ptr<MnM
 {
 	renderAPI.SetVertexBuffer(mesh->GetVertexBuffer(),mesh->GetVertexBufferStride(),0);
 	renderAPI.SetIndexBuffer(mesh->GetIndexBuffer(),mesh->GetIndexBufferFormat());
-	renderAPI.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	renderAPI.SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	//draw call
 	//renderAPI.DrawIndexed(mesh->GetIndexCount());

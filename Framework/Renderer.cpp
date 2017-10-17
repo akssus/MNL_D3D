@@ -51,7 +51,7 @@ void Renderer::_Init()
 		return;
 	}
 
-	std::vector<UINT> indices = { 0,1,2,1,3,2 };
+	std::vector<UINT> indices = { 0,2,1,1,2,3 };
 
 	D3D11_SUBRESOURCE_DATA indexData;
 	indexData.pSysMem = indices.data();

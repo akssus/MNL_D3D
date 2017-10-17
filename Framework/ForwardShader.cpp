@@ -127,6 +127,7 @@ void ForwardShader::Render(const CPD3DShaderResourceView& prevRenderedScene)
 	auto finalRenderTarget = GetFinalRenderTarget();
 	MnFramework::renderAPI.SetRenderTarget(finalRenderTarget->GetRenderTargetView(), finalRenderTarget->GetDepthStencilView());
 
+
 	//¼ÎÀÌ´õ Àû¿ë
 	renderAPI.SetVertexShader(m_spShaderPath->GetVertexShader());
 	renderAPI.SetPixelShader(m_spShaderPath->GetPixelShader());

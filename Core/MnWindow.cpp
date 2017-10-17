@@ -57,6 +57,7 @@ const HWND MnWindow::GetWindowHandle() const
 RECT MnWindow::GetWindowRect() const
 {
 	RECT windowRect;
-	GetClientRect(m_hWnd, &windowRect);
+	::GetWindowRect(m_hWnd, &windowRect);
+	//GetClientRect(m_hWnd, &windowRect);
 	return windowRect;
 }
