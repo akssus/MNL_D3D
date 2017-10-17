@@ -113,6 +113,23 @@ const HWND MnRenderWindow::GetWindowHandle() const
 	return m_window.GetWindowHandle();
 }
 
+float MnRenderWindow::GetWindowWidth() const
+{
+	return (m_window.GetWindowRect().right - m_window.GetWindowRect().left);
+}
+float MnRenderWindow::GetWindowHeight() const
+{
+	return (m_window.GetWindowRect().bottom - m_window.GetWindowRect().top);
+}
+float MnRenderWindow::GetWindowPositionX() const
+{
+	return m_window.GetWindowRect().left;
+}
+float MnRenderWindow::GetWindowPositionY() const
+{
+	return m_window.GetWindowRect().top;
+}
+
 void MnRenderWindow::ClearBackBuffer(MnRenderAPI& renderAPI, DirectX::SimpleMath::Color color)
 {
 	renderAPI.ClearRenderTargets(m_backBufferView.GetRenderTargetView(), m_depthStencilBuffer.GetDepthStencilView(), color);

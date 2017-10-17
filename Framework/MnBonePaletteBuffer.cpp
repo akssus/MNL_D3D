@@ -37,7 +37,14 @@ void MnBonePaletteBuffer::SetBonePalette(const CPD3DDeviceContext& cpDeviceConte
 {
 	this->UpdateBuffer(cpDeviceContext, bonePalette);
 }
+
 void MnBonePaletteBuffer::SetBonePalette(const CPD3DDeviceContext& cpDeviceContext, const std::shared_ptr<MnSkeleton> spSkeleton)
 {
+	static Matrix testBonePalette[96] = { Matrix::Identity, };
+	D3D11_SUBRESOURCE_DATA testData;
+	testData.pSysMem = testBonePalette;
+	testData.SysMemPitch = 0;
+	testData.SysMemSlicePitch = 0;
 	SetBonePalette(cpDeviceContext, spSkeleton->GetBonePalette());
+	//SetBonePalette(cpDeviceContext, testData);
 }

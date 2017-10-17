@@ -23,6 +23,7 @@ void Renderer::_Init()
 
 	auto spBackBufferVertexType = std::make_shared<MnCustomVertexType>();
 	spBackBufferVertexType->AddInputElement(MnInputElement("POSITION", MN_INPUT_ELEMENT_TYPE_FLOAT3, 0));
+	spBackBufferVertexType->AddInputElement(MnInputElement("TEXCOORD", MN_INPUT_ELEMENT_TYPE_FLOAT2, 0));
 
 	HRESULT result = m_backBufferShader.Init(cpDevice, L"backBufferShader_vs.hlsl", L"backBufferShader_ps.hlsl", spBackBufferVertexType);
 	if (FAILED(result))
@@ -31,11 +32,11 @@ void Renderer::_Init()
 		return;
 	}
 	
-	std::vector<Vector3> vertices = {
-		Vector3(-1.0f,1.0f,0.0f), //LT
-		Vector3(1.0f,1.0f,0.0f), //RT
-		Vector3(-1.0f,-1.0f,0.0f), //LB
-		Vector3(1.0f,-1.0f,0.0f), //RB
+	std::vector<_BackBufferShaderVertex> vertices = {
+		{ Vector3(-1.0f,1.0f,0.0f),		Vector2(0.0f,0.0f) },	//LT
+		{ Vector3(1.0f,1.0f,0.0f),		Vector2(1.0f,0.0f) },	//RT
+		{ Vector3(-1.0f,-1.0f,0.0f),	Vector2(0.0f,1.0f) },	//LB
+		{ Vector3(1.0f,-1.0f,0.0f),		Vector2(1.0f,1.0f) }	//RB
 	};
 
 	D3D11_SUBRESOURCE_DATA vertexData;
@@ -50,7 +51,7 @@ void Renderer::_Init()
 		return;
 	}
 
-	std::vector<UINT> indices = { 0,1,2,2,1,3 };
+	std::vector<UINT> indices = { 0,1,2,1,3,2 };
 
 	D3D11_SUBRESOURCE_DATA indexData;
 	indexData.pSysMem = indices.data();
@@ -71,7 +72,7 @@ void Renderer::Render(const MnRenderWindow& renderWindow)
 	auto& renderAPI = MnFramework::renderAPI;
 	
 	auto shaderList = GameWorld()->GetComponent<ShaderList>();
-	if (shaderList != nullptr)
+	if (shaderList == nullptr)
 	{
 		//셰이더가 없으면 렌더링을 중지한다
 		return;
@@ -80,7 +81,6 @@ void Renderer::Render(const MnRenderWindow& renderWindow)
 	auto& renderOrder = shaderList->GetRenderOrder();
 	
 	std::shared_ptr<MnCustomRenderTarget> spRenderedScene = nullptr;
-
 	for (int id : renderOrder)
 	{
 		auto shader = shaderList->GetShader(id);
@@ -105,7 +105,6 @@ void Renderer::Render(const MnRenderWindow& renderWindow)
 
 	//마지막으로 백버퍼에 그린다
 	_RenderToBackBuffer(spRenderedScene, renderWindow);
-
 }
 
 void Renderer::_RenderToBackBuffer(const std::shared_ptr<MnCustomRenderTarget>& spRenderTarget, const MnRenderWindow& renderWindow)

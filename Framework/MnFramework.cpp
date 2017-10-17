@@ -3,6 +3,10 @@
 
 using namespace MNL;
 
+MnRenderAPI MnFramework::renderAPI;
+MnTimer MnFramework::_timer;
+MnTime MnFramework::_elapsedTime;
+
 MnFramework::MnFramework():
 	m_screenWidth(0),
 	m_screenHeight(0)
@@ -17,8 +21,9 @@ MnFramework::~MnFramework()
 
 HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wndX, float wndY, float wndWidth, float wndHeight, const std::wstring& windowTitle)
 {
-	m_screenWidth = wndWidth;
-	m_screenHeight = wndHeight;
+	m_screenWidth = static_cast<UINT>(wndWidth);
+	m_screenHeight = static_cast<UINT>(wndHeight);
+	_timer.Start();
 
 	//하드웨어 초기화
 	HRESULT result = m_hardware.Init();
@@ -44,6 +49,7 @@ HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wnd
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_renderWindow));
 		return result;
 	}
+
 	//렌더타겟 백버퍼로 바인딩
 	renderAPI.SetRenderTarget(m_renderWindow.GetBackBufferRenderTargetView(), m_renderWindow.GetBackBufferDepthStencilView());
 
@@ -99,6 +105,7 @@ int MnFramework::Execute()
 		}
 		else
 		{
+			_elapsedTime = _timer.GetElapsedTime();
 			if (OnUpdate() == false)
 			{
 				//루프 종료
@@ -119,6 +126,11 @@ bool MnFramework::OnUpdate()
 	return false;
 }
 
+const MnRenderWindow& MnFramework::GetRenderWindow() const
+{
+	return m_renderWindow;
+}
+
 void MnFramework::ClearBackBuffer(DirectX::SimpleMath::Color color)
 {
 	m_renderWindow.ClearBackBuffer(renderAPI, color);
@@ -126,26 +138,6 @@ void MnFramework::ClearBackBuffer(DirectX::SimpleMath::Color color)
 void MnFramework::SwapBuffers()
 {
 	m_renderWindow.SwapBuffers();
-}
-
-void MnFramework::SetRenderer(const std::shared_ptr<MnRenderer>& spRenderer)
-{
-	spRenderer->ApplyShaderPaths(renderAPI);
-	spRenderer->ApplyConstantBuffers(renderAPI);
-	spRenderer->ApplyTextures(renderAPI);
-}
-
-HRESULT MnFramework::RenderMesh(const std::shared_ptr<MnRenderer>& spRenderer, const std::shared_ptr<MnMesh>& mesh)
-{
-	return spRenderer->RenderMesh(renderAPI, mesh);
-}
-void MnFramework::SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView)
-{
-
-}
-CPD3DRenderTargetView MnFramework::GetBackBufferRenderTargetView() const
-{
-	return m_renderWindow.GetBackBufferRenderTargetView();
 }
 
 void MnFramework::SetFullScreen(bool isFullscreen)
@@ -200,4 +192,14 @@ UINT MnFramework::GetScreenWidth() const
 UINT MnFramework::GetScreenHeight() const
 {
 	return m_screenHeight;
+}
+
+MnTime MnFramework::GetElapsedTime()
+{
+	return _elapsedTime;
+}
+
+void MnFramework::SetTimeScale(float scale)
+{
+	_timer.SetTimeScale(scale);
 }

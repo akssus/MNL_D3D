@@ -30,6 +30,12 @@
     <Filter Include="HLSL">
       <UniqueIdentifier>{24eb3e4c-eb67-4307-8e12-592872f84899}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\GameObjectComponents">
+      <UniqueIdentifier>{61f9f4aa-997c-4a2d-aadf-2e8a0481becc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\WorldComponents">
+      <UniqueIdentifier>{bcf8aac2-8c4b-4881-9383-a28a87469c1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -197,14 +203,8 @@
     <ClCompile Include="Framework\MnGameObjectComponent.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Transform.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="Render\MnCustomRenderTarget.cpp">
       <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Renderer.cpp">
-      <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="SkinnedMeshShaderPath.cpp">
       <Filter>Framework</Filter>
@@ -212,22 +212,10 @@
     <ClCompile Include="Framework\StaticMeshRenderer.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Mesh.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="MnWorldComponent.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="Framework\MnGameWorld.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Shader.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Material.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\ShaderList.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="Utility\MnIDAllocator.cpp">
@@ -251,16 +239,40 @@
     <ClCompile Include="Framework\ForwardShader.cpp">
       <Filter>Framework\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="LightList.cpp">
-      <Filter>Framework</Filter>
+    <ClCompile Include="Core\MnShaderResourceView.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Framework\CameraList.cpp">
-      <Filter>Framework</Filter>
+      <Filter>Framework\WorldComponents</Filter>
     </ClCompile>
-    <ClCompile Include="Core\MnShaderResourceView.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="LightList.cpp">
+      <Filter>Framework\WorldComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Material.cpp">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Mesh.cpp">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Renderer.cpp">
+      <Filter>Framework\WorldComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Shader.cpp">
+      <Filter>Framework\WorldComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ShaderList.cpp">
+      <Filter>Framework\WorldComponents</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Texture.cpp">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Transform.cpp">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MeshAnimationController.cpp">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardMeshType.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
   </ItemGroup>
@@ -442,14 +454,8 @@
     <ClInclude Include="Framework\MnGameObjectComponent.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Transform.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Render\MnCustomRenderTarget.h">
       <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Renderer.h">
-      <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="SkinnedMeshShaderPath.h">
       <Filter>Framework</Filter>
@@ -457,22 +463,10 @@
     <ClInclude Include="Framework\StaticMeshRenderer.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Mesh.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\MnWorldComponent.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Framework\MnGameWorld.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Shader.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Material.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\ShaderList.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Utility\MnIDAllocator.h">
@@ -496,16 +490,46 @@
     <ClInclude Include="Framework\ForwardShader.h">
       <Filter>Framework\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\LightList.h">
-      <Filter>Framework</Filter>
+    <ClInclude Include="Core\MnShaderResourceView.h">
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Framework\CameraList.h">
-      <Filter>Framework</Filter>
+      <Filter>Framework\WorldComponents</Filter>
     </ClInclude>
-    <ClInclude Include="Core\MnShaderResourceView.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Framework\LightList.h">
+      <Filter>Framework\WorldComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Material.h">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Mesh.h">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Renderer.h">
+      <Filter>Framework\WorldComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Shader.h">
+      <Filter>Framework\WorldComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ShaderList.h">
+      <Filter>Framework\WorldComponents</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Texture.h">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Transform.h">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\MeshAnimationController.h">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectComponents.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWorldComponents.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\StandardMeshType.h">
       <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>
@@ -520,6 +544,18 @@
       <Filter>HLSL</Filter>
     </FxCompile>
     <FxCompile Include="skinnedvertexshader.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="backBufferShader_ps.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="backBufferShader_vs.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="forwardshader_ps.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="forwardshader_vs.hlsl">
       <Filter>HLSL</Filter>
     </FxCompile>
   </ItemGroup>

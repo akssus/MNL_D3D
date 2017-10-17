@@ -3,6 +3,7 @@
 #include <memory>
 #include "DXTK\SimpleMath.h"
 #include "TestGame.h"
+#include "Core/MnLog.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -15,7 +16,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	HRESULT result = testGame.Init(hInstance, WndProc, 100, 100, 1024, 768, L"TestGame");
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(TestGame));
+		MnLog::MB_InitFailed(MN_VAR_INFO(testGame));
 		return 0;
 	}
 	/**************************************************************/

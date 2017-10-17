@@ -31,6 +31,9 @@ HRESULT ForwardShader::_InitShaders()
 {
 	auto& cpDevice = MnFramework::renderAPI.GetD3DDevice();
 
+	m_spShaderPath = std::make_shared<MnShaderPathInstance>();
+	assert(m_spShaderPath != nullptr);
+
 	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
 	HRESULT result = m_spShaderPath->Init(cpDevice, L"forwardshader_vs.hlsl", L"forwardshader_ps.hlsl", vertexType);
 	if (FAILED(result))
@@ -90,6 +93,7 @@ HRESULT ForwardShader::_InitConstantBuffers()
 		return result;
 	}
 
+	return result;
 }
 
 void ForwardShader::SetWorldBuffer(const DirectX::SimpleMath::Matrix& matWorld)
@@ -118,9 +122,23 @@ void ForwardShader::Render(const CPD3DShaderResourceView& prevRenderedScene)
 	auto& renderAPI = MnFramework::renderAPI;
 	auto& cpDeviceContext = renderAPI.GetD3DDeviceContext();
 
+
 	//최종 출력 렌더타겟 설정
 	auto finalRenderTarget = GetFinalRenderTarget();
 	MnFramework::renderAPI.SetRenderTarget(finalRenderTarget->GetRenderTargetView(), finalRenderTarget->GetDepthStencilView());
+
+	//셰이더 적용
+	renderAPI.SetVertexShader(m_spShaderPath->GetVertexShader());
+	renderAPI.SetPixelShader(m_spShaderPath->GetPixelShader());
+	renderAPI.SetInputLayout(m_spShaderPath->GetInputLayout());
+
+	//상수버퍼 적용
+	renderAPI.SetConstantBufferVS(m_spWorldBuffer->GetBuffer(), 0);
+	renderAPI.SetConstantBufferVS(m_spViewProjectionBuffer->GetBuffer(), 1);
+	renderAPI.SetConstantBufferVS(m_spLightBuffer->GetBuffer(), 2);
+	renderAPI.SetConstantBufferVS(m_spBonePaletteBuffer->GetBuffer(), 3);
+	renderAPI.SetConstantBufferPS(m_spLightBuffer->GetBuffer(), 0);
+	renderAPI.SetConstantBufferPS(m_spMaterialBuffer->GetBuffer(), 1);
 
 	/*****************라이팅 적용************************/
 	auto compLightList = _GameWorld()->GetComponent<LightList>();
@@ -183,12 +201,15 @@ void ForwardShader::Render(const CPD3DShaderResourceView& prevRenderedScene)
 			{
 				//디폴트 텍스쳐 사용...
 			}
+			renderAPI.SetShaderResoureView(diffuseTexture->GetShaderResourceView(), 0);
 		}
-		renderAPI.SetShaderResoureView(diffuseTexture->GetShaderResourceView(), 0);
 
 		//드로우콜
 		auto mesh = compMesh->GetMesh();
 		if(mesh != nullptr)
 			_RenderMesh(mesh);
 	}
+
+	//렌더 큐를 비운다
+	_ClearQueue();
 }

@@ -63,7 +63,7 @@ namespace MNL
 		void _SetGameWorld(MnGameWorld* pWorld);
 
 	protected:
-		std::list<const std::shared_ptr<MnGameObject>> m_renderQueue;
+		std::list<std::shared_ptr<MnGameObject>> m_renderQueue;
 
 	private:
 		MnGameWorld* m_pWorld;

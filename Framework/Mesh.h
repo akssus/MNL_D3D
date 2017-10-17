@@ -10,7 +10,7 @@ MnMesh 와 이름이 겹치지만 컴포넌트 사용상의 편의를 위해 Mesh란 이름을 사용. \n
 #include "MnGameObjectComponent.h"
 #include "Render/MnMesh.h"
 #include "Render/MnMeshData.h"
-#include "Render/MnSkinnedMesh.h"
+#include "StandardMeshType.h"
 #include <memory>
 
 
@@ -27,7 +27,7 @@ namespace MNL
 		/**
 		@return 메시가 세팅되지 않았을 경우 nullptr 반환
 		*/
-		const std::shared_ptr<MnMesh> GetMesh() const;
+		const std::shared_ptr<StandardMeshType> GetMesh() const;
 
 		/**
 		@brief 스켈레톤 포인터를 반환한다
@@ -36,6 +36,6 @@ namespace MNL
 		const std::shared_ptr<MnSkeleton> GetSkeleton() const;
 
 	private:
-		std::shared_ptr<MnMesh> m_spMesh;
+		std::shared_ptr<StandardMeshType> m_spMesh;
 	};
 }

@@ -1,3 +1,11 @@
+/**
+@class MNL::MnResourcePool
+@section 주의사항
+LoadModelFromFile 을 호출할때 쓰이는 버텍스 타입은 MnmeshVertexType 혹은 MnSkinnedMeshVertexType 둘중 하나로 쓰는걸 추천한다. \n
+VertexType 내 모든 플래그에 대해 대응하는게 아니기 때문임.
+*/
+
+
 #pragma once
 #include <vector>
 #include <map>
@@ -29,7 +37,7 @@ namespace MNL
 		{
 			std::string m_packageName;
 			std::vector<std::shared_ptr<MnMeshData> > m_lstSpMeshes;
-			std::vector<MnBoneAnimation> m_lstAnimations;
+			std::vector<std::shared_ptr<MnBoneAnimation>> m_lstSpAnimations;
 		};
 
 		struct _BoneData
@@ -43,7 +51,7 @@ namespace MNL
 		~MnResourcePool();
 
 		/**
-		Load meshes from file into the model package
+		@brief 파일의 모든 모델을 리소스풀에 로드한다. 
 		*/
 		HRESULT LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType);
 		/**
@@ -57,8 +65,8 @@ namespace MNL
 		@return nullptr if modelPackage unfound or meshName unfound
 		*/
 		std::shared_ptr<MnMeshData> GetMeshData(const std::string& modelPackageName, const std::string& meshName) const;
-		MnBoneAnimation GetBoneAnimation(const std::string& modelPackageName, const std::string& animationName) const;
-		MnBoneAnimation GetBoneAnimation(const std::string& modelPackageName, UINT index) const;
+		std::shared_ptr<MnBoneAnimation> GetBoneAnimation(const std::string& modelPackageName, const std::string& animationName) const;
+		std::shared_ptr<MnBoneAnimation> GetBoneAnimation(const std::string& modelPackageName, UINT index) const;
 
 	private:
 		HRESULT _LoadModelFromMemory(const _MemoryChunk& memoryChunk, std::string modelPackageName);

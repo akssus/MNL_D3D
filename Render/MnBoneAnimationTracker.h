@@ -9,7 +9,9 @@ namespace MNL
 	public:
 		MnBoneAnimationTracker();
 		~MnBoneAnimationTracker();
-		HRESULT Init(const std::shared_ptr<MnSkeleton>& spSkeleton, const MnBoneAnimation& animation);
+
+		void SetSkeleton(const std::shared_ptr<MnSkeleton>& spSkeleton);
+		void SetAnimation(const std::shared_ptr<MnBoneAnimation>& spAnimation);
 
 		/*
 		Set how many frames per seconds
@@ -21,6 +23,16 @@ namespace MNL
 		*/
 		void SetAnimatingSpeed(float speed);
 
+		/**
+		@brief 현재 애니메이션 프레임을 0으로 되돌린다.
+		*/
+		void Reset();
+
+		/**
+		@brief 애니메이션 재생 종료시 루프 여부를 설정한다.
+		*/
+		void SetLoop(bool isLoop);
+
 		void UpdateAnimation(double timeDelta);
 
 	private:
@@ -28,16 +40,11 @@ namespace MNL
 
 	private:
 		std::shared_ptr<MnSkeleton> m_spCurrentSkeleton;
-		MnBoneAnimation m_currentAnimation;
-		double m_currentTime;
-		/*
-		In a single second, how long the duration is.
-		*/
-		double m_durationPerSeconds;
-		/*
-		Animation timing speed. 1.0f is normal
-		*/
-		float m_animatingSpeed;
+		std::shared_ptr<MnBoneAnimation> m_spCurrentAnimation;
+
+		double m_currentTime; ///< 현재 애니메이팅 타이밍.
+		double m_durationPerSeconds; ///< 초당 듀레이션. 듀레이션은 fbx파일 기준
+		float m_animatingSpeed; ///< 원래 애니메이팅 스피드의 백분율. 1.0일 경우 정상속도. 기본값 1.0
 
 		bool m_isLoop;
 		bool m_isPlaying;

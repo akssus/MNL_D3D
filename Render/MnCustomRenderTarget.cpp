@@ -20,8 +20,8 @@ HRESULT MnCustomRenderTarget::Init(const CPD3DDevice& cpDevice, float textureWid
 	texDesc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
 	texDesc.CPUAccessFlags = 0;
 	texDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
-	texDesc.Width = textureWidth;
-	texDesc.Height = textureHeight;
+	texDesc.Width = static_cast<UINT>(textureWidth);
+	texDesc.Height = static_cast<UINT>(textureHeight);
 	texDesc.MipLevels = 1;
 	texDesc.MiscFlags = 0;
 	texDesc.SampleDesc.Count = 1;
@@ -58,7 +58,7 @@ HRESULT MnCustomRenderTarget::Init(const CPD3DDevice& cpDevice, float textureWid
 	}
 
 	//µª½º½ºÅÙ½Ç ºä »ý¼º
-	result = m_depthStencilBuffer.Init(cpDevice, textureWidth, textureHeight);
+	result = m_depthStencilBuffer.Init(cpDevice, static_cast<UINT>(textureWidth), static_cast<UINT>(textureHeight));
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilBuffer));

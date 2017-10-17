@@ -1,4 +1,5 @@
 #include "ShaderList.h"
+#include <algorithm>
 
 using namespace MNL;
 
@@ -23,6 +24,7 @@ void ShaderList::AddShader(const std::shared_ptr<Shader>& spShader)
 	spShader->_Init(GameWorld());
 	spShader->SetID(id);
 	m_lstShaders[id] = spShader;
+	m_renderOrder.push_back(id);
 }
 
 void ShaderList::AddShader(const std::shared_ptr<Shader>& spShader, int id)
@@ -31,12 +33,20 @@ void ShaderList::AddShader(const std::shared_ptr<Shader>& spShader, int id)
 	spShader->_Init(GameWorld());
 	spShader->SetID(id);
 	m_lstShaders[id] = spShader;
+	m_renderOrder.push_back(id);
 }
 
 void ShaderList::RemoveShader(int id)
 {
 	m_lstShaders.erase(id);
 	m_idAllocator.Deallocate(id);
+	for (int i = 0; i < m_renderOrder.size(); ++i)
+	{
+		if (m_renderOrder[i] == id)
+		{
+			m_renderOrder.erase(m_renderOrder.begin() + i);
+		}
+	}
 }
 
 std::shared_ptr<Shader> ShaderList::GetShader(int id)

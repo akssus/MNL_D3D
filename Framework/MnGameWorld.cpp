@@ -1,5 +1,11 @@
 #include "MnGameWorld.h"
+#include <memory>
 #include <cassert>
+#include "Renderer.h"
+#include "CameraList.h"
+#include "ShaderList.h"
+#include "LightList.h"
+#include "MeshAnimationController.h"
 
 using namespace DirectX::SimpleMath;
 using namespace MNL;
@@ -22,9 +28,28 @@ void MnGameWorld::_Init()
 	m_idAllocator.SetRange(0, 1000);
 }
 
+void MnGameWorld::Update()
+{
+	OnUpdate();
+}
+
 void MnGameWorld::OnInit()
 {
-	//nothing
+
+}
+
+void MnGameWorld::OnUpdate()
+{
+	//테스트용 임시
+	for (auto& gameObject : m_lstGameObjects)
+	{
+		auto& shaders = GetComponent<ShaderList>()->GetShaders();
+		for (auto& shader : shaders)
+		{
+			shader.second->AddObjectsToQueue(gameObject.second);
+		}
+		gameObject.second->GetComponent<MeshAnimationController>()->UpdateBones();
+	}
 }
 
 void MnGameWorld::AddComponent(const std::shared_ptr<MnWorldComponent>& spComponent)
@@ -34,18 +59,6 @@ void MnGameWorld::AddComponent(const std::shared_ptr<MnWorldComponent>& spCompon
 	spComponent->_SetAttatchedWorld(this);
 	m_tblComponents[key] = spComponent;
 }
-
-template <class T>
-std::shared_ptr<T>& MnGameWorld::GetComponent() const
-{
-	std::string key = typeid(T).name();
-	if (m_tblComponents.count(key) == 0)
-	{
-		return nullptr;
-	}
-	return std::dynamic_pointer_cast<T>(m_tblComponents[key]);
-}
-
 
 int MnGameWorld::AllocateGameObjectID()
 {

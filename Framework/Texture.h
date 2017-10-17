@@ -9,6 +9,7 @@ MN_TEXTURE_TYPE 열거형을 통해 텍스쳐 용도에 텍스쳐를 매핑한다.
 #pragma once
 #include <map>
 #include <memory>
+#include "MnGameObjectComponent.h"
 #include "Render/MnMeshTextureCombination.h"
 
 namespace MNL
@@ -18,7 +19,7 @@ namespace MNL
 		MN_TEXTURE_DIFFUSE,
 		MN_TEXTURE_NORMAL_MAP,
 	};
-	class Texture
+	class Texture : public MnGameObjectComponent
 	{
 	public:
 		Texture();

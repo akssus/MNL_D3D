@@ -7,7 +7,7 @@
 
 namespace MNL
 {
-	class CameraList
+	class CameraList : public MnWorldComponent
 	{
 	public:
 		CameraList();

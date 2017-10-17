@@ -15,7 +15,7 @@
 #include "MnWorldComponent.h"
 #include "Render/MnCamera.h"
 #include "Utility\MnIDAllocator.h"
-#include "Renderer.h"
+#include "Utility\MnTimer.h"
 #include "MnGameObject.h"
 
 namespace MNL
@@ -27,10 +27,20 @@ namespace MNL
 		~MnGameWorld();
 
 
-		virtual void OnInit();
-
+	public:
 		/**
-		@brief 월드 컴포넌트를 추가한다.
+		@brief 한 프레임 갱신. 오버라이드가 불가하며 OnUpdate()를 호출한다.
+		*/
+		virtual void Update() final;
+
+	protected:
+		virtual void OnInit();
+		virtual void OnUpdate();
+
+
+	public:
+		/**
+		@brief 월드 컴포넌트를 추가한다. 참고: 기본 월드 컴포넌트는 MnGameWorld 초기화될때 자동으로 추가됨.
 		*/
 		void AddComponent(const std::shared_ptr<MnWorldComponent>& spComponent);
 
@@ -40,7 +50,15 @@ namespace MNL
 		@return 컴포넌트가 존재하지 않을 경우 nullptr 반환
 		*/
 		template <class T>
-		std::shared_ptr<T>& GetComponent() const;
+		std::shared_ptr<T> GetComponent() const
+		{
+			std::string key = typeid(T).name();
+			if (m_tblComponents.count(key) == 0)
+			{
+				return std::shared_ptr<T>(nullptr);
+			}
+			return std::dynamic_pointer_cast<T>(m_tblComponents.at(key));
+		}
 
 		/**
 		@brief 게임 오브젝트의 고유 식별 ID를 할당한다.
@@ -82,6 +100,7 @@ namespace MNL
 		@brief 월드의 메인 카메라를 설정한다. 렌더링은 메인카메라를 기준으로 실행된다.
 		*/
 		void SetMainCamera(const std::shared_ptr<MnCamera>& spCamera);
+
 		/**
 		@brief 월드의 메인 카메라를 반환한다.
 		@return 메인카메라가 존재하지 않을 경우 nullptr 반환
@@ -101,7 +120,9 @@ namespace MNL
 		MnIDAllocator m_idAllocator;
 
 		std::shared_ptr<MnCamera> m_spMainCamera; ///< 최종 렌더링은 메인 카메라를 기준으로 렌더링된다.
+		
 		float m_screenWidth;
 		float m_screenHeight;
+
 	};
 }

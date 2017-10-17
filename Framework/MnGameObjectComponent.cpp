@@ -1,5 +1,6 @@
 #include "MnGameObjectComponent.h"
 #include "MnGameObject.h"
+#include "MnGameWorld.h"
 #include <cassert>
 
 using namespace MNL;
@@ -20,18 +21,14 @@ std::string MnGameObjectComponent::GetComponentName() const
 	return typeid(*this).name();
 }
 
-template <class T>
-std::shared_ptr<T> MnGameObjectComponent::GetComponent()
-{
-	assert(m_pAttatchedGameObject != nullptr);
-	return m_pAttatchedGameObject->GetComponent<T>();
-}
-
 const MnGameObject* MnGameObjectComponent::GameObject() const
 {
 	return m_pAttatchedGameObject;
 }
-
+bool MnGameObjectComponent::IsAttatched() const
+{
+	return (m_pAttatchedGameObject != nullptr);
+}
 void MnGameObjectComponent::_SetAttatchedGameObject(MnGameObject* pGameObject)
 {
 	assert(pGameObject != nullptr);

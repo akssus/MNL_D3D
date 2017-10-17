@@ -14,7 +14,7 @@ Render-To-Texture 용 렌더타겟을 제공한다.
 #include "Core/MnLog.h"
 #include "Core/MnTexture2D.h"
 #include "Core/MnRenderTargetView.h"
-#include "Core/MnDepthStencilBuffer.h""
+#include "Core/MnDepthStencilBuffer.h"
 #include "Core/MnShaderResourceView.h"
 
 

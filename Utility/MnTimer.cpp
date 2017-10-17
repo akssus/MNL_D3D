@@ -3,7 +3,9 @@
 using namespace MNL;
 
 
-MnTime::MnTime():m_time(0.0),m_timeScale(1.0)
+MnTime::MnTime():
+	m_time(0.0),
+	m_timeScale(1.0)
 {
 
 }

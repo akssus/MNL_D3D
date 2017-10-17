@@ -20,17 +20,6 @@ void MnGameObject::AddComponent(const std::shared_ptr<MnGameObjectComponent>& sp
 	m_tblComponents[key] = spComponent;
 }
 
-template <class T>
-std::shared_ptr<T> MnGameObject::GetComponent()
-{
-	std::string key = typeid(T).name();
-	if (m_tblComponenets.count(key) == 0)
-	{
-		return nullptr;
-	}
-	//다운캐스팅 실패시 자동으로 nullptr 반환
-	return std::dynamic_pointer_cast<T>(m_tblComponenets[key]);
-}
 
 void MnGameObject::SetTag(const std::string& tag)
 {
@@ -48,4 +37,15 @@ void MnGameObject::SetID(UINT id)
 UINT MnGameObject::GetID() const
 {
 	return m_id;
+}
+
+MnGameWorld* MnGameObject::GameWorld() const
+{
+	return m_pGameWorld;
+}
+
+void MnGameObject::_SetGameWorld(MnGameWorld* pGameWorld)
+{
+	assert(pGameWorld != nullptr);
+	m_pGameWorld = pGameWorld;
 }

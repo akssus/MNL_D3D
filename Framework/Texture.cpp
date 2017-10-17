@@ -1,5 +1,7 @@
 #include "Texture.h"
 #include <cassert>
+#include "MnGameObject.h"
+#include "Transform.h"
 
 using namespace MNL;
 

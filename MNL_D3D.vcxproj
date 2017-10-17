@@ -182,6 +182,7 @@
     <ClCompile Include="Framework\CameraList.cpp" />
     <ClCompile Include="Framework\ForwardShader.cpp" />
     <ClCompile Include="Framework\Material.cpp" />
+    <ClCompile Include="Framework\MeshAnimationController.cpp" />
     <ClCompile Include="Framework\MnBonePaletteBuffer.cpp" />
     <ClCompile Include="Framework\MnGameWorld.cpp" />
     <ClCompile Include="Framework\Mesh.cpp" />
@@ -224,6 +225,7 @@
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp" />
     <ClCompile Include="Render\MnStaticMesh.cpp" />
     <ClCompile Include="SkinnedMeshShaderPath.cpp" />
+    <ClCompile Include="StandardMeshType.cpp" />
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="Utility\MnIDAllocator.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
@@ -264,6 +266,7 @@
     <ClInclude Include="Framework\CameraList.h" />
     <ClInclude Include="Framework\ForwardShader.h" />
     <ClInclude Include="Framework\Material.h" />
+    <ClInclude Include="Framework\MeshAnimationController.h" />
     <ClInclude Include="Framework\MnBonePaletteBuffer.h" />
     <ClInclude Include="Framework\MnGameWorld.h" />
     <ClInclude Include="Framework\LightList.h" />
@@ -279,9 +282,12 @@
     <ClInclude Include="Framework\Renderer.h" />
     <ClInclude Include="Framework\ShaderList.h" />
     <ClInclude Include="Framework\Shader.h" />
+    <ClInclude Include="Framework\StandardMeshType.h" />
     <ClInclude Include="Framework\StaticMeshRenderer.h" />
     <ClInclude Include="Framework\Texture.h" />
     <ClInclude Include="Framework\Transform.h" />
+    <ClInclude Include="GameObjectComponents.h" />
+    <ClInclude Include="GameWorldComponents.h" />
     <ClInclude Include="Render\MnBone.h" />
     <ClInclude Include="Render\MnBoneAnimation.h" />
     <ClInclude Include="Render\MnBoneAnimationElement.h" />
@@ -313,6 +319,18 @@
     <ClInclude Include="Utility\MnTimer.h" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="backBufferShader_ps.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">PS_MAIN</EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="backBufferShader_vs.hlsl" />
+    <FxCompile Include="forwardshader_ps.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">PS_MAIN</EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="forwardshader_vs.hlsl" />
     <FxCompile Include="pixelshader.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>

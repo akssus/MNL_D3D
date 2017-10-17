@@ -19,8 +19,11 @@ Update 메소드를 통해 독립적인 로직 모듈을 가지며 게임 루프 내에서 로직을 수행한�
 
 namespace MNL
 {
+	class MnGameWorld;
+
 	class MnGameObject
 	{
+		friend MnGameWorld;
 	public:
 		MnGameObject();
 		virtual ~MnGameObject();		
@@ -35,8 +38,17 @@ namespace MNL
 		@return 해당 컴포넌트가 존재하지 않을 경우 nullptr 을 반환한다.
 		*/ 
 		template <class T>
-		std::shared_ptr<T> GetComponent();
-
+		std::shared_ptr<T> GetComponent() const
+		{
+			std::string key = typeid(T).name();
+			if (m_tblComponents.count(key) == 0)
+			{
+				return nullptr;
+			}
+			//다운캐스팅 실패시 자동으로 nullptr 반환
+			return std::dynamic_pointer_cast<T>(m_tblComponents.at(key));
+		}
+		
 		/**
 		@brief 분류용 다용도 태그 설정
 		*/
@@ -48,11 +60,20 @@ namespace MNL
 		*/
 		void SetID(UINT id);
 		UINT GetID() const;
-		
+			
+		/**
+		@brief 현재 게임오브젝트가 소속된 게임 월드의 포인터를 반환한다.
+		*/
+		MnGameWorld* GameWorld() const;
+
+	protected:
+		void _SetGameWorld(MnGameWorld* pGameWorld);
 
 	private:
+		MnGameWorld* m_pGameWorld; ///< 현재 소속된 게임월드의 포인터
 		std::map<std::string, std::shared_ptr<MnGameObjectComponent>> m_tblComponents;
 		std::string m_tag; ///< 인스턴스 다용도 태그
 		UINT m_id;
+
 	};
 }

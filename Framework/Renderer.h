@@ -30,6 +30,7 @@ namespace MNL
 		struct _BackBufferShaderVertex
 		{
 			DirectX::SimpleMath::Vector3 position;
+			DirectX::SimpleMath::Vector2 texCoord;
 		};
 	public:
 		Renderer();

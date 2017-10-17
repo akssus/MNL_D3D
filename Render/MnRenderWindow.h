@@ -50,6 +50,11 @@ namespace MNL
 		*/
 		const HWND GetWindowHandle() const;
 
+		float GetWindowWidth() const;
+		float GetWindowHeight() const;
+		float GetWindowPositionX() const;
+		float GetWindowPositionY() const;
+
 		/**
 		@brief 백버퍼의 렌더타겟버퍼와 뎁스스텐실버퍼를 클리어한다.
 		*/

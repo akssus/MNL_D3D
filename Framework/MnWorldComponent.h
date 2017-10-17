@@ -9,7 +9,7 @@ namespace MNL
 		friend class MnGameWorld;
 	public:
 		MnWorldComponent();
-		~MnWorldComponent();
+		virtual ~MnWorldComponent();
 
 		/**
 		@brief 현재 컴포넌트 클래스의 이름을 반환한다.
@@ -21,7 +21,11 @@ namespace MNL
 		@return 해당 컴포넌트가 존재하지 않을 경우 nullptr 을 반환한다.
 		*/
 		template <class T>
-		std::shared_ptr<T> GetComponent();
+		std::shared_ptr<T> GetComponent()
+		{
+			assert(m_pAttatchedWorld != nullptr);
+			return m_pAttatchedWorld->GetComponent<T>();
+		}
 
 	protected:
 		/**

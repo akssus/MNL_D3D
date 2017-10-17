@@ -1,6 +1,9 @@
 #include "TestGame.h"
 #include "SkinnedMeshShaderPath.h"
 #include "Core/MnLog.h"
+#include "GameWorldComponents.h"
+#include "GameObjectComponents.h"
+#include "Framework\ForwardShader.h"
 
 using namespace MNL;
 using namespace DirectX::SimpleMath;
@@ -16,57 +19,22 @@ TestGame::~TestGame()
 
 HRESULT TestGame::OnInit()
 {
-	//스킨드 메시용 버텍스타입
+	HRESULT result = E_FAIL;
+
+	m_gameWorld.SetScreenSize(GetRenderWindow().GetWindowWidth(), GetRenderWindow().GetWindowHeight());
+	m_gameWorld.AddComponent(std::make_shared<CameraList>());
+	m_gameWorld.AddComponent(std::make_shared<ShaderList>());
+	m_gameWorld.AddComponent(std::make_shared<LightList>());
+	m_gameWorld.AddComponent(std::make_shared<Renderer>());
+
+	//주의 : 모델 로딩용 버텍스 타입은 MnSkinnedMeshVertexType 으로 고정하는 편이 좋다.
 	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
-
-	//렌더러 초기화
-	m_spSkinnedMeshRenderer = std::make_shared<MnSkinnedMeshRenderer>();
-	HRESULT result = m_spSkinnedMeshRenderer->Init(renderAPI.GetD3DDevice(), vertexType);
-	if (FAILED(result))
-	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(TestGame::m_spSkinnedMeshRenderer));
-		return result;
-	}
-
-	//셰이더패스 초기화
-	auto shaderPath = std::make_shared<SkinnedMeshShaderPath>();
-	result = shaderPath->Init(renderAPI.GetD3DDevice(), vertexType);
-	if (FAILED(result))
-	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(shaderPath));
-		return result;
-	}
-	m_spSkinnedMeshRenderer->AddShaderPathInstance(shaderPath);
-
-	//텍스쳐 로딩 및 초기화
-	auto textureComb = std::make_shared<MnMeshTextureCombination>();
-	auto texture = std::make_shared<MnMeshTexture>();
-	result = texture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
-	if (FAILED(result))
-	{
-		MnLog::MB_Failed(MN_VAR_INFO(texture->LoadFromFile));
-		return result;
-	}
-
-	textureComb->AddMeshTexture(texture);
-	m_spSkinnedMeshRenderer->SetTextureCombination(textureComb);
-
-	//파이프라인에 바인딩
-	SetRenderer(m_spSkinnedMeshRenderer);
-
-	//카메라 초기화
-	m_camera.SetFOV(3.14f / 5.0f);
-	m_camera.SetNearDistance(0.1f);
-	m_camera.SetFarDistance(10000.0f);
-	m_camera.SetAspectRatio((float)GetScreenWidth() / (float)GetScreenHeight());
-	m_camera.SetPosition(Vector3(0, 0, 1000.0f));
-	m_camera.LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	//메시를 리로스풀로 로딩
 	result = m_resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim2.fbx", vertexType);
 	if (FAILED(result))
 	{
-		MnLog::MB_Failed(MN_VAR_INFO(TestGame::m_resourcePool.LoadModelFromFile));
+		MnLog::MB_Failed(MN_FUNC_INFO(m_resourcePool.LoadModelFromFile));
 		return result;
 	}
 
@@ -78,42 +46,61 @@ HRESULT TestGame::OnInit()
 		MnLog::MB_IsNull(MN_VAR_INFO(meshData));
 		return E_FAIL;
 	}
-	result = mesh->Init(renderAPI.GetD3DDevice(), meshData);
-	if (FAILED(result))
-	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(mesh));
-		return result;
-	}
-	m_lstMeshes.push_back(mesh);
+	
 
-	//테스트용 광원
+	//테스트용 게임 오브젝트 생성. 팩토리 패턴 필요
+	auto gameObject = std::make_shared<MnGameObject>();
+
+	gameObject->AddComponent(std::make_shared<Transform>());
+	gameObject->AddComponent(std::make_shared<Mesh>());
+	gameObject->AddComponent(std::make_shared<MeshAnimationController>());
+	gameObject->AddComponent(std::make_shared<Texture>());
+	gameObject->AddComponent(std::make_shared<Material>());
+
+	gameObject->GetComponent<Mesh>()->SetMesh(meshData);
+
+	auto testTexture = std::make_shared<MnMeshTexture>();
+	testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
+	gameObject->GetComponent<Texture>()->SetTexture(testTexture, MN_TEXTURE_DIFFUSE);
+
+	auto testMaterial = std::make_shared<MnMaterial>();
+	testMaterial->ambient = Vector4(0.1f, 0.1f, 0.1f, 0.1f);
+	testMaterial->diffuse = Vector4(0.55f, 0.55f, 0.55f, 1.0f);
+	testMaterial->specular = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
+	testMaterial->specularPower = 32.0f;
+	gameObject->GetComponent<Material>()->SetMaterial(testMaterial);
+	
+	//테스트용 애니메이션
+	auto testAnim = m_resourcePool.GetBoneAnimation("rico_anim2.fbx", 0);
+	gameObject->GetComponent<MeshAnimationController>()->AddAnimation("walk", testAnim);
+	gameObject->GetComponent<MeshAnimationController>()->SetAnimation("walk");
+
+	
+	m_gameWorld.AddGameObject(gameObject);
+
+
 	auto light = std::make_shared<MnLightSource>();
 	light->SetPosition(0.0f, 0.0f, 0.0f);
 	light->SetDirection(-0.5f, 0.0f, -1.0f);
 	light->SetLightType(MN_LIGHT_DIRECTIONAL);
-	m_lstLights.push_back(light);
+	m_gameWorld.GetComponent<LightList>()->AddLight(light);
 
-	//테스트용 재질
-	auto material = std::make_shared<MnMaterial>();
-	material->ambient = Vector4(0.1f, 0.1f, 0.1f, 0.1f);
-	material->diffuse = Vector4(0.55f, 0.55f, 0.55f, 1.0f);
-	material->specular = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
-	material->specularPower = 32.0f;
-	m_lstMaterials.push_back(material);
 
-	//테스트용 애니메이션
-	auto testAnim = m_resourcePool.GetBoneAnimation("rico_anim2.fbx", 0);
+	auto shader = std::make_shared<ForwardShader>();
+	m_gameWorld.GetComponent<ShaderList>()->AddShader(shader);
 
-	//테스트용 애니메이션 재생기
-	result = m_boneAnimTracker.Init(mesh->GetSkeleton(), testAnim);
-	if (FAILED(result))
-	{
-		//error msg
-		return result;
-	}
+	auto camera = std::make_shared<MnCamera>();
+	camera->SetFOV(3.14f / 5.0f);
+	camera->SetNearDistance(0.1f);
+	camera->SetFarDistance(10000.0f);
+	camera->SetAspectRatio(1024.0f / 768.0f);
+	//camera.SetPosition(Vector3(0, 0, -1000.0f));
+	camera->SetPosition(Vector3(0, 0, 1000.0f));
+	camera->LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
 
-	//타이머 스타트
-	m_timer.Start();
+	m_gameWorld.GetComponent<CameraList>()->AddCamera(camera);
+	m_gameWorld.SetMainCamera(camera);
+
 
 	return S_OK;
 }
@@ -121,26 +108,10 @@ bool TestGame::OnUpdate()
 {
 	ClearBackBuffer();
 
-	MnTime elapsedTime = m_timer.GetElapsedTime();
+	m_gameWorld.Update();
 	
-	m_boneAnimTracker.UpdateAnimation(elapsedTime.GenuineTime());
-
-	static float rad = 0.0f;
-	rad += 0.01f;
-
-	//matWorld = mesh->GetTransform();
-	Matrix matWorld = Matrix::Identity;
-	matWorld = matWorld * Matrix::CreateRotationY(rad);
-	matWorld = matWorld * Matrix::CreateTranslation(0.0f, -200.0f, 0.0f);
-
-	m_spSkinnedMeshRenderer->SetViewProjectionBuffer(renderAPI.GetD3DDeviceContext(), m_camera.GetViewMatrix(), m_camera.GetProjectionMatrix());
-	//아래 인수들은 전부 메시를 가진 오브젝트 클래스가 가지고 있어야 함.
-	m_spSkinnedMeshRenderer->SetWorldBuffer(renderAPI.GetD3DDeviceContext(), matWorld);
-	m_spSkinnedMeshRenderer->SetLightBuffer(renderAPI.GetD3DDeviceContext(), m_lstLights[0]);
-	m_spSkinnedMeshRenderer->SetMaterial(renderAPI.GetD3DDeviceContext(), m_lstMaterials[0]);
-	m_spSkinnedMeshRenderer->SetBonePalette(renderAPI.GetD3DDeviceContext(), dynamic_cast<MnSkinnedMesh*>(m_lstMeshes[0].get())->GetSkeleton());
-
-	RenderMesh(m_spSkinnedMeshRenderer, m_lstMeshes[0]);
+	auto renderer = m_gameWorld.GetComponent<Renderer>();
+	renderer->Render(GetRenderWindow());
 
 	SwapBuffers();
 	return true;

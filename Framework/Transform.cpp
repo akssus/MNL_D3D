@@ -7,7 +7,7 @@ using namespace DirectX::SimpleMath;
 Transform::Transform():
 	m_position(Vector3(0.0f,0.0f,0.0f)),
 	m_rotation(Quaternion(0.0f,0.0f,0.0f,0.0f)),
-	m_scale(Vector3(0.0f,0.0f,0.0f)),
+	m_scale(Vector3(1.0f,1.0f,1.0f)),
 	m_matTranslation(Matrix::Identity),
 	m_matRotation(Matrix::Identity),
 	m_matScaling(Matrix::Identity)

@@ -448,9 +448,9 @@ HRESULT MnResourcePool::_ReadAnimations(const aiScene* scene, _ModelPackage& mod
 		for (int i = 0; i < scene->mNumAnimations; ++i)
 		{
 			const aiAnimation* anim = scene->mAnimations[i];
-			MnBoneAnimation newAnim;
-			newAnim.SetName(anim->mName.C_Str());
-			newAnim.SetTotalDuration(anim->mDuration);
+			std::shared_ptr<MnBoneAnimation> newAnim = std::make_shared<MnBoneAnimation>();
+			newAnim->SetName(anim->mName.C_Str());
+			newAnim->SetTotalDuration(anim->mDuration);
 
 			for (int boneIndex = 0; boneIndex < anim->mNumChannels; ++boneIndex)
 			{
@@ -475,9 +475,9 @@ HRESULT MnResourcePool::_ReadAnimations(const aiScene* scene, _ModelPackage& mod
 
 					newAnimElement.AddKeyFrame(newKeyFrame);
 				}
-				newAnim.AddElement(newAnimElement);
+				newAnim->AddElement(newAnimElement);
 			}
-			modelPackage.m_lstAnimations.push_back(newAnim);
+			modelPackage.m_lstSpAnimations.push_back(newAnim);
 		}
 	}
 	return S_OK;
@@ -506,33 +506,33 @@ std::shared_ptr<MnMeshData> MnResourcePool::GetMeshData(const std::string& model
 	return *it;
 }
 
-MnBoneAnimation MnResourcePool::GetBoneAnimation(const std::string& modelPackageName, const std::string& animationName) const
+std::shared_ptr<MnBoneAnimation> MnResourcePool::GetBoneAnimation(const std::string& modelPackageName, const std::string& animationName) const
 {
 	if (m_modelPackages.count(modelPackageName) == 0)
 	{
 		//model package not found
-		return MnBoneAnimation();
+		return nullptr;
 	}
-	auto& lstAnimations = m_modelPackages.at(modelPackageName).m_lstAnimations;
+	auto& lstAnimations = m_modelPackages.at(modelPackageName).m_lstSpAnimations;
 	auto it = std::find_if(lstAnimations.begin(), lstAnimations.end(),
-		[&](const MnBoneAnimation& anim)
+		[&](const std::shared_ptr<MnBoneAnimation>& anim)
 	{
-		if (anim.GetName() == animationName) return true;
+		if (anim->GetName() == animationName) return true;
 		return false;
 	});
 	if (it == lstAnimations.end())
 	{
-		return MnBoneAnimation();
+		return nullptr;
 	}
 	return *it;
 }
 
-MnBoneAnimation MnResourcePool::GetBoneAnimation(const std::string& modelPackageName, UINT index) const
+std::shared_ptr<MnBoneAnimation> MnResourcePool::GetBoneAnimation(const std::string& modelPackageName, UINT index) const
 {
 	if (m_modelPackages.count(modelPackageName) == 0)
 	{
 		//model package not found
-		return MnBoneAnimation();
+		return nullptr;
 	}
-	return m_modelPackages.at(modelPackageName).m_lstAnimations[index];
+	return m_modelPackages.at(modelPackageName).m_lstSpAnimations[index];
 }

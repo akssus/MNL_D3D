@@ -19,12 +19,6 @@ std::string MnWorldComponent::GetComponentName() const
 	return typeid(*this).name();
 }
 
-template <class T>
-std::shared_ptr<T> MnWorldComponent::GetComponent()
-{
-	assert(m_pAttatchedWorld != nullptr);
-	return m_pAttatchedWorld->GetComponent<T>();
-}
 
 MnGameWorld* MnWorldComponent::GameWorld() const
 {

@@ -11,12 +11,14 @@
 #include <d3d11.h>
 #include <memory>
 #include <string>
+#include <cassert>
 
 
 namespace MNL
 {
 	class MnGameObject;
-
+	class MnGameWorld;
+	
 	class MnGameObjectComponent
 	{
 		friend class MnGameObject;
@@ -34,7 +36,16 @@ namespace MNL
 		@return 해당 컴포넌트가 존재하지 않을 경우 nullptr 을 반환한다.
 		*/
 		template <class T>
-		std::shared_ptr<T> GetComponent();
+		std::shared_ptr<T> GetComponent()
+		{
+			assert(m_pAttatchedGameObject != nullptr);
+			return m_pAttatchedGameObject->GetComponent<T>();
+		}
+		
+		/**
+		@brief 현재 컴포넌트가 게임오브젝트에 소속되어 있는지 확인한다.
+		*/
+		bool IsAttatched() const;
 
 	protected:
 		/**

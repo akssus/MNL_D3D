@@ -73,7 +73,6 @@ void Shader::_RenderMesh(const std::shared_ptr<MnMesh> mesh)
 	renderAPI.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	//draw call
-	//renderAPI.DrawIndexed(mesh->GetIndexCount());
 	UINT numSubMeshes = mesh->GetNumSubMeshes();
 	for (UINT i = 0; i < numSubMeshes; ++i)
 	{

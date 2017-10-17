@@ -21,6 +21,7 @@ Framework 수준의 객체들은 MnFramework에 상당히 의존적이며, MnFramework는 초기화 
 #include "Render/MnRenderWindow.h"
 #include "Render/MnRenderer.h"
 #include "Render/MnMesh.h"
+#include "Utility\MnTimer.h"
 
 namespace MNL
 {
@@ -55,9 +56,17 @@ namespace MNL
 		@return 종료시 false 반환
 		*/
 		virtual bool OnUpdate();
+
+		/**
+		@brief 전 업데이트와 현 업데이트의 시간차를 반환한다.
+		*/
+		static MnTime GetElapsedTime();
 		
 
 	protected:
+
+		const MnRenderWindow& GetRenderWindow() const;
+
 		/**
 		@brief 백버퍼를 초기화한다.
 		@param color 백버퍼의 초기화 될 색상
@@ -68,22 +77,6 @@ namespace MNL
 		@brief 백버퍼를 프론트버퍼로 스왑하여 화면에 출력한다.
 		*/
 		void SwapBuffers();
-
-		/**
-		@brief 해당 렌더러의 설정으로 파이프라인의 설정을 바꾼다.
-		*/
-		void SetRenderer(const std::shared_ptr<MnRenderer>& spRenderer);
-
-		/**
-		@brief 해당 렌더러로 메쉬를 렌더링한다.
-		@param spRenderer 메쉬를 렌더링할 렌더러
-		@param mesh 렌더링 대상
-		@return 렌더 성공시 S_OK 반환
-		*/
-		HRESULT RenderMesh(const std::shared_ptr<MnRenderer>& spRenderer, const std::shared_ptr<MnMesh>& mesh);
-
-		void SetRenderTarget(const CPD3DRenderTargetView& cpRenderTargetView);
-		CPD3DRenderTargetView GetBackBufferRenderTargetView() const;
 
 		void SetFullScreen(bool isFullscreen);
 		bool IsFullScreen() const;
@@ -103,6 +96,11 @@ namespace MNL
 		UINT GetScreenWidth() const;
 		UINT GetScreenHeight() const;
 
+		/**
+		@brief 타임 스케일을 설정한다.
+		*/
+		static void SetTimeScale(float scale);
+
 	public:
 		/**
 		@brief D3D장치에 대한 접근 및 파이프라인 설정에 관한 API를 제공하는 객체로서 static으로 선언해 렌더 API에 대한 전역참조를 허용한다.
@@ -120,5 +118,8 @@ namespace MNL
 		MnSamplerState m_samplerState; ///< 텍스쳐 샘플링 정보를 담은 객체
 		MnRasterizerState m_rasterizerState; ///< 래스터라이저 상태 정보를 담은 객체
 		MnViewport m_viewport; //임시
+
+		static MnTimer _timer; ///< 시간 측정용 타이머
+		static MnTime _elapsedTime; ///< 전 프레임과 현 프레임의 시간차. milliseconds 단위이며 프레임의 가장 첫번째에 갱신된다.
 	};
 }
