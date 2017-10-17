@@ -46,6 +46,8 @@ float4 PS_MAIN(PS_INPUT input) : SV_TARGET
 
 	blendColor = blendColor + ambient +specularColor;
 
+	blendColor = textureColor;
+
 
 	return blendColor;
 }
