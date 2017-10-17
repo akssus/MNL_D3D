@@ -125,6 +125,7 @@ void ForwardShader::Render(const CPD3DShaderResourceView& prevRenderedScene)
 
 	//ÃÖÁ¾ Ãâ·Â ·»´õÅ¸°Ù ¼³Á¤
 	auto finalRenderTarget = GetFinalRenderTarget();
+	finalRenderTarget->Clear(renderAPI,DirectX::SimpleMath::Color(0.0f,0.0f,0.0f,0.0f));
 	MnFramework::renderAPI.SetRenderTarget(finalRenderTarget->GetRenderTargetView(), finalRenderTarget->GetDepthStencilView());
 
 

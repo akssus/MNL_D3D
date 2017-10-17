@@ -13,7 +13,7 @@ namespace MNL
 		/**
 		@brief 셰이더 리소스 뷰를 초기화한다. 기본사양 DIMENSION_2D + DXGI_FORMAT_R32G32B32A32_FLOAT
 		*/
-		HRESULT Init(const CPD3DDevice& cpDevice, const CPD3DTexture2D& cpResource);
+		HRESULT Init(const CPD3DDevice& cpDevice, const CPD3DTexture2D& cpResource, DXGI_FORMAT format);
 
 		CPD3DShaderResourceView GetShaderResourceView() const;
 

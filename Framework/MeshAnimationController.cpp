@@ -78,3 +78,8 @@ void MeshAnimationController::UpdateBones()
 	m_tracker.SetSkeleton(spSkeleton);
 	m_tracker.UpdateAnimation(MnFramework::GetElapsedTime().ScaledTime());
 }
+
+void MeshAnimationController::SetLoop(bool isLoop)
+{
+	m_tracker.SetLoop(isLoop);
+}

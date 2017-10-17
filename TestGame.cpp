@@ -74,6 +74,7 @@ HRESULT TestGame::OnInit()
 	auto testAnim = m_resourcePool.GetBoneAnimation("rico_anim3.fbx", 0);
 	gameObject->GetComponent<MeshAnimationController>()->AddAnimation("walk", testAnim);
 	gameObject->GetComponent<MeshAnimationController>()->SetAnimation("walk");
+	gameObject->GetComponent<MeshAnimationController>()->SetLoop(true);
 
 	
 	m_gameWorld.AddGameObject(gameObject);
@@ -95,8 +96,8 @@ HRESULT TestGame::OnInit()
 	camera->SetFarDistance(10000.0f);
 	camera->SetAspectRatio(1024.0f / 768.0f);
 	//camera.SetPosition(Vector3(0, 0, -1000.0f));
-	camera->SetPosition(Vector3(1000.0f, 0, 0.0f));
-	camera->LookAt(Vector3(0, 0, 0), Vector3(0, 1, 0));
+	camera->SetPosition(Vector3(0.0f, 0.0f, 1000.0f));
+	camera->LookAt(Vector3(0, 500.0f, 0), Vector3(0, 1, 0));
 
 	m_gameWorld.GetComponent<CameraList>()->AddCamera(camera);
 	m_gameWorld.SetMainCamera(camera);

@@ -113,13 +113,16 @@ void Renderer::_RenderToBackBuffer(const std::shared_ptr<MnCustomRenderTarget>& 
 	renderAPI.SetVertexShader(m_backBufferShader.GetVertexShader());
 	renderAPI.SetPixelShader(m_backBufferShader.GetPixelShader());
 
+	renderAPI.SetSamplerState(m_backBufferShader.GetSamplerState());
+	renderAPI.SetInputLayout(m_backBufferShader.GetInputLayout());
 	renderAPI.SetVertexBuffer(m_vertexBuffer);
 	renderAPI.SetIndexBuffer(m_indexBuffer);
-	renderAPI.SetInputLayout(m_backBufferShader.GetInputLayout());
 	renderAPI.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	renderAPI.SetShaderResoureView(spRenderTarget->GetShaderResourceView(), 0);
 	renderAPI.SetRenderTarget(renderWindow.GetBackBufferRenderTargetView(), renderWindow.GetBackBufferDepthStencilView());
+	renderAPI.SetShaderResoureView(spRenderTarget->GetShaderResourceView(), 0);
 
 	renderAPI.DrawIndexed(6);
+
+	renderAPI.SetShaderResoureView(nullptr, 0);
 }

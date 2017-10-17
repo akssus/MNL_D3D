@@ -47,6 +47,7 @@ VS_OUTPUT VS_MAIN(VS_INPUT input)
     
     input.position.w = 1.0f;
 
+	
 	output.position = input.boneWeight.x * mul(input.position, bonePalette[(uint)input.boneIndex.x])
 		+ input.boneWeight.y * mul(input.position, bonePalette[(uint)input.boneIndex.y])
 		+ input.boneWeight.z * mul(input.position, bonePalette[(uint)input.boneIndex.z])
@@ -56,7 +57,9 @@ VS_OUTPUT VS_MAIN(VS_INPUT input)
 		+ input.boneWeight.y * mul(input.normal, bonePalette[(uint)input.boneIndex.y])
 		+ input.boneWeight.z * mul(input.normal, bonePalette[(uint)input.boneIndex.z])
 		+ input.boneWeight.w * mul(input.normal, bonePalette[(uint)input.boneIndex.w]);
-
+		
+	//output.position = input.position;
+	//output.normal = input.normal;
 
     output.position = mul(output.position, worldMatrix);
     output.position = mul(output.position, viewMatrix);

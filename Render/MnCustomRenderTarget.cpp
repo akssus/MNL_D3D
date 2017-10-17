@@ -50,7 +50,7 @@ HRESULT MnCustomRenderTarget::Init(const CPD3DDevice& cpDevice, float textureWid
 	}
 
 	//嘉捞歹 府家胶 轰 积己
-	result = m_shaderResourceView.Init(cpDevice, m_renderedTexture.GetTexture());
+	result = m_shaderResourceView.Init(cpDevice, m_renderedTexture.GetTexture(), texDesc.Format);
 	if (FAILED(result))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_shaderResourceView));

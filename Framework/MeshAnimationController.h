@@ -40,11 +40,15 @@ namespace MNL
 
 		std::shared_ptr<MnBoneAnimation>& GetAnimation(const std::string&);
 
-
 		/**
 		@brief 현재 오브젝트의 메시를 확인하여 본을 업데이트한다.
 		*/
 		void UpdateBones();
+
+		/**
+		@brief 애니메이션 재생 완료 시 루프 여부를 설정한다.
+		*/
+		void SetLoop(bool isLoop);
 
 		
 	private:

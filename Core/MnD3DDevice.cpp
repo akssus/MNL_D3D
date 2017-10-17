@@ -24,7 +24,21 @@ HRESULT MnD3DDevice::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 		adapter = hardwareInfo.GetVideoAdapter(0).GetInterface();
 		driverType = D3D_DRIVER_TYPE_UNKNOWN;
 	}
+#ifdef _DEBUG
 	HRESULT deviceCreated = D3D11CreateDevice(	
+		adapter.Get(),
+		driverType,
+		nullptr,
+		D3D11_CREATE_DEVICE_DEBUG,
+		&maxFeatureLevel,
+		1,
+		D3D11_SDK_VERSION,
+		m_cpD3DDevice.ReleaseAndGetAddressOf(),
+		nullptr,
+		m_cpD3DDeviceContext.ReleaseAndGetAddressOf()
+	);
+#else
+	HRESULT deviceCreated = D3D11CreateDevice(
 		adapter.Get(),
 		driverType,
 		nullptr,
@@ -36,6 +50,7 @@ HRESULT MnD3DDevice::Init(const MnHardware& hardwareInfo, bool useDefaultAdapter
 		nullptr,
 		m_cpD3DDeviceContext.ReleaseAndGetAddressOf()
 	);
+#endif
 	if (FAILED(deviceCreated))
 	{
 		MnLog::MB_InitFailed(MN_VAR_INFO(MnD3DDevice));
