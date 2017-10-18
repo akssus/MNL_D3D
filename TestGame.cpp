@@ -1,5 +1,4 @@
 #include "TestGame.h"
-#include "SkinnedMeshShaderPath.h"
 #include "Core/MnLog.h"
 #include "GameWorldComponents.h"
 #include "GameObjectComponents.h"

@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BasicShaderPath.cpp" />
     <ClCompile Include="Core\MnConstantBuffer.cpp" />
     <ClCompile Include="Core\MnConstantBufferType.cpp" />
     <ClCompile Include="Core\MnConstantElement.cpp" />
@@ -181,6 +180,7 @@
     <ClCompile Include="Core\MnWindow.cpp" />
     <ClCompile Include="Framework\CameraList.cpp" />
     <ClCompile Include="Framework\ForwardShader.cpp" />
+    <ClCompile Include="Framework\LightList.cpp" />
     <ClCompile Include="Framework\Material.cpp" />
     <ClCompile Include="Framework\MeshAnimationController.cpp" />
     <ClCompile Include="Framework\MnBonePaletteBuffer.cpp" />
@@ -192,16 +192,15 @@
     <ClCompile Include="Framework\MnLightBuffer.cpp" />
     <ClCompile Include="Framework\MnMaterialBuffer.cpp" />
     <ClCompile Include="Framework\MnViewProjectionTransformBuffer.cpp" />
+    <ClCompile Include="Framework\MnWorldComponent.cpp" />
     <ClCompile Include="Framework\MnWorldTransformBuffer.cpp" />
     <ClCompile Include="Framework\Renderer.cpp" />
     <ClCompile Include="Framework\ShaderList.cpp" />
     <ClCompile Include="Framework\Shader.cpp" />
-    <ClCompile Include="Framework\StaticMeshRenderer.cpp" />
+    <ClCompile Include="Framework\StandardMeshType.cpp" />
     <ClCompile Include="Framework\Texture.cpp" />
     <ClCompile Include="Framework\Transform.cpp" />
-    <ClCompile Include="LightList.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MnWorldComponent.cpp" />
     <ClCompile Include="Render\MnBone.cpp" />
     <ClCompile Include="Render\MnBoneAnimation.cpp" />
     <ClCompile Include="Render\MnBoneAnimationElement.cpp" />
@@ -224,15 +223,12 @@
     <ClCompile Include="Render\MnSkinnedMesh.cpp" />
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp" />
     <ClCompile Include="Render\MnStaticMesh.cpp" />
-    <ClCompile Include="SkinnedMeshShaderPath.cpp" />
-    <ClCompile Include="StandardMeshType.cpp" />
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="Utility\MnIDAllocator.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
     <ClCompile Include="Utility\MnTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BasicShaderPath.h" />
     <ClInclude Include="Core\MnConstantBuffer.h" />
     <ClInclude Include="Core\MnConstantBufferType.h" />
     <ClInclude Include="Core\MnConstantElement.h" />
@@ -283,7 +279,6 @@
     <ClInclude Include="Framework\ShaderList.h" />
     <ClInclude Include="Framework\Shader.h" />
     <ClInclude Include="Framework\StandardMeshType.h" />
-    <ClInclude Include="Framework\StaticMeshRenderer.h" />
     <ClInclude Include="Framework\Texture.h" />
     <ClInclude Include="Framework\Transform.h" />
     <ClInclude Include="GameObjectComponents.h" />
@@ -311,7 +306,6 @@
     <ClInclude Include="Render\MnSkinnedMesh.h" />
     <ClInclude Include="Render\MnSkinnedMeshVertexType.h" />
     <ClInclude Include="Render\MnStaticMesh.h" />
-    <ClInclude Include="SkinnedMeshShaderPath.h" />
     <ClInclude Include="TestGame.h" />
     <ClInclude Include="Utility\MnIDAllocator.h" />
     <ClInclude Include="Utility\MNL_Utility.h" />

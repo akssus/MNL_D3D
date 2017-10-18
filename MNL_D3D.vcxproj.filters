@@ -41,9 +41,6 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="BasicShaderPath.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Core\MnConstantBuffer.cpp">
       <Filter>Core</Filter>
     </ClCompile>
@@ -206,15 +203,6 @@
     <ClCompile Include="Render\MnCustomRenderTarget.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="SkinnedMeshShaderPath.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\StaticMeshRenderer.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="MnWorldComponent.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\MnGameWorld.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
@@ -245,9 +233,6 @@
     <ClCompile Include="Framework\CameraList.cpp">
       <Filter>Framework\WorldComponents</Filter>
     </ClCompile>
-    <ClCompile Include="LightList.cpp">
-      <Filter>Framework\WorldComponents</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Material.cpp">
       <Filter>Framework\GameObjectComponents</Filter>
     </ClCompile>
@@ -272,14 +257,17 @@
     <ClCompile Include="Framework\MeshAnimationController.cpp">
       <Filter>Framework\GameObjectComponents</Filter>
     </ClCompile>
-    <ClCompile Include="StandardMeshType.cpp">
+    <ClCompile Include="Framework\StandardMeshType.cpp">
       <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MnWorldComponent.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\LightList.cpp">
+      <Filter>Framework\WorldComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BasicShaderPath.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Utility\MNL_Utility.h">
       <Filter>Utility</Filter>
     </ClInclude>
@@ -456,12 +444,6 @@
     </ClInclude>
     <ClInclude Include="Render\MnCustomRenderTarget.h">
       <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="SkinnedMeshShaderPath.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\StaticMeshRenderer.h">
-      <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Framework\MnWorldComponent.h">
       <Filter>Framework</Filter>
