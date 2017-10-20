@@ -3,6 +3,7 @@
 #include "GameWorldComponents.h"
 #include "GameObjectComponents.h"
 #include "Framework\ForwardShader.h"
+#include "Framework\Sprite2DShader.h"
 
 using namespace MNL;
 using namespace DirectX::SimpleMath;
@@ -45,7 +46,31 @@ HRESULT TestGame::OnInit()
 		MnLog::MB_IsNull(MN_VAR_INFO(meshData));
 		return E_FAIL;
 	}
-	
+
+	auto light = std::make_shared<MnLightSource>();
+	light->SetPosition(0.0f, 0.0f, 0.0f);
+	light->SetDirection(-0.5f, 0.0f, -1.0f);
+	light->SetLightType(MN_LIGHT_DIRECTIONAL);
+	m_gameWorld.GetComponent<LightList>()->AddLight(light);
+
+
+	auto shader = std::make_shared<ForwardShader>();
+	m_gameWorld.GetComponent<ShaderList>()->AddShader(shader);
+
+	auto spriteShader = std::make_shared<Sprite2DShader>();
+	m_gameWorld.GetComponent<ShaderList>()->AddShader(spriteShader);
+
+	auto camera = std::make_shared<MnCamera>();
+	camera->SetFOV(3.14f / 5.0f);
+	camera->SetNearDistance(0.1f);
+	camera->SetFarDistance(10000.0f);
+	camera->SetAspectRatio(1024.0f / 768.0f);
+	//camera.SetPosition(Vector3(0, 0, -1000.0f));
+	camera->SetPosition(Vector3(0.0f, 0.0f, 1000.0f));
+	camera->LookAt(Vector3(0, 500.0f, 0), Vector3(0, 1, 0));
+
+	m_gameWorld.GetComponent<CameraList>()->AddCamera(camera);
+	m_gameWorld.SetMainCamera(camera);
 
 	//테스트용 게임 오브젝트 생성. 팩토리 패턴 필요
 	auto gameObject = std::make_shared<MnGameObject>();
@@ -68,39 +93,27 @@ HRESULT TestGame::OnInit()
 	testMaterial->specular = Vector4(0.7f, 0.7f, 0.7f, 1.0f);
 	testMaterial->specularPower = 32.0f;
 	gameObject->GetComponent<Material>()->SetMaterial(testMaterial);
-	
+
 	//테스트용 애니메이션
 	auto testAnim = m_resourcePool.GetBoneAnimation("rico_anim3.fbx", 0);
 	gameObject->GetComponent<MeshAnimationController>()->AddAnimation("walk", testAnim);
 	gameObject->GetComponent<MeshAnimationController>()->SetAnimation("walk");
 	gameObject->GetComponent<MeshAnimationController>()->SetLoop(true);
 
-	
 	m_gameWorld.AddGameObject(gameObject);
 
 
-	auto light = std::make_shared<MnLightSource>();
-	light->SetPosition(0.0f, 0.0f, 0.0f);
-	light->SetDirection(-0.5f, 0.0f, -1.0f);
-	light->SetLightType(MN_LIGHT_DIRECTIONAL);
-	m_gameWorld.GetComponent<LightList>()->AddLight(light);
+	//테스트용 스프라이트용 오브젝트
+	auto spriteObject = std::make_shared<MnGameObject>();
 
+	spriteObject->AddComponent(std::make_shared<Texture>());
+	spriteObject->AddComponent(std::make_shared<Sprite2D>());
 
-	auto shader = std::make_shared<ForwardShader>();
-	m_gameWorld.GetComponent<ShaderList>()->AddShader(shader);
+	spriteObject->GetComponent<Texture>()->SetTexture(testTexture,MN_TEXTURE_DIFFUSE);
+	spriteObject->GetComponent<Sprite2D>()->SetPosition(100, 100);
+	spriteObject->GetComponent<Sprite2D>()->SetSize(200, 100);
 
-	auto camera = std::make_shared<MnCamera>();
-	camera->SetFOV(3.14f / 5.0f);
-	camera->SetNearDistance(0.1f);
-	camera->SetFarDistance(10000.0f);
-	camera->SetAspectRatio(1024.0f / 768.0f);
-	//camera.SetPosition(Vector3(0, 0, -1000.0f));
-	camera->SetPosition(Vector3(0.0f, 0.0f, 1000.0f));
-	camera->LookAt(Vector3(0, 500.0f, 0), Vector3(0, 1, 0));
-
-	m_gameWorld.GetComponent<CameraList>()->AddCamera(camera);
-	m_gameWorld.SetMainCamera(camera);
-
+	m_gameWorld.AddGameObject(spriteObject);
 
 	return S_OK;
 }

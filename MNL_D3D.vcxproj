@@ -197,6 +197,7 @@
     <ClCompile Include="Framework\Renderer.cpp" />
     <ClCompile Include="Framework\ShaderList.cpp" />
     <ClCompile Include="Framework\Shader.cpp" />
+    <ClCompile Include="Framework\Sprite2DShader.cpp" />
     <ClCompile Include="Framework\StandardMeshType.cpp" />
     <ClCompile Include="Framework\Texture.cpp" />
     <ClCompile Include="Framework\Transform.cpp" />
@@ -223,6 +224,7 @@
     <ClCompile Include="Render\MnSkinnedMesh.cpp" />
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp" />
     <ClCompile Include="Render\MnStaticMesh.cpp" />
+    <ClCompile Include="Sprite2D.cpp" />
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="Utility\MnIDAllocator.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
@@ -278,6 +280,8 @@
     <ClInclude Include="Framework\Renderer.h" />
     <ClInclude Include="Framework\ShaderList.h" />
     <ClInclude Include="Framework\Shader.h" />
+    <ClInclude Include="Framework\Sprite2D.h" />
+    <ClInclude Include="Framework\Sprite2DShader.h" />
     <ClInclude Include="Framework\StandardMeshType.h" />
     <ClInclude Include="Framework\Texture.h" />
     <ClInclude Include="Framework\Transform.h" />
@@ -325,16 +329,11 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="forwardshader_vs.hlsl" />
-    <FxCompile Include="pixelshader.hlsl">
+    <FxCompile Include="sprite2dshader_ps.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="skinnedpixelshader.hlsl">
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_MAIN</EntryPointName>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="skinnedvertexshader.hlsl" />
-    <FxCompile Include="vertexshader.hlsl" />
+    <FxCompile Include="sprite2dshader_vs.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

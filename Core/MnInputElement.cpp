@@ -8,9 +8,10 @@ MnInputElement::MnInputElement():m_type(MN_INPUT_ELEMENT_TYPE_NONE),
 {
 }
 
-MnInputElement::MnInputElement(std::string semanticName, const MnInputElementType& inputElementType, UINT index) : m_type(MN_INPUT_ELEMENT_TYPE_NONE),
-																								 m_byteSize(0),
-																								 m_format(DXGI_FORMAT_UNKNOWN)
+MnInputElement::MnInputElement(std::string semanticName, const MnInputElementType& inputElementType, UINT index) : 
+	m_type(MN_INPUT_ELEMENT_TYPE_NONE),																			 
+	m_byteSize(0),																 
+	m_format(DXGI_FORMAT_UNKNOWN)
 {
 	_Init(semanticName, inputElementType,index);
 }

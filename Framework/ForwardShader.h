@@ -51,7 +51,7 @@ namespace MNL
 		void SetMaterial(const std::shared_ptr<MnMaterial> spMaterial);
 		void SetBonePalette(const std::shared_ptr<MnSkeleton> spSkeleton);
 
-		virtual void Render(const CPD3DShaderResourceView& prevRenderedScene);
+		virtual void Render(const std::shared_ptr<MnCustomRenderTarget>& prevRenderedScene);
 	private:
 		void _Init();
 		HRESULT _InitShaders();

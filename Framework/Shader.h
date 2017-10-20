@@ -32,11 +32,17 @@ namespace MNL
 		Shader();
 		virtual ~Shader();
 		
+		/**
+		@brief 셰이더 리스트에 추가 되었을때(인스턴스화 되었을때) 발생하는 이벤트
+		*/
+		virtual void OnAttatched();
+
+	public:
 		void AddObjectsToQueue(const std::shared_ptr<MnGameObject>& spObject);
 		
 		/**
 		@brief 최종 렌더 타겟을 반환한다.
-		@return 렌더가 실패했거나 아직 렌더되지 않았을 경우 nullptr을 반환한다.
+		@return 렌더가 실패했거나 아직 렌더되지 않았을 경우 nullptr을 반환한다. 디폴트 값으로 내부 렌더 타겟을 반환하지만 SetFinalRenderTarget을 호출하여 변경 가능
 		*/
 		std::shared_ptr<MnCustomRenderTarget> GetFinalRenderTarget() const;
 
@@ -44,7 +50,7 @@ namespace MNL
 		@brief 큐에 있는 오브젝트들을 해당 셰이더로 렌더한다. 렌더 후 큐는 비워져야 한다.
 		@param prevRendererdScene 전 셰이더 단계에서 출력된 결과물. 사용여부는 구현에 따라 다르다.
 		*/
-		virtual void Render(const CPD3DShaderResourceView& prevRenderedScene) = 0;
+		virtual void Render(const std::shared_ptr<MnCustomRenderTarget>& prevRenderedScene) = 0;
 
 		void SetID(int id);
 		int GetID() const;

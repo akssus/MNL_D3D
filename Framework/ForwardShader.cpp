@@ -117,7 +117,7 @@ void ForwardShader::SetBonePalette(const std::shared_ptr<MnSkeleton> spSkeleton)
 	m_spBonePaletteBuffer->SetBonePalette(MnFramework::renderAPI.GetD3DDeviceContext(), spSkeleton);
 }
 
-void ForwardShader::Render(const CPD3DShaderResourceView& prevRenderedScene)
+void ForwardShader::Render(const std::shared_ptr<MnCustomRenderTarget>& prevRenderedScene)
 {
 	auto& renderAPI = MnFramework::renderAPI;
 	auto& cpDeviceContext = renderAPI.GetD3DDeviceContext();

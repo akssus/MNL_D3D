@@ -7,6 +7,7 @@ using namespace MNL;
 
 Texture::Texture()
 {
+	m_tblTextures.resize(MN_TEXTURE_TYPE_TOTAL, nullptr);
 }
 
 
@@ -23,7 +24,5 @@ void Texture::SetTexture(const std::shared_ptr<MnMeshTexture>& spTexture, MN_TEX
 
 std::shared_ptr<MnMeshTexture> Texture::GetTexture(MN_TEXTURE_TYPE textureType)
 {
-	if (m_tblTextures.count(textureType) == 0)
-		return nullptr;
 	return m_tblTextures[textureType];
 }

@@ -29,6 +29,10 @@ void Shader::_Init(MnGameWorld* pWorld)
 		MnLog::MB_InitFailed(MN_VAR_INFO(m_spFinalRenderTarget));
 	}
 }
+void Shader::OnAttatched()
+{
+	//nothing
+}
 
 void Shader::AddObjectsToQueue(const std::shared_ptr<MnGameObject>& spObject)
 {

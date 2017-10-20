@@ -86,12 +86,7 @@ void Renderer::Render(const MnRenderWindow& renderWindow)
 		auto shader = shaderList->GetShader(id);
 		if (shader != nullptr)
 		{
-			CPD3DShaderResourceView prevRenderedSceneResourceView = nullptr;
-			if (spRenderedScene != nullptr)
-			{
-				prevRenderedSceneResourceView = spRenderedScene->GetShaderResourceView();
-			}
-			shader->Render(prevRenderedSceneResourceView);
+			shader->Render(spRenderedScene);
 			spRenderedScene = shader->GetFinalRenderTarget();
 		}
 	}

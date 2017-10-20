@@ -86,3 +86,8 @@ CPD3DShaderResourceView MnCustomRenderTarget::GetShaderResourceView() const
 {
 	return m_shaderResourceView.GetShaderResourceView();
 }
+
+void MnCustomRenderTarget::CopyTextureFrom(MnRenderAPI& renderAPI, const MnCustomRenderTarget& other)
+{
+	m_renderedTexture.CopyFrom(renderAPI.GetD3DDeviceContext(), other.m_renderedTexture);
+}

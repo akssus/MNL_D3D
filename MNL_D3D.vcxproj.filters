@@ -266,6 +266,12 @@
     <ClCompile Include="Framework\LightList.cpp">
       <Filter>Framework\WorldComponents</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Sprite2DShader.cpp">
+      <Filter>Framework\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite2D.cpp">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utility\MNL_Utility.h">
@@ -514,20 +520,14 @@
     <ClInclude Include="Framework\StandardMeshType.h">
       <Filter>Framework</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Sprite2DShader.h">
+      <Filter>Framework\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Sprite2D.h">
+      <Filter>Framework\GameObjectComponents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="pixelshader.hlsl">
-      <Filter>HLSL</Filter>
-    </FxCompile>
-    <FxCompile Include="vertexshader.hlsl">
-      <Filter>HLSL</Filter>
-    </FxCompile>
-    <FxCompile Include="skinnedpixelshader.hlsl">
-      <Filter>HLSL</Filter>
-    </FxCompile>
-    <FxCompile Include="skinnedvertexshader.hlsl">
-      <Filter>HLSL</Filter>
-    </FxCompile>
     <FxCompile Include="backBufferShader_ps.hlsl">
       <Filter>HLSL</Filter>
     </FxCompile>
@@ -538,6 +538,12 @@
       <Filter>HLSL</Filter>
     </FxCompile>
     <FxCompile Include="forwardshader_vs.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="sprite2dshader_ps.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="sprite2dshader_vs.hlsl">
       <Filter>HLSL</Filter>
     </FxCompile>
   </ItemGroup>

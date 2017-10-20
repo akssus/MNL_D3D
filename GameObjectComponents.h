@@ -4,3 +4,4 @@
 #include "Framework\MeshAnimationController.h"
 #include "Framework\Texture.h"
 #include "Framework\Transform.h"
+#include "Framework\Sprite2D.h"

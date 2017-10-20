@@ -48,6 +48,16 @@ namespace MNL
 			//다운캐스팅 실패시 자동으로 nullptr 반환
 			return std::dynamic_pointer_cast<T>(m_tblComponents.at(key));
 		}
+
+		/**
+		@brief 게임 오브젝트가 해당 컴포넌트를 가지고 있는지 체크한다.
+		*/
+		template <class T>
+		bool HasComponent() const
+		{
+			std::string key = typeid(T).name();
+			return (m_tblComponents.count(key) != 0);
+		}
 		
 		/**
 		@brief 분류용 다용도 태그 설정

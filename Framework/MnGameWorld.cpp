@@ -41,6 +41,7 @@ void MnGameWorld::OnInit()
 void MnGameWorld::OnUpdate()
 {
 	//테스트용 임시
+	//@todo 수정바람. 전부.
 	for (auto& gameObject : m_lstGameObjects)
 	{
 		auto& shaders = GetComponent<ShaderList>()->GetShaders();
@@ -48,7 +49,11 @@ void MnGameWorld::OnUpdate()
 		{
 			shader.second->AddObjectsToQueue(gameObject.second);
 		}
-		gameObject.second->GetComponent<MeshAnimationController>()->UpdateBones();
+		auto animController = gameObject.second->GetComponent<MeshAnimationController>();
+		if (animController != nullptr)
+		{
+			animController->UpdateBones();
+		}
 	}
 }
 

@@ -22,6 +22,7 @@ namespace MNL
 {
 	class MnCustomRenderTarget
 	{
+		friend class MnCustomRenderTarget;
 	public:
 		MnCustomRenderTarget();
 		~MnCustomRenderTarget();
@@ -39,6 +40,11 @@ namespace MNL
 		CPD3DRenderTargetView GetRenderTargetView() const;
 		CPD3DDepthStencilView GetDepthStencilView() const;
 		CPD3DShaderResourceView GetShaderResourceView() const;
+
+		/**
+		@brief 다른 MnCustomRenderTarget 객체로부터 텍스쳐를 복사해온다.
+		*/
+		void CopyTextureFrom(MnRenderAPI& renderAPI, const MnCustomRenderTarget& other);
 
 	private:
 		MnTexture2D m_renderedTexture; ///< 렌더타겟용 버퍼

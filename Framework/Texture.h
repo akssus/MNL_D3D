@@ -18,6 +18,7 @@ namespace MNL
 	{
 		MN_TEXTURE_DIFFUSE,
 		MN_TEXTURE_NORMAL_MAP,
+		MN_TEXTURE_TYPE_TOTAL
 	};
 	class Texture : public MnGameObjectComponent
 	{
@@ -34,6 +35,7 @@ namespace MNL
 		std::shared_ptr<MnMeshTexture> GetTexture(MN_TEXTURE_TYPE textureType);
 
 	private:
-		std::map<MN_TEXTURE_TYPE,std::shared_ptr<MnMeshTexture>> m_tblTextures;
+		std::vector<std::shared_ptr<MnMeshTexture>> m_tblTextures;
 	};
+	
 }

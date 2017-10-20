@@ -20,20 +20,20 @@ void ShaderList::_Init()
 
 void ShaderList::AddShader(const std::shared_ptr<Shader>& spShader)
 {
+	assert(spShader != nullptr);
 	auto id = m_idAllocator.Allocate();
-	spShader->_Init(GameWorld());
-	spShader->SetID(id);
-	m_lstShaders[id] = spShader;
-	m_renderOrder.push_back(id);
+	AddShader(spShader, id);
 }
 
 void ShaderList::AddShader(const std::shared_ptr<Shader>& spShader, int id)
 {
+	assert(spShader != nullptr);
 	m_idAllocator.Register(id);
 	spShader->_Init(GameWorld());
 	spShader->SetID(id);
 	m_lstShaders[id] = spShader;
 	m_renderOrder.push_back(id);
+	spShader->OnAttatched();
 }
 
 void ShaderList::RemoveShader(int id)
