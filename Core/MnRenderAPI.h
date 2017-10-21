@@ -130,6 +130,12 @@ namespace MNL
 		*/
 		void SetDepthStencilState(const CPD3DDepthStencilState& cpDepthStencilState);
 
+
+		/**
+		@brief 블렌드 스테이트를 OutputMerger 단계에 설정한다.
+		*/
+		void SetBlendState(const CPD3DBlendState& cpBlendState);
+
 		/**
 		@brief 래스터라이저 스테이트를 그래픽 파이프라인 Rasterizer 단계에 설정한다.
 		@param cpRasterizerState 래스터라이저 스테이트 인터페이스.

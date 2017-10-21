@@ -87,6 +87,10 @@ void MnRenderAPI::SetDepthStencilState(const CPD3DDepthStencilState& cpDepthSten
 {
 	m_D3DDevice.GetDeviceContext()->OMSetDepthStencilState(cpDepthStencilState.Get(), 1);
 }
+void MnRenderAPI::SetBlendState(const CPD3DBlendState& cpBlendState)
+{
+	m_D3DDevice.GetDeviceContext()->OMSetBlendState(cpBlendState.Get(), nullptr, 0xffffffff);
+}
 void MnRenderAPI::SetRasterizerState(const CPD3DRasterizerState& cpRasterizerState)
 {
 	m_D3DDevice.GetDeviceContext()->RSSetState(cpRasterizerState.Get());
@@ -96,9 +100,7 @@ void MnRenderAPI::SetViewport(const D3D11_VIEWPORT& viewport)
 {
 	m_D3DDevice.GetDeviceContext()->RSSetViewports(1, &viewport);
 }
-/*
 
-*/
 void MnRenderAPI::ClearRenderTargets(CPD3DRenderTargetView renderTargetView, CPD3DDepthStencilView depthStencilView, DirectX::SimpleMath::Color color)
 {
 	float color4f[4] = { color.x, color.y, color.z, color.w };

@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core\MnBlendState.cpp" />
     <ClCompile Include="Core\MnConstantBuffer.cpp" />
     <ClCompile Include="Core\MnConstantBufferType.cpp" />
     <ClCompile Include="Core\MnConstantElement.cpp" />
@@ -231,6 +232,7 @@
     <ClCompile Include="Utility\MnTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\MnBlendState.h" />
     <ClInclude Include="Core\MnConstantBuffer.h" />
     <ClInclude Include="Core\MnConstantBufferType.h" />
     <ClInclude Include="Core\MnConstantElement.h" />

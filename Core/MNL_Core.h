@@ -1,6 +1,7 @@
 #pragma once
 #include "MnWindow.h"
 #include "MnRenderAPI.h"
+#include "MnBlendState.h"
 #include "MnConstantBuffer.h"
 #include "MnConstantBufferType.h"
 #include "MnConstantElement.h"

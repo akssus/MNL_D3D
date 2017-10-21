@@ -272,6 +272,9 @@
     <ClCompile Include="Sprite2D.cpp">
       <Filter>Framework\GameObjectComponents</Filter>
     </ClCompile>
+    <ClCompile Include="Core\MnBlendState.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utility\MNL_Utility.h">
@@ -525,6 +528,9 @@
     </ClInclude>
     <ClInclude Include="Framework\Sprite2D.h">
       <Filter>Framework\GameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MnBlendState.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

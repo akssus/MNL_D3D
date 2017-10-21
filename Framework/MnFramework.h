@@ -18,6 +18,7 @@ Framework 수준의 객체들은 MnFramework에 상당히 의존적이며, MnFramework는 초기화 
 #include "Core/MnRenderAPI.h"
 #include "Core/MnDepthStencilState.h"
 #include "Core/MnRasterizerState.h"
+#include "Core\MnBlendState.h"
 #include "Render/MnRenderWindow.h"
 #include "Render/MnRenderer.h"
 #include "Render/MnMesh.h"
@@ -56,11 +57,6 @@ namespace MNL
 		@return 종료시 false 반환
 		*/
 		virtual bool OnUpdate();
-
-		/**
-		@brief 전 업데이트와 현 업데이트의 시간차를 반환한다.
-		*/
-		static MnTime GetElapsedTime();
 		
 
 	protected:
@@ -78,6 +74,22 @@ namespace MNL
 		*/
 		void SwapBuffers();
 
+		//-------- 정적 객체 및 메소드
+	public:
+		/**
+		@brief D3D장치에 대한 접근 및 파이프라인 설정에 관한 API를 제공하는 객체로서 static으로 선언해 렌더 API에 대한 전역참조를 허용한다.
+		*/
+		static MnRenderAPI renderAPI;
+
+		/**
+		@brief 뎁스 테스트 실행 여부를 설정한다.
+		*/
+		static void SetDepthTestEnable(bool isEnable);
+		static bool IsDepthTestEnabled();
+
+		static void SetAlphaBlendiingEnable(bool isEnable);
+		static bool IsAlphaBlendingEnabled();
+
 		void SetFullScreen(bool isFullscreen);
 		bool IsFullScreen() const;
 
@@ -87,37 +99,46 @@ namespace MNL
 		void SetVSync(bool isVsync);
 		bool IsVSync() const;
 
-		void SetDepthEnable(bool isEnable);
-		bool IsDepthEnable() const;
-
 		void SetStencilEnable(bool isEnable);
 		bool IsStencilEnable() const;
 
-		UINT GetScreenWidth() const;
-		UINT GetScreenHeight() const;
+		UINT GetWindowWidth() const;
+		UINT GetWindowHeight() const;
 
 		/**
 		@brief 타임 스케일을 설정한다.
 		*/
 		static void SetTimeScale(float scale);
 
-	public:
 		/**
-		@brief D3D장치에 대한 접근 및 파이프라인 설정에 관한 API를 제공하는 객체로서 static으로 선언해 렌더 API에 대한 전역참조를 허용한다.
+		@brief 전 업데이트와 현 업데이트의 시간차를 반환한다.
 		*/
-		static MnRenderAPI renderAPI;
+		static MnTime GetElapsedTime();
+
+	private:
+		static bool _depthEnabled;
+		static bool _stencilEnabled;
+		static bool _alphaEnabled;
+		static bool _fullScreenEnabled;
+		static bool _isCCW;
+		static bool _isVsync;
 
 	protected:
-		UINT m_screenWidth; ///< 윈도우의 넓이
-		UINT m_screenHeight; ///< 윈도우의 높이
+		UINT m_windowWidth; ///< 윈도우의 넓이
+		UINT m_windowHeight; ///< 윈도우의 높이
 
 	private:
 		MnHardware m_hardware; ///< VGA 및 모니터에 대한 정보를 담은 객체
 		MnRenderWindow m_renderWindow; ///< 백버퍼 정보와 렌더링 될 윈도우의 정보를 지닌 객체
-		MnDepthStencilState m_depthStencilState; ///< 뎁스 스텐실 상태 정보를 담은 객체
 		MnSamplerState m_samplerState; ///< 텍스쳐 샘플링 정보를 담은 객체
 		MnRasterizerState m_rasterizerState; ///< 래스터라이저 상태 정보를 담은 객체
 		MnViewport m_viewport; //임시
+
+		static MnDepthStencilState m_depthStencilStateWithDepth; ///< 뎁스 스텐실 상태 정보를 담은 객체. 뎁스테스트 on
+		static MnDepthStencilState m_depthStencilStateWithoutDepth; ///< 뎁스 스텐실 상태 정보를 담은 객체. 뎁스테스트 off
+
+		static MnBlendState m_blendStateWithAlpha; ///< 블렌드 상태 정보를 담은 객체. 알파 블렌딩 on
+		static MnBlendState m_blendStateWithoutAlpha; ///< 블렌드 상태 정보를 담은 객체. 알파 블렌딩 off
 
 		static MnTimer _timer; ///< 시간 측정용 타이머
 		static MnTime _elapsedTime; ///< 전 프레임과 현 프레임의 시간차. milliseconds 단위이며 프레임의 가장 첫번째에 갱신된다.

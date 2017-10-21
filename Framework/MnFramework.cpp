@@ -6,10 +6,21 @@ using namespace MNL;
 MnRenderAPI MnFramework::renderAPI;
 MnTimer MnFramework::_timer;
 MnTime MnFramework::_elapsedTime;
+MnDepthStencilState MnFramework::m_depthStencilStateWithDepth;
+MnDepthStencilState MnFramework::m_depthStencilStateWithoutDepth;
+MnBlendState MnFramework::m_blendStateWithAlpha;
+MnBlendState MnFramework::m_blendStateWithoutAlpha;
+bool MnFramework::_depthEnabled = true;
+bool MnFramework::_alphaEnabled = true;
+bool MnFramework::_fullScreenEnabled = false;
+bool MnFramework::_isCCW = true;
+bool MnFramework::_isVsync = true;
+bool MnFramework::_stencilEnabled = true;
+
 
 MnFramework::MnFramework():
-	m_screenWidth(0),
-	m_screenHeight(0)
+	m_windowWidth(0),
+	m_windowHeight(0)
 {
 }
 
@@ -21,8 +32,8 @@ MnFramework::~MnFramework()
 
 HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wndX, float wndY, float wndWidth, float wndHeight, const std::wstring& windowTitle)
 {
-	m_screenWidth = static_cast<UINT>(wndWidth);
-	m_screenHeight = static_cast<UINT>(wndHeight);
+	m_windowWidth = static_cast<UINT>(wndWidth);
+	m_windowHeight = static_cast<UINT>(wndHeight);
 	_timer.Start();
 
 	//하드웨어 초기화
@@ -53,14 +64,40 @@ HRESULT MnFramework::Init(HINSTANCE hInstance, WNDPROC messageHandler, float wnd
 	//렌더타겟 백버퍼로 바인딩
 	renderAPI.SetRenderTarget(m_renderWindow.GetBackBufferRenderTargetView(), m_renderWindow.GetBackBufferDepthStencilView());
 
-	//뎁스 스텐실 스테이트 초기화
-	result = m_depthStencilState.Init(renderAPI.GetD3DDevice(), true, true);
+	//뎁스 스텐실 스테이트 초기화. 디폴트로 뎁스테스트 on
+	result = m_depthStencilStateWithDepth.Init(renderAPI.GetD3DDevice(), true, true);
 	if (FAILED(result))
 	{
-		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilState));
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilStateWithDepth));
 		return result;
 	}
-	renderAPI.SetDepthStencilState(m_depthStencilState.GetState());
+	renderAPI.SetDepthStencilState(m_depthStencilStateWithDepth.GetState());
+
+	//뎁스테스트 off
+	result = m_depthStencilStateWithoutDepth.Init(renderAPI.GetD3DDevice(), false, true);
+	if (FAILED(result))
+	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_depthStencilStateWithoutDepth));
+		return result;
+	}
+
+	//블렌드 스테이트 초기화. 디폴트로 알파 블렌딩 on
+	result = m_blendStateWithAlpha.Init(renderAPI.GetD3DDevice(), true);
+	if (FAILED(result))
+	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_blendStateWithAlpha));
+		return result;
+	}
+	renderAPI.SetBlendState(m_blendStateWithAlpha.GetState());
+
+	//알파 블렌딩 off
+	result = m_blendStateWithoutAlpha.Init(renderAPI.GetD3DDevice(), false);
+	if (FAILED(result))
+	{
+		MnLog::MB_InitFailed(MN_VAR_INFO(m_blendStateWithoutAlpha));
+		return result;
+	}
+	
 
 	//샘플러 스테이트 초기화
 	result = m_samplerState.Init(renderAPI.GetD3DDevice());
@@ -140,6 +177,42 @@ void MnFramework::SwapBuffers()
 	m_renderWindow.SwapBuffers();
 }
 
+void MnFramework::SetDepthTestEnable(bool isEnable)
+{
+	if (isEnable)
+	{
+		renderAPI.SetDepthStencilState(m_depthStencilStateWithDepth.GetState());
+		_depthEnabled = true;
+	}
+	else
+	{
+		renderAPI.SetDepthStencilState(m_depthStencilStateWithoutDepth.GetState());
+		_depthEnabled = false;
+	}
+}
+bool MnFramework::IsDepthTestEnabled()
+{
+	return _depthEnabled;
+}
+
+void MnFramework::SetAlphaBlendiingEnable(bool isEnable)
+{
+	if (isEnable)
+	{
+		renderAPI.SetBlendState(m_blendStateWithAlpha.GetState());
+		_alphaEnabled = true;
+	}
+	else
+	{
+		renderAPI.SetBlendState(m_blendStateWithoutAlpha.GetState());
+		_alphaEnabled = false;
+	}
+}
+bool MnFramework::IsAlphaBlendingEnabled()
+{
+	return _alphaEnabled;
+}
+
 void MnFramework::SetFullScreen(bool isFullscreen)
 {
 
@@ -167,15 +240,6 @@ bool MnFramework::IsVSync() const
 	return false;
 }
 
-void MnFramework::SetDepthEnable(bool isEnable)
-{
-
-}
-bool MnFramework::IsDepthEnable() const
-{
-	return false;
-}
-
 void MnFramework::SetStencilEnable(bool isEnable)
 {
 
@@ -185,13 +249,13 @@ bool MnFramework::IsStencilEnable() const
 	return false;
 }
 
-UINT MnFramework::GetScreenWidth() const
+UINT MnFramework::GetWindowWidth() const
 {
-	return m_screenWidth;
+	return m_windowWidth;
 }
-UINT MnFramework::GetScreenHeight() const
+UINT MnFramework::GetWindowHeight() const
 {
-	return m_screenHeight;
+	return m_windowHeight;
 }
 
 MnTime MnFramework::GetElapsedTime()

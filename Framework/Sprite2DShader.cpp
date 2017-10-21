@@ -127,6 +127,15 @@ void Sprite2DShader::Render(const std::shared_ptr<MnCustomRenderTarget>& prevRen
 
 	m_viewProjectionBuffer.SetViewProjectionTransform(renderAPI.GetD3DDeviceContext(), Matrix::Identity, m_projection);
 
+	if (MnFramework::IsDepthTestEnabled() == true)
+	{
+		MnFramework::SetDepthTestEnable(false);
+	}
+	if (MnFramework::IsAlphaBlendingEnabled() == false)
+	{
+		MnFramework::SetAlphaBlendiingEnable(true);
+	}
+
 	for (auto& obj : m_renderQueue)
 	{
 		auto compSprite = obj->GetComponent<Sprite2D>();
@@ -146,6 +155,10 @@ void Sprite2DShader::Render(const std::shared_ptr<MnCustomRenderTarget>& prevRen
 		
 		renderAPI.SetShaderResoureView(texture->GetShaderResourceView(),0);
 		renderAPI.DrawIndexed(6);
+	}
+	if (MnFramework::IsDepthTestEnabled() == false)
+	{
+		MnFramework::SetDepthTestEnable(true);
 	}
 
 	_ClearQueue();
