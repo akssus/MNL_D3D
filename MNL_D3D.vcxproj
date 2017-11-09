@@ -228,6 +228,8 @@
     <ClCompile Include="Sprite2D.cpp" />
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="Utility\MnIDAllocator.cpp" />
+    <ClCompile Include="Utility\MnMeshLoader.cpp" />
+    <ClCompile Include="Utility\MnResourceManager.cpp" />
     <ClCompile Include="Utility\MnResourcePool.cpp" />
     <ClCompile Include="Utility\MnTimer.cpp" />
   </ItemGroup>
@@ -315,6 +317,8 @@
     <ClInclude Include="TestGame.h" />
     <ClInclude Include="Utility\MnIDAllocator.h" />
     <ClInclude Include="Utility\MNL_Utility.h" />
+    <ClInclude Include="Utility\MnMeshLoader.h" />
+    <ClInclude Include="Utility\MnResourceManager.h" />
     <ClInclude Include="Utility\MnResourcePool.h" />
     <ClInclude Include="Utility\MnTimer.h" />
   </ItemGroup>

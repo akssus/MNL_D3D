@@ -275,6 +275,12 @@
     <ClCompile Include="Core\MnBlendState.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Utility\MnMeshLoader.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\MnResourceManager.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utility\MNL_Utility.h">
@@ -531,6 +537,12 @@
     </ClInclude>
     <ClInclude Include="Core\MnBlendState.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnMeshLoader.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\MnResourceManager.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,97 +1,68 @@
 /**
 @class MNL::MnResourcePool
 @section 주의사항
-LoadModelFromFile 을 호출할때 쓰이는 버텍스 타입은 MnmeshVertexType 혹은 MnSkinnedMeshVertexType 둘중 하나로 쓰는걸 추천한다. \n
+LoadModelFromFile 을 호출할때 쓰이는 버텍스 타입은 MnMeshVertexType 혹은 MnSkinnedMeshVertexType 둘중 하나로 쓰는걸 추천한다. \n
 VertexType 내 모든 플래그에 대해 대응하는게 아니기 때문임.
 */
 
-
 #pragma once
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <memory>
-#include "assimp\scene.h"
-#include "Core/MnTypedefs.h"
-#include "Render\MnMesh.h"
-#include "Render/MnMesh.h"
-#include "Render/MnMeshData.h"
-#include "Render/MnMaterial.h"
-#include "Render/MnLightSource.h"
-#include "Render/MnSkeleton.h"
-#include "Render/MnBoneAnimation.h"
-#include "Render/MnBoneAnimationElement.h"
 
 namespace MNL
 {
+	template <class T>
 	class MnResourcePool
 	{
-		struct _MemoryChunk
-		{
-			std::unique_ptr<char> pData;
-			UINT dataSize;
-		};
-		/*
-		A model file equals to a model package. Only read meshes and ignores lights and materials
-		*/
-		struct _ModelPackage
-		{
-			std::string m_packageName;
-			std::vector<std::shared_ptr<MnMeshData> > m_lstSpMeshes;
-			std::vector<std::shared_ptr<MnBoneAnimation>> m_lstSpAnimations;
-		};
-
-		struct _BoneData
-		{
-			UINT boneIndex[4] = { 0, };
-			float boneWeight[4] = { 0.0f, };
-		};
 
 	public:
-		MnResourcePool();
-		~MnResourcePool();
+		MnResourcePool() :
+			m_resourceCount(0)
+		{
+			m_memoryPointers.resize(10);
+			m_serializedMemory.resize(10);
+		};
+		~MnResourcePool() 
+		{
+			m_memoryPointers.clear();
+			m_serializedMemory.clear();
+		};
 
-		/**
-		@brief 파일의 모든 모델을 리소스풀에 로드한다. 
-		*/
-		HRESULT LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType);
-		/**
-		Load only a specific mesh in the file
-		*/
-		HRESULT LoadModelFromFile(const CPD3DDevice& cpDevice, const std::string& fileName, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::string& meshName);
+		void AddResource(const std::wstring& GUID, std::shared_ptr<T> spResource)
+		{
+			int index = _AllocateIndex();
+			m_resourceRegister[GUID] = index;
+			m_serializedMemory[index] = *spResource;
+			m_memoryPointers[index] = spResource;
+		}
 
-	public:
-		/**
-		Find mesh in the model package.
-		@return nullptr if modelPackage unfound or meshName unfound
-		*/
-		std::shared_ptr<MnMeshData> GetMeshData(const std::string& modelPackageName, const std::string& meshName) const;
-		std::shared_ptr<MnBoneAnimation> GetBoneAnimation(const std::string& modelPackageName, const std::string& animationName) const;
-		std::shared_ptr<MnBoneAnimation> GetBoneAnimation(const std::string& modelPackageName, UINT index) const;
+		std::shared_ptr<T> GetResource(const std::wstring& GUID)
+		{
+			if (m_resourceRegister.count(GUID) == 0)
+			{
+				return std::shared_ptr<T>(nullptr);
+			}
+			int index = m_resourceRegister.at(GUID);
+			return m_memoryPointers[index];
+		};
 
 	private:
-		HRESULT _LoadModelFromMemory(const _MemoryChunk& memoryChunk, std::string modelPackageName);
-		HRESULT _ReadFromAssimpScene(const aiScene* scene);
+		int _AllocateIndex()
+		{
+			if (m_resourceCount >= m_serializedMemory.size())
+			{
+				m_serializedMemory.resize(m_serializedMemory.size() * 2);
+				m_memoryPointers.resize(m_serializedMemory.size() * 2);
+			}
+			return m_resourceCount++;
+		}
 
-		/**
-		Every sub mesh's vertices are serialized in unified lists in a MnMeshData.
-		Each sub meshes has index offset so that a sub mesh is conceptually allocated in a partial space in the serialized list of MnMeshData
-		*/
-		HRESULT _ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* scene,const aiNode* node, UINT parentIndex, _ModelPackage& modelPackage, const std::shared_ptr<MnCustomVertexType>& vertexType);
-		std::shared_ptr<MnMeshData> _ReadSingleMesh(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType);
-		UINT _GetNodesTotalVertexCount(const aiScene* scene,const aiNode* node);
-		UINT _GetNodesTotalIndexCount(const aiScene* scene,const aiNode* node);
-		std::shared_ptr<MnSkeleton> _CreateSkeleton(const aiScene* scene, const aiNode* node);
-		const aiNode* _FindRootBoneNode(const aiScene* scene, const aiNode* currentMeshNode, const aiBone* bone);
-
-		void _ReadBoneData(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType, UINT numVertices, std::vector<_BoneData>& boneData);
-		void _ReadMeshVertices(const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType, UINT numVertices, std::vector<float>& vertexArray, const std::vector<_BoneData>& boneData);
-		void _ReadMeshIndices(const aiScene* scene, const aiNode* node, std::shared_ptr<MnMeshData>& meshData, UINT numIndices, std::vector<UINT>& indexArray);
-		MnSubMesh _CreateSubMesh(const aiMesh* mesh, UINT indexBase);
-		HRESULT _InitBuffers(const CPD3DDevice& cpDevice, std::shared_ptr<MnMeshData> meshData, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::vector<float>& vertexArray, UINT vertexCount, const std::vector<UINT>& indexArray, UINT indexCount);
-
-		HRESULT _ReadAnimations(const aiScene* scene, _ModelPackage& modelPackage);
 	private:
-		std::map<std::string, _ModelPackage> m_modelPackages;
+		int m_resourceCount;
+		std::unordered_map<std::wstring, int> m_resourceRegister;
+		std::vector<T> m_serializedMemory;
+		std::vector<std::shared_ptr<T>> m_memoryPointers;
 	};
 
 }

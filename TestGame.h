@@ -19,6 +19,6 @@ public:
 
 private:
 	MNL::MnGameWorld m_gameWorld;
-	MNL::MnResourcePool m_resourcePool;
+	MNL::MnResourceManager m_resourceManager;
 };
 

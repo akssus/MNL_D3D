@@ -31,16 +31,18 @@ HRESULT TestGame::OnInit()
 	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
 
 	//메시를 리로스풀로 로딩
-	result = m_resourcePool.LoadModelFromFile(renderAPI.GetD3DDevice(), "rico_anim3.fbx", vertexType);
+	result = m_resourceManager.LoadFBX(renderAPI.GetD3DDevice(), L"rico_anim3.fbx", vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_Failed(MN_FUNC_INFO(m_resourcePool.LoadModelFromFile));
 		return result;
 	}
 
+	auto package_rico = m_resourceManager.GetModelPackage(L"rico_anim3.fbx");
+
 	//메시 데이터를 얻어와 인스턴스화
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = m_resourcePool.GetMeshData("rico_anim3.fbx", "Rico");
+	auto meshData = package_rico->GetMeshData("Rico");
 	if (meshData == nullptr)
 	{
 		MnLog::MB_IsNull(MN_VAR_INFO(meshData));
@@ -95,7 +97,7 @@ HRESULT TestGame::OnInit()
 	gameObject->GetComponent<Material>()->SetMaterial(testMaterial);
 
 	//테스트용 애니메이션
-	auto testAnim = m_resourcePool.GetBoneAnimation("rico_anim3.fbx", 0);
+	auto testAnim = package_rico->m_lstSpAnimations[0];
 	gameObject->GetComponent<MeshAnimationController>()->AddAnimation("walk", testAnim);
 	gameObject->GetComponent<MeshAnimationController>()->SetAnimation("walk");
 	gameObject->GetComponent<MeshAnimationController>()->SetLoop(true);
