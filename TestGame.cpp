@@ -31,18 +31,18 @@ HRESULT TestGame::OnInit()
 	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
 
 	//메시를 리로스풀로 로딩
-	result = m_resourceManager.LoadFBX(renderAPI.GetD3DDevice(), L"rico_anim3.fbx", vertexType);
+	result = m_resourceManager.LoadFBX(renderAPI.GetD3DDevice(), L"mixamo_test.fbx", vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_Failed(MN_FUNC_INFO(m_resourcePool.LoadModelFromFile));
 		return result;
 	}
 
-	auto package_rico = m_resourceManager.GetModelPackage(L"rico_anim3.fbx");
+	auto package_rico = m_resourceManager.GetModelPackage(L"mixamo_test.fbx");
 
 	//메시 데이터를 얻어와 인스턴스화
 	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = package_rico->GetMeshData("Rico");
+	auto meshData = package_rico->m_lstSpMeshes[0];//package_rico->GetMeshData("Rico");
 	if (meshData == nullptr)
 	{
 		MnLog::MB_IsNull(MN_VAR_INFO(meshData));
@@ -86,7 +86,8 @@ HRESULT TestGame::OnInit()
 	gameObject->GetComponent<Mesh>()->SetMesh(meshData);
 
 	auto testTexture = std::make_shared<MnMeshTexture>();
-	testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
+	//testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
+	testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"default_texture.png");
 	gameObject->GetComponent<Texture>()->SetTexture(testTexture, MN_TEXTURE_DIFFUSE);
 
 	auto testMaterial = std::make_shared<MnMaterial>();

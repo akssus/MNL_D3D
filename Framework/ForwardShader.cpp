@@ -125,7 +125,7 @@ void ForwardShader::Render(const std::shared_ptr<MnCustomRenderTarget>& prevRend
 
 	//ÃÖÁ¾ Ãâ·Â ·»´õÅ¸°Ù ¼³Á¤
 	auto finalRenderTarget = GetFinalRenderTarget();
-	finalRenderTarget->Clear(renderAPI,DirectX::SimpleMath::Color(0.0f,0.0f,0.0f,0.0f));
+	finalRenderTarget->Clear(renderAPI,DirectX::SimpleMath::Color(0.0f,0.0f,0.5f,0.0f));
 	MnFramework::renderAPI.SetRenderTarget(finalRenderTarget->GetRenderTargetView(), finalRenderTarget->GetDepthStencilView());
 
 

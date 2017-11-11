@@ -20,15 +20,92 @@ MnBoneAnimationElement 객체는 MnBoneAnimationKeyFrame 객체의 리스트를 가지며,
 #include "DXTK\SimpleMath.h"
 #include <string>
 #include <vector>
+#include <algorithm>
 
 namespace MNL
 {
+	//스케일 채널
+
+	typedef DirectX::SimpleMath::Vector3 KeyScale;
+	typedef DirectX::SimpleMath::Quaternion KeyRotation;
+	typedef DirectX::SimpleMath::Vector3 KeyPosition;
+
+	template <typename T>
+	class MnBoneAnimationChannelKey
+	{
+	public:
+		T keyValue;
+		double keyTime;
+	};
+
+	template <typename T>
+	class MnBoneAnimationChannel
+	{
+	public:
+		std::vector<MnBoneAnimationChannelKey<T>> keyValues;
+		
+		MnBoneAnimationChannelKey<T> GetLerpedKeyAtTime(float animDuration, float timeFactor)
+		{
+			float scaledTime = timeFactor * animDuration;
+			MnBoneAnimationChannelKey<T> queryKey{ Vector3(0.0f,0.0f,0.0f), scaledTime };
+
+			if (keyValues.size() == 0) return queryKey;
+
+			MnBoneAnimationChannelKey<T>& prevKey = _GetPrevKeyFrame(queryKey, scaledTime);
+			MnBoneAnimationChannelKey<T>& nextKey = _GetNextKeyFrame(queryKey, scaledTime);
+			float blendFactor = (scaledTime - prevKey.keyTime) / (nextKey.keyTime - prevKey.keyTime);
+
+			T lerpedValue =  T::Lerp(prevKey.keyValue, nextKey.keyValue, blendFactor);
+
+			MnBoneAnimationChannelKey<T> retKey;
+			retKey.keyTime = scaledTime;
+			retKey.keyValue = lerpedValue;
+
+			return retKey;
+		}
+	private:
+		MnBoneAnimationChannelKey<T>& _GetPrevKeyFrame(const MnBoneAnimationChannelKey<T>& queryKey, float scaledTime)
+		{
+			auto it = std::upper_bound(keyValues.begin(), keyValues.end(), queryKey, [](const MnBoneAnimationChannelKey<T>& key1, const MnBoneAnimationChannelKey<T>& key2)
+			{
+				return (key1.keyTime < key2.keyTime);
+			});
+			if (it == keyValues.begin())
+			{
+				return *it;
+			}
+			if (it == keyValues.end())
+			{
+				return keyValues.back();
+			}
+			return *(it-1);
+		}
+		MnBoneAnimationChannelKey<T>& _GetNextKeyFrame(const MnBoneAnimationChannelKey<T>& queryKey, float scaledTime)
+		{
+			auto it = std::upper_bound(keyValues.begin(), keyValues.end(), queryKey, [](const MnBoneAnimationChannelKey<T>& key1, const MnBoneAnimationChannelKey<T>& key2)
+			{
+				return (key1.keyTime < key2.keyTime);
+			});
+			if (it == keyValues.end())
+			{
+				return keyValues.back();
+			}
+			return *it;
+		}
+	};
+
+	struct MnBoneAnimationKeyFrameChannelList
+	{
+		MnBoneAnimationChannel<KeyScale> keyScales;
+		MnBoneAnimationChannel<KeyRotation> keyRotations;
+		MnBoneAnimationChannel<KeyPosition> keyPositions;
+	};
+
 	struct MnBoneAnimationKeyFrame
 	{
-		DirectX::SimpleMath::Vector3 keyPosition;
-		DirectX::SimpleMath::Quaternion keyRotation;
 		DirectX::SimpleMath::Vector3 keyScale;
-		double keyTime; ///< 해당 키프레임의 시각.
+		DirectX::SimpleMath::Quaternion keyRotation;
+		DirectX::SimpleMath::Vector3 keyPosition;
 	};
 
 	class MnBoneAnimationElement
@@ -37,12 +114,15 @@ namespace MNL
 		MnBoneAnimationElement();
 		~MnBoneAnimationElement();
 
-		void AddKeyFrame(const MnBoneAnimationKeyFrame& key);
+		void AddKeyFrameS(const MnBoneAnimationChannelKey<KeyScale>& key);
+		void AddKeyFrameQ(const MnBoneAnimationChannelKey<KeyRotation>& key);
+		void AddKeyFrameT(const MnBoneAnimationChannelKey<KeyPosition>& key);
+
+
 		void SetAffectingBoneName(const std::string& affectingBoneName);
 		void SetDuration(double duration);
 		
 		double GetDuration() const;
-		UINT GetNumKeyFrames() const;
 
 		/**
 		@brief MnBoneAnimationElement 가 영향을 끼치는 본의 이름을 반환한다. MnSkeleton 내에서 사용할 수 있다.
@@ -56,39 +136,9 @@ namespace MNL
 		*/
 		MnBoneAnimationKeyFrame MnBoneAnimationElement::GetLerpedKeyFrameAtTime(float timeFactor);
 
-		/**
-		@brief 해당 인덱스의 키프레임을 반환한다. 특정 목적 이외에는 사용되지 않는다.
-		*/
-		MnBoneAnimationKeyFrame GetKeyFrame(UINT index) const;
-		/**
-		@brief 특정 시각에 해당하는 보간되지 않은 키프레임을 반환한다. 만약 키프레임1 과 키프레임2 사이의 시간대라면 키프레임1이 반환된다.
-		@param timeFactor timeFactor 는 반드시 0.0 ~ 1.0 사이여야 하며, (현재 틱) / (전체 틱) 으로 계산할 수 있다.
-		@return 보간되지 않은 키프레임을 반환하며 비정상 작동시 빈 키프레임을 반환한다.
-		*/
-		MnBoneAnimationKeyFrame GetKeyFrameAtTime(float timeFactor) const;
-		/**
-		@brief 특정 시각에 해당하는 보간되지 않은 키프레임의 인덱스를 반환한다. 만약 키프레임1 과 키프레임2 사이의 시간대라면 인덱스 1이 반환된다.
-		@param timeFactor timeFactor 는 반드시 0.0 ~ 1.0 사이여야 하며, (현재 틱) / (전체 틱) 으로 계산할 수 있다.
-		@return 보간되지 않은 키프레임의 인덱스를 반환한다.
-		*/
-		UINT GetKeyFrameIndexAtTime(float timeFactor) const;
-
-	private:
-		/**
-		@brief 현재 인덱스의 다음 인덱스를 반환하며 현재 인덱스가 마지막 키프레임일 경우 현재 인덱스를 그대로 반환한다.
-		*/
-		UINT _GetNextKeyFrameIndexOf(UINT currentIndex) const;
-
-		/**
-		@brief 두 키프레임 사이의 보간을 실시한다.
-		@param factor 0.0 ~ 1.0 사이의 값을 가진다.
-		@return (keyFrame_from * factor) + (keyFrame_to * (1.0-factor)) 선형 보간을 적용한 키프레임을 반환한다.
-		*/
-		MnBoneAnimationKeyFrame _LerpKeyFrame(const MnBoneAnimationKeyFrame& keyFrame_from, const MnBoneAnimationKeyFrame& keyFrame_to, float factor);
-
 	private:
 		std::string m_affectingBoneName; ///< 키프레임이 영향을 끼치는 MnBone 의 이름.
 		double m_duration; ///< 본 애니메이션의 전체 Duration
-		std::vector<MnBoneAnimationKeyFrame> m_lstKeyFrames;
+		MnBoneAnimationKeyFrameChannelList m_keyFrameChannelList;
 	};
 }

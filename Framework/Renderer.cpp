@@ -96,7 +96,7 @@ void Renderer::Render(const MnRenderWindow& renderWindow)
 		return;
 	}
 
-	//spRenderedScene에 추가 화면 효과를 넣는다.. 미구현
+	//spRenderedScene에 포스트 프로세싱 효과를 넣는다.. 미구현
 
 	//마지막으로 백버퍼에 그린다
 	_RenderToBackBuffer(spRenderedScene, renderWindow);

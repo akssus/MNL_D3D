@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "assimp\Importer.hpp"
 #include "assimp\postprocess.h"
+#include "fbxsdk.h"
 
 
 using namespace MNL;
@@ -49,6 +50,8 @@ HRESULT MnMeshLoader::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::
 		MnLog::MB_Failed(MN_FUNC_INFO(_ReadAnimations));
 		return result;
 	}
+
+	/////////////////////////////////////////
 
 	return S_OK;
 }
@@ -200,7 +203,8 @@ std::shared_ptr<MnSkeleton> MnMeshLoader::_CreateSkeleton(const aiScene* scene, 
 
 			rootBone.SetOffsetMatrix(Matrix::Identity);
 			skeleton->AddBone(rootBone);
-
+			
+			
 			for (UINT j = 0; j < mesh->mNumBones; ++j)
 			{
 				const aiBone* currentBone = mesh->mBones[j];
@@ -456,6 +460,7 @@ HRESULT MnMeshLoader::_ReadAnimations(const aiScene* scene, ModelPackage& modelP
 			newAnim->SetName(anim->mName.C_Str());
 			newAnim->SetTotalDuration(anim->mDuration);
 
+			//MnBoneAnimationElement 는 하나의 본의 모든 키프레임 묶음으로 보면 됨
 			for (int boneIndex = 0; boneIndex < anim->mNumChannels; ++boneIndex)
 			{
 				const aiNodeAnim* animNode = anim->mChannels[boneIndex];
@@ -465,20 +470,40 @@ HRESULT MnMeshLoader::_ReadAnimations(const aiScene* scene, ModelPackage& modelP
 
 				for (int keyFrameIndex = 0; keyFrameIndex < animNode->mNumPositionKeys; ++keyFrameIndex)
 				{
-					MnBoneAnimationKeyFrame newKeyFrame;
+					MnBoneAnimationChannelKey<KeyPosition> newKeyFrame;
 
 					const aiVectorKey& keyPos = animNode->mPositionKeys[keyFrameIndex];
-					const aiQuatKey& keyRot = animNode->mRotationKeys[keyFrameIndex];
-					const aiVectorKey& keyScale = animNode->mScalingKeys[keyFrameIndex];
 
-					newKeyFrame.keyPosition = Vector3(keyPos.mValue.x, keyPos.mValue.y, keyPos.mValue.z);
-					newKeyFrame.keyRotation = Quaternion(keyRot.mValue.x, keyRot.mValue.y, keyRot.mValue.z, keyRot.mValue.w);
-					newKeyFrame.keyScale = Vector3(keyScale.mValue.x, keyScale.mValue.y, keyScale.mValue.z);
-
+					newKeyFrame.keyValue = Vector3(keyPos.mValue.x, keyPos.mValue.y, keyPos.mValue.z);
 					newKeyFrame.keyTime = keyPos.mTime;
 
-					newAnimElement.AddKeyFrame(newKeyFrame);
+					newAnimElement.AddKeyFrameT(newKeyFrame);
 				}
+				
+				for (int keyFrameIndex = 0; keyFrameIndex < animNode->mNumRotationKeys; ++keyFrameIndex)
+				{
+					MnBoneAnimationChannelKey<KeyRotation> newKeyFrame;
+
+					const aiQuatKey& keyRot = animNode->mRotationKeys[keyFrameIndex];
+
+					newKeyFrame.keyValue = Quaternion(keyRot.mValue.x, keyRot.mValue.y, keyRot.mValue.z, keyRot.mValue.w);
+					newKeyFrame.keyTime = keyRot.mTime;
+
+					newAnimElement.AddKeyFrameQ(newKeyFrame);
+				}
+
+				for (int keyFrameIndex = 0; keyFrameIndex < animNode->mNumScalingKeys; ++keyFrameIndex)
+				{
+					MnBoneAnimationChannelKey<KeyScale> newKeyFrame;
+
+					const aiVectorKey& keyScale = animNode->mScalingKeys[keyFrameIndex];
+
+					newKeyFrame.keyValue = Vector3(keyScale.mValue.x, keyScale.mValue.y, keyScale.mValue.z);
+					newKeyFrame.keyTime = keyScale.mTime;
+
+					newAnimElement.AddKeyFrameS(newKeyFrame);
+				}
+
 				newAnim->AddElement(newAnimElement);
 			}
 			modelPackage.m_lstSpAnimations.push_back(newAnim);

@@ -38,6 +38,8 @@ HRESULT MnResourceManager::LoadTexture(const CPD3DDevice& cpDevice, const std::w
 		return result;
 	}
 	m_meshTexturePool.AddResource(filePath, spTexture);
+
+	return result;
 }
 
 std::shared_ptr<ModelPackage> MnResourceManager::GetModelPackage(const std::wstring& modelPackageName)
