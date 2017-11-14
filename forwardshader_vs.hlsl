@@ -55,7 +55,7 @@ VS_OUTPUT VS_MAIN(VS_INPUT input)
 	output.normal = input.boneWeight.x * mul(input.normal, bonePalette[(uint)input.boneIndex.x])
 		+ input.boneWeight.y * mul(input.normal, bonePalette[(uint)input.boneIndex.y])
 		+ input.boneWeight.z * mul(input.normal, bonePalette[(uint)input.boneIndex.z])
-		+ input.boneWeight.w * mul(input.normal, bonePalette[(uint)input.boneIndex.w])
+		+ input.boneWeight.w * mul(input.normal, bonePalette[(uint)input.boneIndex.w]);
 		
 	//output.position = input.position;
 	//output.normal = input.normal;

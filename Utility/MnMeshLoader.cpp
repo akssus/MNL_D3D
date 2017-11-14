@@ -165,8 +165,8 @@ std::shared_ptr<MnSkeleton> MnMeshLoader::_CreateSkeleton(_SkeletonBoneReference
 		const aiBone* pBone = _FindBoneByName(boneReference.name, pScene);
 		if (pBone == nullptr)
 		{
-			newBone.SetOffsetMatrix(Matrix::Identity);
 			newBone.SetTransform(Matrix::Identity);
+			newBone.SetOffsetMatrix(Matrix::Identity);
 		}
 		else
 		{
@@ -175,11 +175,11 @@ std::shared_ptr<MnSkeleton> MnMeshLoader::_CreateSkeleton(_SkeletonBoneReference
 			om.Transpose();
 			newBone.SetOffsetMatrix(*(Matrix*)(&om));
 
-			//오프셋 매트릭스의 역으로 초기화 하는 이유는 AddBone시 글로벌->본 좌표계 변환 행렬이 OffsetMatrix * Transform 인데 
-			//오프셋 매트릭스의 역으로 할 경우 Identity가 되어서 원래 메시 좌표가 되기 때문
-			aiMatrix4x4 initTransform = pBone->mOffsetMatrix;
-			initTransform.Inverse().Transpose();
-			newBone.SetTransform(*(Matrix*)(&initTransform));
+			const aiNode* rootNode = _FindRootBoneNode(pScene);
+			const aiNode* boneNode = rootNode->FindNode(newBone.GetName().c_str());
+			aiMatrix4x4 bm = boneNode->mTransformation;
+			bm.Transpose();
+			newBone.SetTransform(*(Matrix*)(&bm));
 		}
 
 		newSkeleton->AddBone(newBone);

@@ -66,7 +66,6 @@ void MnSkeleton::_ReposeBone(const std::string& boneName, const DirectX::SimpleM
 	}
 	auto& bone = m_lstBones[boneIndex];
 	Matrix stackedMatrix = bone.GetTransform() * baseMatrix;
-
 	Matrix reposedMatrix = bone.GetOffsetTransform() * stackedMatrix;
 	m_lstBoneMatrix[boneIndex] = reposedMatrix.Transpose();
 
