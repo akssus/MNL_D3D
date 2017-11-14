@@ -1,7 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include "DXTK\SimpleMath.h"
 #include "Core\MnTypedefs.h"
 #include "MnBone.h"
@@ -9,6 +9,7 @@
 
 namespace MNL
 {
+
 	class MnSkeleton
 	{
 	public:
@@ -17,6 +18,7 @@ namespace MNL
 
 		void AddBone(const MnBone& bone);
 		UINT GetNumBones() const;
+		UINT GetBoneIndexByName(const std::string& boneName);
 		std::string GetBoneName(UINT index) const;
 		void SetRootBoneName(const std::string& rootBoneName);
 
@@ -44,7 +46,7 @@ namespace MNL
 	
 	private:
 		std::string m_rootBoneName;
-		std::map<std::string, std::vector<std::string>> m_boneTree;
+		std::unordered_map<std::string, std::vector<std::string>> m_boneTree;
 		std::vector<MnBone>	m_lstBones;
 		std::vector<DirectX::SimpleMath::Matrix> m_lstBoneMatrix;
 

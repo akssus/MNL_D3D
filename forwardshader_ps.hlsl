@@ -45,6 +45,7 @@ float4 PS_MAIN(PS_INPUT input) : SV_TARGET
 	float4 specularColor = specular * highlight;
 
 	blendColor = blendColor + ambient +specularColor;
+	blendColor.a = 1.0f;
 
 	//blendColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
 

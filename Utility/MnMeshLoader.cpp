@@ -1,6 +1,7 @@
 #include "MnMeshLoader.h"
 #include "Core/MnLog.h"
 #include <algorithm>
+#include <unordered_map>
 #include "assimp\Importer.hpp"
 #include "assimp\postprocess.h"
 #include "fbxsdk.h"
@@ -18,7 +19,6 @@ MnMeshLoader::~MnMeshLoader()
 {
 }
 
-
 HRESULT MnMeshLoader::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::wstring& wFileName, const std::shared_ptr<MnCustomVertexType>& vertexType, ModelPackage& modelPackageOut)
 {
 	Assimp::Importer importer;
@@ -32,12 +32,34 @@ HRESULT MnMeshLoader::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::
 		MnLog::MB_Failed(MN_FUNC_INFO(importer.ReadFile));
 		return E_FAIL;
 	}
-	
+
 	modelPackageOut.m_packageName = wFileName;
 
-	//first node is root node
+	std::shared_ptr<MnMeshData> meshData = std::make_shared<MnMeshData>();
+
 	const aiNode* currentNode = scene->mRootNode;
-	HRESULT result = _ReadMeshes(cpDevice, scene, currentNode, 0, modelPackageOut, vertexType);
+
+	std::shared_ptr<MnSkeleton> spSkeleton;
+	bool modelHasBones = false;
+	const aiNode* rootBoneNode = _FindRootBoneNode(scene);
+	if (rootBoneNode != nullptr)
+	{
+		modelHasBones = true;
+		_SkeletonBoneReferenceTable skeletonTable;
+		HRESULT result = _EstablishSkeletonTable(skeletonTable, rootBoneNode);
+		if (FAILED(result))
+		{
+			MnLog::MB_Failed(MN_FUNC_INFO(EstablishSkeletonData));
+			return result;
+		}
+		spSkeleton = _CreateSkeleton(skeletonTable, scene);
+
+		meshData->SetSkeleton(spSkeleton);
+	}
+
+	modelPackageOut.m_spMeshData = meshData;
+
+	HRESULT result = _ReadMeshes(cpDevice, scene, currentNode, 0, meshData, vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_Failed(MN_FUNC_INFO(_ReadMeshes));
@@ -51,72 +73,150 @@ HRESULT MnMeshLoader::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::
 		return result;
 	}
 
-	/////////////////////////////////////////
 
 	return S_OK;
 }
-HRESULT MnMeshLoader::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::wstring& wFileName, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::string& meshName, std::shared_ptr<MnMeshData>& meshDataOut)
+
+
+const aiNode* MnMeshLoader::_FindAncestor(const aiScene* scene, const aiNode* currentNode)
 {
-	Assimp::Importer importer;
-
-	//호러블한 형변환...
-	std::string fileName;
-	fileName.assign(wFileName.begin(), wFileName.end());
-	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices);
-	if (!scene)
+	if ((currentNode == scene->mRootNode) || (currentNode->mParent == scene->mRootNode))
 	{
-		//error log
-		return E_FAIL;
+		return currentNode;
 	}
+	return _FindAncestor(scene, currentNode->mParent);
+}
 
-	const aiNode* findingNode = scene->mRootNode->FindNode(meshName.c_str());
-	if (findingNode == nullptr)
+
+/**
+@return 루트본노드가 없을 경우 nullptr 반환
+*/
+const aiNode* MnMeshLoader::_FindRootBoneNode(const aiScene* scene)
+{
+	for (int i = 0; i < scene->mNumMeshes; ++i)
 	{
-		//node not found
-		return E_FAIL;
+		aiMesh* pMesh = scene->mMeshes[i];
+		if (pMesh->HasBones())
+		{
+			aiBone* pBone = pMesh->mBones[0];
+			aiNode* pBoneNode = scene->mRootNode->FindNode(pBone->mName);
+			const aiNode* pAncestor = _FindAncestor(scene, pBoneNode);
+			return pAncestor;
+		}
 	}
-	auto meshData = _ReadSingleMesh(cpDevice, scene, findingNode, vertexType);
-	
-	if (meshData == nullptr)
-	{
-		MnLog::MB_Failed(MN_FUNC_INFO(_ReadSingleMesh));
-		return E_FAIL;
-	}
+	return nullptr;
+}
 
-	meshDataOut = meshData;
-
+HRESULT MnMeshLoader::_EstablishSkeletonTable(_SkeletonBoneReferenceTable& skeletonTable, const aiNode* rootBoneNode)
+{
+	skeletonTable.SetRootBoneName(rootBoneNode->mName.C_Str());
+	_ProcessBoneNode(skeletonTable, rootBoneNode);
 	return S_OK;
 }
 
-HRESULT MnMeshLoader::_ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, UINT parentIndex, ModelPackage& modelPackage, const std::shared_ptr<MnCustomVertexType>& vertexType)
+void MnMeshLoader::_ProcessBoneNode(_SkeletonBoneReferenceTable& skeletonTable, const aiNode* boneNode)
+{
+	std::string boneName = boneNode->mName.C_Str();
+	std::string parentName = "";
+	if (boneNode->mParent != nullptr)
+	{
+		parentName = boneNode->mParent->mName.C_Str();
+	}
+	skeletonTable.AddBoneName(boneName, parentName);
+
+	for (int i = 0; i < boneNode->mNumChildren; ++i)
+	{
+		const aiNode* childNode = boneNode->mChildren[i];
+		_ProcessBoneNode(skeletonTable, childNode);
+	}
+}
+
+const aiBone* MnMeshLoader::_FindBoneByName(const std::string& targetBoneName, const aiScene* pScene)
+{
+	for (int i = 0; i < pScene->mNumMeshes; ++i)
+	{
+		aiMesh* pMesh = pScene->mMeshes[i];
+		for (int boneIndex = 0; boneIndex < pMesh->mNumBones; ++boneIndex)
+		{
+			aiBone* pBone = pMesh->mBones[boneIndex];
+			std::string boneName = pBone->mName.C_Str();
+			if (boneName == targetBoneName)
+			{
+				return pBone;
+			}
+		}
+	}
+	return nullptr;
+}
+
+std::shared_ptr<MnSkeleton> MnMeshLoader::_CreateSkeleton(_SkeletonBoneReferenceTable& skeletonTable, const aiScene* pScene)
+{
+	auto newSkeleton = std::make_shared<MnSkeleton>();
+	newSkeleton->SetRootBoneName(skeletonTable.GetRootBoneName());
+	
+	for (int i = 0; i < skeletonTable.GetBoneCount(); ++i)
+	{
+		auto boneReference = skeletonTable.GetBoneReference(i);
+
+		MnBone newBone;
+		newBone.SetName(boneReference.name);
+		newBone.SetParentName(boneReference.parentName);
+
+		const aiBone* pBone = _FindBoneByName(boneReference.name, pScene);
+		if (pBone == nullptr)
+		{
+			newBone.SetOffsetMatrix(Matrix::Identity);
+			newBone.SetTransform(Matrix::Identity);
+		}
+		else
+		{
+			//여기서 오프셋 매트릭스는 메시 좌표계에서의 정점좌표를 본의 로컬좌표계로 바꿔주는 행렬이다.
+			aiMatrix4x4 om = pBone->mOffsetMatrix;
+			om.Transpose();
+			newBone.SetOffsetMatrix(*(Matrix*)(&om));
+
+			//오프셋 매트릭스의 역으로 초기화 하는 이유는 AddBone시 글로벌->본 좌표계 변환 행렬이 OffsetMatrix * Transform 인데 
+			//오프셋 매트릭스의 역으로 할 경우 Identity가 되어서 원래 메시 좌표가 되기 때문
+			aiMatrix4x4 initTransform = pBone->mOffsetMatrix;
+			initTransform.Inverse().Transpose();
+			newBone.SetTransform(*(Matrix*)(&initTransform));
+		}
+
+		newSkeleton->AddBone(newBone);
+	}
+
+	return newSkeleton;
+}
+
+HRESULT MnMeshLoader::_ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, UINT parentIndex, std::shared_ptr<MnMeshData>& spMeshData, const std::shared_ptr<MnCustomVertexType>& vertexType)
 {
 	//ONE NODE ONE MESH
-	std::shared_ptr<MnMeshData> meshData = nullptr;
+	std::shared_ptr<MnSubMeshData> subMeshData = nullptr;
 
 	//get current Mesh data's index to set as parent index
-	UINT currentMeshIndex = modelPackage.m_lstSpMeshes.size();
+	UINT currentMeshIndex = spMeshData->GetNumSubMeshes();
 
 	//read only if node has meshes
 	if (node->mNumMeshes != 0)
 	{
-		meshData = _ReadSingleMesh(cpDevice, scene, node, vertexType);
+		subMeshData = _ReadSingleMesh(cpDevice, scene, node, vertexType, spMeshData->GetSkeleton());
 	}
 	//add to package
-	if (meshData != nullptr)
+	if (subMeshData != nullptr)
 	{
 		//root mesh's parent index is nullptr
-		if (modelPackage.m_lstSpMeshes.size() > 0)
+		if (spMeshData->GetNumSubMeshes() > 0)
 		{
-			meshData->SetParentIndex(parentIndex);
+			subMeshData->SetParentIndex(parentIndex);
 		}
 		//add to package
-		modelPackage.m_lstSpMeshes.push_back(meshData);
+		spMeshData->AddSubMesh(subMeshData);
 	}
 
 	//recursively read mesh data;
 	for (UINT i = 0; i < node->mNumChildren; ++i)
 	{
-		HRESULT result = _ReadMeshes(cpDevice, scene, node->mChildren[i], currentMeshIndex, modelPackage, vertexType);
+		HRESULT result = _ReadMeshes(cpDevice, scene, node->mChildren[i], currentMeshIndex, spMeshData, vertexType);
 		if (FAILED(result))
 		{
 			//error log
@@ -125,37 +225,32 @@ HRESULT MnMeshLoader::_ReadMeshes(const CPD3DDevice& cpDevice, const aiScene* sc
 	}
 	return S_OK;
 }
-std::shared_ptr<MnMeshData> MnMeshLoader::_ReadSingleMesh(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType)
+std::shared_ptr<MnSubMeshData> MnMeshLoader::_ReadSingleMesh(const CPD3DDevice& cpDevice, const aiScene* scene, const aiNode* node, const std::shared_ptr<MnCustomVertexType>& vertexType,  std::shared_ptr<MnSkeleton>& spSkeleton)
 {
 	//ONE NODE ONE MESH
-	std::shared_ptr<MnMeshData> meshData = nullptr;
+	std::shared_ptr<MnSubMeshData> subMeshData = std::make_shared<MnSubMeshData>();
 
-	meshData = std::make_shared<MnMeshData>();
-
-	meshData->SetName(node->mName.C_Str());
+	subMeshData->SetName(node->mName.C_Str());
 
 	aiMatrix4x4 transform = node->mTransformation;
-	meshData->SetTransform(DirectX::SimpleMath::Matrix((float*)&(transform.Transpose())));
+	subMeshData->SetTransform(DirectX::SimpleMath::Matrix((float*)&(transform.Transpose())));
 
 	UINT totalVertexCount = _GetNodesTotalVertexCount(scene, node);
 	UINT totalIndexCount = _GetNodesTotalIndexCount(scene, node);
 
-	auto skeleton = _CreateSkeleton(scene, node);
-	meshData->SetSkeleton(skeleton);
-
 	std::vector<_BoneData> boneData;
-	_ReadBoneData(scene, node, vertexType, totalVertexCount, boneData);
+	_ReadBoneData(scene, node, vertexType, totalVertexCount, boneData, spSkeleton );
 
 	std::vector<float> vertexArray;
 	_ReadMeshVertices(scene, node, vertexType, totalVertexCount, vertexArray, boneData);
 
 	std::vector<UINT> indexArray;
-	_ReadMeshIndices(scene, node, meshData, totalIndexCount, indexArray);
+	_ReadMeshIndices(scene, node, subMeshData, totalIndexCount, indexArray);
 
 	//init vertex and index buffer
-	_InitBuffers(cpDevice, meshData, vertexType, vertexArray, totalVertexCount, indexArray, totalIndexCount);
+	_InitBuffers(cpDevice, subMeshData, vertexType, vertexArray, totalVertexCount, indexArray, totalIndexCount);
 
-	return meshData;
+	return subMeshData;
 }
 UINT MnMeshLoader::_GetNodesTotalVertexCount(const aiScene* scene, const aiNode* node)
 {
@@ -180,69 +275,10 @@ UINT MnMeshLoader::_GetNodesTotalIndexCount(const aiScene* scene, const aiNode* 
 	return totalIndexCount;
 }
 
-std::shared_ptr<MnSkeleton> MnMeshLoader::_CreateSkeleton(const aiScene* scene, const aiNode* node)
+
+void MnMeshLoader::_ReadBoneData(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType, UINT numVertices, std::vector<_BoneData>& boneData, std::shared_ptr<MnSkeleton>& spSkeleton)
 {
-	auto skeleton = std::make_shared<MnSkeleton>();
-
-	for (UINT i = 0; i < node->mNumMeshes; ++i)
-	{
-		UINT meshIndex = node->mMeshes[i];
-		const aiMesh* mesh = scene->mMeshes[meshIndex];
-		//read bones
-		if (mesh->HasBones())
-		{
-			const aiNode* rootBoneNode = _FindRootBoneNode(scene, node, mesh->mBones[0]);
-			skeleton->SetRootBoneName(rootBoneNode->mName.C_Str());
-
-			MnBone rootBone;
-			rootBone.SetName(rootBoneNode->mName.C_Str());
-
-			aiMatrix4x4 rootBoneTransform = rootBoneNode->mTransformation;
-			rootBoneTransform.Transpose();
-			rootBone.SetTransform(*(Matrix*)(&rootBoneTransform));
-
-			rootBone.SetOffsetMatrix(Matrix::Identity);
-			skeleton->AddBone(rootBone);
-			
-			
-			for (UINT j = 0; j < mesh->mNumBones; ++j)
-			{
-				const aiBone* currentBone = mesh->mBones[j];
-				MnBone newBone;
-				newBone.SetName(currentBone->mName.C_Str());
-
-				const aiNode* boneNode = scene->mRootNode->FindNode(currentBone->mName);
-				newBone.SetParentName(boneNode->mParent->mName.C_Str());
-
-				//여기서 오프셋 매트릭스는 메시 좌표계에서의 정점좌표를 본의 로컬좌표계로 바꿔주는 행렬이다.
-				aiMatrix4x4 om = currentBone->mOffsetMatrix;
-				om.Transpose();
-				newBone.SetOffsetMatrix(*(Matrix*)(&om));
-
-				//오프셋 매트릭스의 역으로 초기화 하는 이유는 AddBone시 글로벌->본 좌표계 변환 행렬이 OffsetMatrix * Transform 인데 
-				//오프셋 매트릭스의 역으로 할 경우 Identity가 되어서 원래 메시 좌표가 되기 때문
-				aiMatrix4x4 initTransform = currentBone->mOffsetMatrix;
-				initTransform.Inverse().Transpose();
-				newBone.SetTransform(*(Matrix*)(&initTransform));
-
-				skeleton->AddBone(newBone);
-			}
-		}
-	}
-	return skeleton;
-}
-const aiNode* MnMeshLoader::_FindRootBoneNode(const aiScene* scene, const aiNode* currentMeshNode, const aiBone* bone)
-{
-	auto& boneName = bone->mName;
-	const aiNode* boneNode = scene->mRootNode->FindNode(boneName);
-	while ((boneNode->mParent != currentMeshNode->mParent) && (boneNode->mParent != currentMeshNode) && (boneNode->mParent != scene->mRootNode))
-	{
-		boneNode = boneNode->mParent;
-	}
-	return boneNode;
-}
-void MnMeshLoader::_ReadBoneData(const aiScene* scene, const aiNode* node, std::shared_ptr<MnCustomVertexType> vertexType, UINT numVertices, std::vector<_BoneData>& boneData)
-{
+	//2017-11-13 수정필요
 	std::vector<UINT> boneDataCounter;
 	if (vertexType->GetFlags() & MN_CVF_BONE_INDEX
 		&& vertexType->GetFlags() & MN_CVF_BONE_WEIGHT)
@@ -264,8 +300,10 @@ void MnMeshLoader::_ReadBoneData(const aiScene* scene, const aiNode* node, std::
 					UINT vertexIndex = vertexWeight.mVertexId;
 					UINT boneCount = boneDataCounter[vertexIndex];
 					float boneWeight = vertexWeight.mWeight;
-					//index + 1 because index 0 is for the root bone
-					boneData[vertexIndex].boneIndex[boneCount] = j + 1;
+					
+					std::string boneName = currentBone->mName.C_Str();
+					UINT boneIndex = spSkeleton->GetBoneIndexByName(boneName);
+					boneData[vertexIndex].boneIndex[boneCount] = static_cast<float>(boneIndex);
 					boneData[vertexIndex].boneWeight[boneCount] = boneWeight;
 					boneDataCounter[vertexIndex] += 1;
 				}
@@ -343,10 +381,10 @@ void MnMeshLoader::_ReadMeshVertices(const aiScene* scene, const aiNode* node, c
 			{
 				if (flags & MN_CVF_BONE_INDEX)
 				{
-					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[0];
-					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[1];
-					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[2];
-					vertexArray[vertexOffset + currentOffset++] = (float)boneData[j].boneIndex[3];
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneIndex[0];
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneIndex[1];
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneIndex[2];
+					vertexArray[vertexOffset + currentOffset++] = boneData[j].boneIndex[3];
 				}
 				if (flags & MN_CVF_BONE_WEIGHT)
 				{
@@ -378,7 +416,7 @@ void MnMeshLoader::_ReadMeshVertices(const aiScene* scene, const aiNode* node, c
 		vertexBase += numVerts * numFloats;
 	}
 }
-void MnMeshLoader::_ReadMeshIndices(const aiScene* scene, const aiNode* node, std::shared_ptr<MnMeshData>& meshData, UINT numIndices, std::vector<UINT>& indexArray)
+void MnMeshLoader::_ReadMeshIndices(const aiScene* scene, const aiNode* node, std::shared_ptr<MnSubMeshData>& meshData, UINT numIndices, std::vector<UINT>& indexArray)
 {
 	indexArray.resize(numIndices);
 
@@ -400,16 +438,16 @@ void MnMeshLoader::_ReadMeshIndices(const aiScene* scene, const aiNode* node, st
 			}
 		}
 		//create submesh
-		MnSubMesh submesh = _CreateSubMesh(mesh, indexBase);
+		MnSubMeshFragment submeshFragment = _CreateSubMeshFragment(mesh, indexBase);
 		//update base offset of submesh indices
-		indexBase += submesh.indexCount;
+		indexBase += submeshFragment.indexCount;
 		//add to mesh data
-		meshData->AddSubMesh(submesh);
+		meshData->AddSubMeshFragment(submeshFragment);
 	}
 }
-MnSubMesh MnMeshLoader::_CreateSubMesh(const aiMesh* mesh, UINT indexBase)
+MnSubMeshFragment MnMeshLoader::_CreateSubMeshFragment(const aiMesh* mesh, UINT indexBase)
 {
-	MnSubMesh submesh;
+	MnSubMeshFragment submesh;
 	//set submesh name and offset
 	submesh.subMeshName = mesh->mName.C_Str();
 	submesh.indexOffset = indexBase;
@@ -419,7 +457,7 @@ MnSubMesh MnMeshLoader::_CreateSubMesh(const aiMesh* mesh, UINT indexBase)
 	return submesh;
 }
 
-HRESULT MnMeshLoader::_InitBuffers(const CPD3DDevice& cpDevice, std::shared_ptr<MnMeshData> meshData, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::vector<float>& vertexArray, UINT vertexCount, const std::vector<UINT>& indexArray, UINT indexCount)
+HRESULT MnMeshLoader::_InitBuffers(const CPD3DDevice& cpDevice, std::shared_ptr<MnSubMeshData> meshData, const std::shared_ptr<MnCustomVertexType>& vertexType, const std::vector<float>& vertexArray, UINT vertexCount, const std::vector<UINT>& indexArray, UINT indexCount)
 {
 	D3D11_SUBRESOURCE_DATA vertexData;
 	vertexData.pSysMem = vertexArray.data();

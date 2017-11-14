@@ -41,12 +41,18 @@ HRESULT TestGame::OnInit()
 	auto package_rico = m_resourceManager.GetModelPackage(L"mixamo_test.fbx");
 
 	//메시 데이터를 얻어와 인스턴스화
-	auto mesh = std::make_shared<MnSkinnedMesh>();
-	auto meshData = package_rico->m_lstSpMeshes[0];//package_rico->GetMeshData("Rico");
+	auto mesh = std::make_shared<MnMesh>();
+	auto meshData = package_rico->m_spMeshData;
 	if (meshData == nullptr)
 	{
 		MnLog::MB_IsNull(MN_VAR_INFO(meshData));
 		return E_FAIL;
+	}
+	result = mesh->Init(meshData);
+	if (FAILED(result))
+	{
+		MnLog::MB_Failed(MN_FUNC_INFO(MnMesh::Init));
+		return result;
 	}
 
 	auto light = std::make_shared<MnLightSource>();
@@ -68,8 +74,8 @@ HRESULT TestGame::OnInit()
 	camera->SetFarDistance(10000.0f);
 	camera->SetAspectRatio(1024.0f / 768.0f);
 	//camera.SetPosition(Vector3(0, 0, -1000.0f));
-	camera->SetPosition(Vector3(0.0f, 0.0f, 1000.0f));
-	camera->LookAt(Vector3(0, 500.0f, 0), Vector3(0, 1, 0));
+	camera->SetPosition(Vector3(0.0f, 100.0f, 450.0f));
+	camera->LookAt(Vector3(0, 100.0f, 0.0f), Vector3(0, 1, 0));
 
 	m_gameWorld.GetComponent<CameraList>()->AddCamera(camera);
 	m_gameWorld.SetMainCamera(camera);
@@ -116,7 +122,7 @@ HRESULT TestGame::OnInit()
 	spriteObject->GetComponent<Sprite2D>()->SetPosition(100, 100);
 	spriteObject->GetComponent<Sprite2D>()->SetSize(200, 100);
 
-	m_gameWorld.AddGameObject(spriteObject);
+	//m_gameWorld.AddGameObject(spriteObject);
 
 	return S_OK;
 }

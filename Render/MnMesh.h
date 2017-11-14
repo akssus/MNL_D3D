@@ -14,22 +14,31 @@ namespace MNL
 	MnMesh is instance of the MnMeshData.
 	MnMesh is minimal element of drawcall and it has ONE vertex buffer and ONE index buffer
 	*/
-	class MnMesh
+
+	class MnSubMesh
 	{	
 	public:
-		MnMesh();
-		~MnMesh();
+		MnSubMesh();
+		~MnSubMesh();
 	
-		virtual HRESULT Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData);
+		virtual HRESULT Init(const std::shared_ptr<MnSubMeshData> spMeshData);
 
-		void SetParent(const std::shared_ptr<MnMesh>& spMesh);
-		std::shared_ptr<MnMesh> GetParent() const;
+		void SetParent(const std::shared_ptr<MnSubMesh>& spMesh);
+		std::shared_ptr<MnSubMesh> GetParent() const;
 
 		void SetTransform(const DirectX::SimpleMath::Matrix& matTransform);
 		const DirectX::SimpleMath::Matrix& GetTransform() const;
 
-		UINT GetNumSubMeshes() const;
-		const MnSubMesh& GetSubMesh(UINT index) const;
+		void SetName(const std::string& name);
+		std::string GetName() const;
+
+		void SetVertexBuffer(const std::shared_ptr<MnVertexBuffer>& spVertexBuffer);
+		void SetIndexBuffer(const std::shared_ptr<MnIndexBuffer>& spIndexBuffer);
+
+
+		void SetSubMeshFragments(const std::vector<MnSubMeshFragment>& subMeshFragments);
+		UINT GetNumSubMeshFragments() const;
+		const MnSubMeshFragment& GetSubMeshFragment(UINT index) const;
 
 		const CPD3DBuffer GetVertexBuffer() const;
 		UINT GetVertexBufferStride() const;
@@ -40,10 +49,32 @@ namespace MNL
 	protected:
 		DirectX::SimpleMath::Matrix m_matTransform;
 		std::string m_name;
-		std::shared_ptr<MnMesh> m_spParent;
-		std::vector<MnSubMesh> m_subMeshes;
+		std::shared_ptr<MnSubMesh> m_spParent;
+		std::vector<MnSubMeshFragment> m_subMeshFragments;
 
 		std::shared_ptr<MnVertexBuffer> m_spVertexBuffer;
 		std::shared_ptr<MnIndexBuffer> m_spIndexBuffer;
+	};
+
+	class MnMesh
+	{
+	public:
+		MnMesh();
+		~MnMesh();
+
+		HRESULT Init(const std::shared_ptr<MnMeshData>& spMeshData);
+
+		void AddSubMesh(const std::shared_ptr<MnSubMesh>& spSubMesh);
+		std::shared_ptr<MnSubMesh> GetSubMesh(UINT index);
+		UINT GetNumSubMehses();
+
+		bool HasBones();
+		void SetSkeleton(const std::shared_ptr<MnSkeleton>& spSkeleton);
+		std::shared_ptr<MnSkeleton> GetSkeleton();
+
+	private:
+		std::vector<std::shared_ptr<MnSubMesh>> m_lstSubMeshes;
+		std::shared_ptr<MnSkeleton> m_spSkeleton;
+		bool m_hasBones;
 	};
 }

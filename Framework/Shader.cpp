@@ -72,15 +72,20 @@ void Shader::_SetGameWorld(MnGameWorld* pWorld)
 void Shader::_RenderMesh(const std::shared_ptr<MnMesh> mesh)
 {
 	auto& renderAPI = MnFramework::renderAPI;
-	renderAPI.SetVertexBuffer(mesh->GetVertexBuffer(), mesh->GetVertexBufferStride(), 0);
-	renderAPI.SetIndexBuffer(mesh->GetIndexBuffer(), mesh->GetIndexBufferFormat());
-	renderAPI.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	//draw call
-	UINT numSubMeshes = mesh->GetNumSubMeshes();
-	for (UINT i = 0; i < numSubMeshes; ++i)
+	for (int i = 0; i < mesh->GetNumSubMehses(); ++i)
 	{
-		auto& submesh = mesh->GetSubMesh(i);
-		renderAPI.DrawIndexed(submesh.indexCount, 0, submesh.indexOffset);
+		auto& subMesh = mesh->GetSubMesh(i);
+		renderAPI.SetVertexBuffer(subMesh->GetVertexBuffer(), subMesh->GetVertexBufferStride(), 0);
+		renderAPI.SetIndexBuffer(subMesh->GetIndexBuffer(), subMesh->GetIndexBufferFormat());
+		renderAPI.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		//draw call
+		UINT numSubMeshFragments = subMesh->GetNumSubMeshFragments();
+		for (UINT j = 0; j < numSubMeshFragments; ++j)
+		{
+			auto& submeshFragment = subMesh->GetSubMeshFragment(j);
+			renderAPI.DrawIndexed(submeshFragment.indexCount, 0, submeshFragment.indexOffset);
+		}
 	}
 }

@@ -173,13 +173,7 @@
     <ClCompile Include="Render\MnSkeleton.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="Render\MnSkinnedMesh.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="Render\MnSkinnedMeshVertexType.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\MnStaticMesh.cpp">
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="Utility\MnResourcePool.cpp">
@@ -280,6 +274,12 @@
     </ClCompile>
     <ClCompile Include="Utility\MnResourceManager.cpp">
       <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnSkinnedMesh.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MnStaticMesh.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -430,13 +430,7 @@
     <ClInclude Include="Render\MnSkeleton.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="Render\MnSkinnedMesh.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="Render\MnSkinnedMeshVertexType.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\MnStaticMesh.h">
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="Utility\MnResourcePool.h">
@@ -543,6 +537,12 @@
     </ClInclude>
     <ClInclude Include="Utility\MnResourceManager.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnSkinnedMesh.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MnStaticMesh.h">
+      <Filter>Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

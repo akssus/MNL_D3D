@@ -33,7 +33,7 @@ void MnCamera::SetUpVector(const DirectX::SimpleMath::Vector3& upVec)
 }
 void MnCamera::LookAt(const DirectX::SimpleMath::Vector3& target, const DirectX::SimpleMath::Vector3& upVec)
 {
-	m_orientation = target - m_position;
+	m_orientation = target;// -m_position;
 	m_upVector = upVec;
 	m_reCalculateView = true;
 }

@@ -44,6 +44,7 @@ namespace MNL
 		*/
 		void UpdateBuffer(CPD3DDeviceContext cpDeviceContext, const D3D11_SUBRESOURCE_DATA& data);
 
+		void SetRegisterSlot(UINT slotIndex);
 		const CPD3DBuffer GetBuffer() const;
 		UINT GetBufferByteSize() const;
 		UINT GetSlotIndex() const;

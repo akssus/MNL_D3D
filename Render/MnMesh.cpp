@@ -3,67 +3,159 @@
 
 using namespace MNL;
 
-MnMesh::MnMesh()
+MnSubMesh::MnSubMesh()
 {
 	m_matTransform = DirectX::SimpleMath::Matrix::Identity;
 }
 
 
-MnMesh::~MnMesh()
+MnSubMesh::~MnSubMesh()
 {
 }
 
 
-HRESULT MnMesh::Init(const CPD3DDevice& cpDevice, const std::shared_ptr<MnMeshData> spMeshData)
+HRESULT MnSubMesh::Init(const std::shared_ptr<MnSubMeshData> spSubMeshData)
 {
-	if (spMeshData == nullptr)
+	if (spSubMeshData == nullptr)
 	{
-		MnLog::MB_IsNull(MN_VAR_INFO(spMeshData));
+		MnLog::MB_IsNull(MN_VAR_INFO(spSubMeshData));
 		return E_FAIL;
 	}
+
+	m_matTransform = spSubMeshData->GetTransform();
+	m_name = spSubMeshData->GetName();
+	m_spVertexBuffer = spSubMeshData->GetVertexBuffer();
+	m_spIndexBuffer = spSubMeshData->GetIndexBuffer();
+
 	return S_OK;
 }
-void MnMesh::SetParent(const std::shared_ptr<MnMesh>& spMesh)
+void MnSubMesh::SetParent(const std::shared_ptr<MnSubMesh>& spMesh)
 {
 	m_spParent = spMesh;
 }
-std::shared_ptr<MnMesh> MnMesh::GetParent() const
+std::shared_ptr<MnSubMesh> MnSubMesh::GetParent() const
 {
 	return m_spParent;
 }
-void MnMesh::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
+void MnSubMesh::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
 {
 	m_matTransform = matTransform;
 }
-const DirectX::SimpleMath::Matrix& MnMesh::GetTransform() const
+const DirectX::SimpleMath::Matrix& MnSubMesh::GetTransform() const
 {
 	return m_matTransform;
 }
-UINT MnMesh::GetNumSubMeshes() const
+
+void MnSubMesh::SetName(const std::string& name)
 {
-	return m_subMeshes.size();
+	m_name = name;
 }
-const MnSubMesh& MnMesh::GetSubMesh(UINT index) const
+std::string MnSubMesh::GetName() const
 {
-	return m_subMeshes[index];
+	return m_name;
 }
-const CPD3DBuffer MnMesh::GetVertexBuffer() const
+
+void MnSubMesh::SetVertexBuffer(const std::shared_ptr<MnVertexBuffer>& spVertexBuffer)
+{
+	m_spVertexBuffer = spVertexBuffer;
+}
+void MnSubMesh::SetIndexBuffer(const std::shared_ptr<MnIndexBuffer>& spIndexBuffer)
+{
+	m_spIndexBuffer = spIndexBuffer;
+}
+
+void MnSubMesh::SetSubMeshFragments(const std::vector<MnSubMeshFragment>& subMeshFragments)
+{
+	m_subMeshFragments.assign(subMeshFragments.begin(), subMeshFragments.end());
+}
+UINT MnSubMesh::GetNumSubMeshFragments() const
+{
+	return m_subMeshFragments.size();
+}
+const MnSubMeshFragment& MnSubMesh::GetSubMeshFragment(UINT index) const
+{
+	return m_subMeshFragments[index];
+}
+const CPD3DBuffer MnSubMesh::GetVertexBuffer() const
 {
 	return m_spVertexBuffer->GetBuffer();
 }
-UINT MnMesh::GetVertexBufferStride() const
+UINT MnSubMesh::GetVertexBufferStride() const
 {
 	return m_spVertexBuffer->GetStride();
 }
-const CPD3DBuffer MnMesh::GetIndexBuffer() const
+const CPD3DBuffer MnSubMesh::GetIndexBuffer() const
 {
 	return m_spIndexBuffer->GetBuffer();
 }
-UINT MnMesh::GetIndexCount() const
+UINT MnSubMesh::GetIndexCount() const
 {
 	return m_spIndexBuffer->GetIndexCount();
 }
-DXGI_FORMAT MnMesh::GetIndexBufferFormat() const
+DXGI_FORMAT MnSubMesh::GetIndexBufferFormat() const
 {
 	return m_spIndexBuffer->GetFormat();
+}
+
+MnMesh::MnMesh():m_hasBones(false)
+{
+
+}
+MnMesh::~MnMesh()
+{
+
+}
+
+HRESULT MnMesh::Init(const std::shared_ptr<MnMeshData>& spMeshData)
+{
+	if (spMeshData == nullptr)
+	{
+		return E_FAIL;
+	}
+	
+	for (int i = 0; i < spMeshData->GetNumSubMeshes();++i)
+	{
+		auto newSubMesh = std::make_shared<MnSubMesh>();
+		auto subMeshData = spMeshData->GetSubMesh(i);
+		newSubMesh->Init(subMeshData);
+		AddSubMesh(newSubMesh);
+	}
+	if (spMeshData->HasBones())
+	{
+		m_hasBones = true;
+		m_spSkeleton = std::make_shared<MnSkeleton>();
+		//스켈레톤은 공유 불가하므로 복사해 받는다.
+		*m_spSkeleton = *(spMeshData->GetSkeleton());
+	}
+
+	return S_OK;
+}
+
+void MnMesh::AddSubMesh(const std::shared_ptr<MnSubMesh>& spSubMesh)
+{
+	m_lstSubMeshes.push_back(spSubMesh);
+}
+
+std::shared_ptr<MnSubMesh> MnMesh::GetSubMesh(UINT index)
+{
+	return m_lstSubMeshes[index];
+}
+
+UINT MnMesh::GetNumSubMehses()
+{
+	return m_lstSubMeshes.size();
+}
+
+bool MnMesh::HasBones()
+{
+	return m_hasBones;
+}
+void MnMesh::SetSkeleton(const std::shared_ptr<MnSkeleton>& spSkeleton)
+{
+	m_spSkeleton = spSkeleton;
+}
+
+std::shared_ptr<MnSkeleton> MnMesh::GetSkeleton()
+{
+	return m_spSkeleton;
 }

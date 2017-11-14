@@ -43,10 +43,16 @@ void MnConstantBuffer::UpdateBuffer(CPD3DDeviceContext cpDeviceContext, const D3
 	m_buffer.UpdateBuffer(cpDeviceContext, data);
 }
 
+void MnConstantBuffer::SetRegisterSlot(UINT slotIndex)
+{
+	m_slotIndex = slotIndex;
+}
+
 const CPD3DBuffer MnConstantBuffer::GetBuffer() const
 {
 	return m_buffer.GetBuffer();
 }
+
 UINT MnConstantBuffer::GetBufferByteSize() const
 {
 	return m_buffer.GetBufferByteSize();

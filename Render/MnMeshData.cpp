@@ -2,88 +2,114 @@
 
 using namespace MNL;
 
-MnMeshData::MnMeshData():m_spParentIndex(nullptr),m_hasBone(false)
+MnSubMeshData::MnSubMeshData():m_spParentIndex(nullptr)
 {
 	ZeroMemory(&m_matTransform, sizeof(DirectX::SimpleMath::Matrix));
 }
 
 
-MnMeshData::~MnMeshData()
+MnSubMeshData::~MnSubMeshData()
 {
 }
 
-void MnMeshData::AddSubMesh(const MnSubMesh& submesh)
+void MnSubMeshData::AddSubMeshFragment(const MnSubMeshFragment& submesh)
 {
-	m_lstSubMeshes.push_back(submesh);
+	m_lstSubMeshFragments.push_back(submesh);
 }
-void MnMeshData::SetName(const std::string& name)
+void MnSubMeshData::SetName(const std::string& name)
 {
 	m_meshName = name;
 }
-void MnMeshData::SetSkeleton(const std::shared_ptr<MnSkeleton> spSkeleton)
-{
-	m_spSkeleton = spSkeleton;
-}
-void MnMeshData::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
+
+void MnSubMeshData::SetTransform(const DirectX::SimpleMath::Matrix& matTransform)
 {
 	m_matTransform = matTransform;
 }
-void MnMeshData::SetParentIndex(UINT index)
+void MnSubMeshData::SetParentIndex(UINT index)
 {
 	m_spParentIndex = std::make_shared<UINT>(index);
 }
 
-void MnMeshData::SetVertexBuffer(const std::shared_ptr<MnVertexBuffer> spVertexBuffer)
+void MnSubMeshData::SetVertexBuffer(const std::shared_ptr<MnVertexBuffer> spVertexBuffer)
 {
 	m_spVertexBuffer = spVertexBuffer;
 }
-void MnMeshData::SetIndexBuffer(const std::shared_ptr<MnIndexBuffer> spIndexBuffer)
+void MnSubMeshData::SetIndexBuffer(const std::shared_ptr<MnIndexBuffer> spIndexBuffer)
 {
 	m_spIndexBuffer = spIndexBuffer;
 }
-void MnMeshData::AddAnimation(const MnBoneAnimation& animation)
-{
-	m_lstBoneAnimations.push_back(animation);
-}
 
-bool MnMeshData::HasBone() const
-{
-	return m_hasBone;
-}
-
-std::shared_ptr<MnVertexBuffer> MnMeshData::GetVertexBuffer() const
+std::shared_ptr<MnVertexBuffer> MnSubMeshData::GetVertexBuffer() const
 {
 	return m_spVertexBuffer;
 }
-std::shared_ptr<MnIndexBuffer> MnMeshData::GetIndexBuffer() const
+std::shared_ptr<MnIndexBuffer> MnSubMeshData::GetIndexBuffer() const
 {
 	return m_spIndexBuffer;
 }
-const std::string& MnMeshData::GetName() const
+
+const std::string& MnSubMeshData::GetName() const
 {
 	return m_meshName;
 }
-const std::shared_ptr<MnSkeleton> MnMeshData::GetSkeleton() const
-{
-	return m_spSkeleton;
-}
-const DirectX::SimpleMath::Matrix& MnMeshData::GetTransform() const
+
+const DirectX::SimpleMath::Matrix& MnSubMeshData::GetTransform() const
 {
 	return m_matTransform;
 }
-const std::vector<MnBoneAnimation>& MnMeshData::GetAnimations() const
-{
-	return m_lstBoneAnimations;
-}
-std::shared_ptr<UINT> MnMeshData::GetParentIndex() const
+
+std::shared_ptr<UINT> MnSubMeshData::GetParentIndex() const
 {
 	return m_spParentIndex;
 }
+UINT MnSubMeshData::GetNumSubMeshFragments() const
+{
+	return m_lstSubMeshFragments.size();
+}
+const std::vector<MnSubMeshFragment>& MnSubMeshData::GetSubMeshFragments() const
+{
+	return m_lstSubMeshFragments;
+}
+
+MnMeshData::MnMeshData() : m_hasBones(false)
+{
+
+}
+
+MnMeshData::~MnMeshData()
+{
+
+}
+
+void MnMeshData::AddSubMesh(const std::shared_ptr<MnSubMeshData>& spSubMesh)
+{
+	m_lstSubMeshes.push_back(spSubMesh);
+}
+std::shared_ptr<MnSubMeshData> MnMeshData::GetSubMesh(UINT index)
+{
+	return m_lstSubMeshes[index];
+}
+
 UINT MnMeshData::GetNumSubMeshes() const
 {
 	return m_lstSubMeshes.size();
 }
-const std::vector<MnSubMesh>& MnMeshData::GetSubMeshes() const
+
+bool MnMeshData::HasBones()
 {
-	return m_lstSubMeshes;
+	return m_hasBones;
+}
+
+void MnMeshData::SetSkeleton(const std::shared_ptr<MnSkeleton>& spSkeleton)
+{
+	if (spSkeleton != nullptr)
+	{
+		m_spSkeleton = spSkeleton;
+		m_hasBones = true;
+	}
+}
+
+std::shared_ptr<MnSkeleton> MnMeshData::GetSkeleton() const
+{
+	return m_spSkeleton;
 }

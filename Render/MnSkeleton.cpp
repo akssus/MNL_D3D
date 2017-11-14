@@ -14,6 +14,7 @@ MnSkeleton::~MnSkeleton()
 {
 }
 
+
 void MnSkeleton::AddBone(const MnBone& bone)
 {
 	m_lstBones.push_back(bone);
@@ -24,6 +25,11 @@ void MnSkeleton::AddBone(const MnBone& bone)
 UINT MnSkeleton::GetNumBones() const
 {
 	return m_lstBones.size();
+}
+
+UINT MnSkeleton::GetBoneIndexByName(const std::string& boneName)
+{
+	return _GetBoneIndex(boneName);
 }
 
 std::string MnSkeleton::GetBoneName(UINT index) const
@@ -60,6 +66,7 @@ void MnSkeleton::_ReposeBone(const std::string& boneName, const DirectX::SimpleM
 	}
 	auto& bone = m_lstBones[boneIndex];
 	Matrix stackedMatrix = bone.GetTransform() * baseMatrix;
+
 	Matrix reposedMatrix = bone.GetOffsetTransform() * stackedMatrix;
 	m_lstBoneMatrix[boneIndex] = reposedMatrix.Transpose();
 
