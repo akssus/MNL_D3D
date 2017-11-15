@@ -17,6 +17,9 @@ MnSkeleton::~MnSkeleton()
 
 void MnSkeleton::AddBone(const MnBone& bone)
 {
+	UINT boneIndex = m_lstBones.size();
+	m_boneIndexHashTable[bone.GetName()] = boneIndex;
+
 	m_lstBones.push_back(bone);
 	m_lstBoneMatrix[GetNumBones() - 1] = (bone.GetOffsetTransform() * bone.GetTransform()).Transpose();
 	m_boneTree[bone.GetParentName()].push_back(bone.GetName());
@@ -85,19 +88,7 @@ D3D11_SUBRESOURCE_DATA MnSkeleton::GetBonePalette()
 
 	return data;
 }
-int MnSkeleton::_GetBoneIndex(const std::string& boneName)
+UINT MnSkeleton::_GetBoneIndex(const std::string& boneName)
 {
-	// is it... too complicated..? Doubtful
-	auto it_bone = std::find_if(m_lstBones.begin(), m_lstBones.end(), [&](MnBone& bone) {
-		if (bone.GetName() == boneName)
-			return true;
-		return false;
-	});
-	if (it_bone == m_lstBones.end())
-	{
-		//bone not found
-		return -1;
-	}
-	int index = std::distance(m_lstBones.begin(), it_bone);
-	return index;
+	return m_boneIndexHashTable[boneName];
 }

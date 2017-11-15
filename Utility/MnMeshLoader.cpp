@@ -26,7 +26,7 @@ HRESULT MnMeshLoader::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::
 	std::string fileName;
 	fileName.assign(wFileName.begin(), wFileName.end());
 	//assimp가 wstring을 지원 안한다. 잣됬다.
-	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_LimitBoneWeights);
+	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_LimitBoneWeights | aiProcess_GenSmoothNormals);
 	if (!scene)
 	{
 		MnLog::MB_Failed(MN_FUNC_INFO(importer.ReadFile));

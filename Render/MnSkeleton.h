@@ -37,17 +37,14 @@ namespace MNL
 		*/
 		D3D11_SUBRESOURCE_DATA GetBonePalette();
 	private:
-		/**
-		@return -1 if bone is not exist
-		*/
-		int _GetBoneIndex(const std::string& boneName);
-
+		UINT _GetBoneIndex(const std::string& boneName);
 		void _ReposeBone(const std::string& boneName, const DirectX::SimpleMath::Matrix& baseMatrix);
 	
 	private:
 		std::string m_rootBoneName;
 		std::unordered_map<std::string, std::vector<std::string>> m_boneTree;
 		std::vector<MnBone>	m_lstBones;
+		std::unordered_map<std::string, UINT> m_boneIndexHashTable;
 		std::vector<DirectX::SimpleMath::Matrix> m_lstBoneMatrix;
 
 	};
