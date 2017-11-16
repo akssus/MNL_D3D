@@ -7,6 +7,8 @@
 #include "MnBone.h"
 #include "MnMatrixPalette.h"
 
+#define MN_BONE_PALETTE_SIZE 192
+
 namespace MNL
 {
 

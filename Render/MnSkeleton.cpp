@@ -6,7 +6,7 @@ using namespace DirectX::SimpleMath;
 
 MnSkeleton::MnSkeleton()
 {
-	m_lstBoneMatrix.resize(96);
+	m_lstBoneMatrix.resize(MN_BONE_PALETTE_SIZE);
 	ZeroMemory(m_lstBoneMatrix.data(), sizeof(Matrix) * m_lstBoneMatrix.size());
 }
 

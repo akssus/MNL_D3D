@@ -10,11 +10,11 @@ namespace MNL
 	class MnBonePaletteBuffer : public MnConstantBuffer
 	{
 		/**
-		@brief 본 팔레트는 Matrix 배열 96개로 고정이다.
+		@brief 본 팔레트는 Matrix 배열 192개로 고정이다.
 		*/
 		struct _BonePaletteBufferType
 		{
-			DirectX::SimpleMath::Matrix transforms[96];
+			DirectX::SimpleMath::Matrix transforms[MN_BONE_PALETTE_SIZE];
 		};
 	public:
 		MnBonePaletteBuffer();

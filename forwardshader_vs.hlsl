@@ -18,7 +18,7 @@ cbuffer LightBuffer : register(b2)
 
 cbuffer BonePaletteBuffer : register(b3)
 {
-	matrix bonePalette[96];
+	matrix bonePalette[192];
 };
 
 struct VS_INPUT
