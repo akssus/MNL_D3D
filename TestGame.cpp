@@ -31,14 +31,14 @@ HRESULT TestGame::OnInit()
 	auto vertexType = std::make_shared<MnSkinnedMeshVertexType>();
 
 	//메시를 리로스풀로 로딩
-	result = m_resourceManager.LoadFBX(renderAPI.GetD3DDevice(), L"mixamo_test.fbx", vertexType);
+	result = m_resourceManager.LoadFBX(renderAPI.GetD3DDevice(), L"rico_walk5.fbx", vertexType);
 	if (FAILED(result))
 	{
 		MnLog::MB_Failed(MN_FUNC_INFO(m_resourcePool.LoadModelFromFile));
 		return result;
 	}
 
-	auto package_rico = m_resourceManager.GetModelPackage(L"mixamo_test.fbx");
+	auto package_rico = m_resourceManager.GetModelPackage(L"rico_walk5.fbx");
 
 	//메시 데이터를 얻어와 인스턴스화
 	auto mesh = std::make_shared<MnMesh>();
@@ -73,8 +73,8 @@ HRESULT TestGame::OnInit()
 	camera->SetNearDistance(0.1f);
 	camera->SetFarDistance(10000.0f);
 	camera->SetAspectRatio(1024.0f / 768.0f);
-	//camera.SetPosition(Vector3(0, 0, -1000.0f));
-	camera->SetPosition(Vector3(0.0f, 100.0f, 450.0f));
+	//camera->SetPosition(Vector3(0, 0, 1000.0f));
+	camera->SetPosition(Vector3(0.0f, 100.0f, 1000.0f));
 	camera->LookAt(Vector3(0, 100.0f, 0.0f), Vector3(0, 1, 0));
 
 	m_gameWorld.GetComponent<CameraList>()->AddCamera(camera);
@@ -92,8 +92,8 @@ HRESULT TestGame::OnInit()
 	gameObject->GetComponent<Mesh>()->SetMesh(meshData);
 
 	auto testTexture = std::make_shared<MnMeshTexture>();
-	//testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
-	testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"default_texture.png");
+	testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"rico_uv.png");
+	//testTexture->LoadFromFile(renderAPI.GetD3DDevice(), L"default_texture.png");
 	gameObject->GetComponent<Texture>()->SetTexture(testTexture, MN_TEXTURE_DIFFUSE);
 
 	auto testMaterial = std::make_shared<MnMaterial>();

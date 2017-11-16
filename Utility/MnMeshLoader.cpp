@@ -4,8 +4,6 @@
 #include <unordered_map>
 #include "assimp\Importer.hpp"
 #include "assimp\postprocess.h"
-#include "fbxsdk.h"
-
 
 using namespace MNL;
 using namespace DirectX::SimpleMath;
@@ -26,7 +24,15 @@ HRESULT MnMeshLoader::LoadModelFromFile(const CPD3DDevice& cpDevice, const std::
 	std::string fileName;
 	fileName.assign(wFileName.begin(), wFileName.end());
 	//assimp가 wstring을 지원 안한다. 잣됬다.
-	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_LimitBoneWeights | aiProcess_GenSmoothNormals);
+
+	importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_CAMERAS, false);
+	importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_MATERIALS, false);
+	importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_TEXTURES, false);
+	importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_LIGHTS, false);
+
+	//피벗 노드들을 제거한다.
+	importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, false);
+	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_LimitBoneWeights);
 	if (!scene)
 	{
 		MnLog::MB_Failed(MN_FUNC_INFO(importer.ReadFile));
