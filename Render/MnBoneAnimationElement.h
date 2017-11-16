@@ -54,6 +54,10 @@ namespace MNL
 			MnBoneAnimationChannelKey<T>& prevKey = _GetPrevKeyFrame(queryKey, scaledTime);
 			MnBoneAnimationChannelKey<T>& nextKey = _GetNextKeyFrame(queryKey, scaledTime);
 			float blendFactor = (scaledTime - prevKey.keyTime) / (nextKey.keyTime - prevKey.keyTime);
+			if (isinf(blendFactor))
+			{
+				blendFactor = 0.0f;
+			}
 
 			T lerpedValue =  T::Lerp(prevKey.keyValue, nextKey.keyValue, blendFactor);
 
